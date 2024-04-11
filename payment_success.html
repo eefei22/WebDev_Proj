@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Completed</title>
+    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+    <link rel="stylesheet" href="./css/payment_success.css">
+    <!-- nav icons in smaller screen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+     <!-- Embedding JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the current page URL
+            var currentPageURL = window.location.href;
+            
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('.nav-links ul li a');
+    
+            // Loop through each link
+            navLinks.forEach(function(link) {
+                // Check if the link's href matches the current page URL
+                if (link.href === currentPageURL) {
+                    // Add the 'active' class to the matching link
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
+    </nav>
+
+    <div id="success">
+        <img src="./images/ic_payment_done.png" alt="payment_done">
+        <h3>Your payment was successful!</h2>
+        <h4>thank you for your payment</h4>
+        <button id="doneBtn">Done</button>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the "Done" button
+            var doneButton = document.getElementById("doneBtn");
+            
+            // Add click event listener to the "Done" button
+            doneButton.addEventListener("click", function() {
+                // Redirect back to the home page
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
+</html>

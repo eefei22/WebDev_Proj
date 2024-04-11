@@ -1,0 +1,69 @@
+* {
+    font-family: 'Inknut Antiqua', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+
+nav {
+    display: flex;
+    padding: 5px 5px;
+    background-color: #190482;
+    justify-content: center; /* Center the nav items */
+    position: fixed; /* Fixed position */
+    top: 0; /* Top of the page */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure nav is above other content */
+}
+
+nav img {
+    width: 110px;
+    height: 90px;
+}
+
+body {
+    background: linear-gradient(#8E8FFA, #C2D9FF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#success {
+    padding: 60px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    border: 2px solid #ddd; /* Add border */
+    text-align: center;
+    max-width: 600px; /* Limit the maximum width of the white box */
+}
+
+#success img {
+    width: 150px;
+    height: 150px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 40px;
+    background-color: #7752FE;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #190482;
+}
