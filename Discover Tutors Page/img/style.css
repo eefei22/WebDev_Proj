@@ -1,0 +1,672 @@
+.discover-tutors {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.discover-tutors .div {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1440px;
+  height: 2093px;
+  position: relative;
+}
+
+.discover-tutors .header-group {
+  position: absolute;
+  width: 1440px;
+  height: 169px;
+  top: 0;
+  left: 0;
+  background-color: #190482;
+}
+
+.discover-tutors .logo {
+  position: absolute;
+  width: 153px;
+  height: 103px;
+  top: 33px;
+  left: 38px;
+  object-fit: cover;
+}
+
+.discover-tutors .search-bar-group {
+  position: absolute;
+  width: 870px;
+  height: 52px;
+  top: 205px;
+  left: 61px;
+}
+
+.discover-tutors .overlap-group {
+  position: relative;
+  width: 868px;
+  height: 52px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  border: 4px solid;
+  border-color: #c2d9ff;
+}
+
+.discover-tutors .text-wrapper {
+  position: absolute;
+  top: 8px;
+  left: 64px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.discover-tutors .search-icon {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 9px;
+  left: 22px;
+  object-fit: cover;
+}
+
+.discover-tutors .filter-by-subjects {
+  position: absolute;
+  width: 394px;
+  height: 247px;
+  top: 270px;
+  left: 996px;
+}
+
+.discover-tutors .text-wrapper-2 {
+  position: absolute;
+  top: 0;
+  left: 11px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .overlap {
+  position: absolute;
+  width: 105px;
+  height: 50px;
+  top: 39px;
+  left: 0;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .text-wrapper-3 {
+  position: absolute;
+  top: 14px;
+  left: 19px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .button-label-BM-wrapper {
+  position: absolute;
+  width: 178px;
+  height: 50px;
+  top: 118px;
+  left: 0;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .button-label-science-wrapper {
+  position: absolute;
+  width: 111px;
+  height: 50px;
+  top: 197px;
+  left: 0;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .button-label-wrapper {
+  position: absolute;
+  width: 153px;
+  height: 50px;
+  top: 39px;
+  left: 229px;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .div-wrapper {
+  position: absolute;
+  width: 120px;
+  height: 50px;
+  top: 118px;
+  left: 229px;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .filter-by-location {
+  position: absolute;
+  width: 374px;
+  height: 247px;
+  top: 599px;
+  left: 996px;
+}
+
+.discover-tutors .overlap-2 {
+  position: absolute;
+  width: 162px;
+  height: 50px;
+  top: 118px;
+  left: 0;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .button-label-KL-wrapper {
+  position: absolute;
+  width: 162px;
+  height: 50px;
+  top: 197px;
+  left: 0;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .button-label-shah-wrapper {
+  position: absolute;
+  width: 133px;
+  height: 50px;
+  top: 39px;
+  left: 229px;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .button-label-klang-wrapper {
+  position: absolute;
+  width: 91px;
+  height: 50px;
+  top: 118px;
+  left: 229px;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .tutor {
+  width: 421px;
+  top: 295px;
+  left: 61px;
+  position: absolute;
+  height: 409px;
+}
+
+.discover-tutors .overlap-3 {
+  position: relative;
+  width: 411px;
+  height: 409px;
+}
+
+.discover-tutors .teacher-sample-image {
+  position: absolute;
+  width: 408px;
+  height: 202px;
+  top: 2px;
+  left: 2px;
+}
+
+.discover-tutors .image-frame {
+  position: absolute;
+  width: 411px;
+  height: 206px;
+  top: 0;
+  left: 0;
+  border-radius: 30px 30px 0px 0px;
+  border: 3px solid;
+  border-color: #c2d9ff;
+}
+
+.discover-tutors .details-frame {
+  position: absolute;
+  width: 411px;
+  height: 206px;
+  top: 203px;
+  left: 0;
+  border-radius: 0px 0px 30px 30px;
+  border: 3px solid;
+  border-color: #c2d9ff;
+}
+
+.discover-tutors .text-wrapper-4 {
+  position: absolute;
+  width: 251px;
+  top: 226px;
+  left: 22px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .text-wrapper-5 {
+  position: absolute;
+  width: 158px;
+  top: 263px;
+  left: 22px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .text-wrapper-6 {
+  position: absolute;
+  width: 170px;
+  top: 263px;
+  left: 212px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .p {
+  position: absolute;
+  width: 360px;
+  top: 288px;
+  left: 22px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.discover-tutors .text-wrapper-7 {
+  position: absolute;
+  width: 117px;
+  top: 371px;
+  left: 22px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .overlap-wrapper {
+  width: 421px;
+  top: 297px;
+  left: 518px;
+  position: absolute;
+  height: 409px;
+}
+
+.discover-tutors .tutor-image {
+  position: absolute;
+  width: 411px;
+  height: 202px;
+  top: 2px;
+  left: 0;
+  object-fit: cover;
+}
+
+.discover-tutors .text-wrapper-8 {
+  top: 263px;
+  left: 202px;
+  position: absolute;
+  width: 170px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .overlap-group-wrapper {
+  width: 422px;
+  top: 750px;
+  left: 63px;
+  position: absolute;
+  height: 409px;
+}
+
+.discover-tutors .overlap-4 {
+  position: relative;
+  width: 412px;
+  height: 409px;
+}
+
+.discover-tutors .img {
+  position: absolute;
+  width: 412px;
+  height: 201px;
+  top: 2px;
+  left: 0;
+  object-fit: cover;
+}
+
+.discover-tutors .text-wrapper-9 {
+  top: 262px;
+  left: 210px;
+  position: absolute;
+  width: 170px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .tutor-2 {
+  width: 421px;
+  top: 752px;
+  left: 520px;
+  position: absolute;
+  height: 409px;
+}
+
+.discover-tutors .tutor-image-2 {
+  position: absolute;
+  width: 410px;
+  height: 200px;
+  top: 3px;
+  left: 1px;
+  object-fit: cover;
+}
+
+.discover-tutors .text-wrapper-10 {
+  position: absolute;
+  width: 170px;
+  top: 264px;
+  left: 206px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.discover-tutors .tutor-3 {
+  width: 421px;
+  top: 1209px;
+  left: 61px;
+  position: absolute;
+  height: 409px;
+}
+
+.discover-tutors .tutor-image-3 {
+  position: absolute;
+  width: 411px;
+  height: 203px;
+  top: 3px;
+  left: 0;
+  object-fit: cover;
+}
+
+.discover-tutors .tutor-4 {
+  width: 421px;
+  top: 1211px;
+  left: 518px;
+  position: absolute;
+  height: 409px;
+}
+
+.discover-tutors .tutor-image-4 {
+  position: absolute;
+  width: 410px;
+  height: 202px;
+  top: 1px;
+  left: 1px;
+}
+
+.discover-tutors .button-label-load-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  width: 204px;
+  height: 63px;
+  top: 1670px;
+  left: 620px;
+  background-color: #c2d9ff;
+  border-radius: 15px;
+}
+
+.discover-tutors .button-label-load {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  top: 16px;
+  left: 38px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.discover-tutors .footer-group {
+  position: absolute;
+  width: 1448px;
+  height: 316px;
+  top: 1777px;
+  left: -1px;
+}
+
+.discover-tutors .overlap-5 {
+  position: relative;
+  width: 1440px;
+  height: 316px;
+  background-color: #000000;
+}
+
+.discover-tutors .logo-ref {
+  position: absolute;
+  width: 227px;
+  height: 184px;
+  top: 49px;
+  left: 607px;
+  object-fit: cover;
+}
+
+.discover-tutors .text-wrapper-11 {
+  position: absolute;
+  width: 147px;
+  top: 48px;
+  left: 989px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.discover-tutors .text-wrapper-12 {
+  position: absolute;
+  width: 147px;
+  top: 48px;
+  left: 251px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.discover-tutors .line {
+  position: absolute;
+  width: 1400px;
+  height: 1px;
+  top: 270px;
+  left: 20px;
+  object-fit: cover;
+}
+
+.discover-tutors .text-wrapper-13 {
+  position: absolute;
+  width: 282px;
+  top: 280px;
+  left: 54px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.discover-tutors .flexcontainer {
+  height: 160px;
+  top: 99px;
+  left: 251px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: absolute;
+  width: 282px;
+}
+
+.discover-tutors .text {
+  position: relative;
+  align-self: stretch;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.discover-tutors .span {
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.discover-tutors .group {
+  position: absolute;
+  width: 321px;
+  height: 116px;
+  top: 99px;
+  left: 989px;
+}
+
+.discover-tutors .flexcontainer-2 {
+  height: 116px;
+  top: 0;
+  left: 37px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: absolute;
+  width: 282px;
+}
+
+.discover-tutors .group-2 {
+  position: absolute;
+  width: 24px;
+  height: 90px;
+  top: 5px;
+  left: 0;
+}
+
+.discover-tutors .phone-fill {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 31px;
+  left: 0;
+}
+
+.discover-tutors .subtract {
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  top: 0;
+  left: 3px;
+}
+
+.discover-tutors .pin-alt-fill {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 66px;
+  left: 0;
+}
+
+.discover-tutors .overlap-group-2 {
+  position: relative;
+  width: 16px;
+  height: 20px;
+  top: 2px;
+  left: 4px;
+}
+
+.discover-tutors .subtract-2 {
+  position: absolute;
+  width: 14px;
+  height: 16px;
+  top: 0;
+  left: 1px;
+}
+
+.discover-tutors .ellipse {
+  position: absolute;
+  width: 16px;
+  height: 7px;
+  top: 13px;
+  left: 0;
+}
+
+.discover-tutors .back-to-the-top {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  top: 188px;
+  left: 1321px;
+  background-color: #ffffff;
+  border-radius: 34px;
+}
+
+.discover-tutors .expand-up-double {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: 11px;
+  left: 11px;
+}
