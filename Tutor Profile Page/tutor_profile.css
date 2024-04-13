@@ -1,0 +1,56 @@
+.header{
+    position: relative;
+    width: 100vw;
+    height: 169px;
+    top: 0;
+    left: 0;
+    background-color: #190482;
+    border-radius: 0 0 40px 40px;
+  }
+  
+  .logo {
+    position: absolute;
+    width: 153px;
+    height: 103px;
+    top: 33px;
+    left: 38px;
+    object-fit: cover;
+  }
+
+  .content{
+    width: 50%;
+    position: relative;
+    top: 50px;
+    left: 100px;
+    padding: 20px;
+    background: white;
+    background-color: white;
+    border: 3px #C2D9FF solid;
+    border-radius: 30px;
+  }
+
+  .title{
+    font-size: 24px; 
+    font-family: "Inter", Helvetica;
+    margin-bottom: 8px;
+  }
+
+  .profile_head{
+    margin: 5px;
+    display:flex;
+  }
+
+  .profile_pic{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 200px;
+  }
+
+  .labels{
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Inter", Helvetica;
+
+  }
