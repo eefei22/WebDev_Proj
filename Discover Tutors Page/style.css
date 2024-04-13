@@ -1,11 +1,11 @@
 .header{
-  position: fixed;
+  position: relative;
   width: 100vw;
   height: 169px;
   top: 0;
   left: 0;
   background-color: #190482;
-  border-radius: 0 0 35px 35px;
+  border-radius: 0 0 40px 40px;
 }
 
 .logo {
@@ -18,7 +18,7 @@
 }
 
 .content {
-  padding-top: 210px; 
+  padding-top: 10px; 
 }
 
 .Search {
@@ -55,20 +55,45 @@
   height: 26px;
 }
 
-.TutorsCol1 {
-  width: 30%;
-  margin-left: 100px;;
+.filters {
+  float: right;
+  margin-right: 110px;
+  margin-top: 50px;
 }
 
+.labeled_button {
+  background-color: #C2D9FF; 
+  border: none; 
+  color: black; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  font-family: "Inter", Helvetica;
+  margin: 4px 2px; 
+  cursor: pointer; 
+  border-radius: 20px;
+}
+
+
+.TutorsContainer {
+  display: flex;
+  width: 50%;
+  margin-left: 100px;
+  margin-top: 40px;
+}
+
+.TutorsCol1,
 .TutorsCol2 {
-  width: 30%;
-  margin-left: 600px;;
+  flex: 1;
+  margin-left: 10px;
 }
 
 .Tutors{
   flex: 1;
   width: 420px;
-  height: 500px;
+  height: 450px;
   position: relative;
   margin-right: 20px;
   margin-top: 30px;
@@ -106,14 +131,44 @@
   margin-bottom: 35px; 
   color: black;
   font-size: 24px;
+  font-family: "Inter", Helvetica;
+}
+
+.labels {
+  left: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px; 
+  color: black;
+  font-size: 20px;
+  font-family: "Inter", Helvetica;
 }
 
 .Details {
   left: 20px;
   top: 0px;
-  margin-right: 30px;
+  margin-right: 40px;
   margin-top: 10px; 
   color: black;
   font-size: 14px;
+  font-family: "Inter", Helvetica;
   position: relative;
+}
+
+.loadMore_button {
+  background-color: #C2D9FF; 
+  border: none; 
+  color: black; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  font-family: "Inter", Helvetica;
+  margin-top: 10px; 
+  margin-bottom: 50px;
+  cursor: pointer; 
+  border-radius: 20px;
+  position:absolute;
+  left: 50%;
+
 }
