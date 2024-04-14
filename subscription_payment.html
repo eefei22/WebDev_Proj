@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+        <title>Subscription Payment</title>
+        <link rel="stylesheet" href="./css/payment_style.css">
+        <!-- nav icons in smaller screen -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <!--font family  -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    
+         <!-- Embedding JavaScript -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Get the current page URL
+                var currentPageURL = window.location.href;
+                
+                // Get all navigation links
+                var navLinks = document.querySelectorAll('.nav-links ul li a');
+        
+                // Loop through each link
+                navLinks.forEach(function(link) {
+                    // Check if the link's href matches the current page URL
+                    if (link.href === currentPageURL) {
+                        // Add the 'active' class to the matching link
+                        link.classList.add('active');
+                    }
+                });
+            });
+        </script>
+    </head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
+    </nav>
+
+    <div class="container">
+
+        <!-- Description Section -->
+        <div class="description">
+            <h1>Premium Tutor Subscription </h1>
+            <h2>RM 50/monthly</h2>
+            <p>(No worries! Cancel anytime)</p>
+        </div> <!-- closing for description -->
+
+         <!-- Form Section -->
+        <form id="subscriptionBox" action="">
+
+            <div class="row">
+                <!-- Card Information -->
+                <div class="col info">
+                    <h3 class="title">Card information</h3>
+
+                    <div class="inputBox">
+                        <span>card accepted : </span>
+                        <img src="images/card_img.png" alt="">
+                    </div>
+                    
+                    <div class="inputBox">
+                        <span>name on card :</span>
+                        <input type="text" name="card_name" placeholder="Mr. Tan Jing Yao" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>credit card number : </span>
+                        <input type="number" name="card_number" placeholder="1111-2222-3333-4444" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>exp month : </span>
+                        <input type="text" name="exp_month" placeholder="January" required>
+                    </div>
+
+                    <!-- Exp year and cvv will be flex -->
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>exp year : </span>
+                            <input type="number" name="exp_year" placeholder="2024" required>
+                        </div>
+
+                        <div class="inputBox">
+                            <span>CVV : </span>
+                            <input type="text" name="cvv" placeholder="1234" required>
+                        </div>
+                    </div>  <!--flex closing-->
+
+                    <input type="submit" value="Checkout" class="submit-btn">
+                </div> <!--col closing-->
+            </div> <!--row closing-->
+
+    <script>
+        //change to payment_ success page after clicked checkout btn 
+        document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
+        
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Redirect to the payment successful page after a delay
+            setTimeout(function() {
+                window.location.href = "payment_success.html";
+            }); 
+        });
+    });
+    </script>
+    
+</body>
+
+</html>

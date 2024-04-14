@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="./css/payment_style.css">
     <!-- nav icons in smaller screen -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
      <!-- Embedding JavaScript -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -64,7 +67,7 @@
                     <h3 class="title">tuition fee</h3>
 
                     <input type="checkbox" id="select-all-checkbox"> 
-                    <label for="select-all-checkbox" style="font-weight: bold; color: rgb(180, 104, 251);">*Select All</label>
+                    <label for="select-all-checkbox" style="font-weight: 500; color: rgb(180, 104, 251)">*Select All</label>
                    
                     <ul>
                         <!-- Course 1 -->
@@ -102,12 +105,12 @@
                     </div>
                     
                     <div class="inputBox">
-                        <span>name on card</span>
+                        <span>name on card :</span>
                         <input type="text" name="card_name" placeholder="Mr. Tan Jing Yao" required>
                     </div>
 
                     <div class="inputBox">
-                        <span>credit card number: </span>
+                        <span>credit card number : </span>
                         <input type="number" name="card_number" placeholder="1111-2222-3333-4444" required>
                     </div>
 
@@ -204,7 +207,7 @@
                 // Redirect to the payment successful page after a delay
                 setTimeout(function() {
                     window.location.href = "payment_success.html";
-                }, 3000); // 3000 milliseconds delay
+                });
             } else {
                 alert("Please select at least one course before proceeding to checkout.");
             }

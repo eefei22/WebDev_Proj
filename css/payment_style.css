@@ -83,7 +83,6 @@ nav img{
 
 /* container part */
 .container{
-    display: flex;
     justify-content: center;
     align-items: center;
     padding: 25px;
@@ -107,6 +106,7 @@ nav img{
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .7);
     position: relative;
+    border-radius: 20px;
 }
 
 /* purchase details */
@@ -128,16 +128,16 @@ nav img{
 }
 
 .container form .row .col.purchase-details ul li .course {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .container form .row .col.purchase-details ul li .tutor {
     color: #888;
-    font-style: italic;
+    font-size: 13px;
 }
 
 .container form .row .col.purchase-details ul li .price {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 
@@ -151,7 +151,7 @@ nav img{
     position: absolute;
     bottom: 20px;
     right: 20px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 /* price spacing */
@@ -159,6 +159,15 @@ nav img{
     float: right;
 }
 
+/* Checkbox style */
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Course details style */
+.course-details {
+    flex-grow: 1; /*no spacing between checkbox and course*/
+}
 
 /* Info part */
 .container form .row .col.info {
@@ -166,21 +175,24 @@ nav img{
 
 }
 
-.container form .row .col .title{
-    font-size: 20px;
+.title{
+    font-size: 17px;
     color: #333;
     padding-bottom:5px;
+    font-weight: bold;
     text-transform: uppercase;
     text-decoration: underline;
 }
 
 .container form .row .col .inputBox{
     margin: 15px 0;
+    font-weight: 600;
 }
 
 .container form .row .col .inputBox span{
     margin-bottom: 5px;
     display: block;
+    font-size: 15px;
 }
 
 .container form .row .col .inputBox input{
@@ -228,6 +240,44 @@ nav img{
     background: #190482
 }
 
+/* tuition fee style */
+.description-input {
+    width: 100%; /* Adjust width as needed */
+    padding: 5px;
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+
+/* subcription payment */
+.description{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#subscriptionBox{
+    padding:20px;
+    width: 60%;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .7);
+    position: relative;
+    border-radius: 20px;
+}
+
+.description h1{
+    font-size: 20px;
+}
+
+.description h2{
+    font-size: 17px;
+}
+
+.description p{
+    font-size: 15px;
+}
+
 /* hide the icon for larger screen */
 nav .fas{
     display: none;
@@ -235,6 +285,13 @@ nav .fas{
 
 /* smaller screen */
 @media(max-width:700px){
+
+    .container form .row .col .inputBox img{
+        height: 34px;
+        width: 200px;
+        margin-top: 5px;
+        filter: drop-shadow(0 0 1px #000);
+    }
 
     /* all change in nav part */
     .nav-links ul li{
@@ -282,7 +339,7 @@ nav .fas{
         bottom: auto; 
         right: auto; 
         margin-top: 20px; /* Add some margin-top for spacing */
-        font-weight: bold;
+        font-weight: 600;
     }
 
     .container form .row .col.purchase-details {
@@ -295,17 +352,17 @@ nav .fas{
     .container form .row .col.info {
         margin-top: 20px; /* Add some space between purchase-details and personal information */
     }
-}
 
-
-
-/* tuition fee style */
-.description-input {
-    width: 100%; /* Adjust width as needed */
-    padding: 5px;
-    margin-top: 5px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    /* subscriptionBox */
+    #subscriptionBox{
+        padding:20px;
+        width: 100%;
+        margin: 0 auto;
+        background: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .7);
+        position: relative;
+        border-radius: 20px;
+    }
 }
 
 
