@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat with tutor</title>
+    <link rel="stylesheet" href="chat.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+    <!-- Person selector: this contains buttons for user to select whether to chat as Tutor or Tutee -->
+    <div class="person-selector">
+        <button class="button person-selector-button active-person" id="tutor-selector">Tutor</button>
+        <button class="button person-selector-button" id="tutee-selector">Tutee</button>
+    </div>
+
+      <h2 class="chat-header">tutor chatting...</h2>
+
+      <div class="chat-messages">
+        <div class="message lavender-bg">
+          <div class="message-sender">tutor</div>
+          <div class="message-text">Hey tutee, what's up?</div>
+          <div class="message-timestamp">10:30 AM</div>
+        </div>
+        <div class="message purple-bg">
+          <div class="message-sender">tutee</div>
+          <div class="message-text">Not much, just living the dream. How about you?</div>
+          <div class="message-timestamp">10:35 AM</div>
+        </div>
+      </div>
+
+      <form class="chat-input-form">
+        <input type="text" class="chat-input" required placeholder="Type here, tutor..." />
+        <button type="submit" class="button send-button">Send</button>
+      </form>
+      <button class="button clear-chat-button">Clear Chat</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
