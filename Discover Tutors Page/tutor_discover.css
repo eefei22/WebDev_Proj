@@ -1,0 +1,178 @@
+.header{
+  position: relative;
+  width: 100%;
+  height: 169px;
+  top: 0;
+  left: 0;
+  background-color: #190482;
+  border-radius: 0 0 40px 40px;
+}
+
+.logo {
+  position: absolute;
+  width: 153px;
+  height: 103px;
+  top: 33px;
+  left: 38px;
+  object-fit: cover;
+}
+
+.content {
+  padding-top: 10px; 
+}
+
+.Search {
+  width: 868px;
+  height: 52px;
+  margin: 20px auto 0; 
+  position: relative;
+}
+
+.SearchBar {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border: 4px #C2D9FF solid;
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+
+.SearchBar input[type="text"] {
+  position: absolute;
+  left: 60px;
+  width: 80%;
+  height: 85%;
+  font-size: 20px;
+  border: none;
+  outline: none;
+}
+
+.SearchIcon {
+  position: absolute;
+  left: 26px;
+  top: 13px;
+  width: 26px;
+  height: 26px;
+}
+
+.filters {
+  float: right;
+  margin-right: 110px;
+  margin-top: 50px;
+}
+
+.labeled_button {
+  background-color: #C2D9FF; 
+  border: none; 
+  color: black; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  font-family: "Inter", Helvetica;
+  margin: 4px 2px; 
+  cursor: pointer; 
+  border-radius: 20px;
+}
+
+
+.TutorsContainer {
+  display: flex;
+  width: 50%;
+  margin-left: 100px;
+  margin-top: 40px;
+}
+
+.TutorsCol1,
+.TutorsCol2 {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.Tutors{
+  flex: 1;
+  width: 420px;
+  height: 450px;
+  position: relative;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.TeacherSampleImage {
+  width: 410px;
+  height: 200px;
+  position: relative;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.DetailsFrame {
+  width: 410px;
+  height: 220px;
+  position: relative;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border: 3px #C2D9FF solid;
+  background-color: white;
+}
+
+.TutorName {
+  width: 250px;
+  height: 25px;
+  position: relative;
+  left: 20px;
+  top: 20px;
+  margin-bottom: 35px; 
+  color: black;
+  font-size: 24px;
+  font-family: "Inter", Helvetica;
+}
+
+.labels {
+  left: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px; 
+  color: black;
+  font-size: 20px;
+  font-family: "Inter", Helvetica;
+}
+
+.Details {
+  left: 20px;
+  top: 0px;
+  margin-right: 40px;
+  margin-top: 10px; 
+  color: black;
+  font-size: 14px;
+  font-family: "Inter", Helvetica;
+  position: relative;
+}
+
+.loadMore_button {
+  background-color: #C2D9FF; 
+  border: none; 
+  color: black; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 20px; 
+  font-family: "Inter", Helvetica;
+  margin-top: 10px; 
+  margin-bottom: 50px;
+  cursor: pointer; 
+  border-radius: 20px;
+  position:absolute;
+  left: 50%;
+
+}
+
+.button:hover {
+  filter: brightness(0.8);
+  }
