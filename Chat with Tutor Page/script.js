@@ -29,7 +29,7 @@ let messageSender = 'tutor'
 const updateMessageSender = (name) => {
   messageSender = name
   chatHeader.innerText = `${messageSender} chatting...`
-  chatInput.placeholder = `Type here, ${messageSender}...`
+  chatInput.placeholder = `Type message here, ${messageSender}...`
 
   if (name === 'tutor') {
     tutorSelectorBtn.classList.add('active-person')
