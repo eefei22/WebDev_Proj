@@ -31,6 +31,7 @@ padding: 0;
 }
 
 .person-selector {
+    width: 80%;
     display: flex;
     justify-content: center;
     gap: 1em;
@@ -98,8 +99,17 @@ padding: 0;
     
 }
 
-.heading {
-    margin: 0;
+.inbox_header {
+    margin:0;
+    color: white;
+    background-color: #7752FE;
+    padding: 0.6em 0em 0.6em 2em;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.chat-header {
+    margin:0;
     color: white;
     background-color: #7752FE;
     padding: 0.6em 0em 0.6em 2em;
