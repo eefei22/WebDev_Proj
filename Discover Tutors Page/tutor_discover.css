@@ -1,3 +1,8 @@
+body {
+  margin: 0; 
+  padding: 0; 
+}
+
 .header{
   position: relative;
   width: 100%;
@@ -20,7 +25,7 @@
 }
 
 .Search {
-  width: 70%; 
+  width: 60%; 
   height: 52px;
   margin: 20px auto 0; 
   position: relative;
@@ -38,7 +43,7 @@
 .SearchBar input[type="text"] {
   position: absolute;
   left: 60px;
-  width: 80%;
+  width: 70%;
   height: 85%;
   font-size: 20px;
   border: none;
@@ -55,6 +60,7 @@
 
 .filters {
   float: right;
+  width: 30%;
   margin-right: 100px;
   margin-top: 50px;
 }
@@ -76,8 +82,8 @@
 
 .TutorsContainer {
   display: flex;
-  width: 60%; 
-  margin-left: 40px;
+  width: 50%; 
+  margin: 10%;
   margin-top: 40px;
 }
 
@@ -186,12 +192,14 @@
   .TutorsContainer {
     display: flex;
     width: 80%; 
-    margin-left: 40px;
+    margin: 10%;
     margin-top: 40px;
   }
 
   .filters {
-    margin-right: 60px;
+    float: none;
+    width: 80%;
+    margin: 10%;
     margin-top: 50px;
   }
   .header{
