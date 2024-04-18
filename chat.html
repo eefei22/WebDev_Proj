@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+    <title>Chat with tutor</title>
+    <link rel="stylesheet" href="chat.css" />
+  </head>
+  <body>
+
+    <div class="inbox_container">
+        <h2 class = "inbox_header">Chats</h2>
+        <div class = "user_container"><button class = "user_button">
+            <img class="profile_pic" src="img\tutor-4-image.png"/>
+            <div class=profile_container>
+            <div class="chat_username">Jennifer Lawrence </div>
+            <div class="chat_preview">chat history preview </div>
+        </div></button>
+        </div>
+      
+        <div class = "user_container"><button class = "user_button">
+          <img class="profile_pic" src="img\tutor-2-image.png"/>
+          <div class=profile_container>
+          <div class="chat_username">Muthu </div>
+          <div class="chat_preview">chat history preview </div>
+      </div></button>
+      </div>
+
+      <div class = "user_container"><button class = "user_button">
+        <img class="profile_pic" src="img\tutor-6-image.png"/>
+        <div class=profile_container>
+        <div class="chat_username">Lei Lou Dao </div>
+        <div class="chat_preview">chat history preview </div>
+    </div></button>
+    </div>
+
+        <!-- Person selector: buttons to select whether to chat as Tutor or Tutee -->
+        <div class="person-selector">
+          <button class="button person-selector-button active-person" id="tutor-selector">Tutor</button>
+          <button class="button person-selector-button" id="tutee-selector">Tutee</button>
+      </div>
+
+
+    </div>
+
+
+    <div class="chat_container">
+
+      <h2 class="chat-header">tutor chatting...</h2>
+
+      <div class="chat-messages">
+        <div class="message lavender-bg">
+          <div class="message-sender">tutor</div>
+          <div class="message-text">Hey tutee, what's up?</div>
+          <div class="message-timestamp">10:30 AM</div>
+        </div>
+        <div class="message purple-bg">
+          <div class="message-sender">tutee</div>
+          <div class="message-text">Hey there, let's get this started?</div>
+          <div class="message-timestamp">10:35 AM</div>
+        </div>
+      </div>
+
+      <form class="chat-input-form">
+        <input type="text" class="chat-input" required placeholder="Type message here..." />
+        <button type="submit" class="button send-button">Send</button>
+      </form>
+      <button class="button clear-chat-button">Clear Chat</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
