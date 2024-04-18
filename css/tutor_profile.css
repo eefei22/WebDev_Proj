@@ -1,3 +1,83 @@
+/* nav part */
+nav{
+  display: flex;
+  padding: 5px 5px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #190482;
+  font-family: "Poppins", sans-serif;
+}
+
+nav img{
+  width: 110px;
+  height: 90px;
+}
+
+.nav-links{
+  flex: 1;
+  text-align: center;
+}
+
+.nav-links ul li{
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position:relative;
+}
+
+.nav-links ul li a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.nav-links ul li::after{
+  content: "";
+  width: 0%;      /*make the line become invisible and after 0.5s hover, will show the line below the nav*/
+  height: 2px;
+  background: #8E8FFA;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+  width: 100%;
+}
+
+.navIcon{
+  padding: 5px 20px;
+}
+
+.navIcon img{
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.navIcon img:hover {
+  transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+}
+
+.navIcon .navLink.active {
+  /* Add styles for the active link */
+  background-color: #8E8FFA; /* Change background color to indicate active link */
+  border-radius: 50%; /* Example border-radius */
+  padding: 5px; 
+}
+
+.nav-links ul li a.active {
+  /* Add styles for the active link */
+  color: #8E8FFA; /* Change color to indicate active link */
+  font-weight: bold; 
+}
+
+/* hide the icon for larger screen */
+nav .fas{
+  display: none;
+}
+
+
 body {
   margin: 0; 
   padding: 0; 
@@ -32,7 +112,8 @@ body {
 
 .title {
   font-size: 24px;
-  font-family: "Inter", Helvetica;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
   margin-bottom: 16px;
 }
 
@@ -53,13 +134,15 @@ body {
   display: block;
   margin-bottom: 10px;
   font-size: 20px;
-  font-family: "Inter", Helvetica;
+  font-family: "Poppins", Helvetica;
+  font-weight:600;
 }
 
 .nugget_facts {
   margin: 20px;
   display: flex;
-  font-family: "Inter", Helvetica;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
 }
 
 .mini_icon {
@@ -73,12 +156,12 @@ body {
   margin-top: 1px;
   margin-left: 10px;
   font-size: 14px;
-  font-family: "Inter", Helvetica;
+  font-family: "Poppins", Helvetica;
 }
 
 .par {
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -101,7 +184,7 @@ body {
   text-align: center;
   text-decoration: none;
   font-size: 20px;
-  font-family: "Inter", Helvetica;
+  font-family: "Poppins", Helvetica;
   margin-top: 10px;
   cursor: pointer;
   border-radius: 20px;
@@ -133,7 +216,7 @@ body {
     display: flex;
     flex-wrap: wrap; 
     justify-content: left;
-    font-family: "Inter", Helvetica;
+    font-family: "Poppins", Helvetica;
   }
   .profile_pic {
     width: 80px; 
@@ -152,4 +235,37 @@ body {
     background-color: #190482;
     border-radius: 0 0 40px 40px;
   }
+  .nav-links ul li{
+    display: block;
+  }
+  .nav-links{
+      position: absolute;
+      background: #190482;
+      height: 100vh;
+      width: 200px;
+      top:0;
+      /* right changed from 0 to -200px to hide the menu */
+      right: -200px;
+      text-align: left;
+      z-index: 1;    /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
+      transition:1s;
+  }
+  /* show the menu icon in smaller screen */
+  nav .fas{
+      display: block;
+      color: #fff;
+      margin-right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+  }
+
+  nav .fas:hover {
+      transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+  }
+
+  .nav-links ul{
+      padding: 30px;
+  }
+
 }

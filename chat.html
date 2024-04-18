@@ -5,14 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
     <title>Chat with tutor</title>
-    <link rel="stylesheet" href="chat.css" />
+    <link rel="stylesheet" href="css/chat.css" />
+    <!-- nav icons in smaller screen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+     <!-- Embedding JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the current page URL
+            var currentPageURL = window.location.href;
+            
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('.nav-links ul li a');
+    
+            // Loop through each link
+            navLinks.forEach(function(link) {
+                // Check if the link's href matches the current page URL
+                if (link.href === currentPageURL) {
+                    // Add the 'active' class to the matching link
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
   </head>
   <body>
 
     <div class="inbox_container">
         <h2 class = "inbox_header">Chats</h2>
         <div class = "user_container"><button class = "user_button">
-            <img class="profile_pic" src="img\tutor-4-image.png"/>
+            <img class="profile_pic" src="images\tutor-4-image.png"/>
             <div class=profile_container>
             <div class="chat_username">Jennifer Lawrence </div>
             <div class="chat_preview">chat history preview </div>
@@ -20,7 +45,7 @@
         </div>
       
         <div class = "user_container"><button class = "user_button">
-          <img class="profile_pic" src="img\tutor-2-image.png"/>
+          <img class="profile_pic" src="images\tutor-2-image.png"/>
           <div class=profile_container>
           <div class="chat_username">Muthu </div>
           <div class="chat_preview">chat history preview </div>
@@ -28,7 +53,7 @@
       </div>
 
       <div class = "user_container"><button class = "user_button">
-        <img class="profile_pic" src="img\tutor-6-image.png"/>
+        <img class="profile_pic" src="images\tutor-6-image.png"/>
         <div class=profile_container>
         <div class="chat_username">Lei Lou Dao </div>
         <div class="chat_preview">chat history preview </div>
