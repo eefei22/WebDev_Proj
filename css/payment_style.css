@@ -278,6 +278,14 @@ input[type="checkbox"] {
     font-size: 15px;
 }
 
+/* Profile picture style */
+.profile-picture {
+    width: 55px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
 /* hide the icon for larger screen */
 nav .fas{
     display: none;
