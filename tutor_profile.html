@@ -107,7 +107,7 @@
                 <p class="par">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non est auctor, rhoncus dolor ac, luctus nisi. Integer semper nec nulla nec malesuada.</p>
               </div>
             </div>
-            <div class = "par" href="placeholder.html" target="_blank"><u>Leave a Review</u></div>
+            <a class = "rev_link" href="placeholder.html" target="_blank"><u>Leave a Review</u></a>
             
         </div>
     </div>
@@ -132,6 +132,22 @@
       function hideMenu() {
           navLinks.style.right = "-200px";
       }
+
+      const link = document.querySelector('.rev_link')
+
+      function enableLink() {
+      link.setAttribute('href', 'placeholder.html');
+      link.style.pointerEvents = 'auto';
+      link.style.color = 'inherit'; 
+      }
+
+      function disableLink() {
+      link.removeAttribute('href');
+      link.style.pointerEvents = 'none';
+      link.style.color = 'gray';      
+      }
+    //disableLink();
+
     </script>
       
   </body>

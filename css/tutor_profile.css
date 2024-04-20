@@ -226,6 +226,11 @@ body {
 .star {
   color: gold;
 }
+.rev_link {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 
 @media screen and (max-width: 768px) {
