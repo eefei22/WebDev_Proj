@@ -1,0 +1,243 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- nav icons in smaller screen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Embedding JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current page URL
+            var currentPageURL = window.location.href;
+
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('.nav-links ul li a');
+
+            // Loop through each link
+            navLinks.forEach(function (link) {
+                // Check if the link's href matches the current page URL
+                if (link.href === currentPageURL) {
+                    // Add the 'active' class to the matching link
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <title>Report Us</title>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
+        <div class="nav-links" id="navLinks">
+            <!-- close icon -->
+            <i class="fas fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="subscription.html">Subscription</a></li>
+                <li><a href="discover_tutor.html">Discover Tutor</a></li>
+                <li><a href="tuitionFee.html">Payment</a></li>
+                <li><a href="helpdesk.html">Helpdesk</a></li>
+            </ul> <!--closing unorder list -->
+        </div> <!--closing nav-links -->
+        <!-- nav icon -->
+        <div class="navIcon">
+            <a href="cart.html" class="navLink"><img src="./images/addToCart_logo.png" alt="add to cart"></a>
+            <a href=" " class="navLink"><img src="./images/ic_profile.png" alt="user profile"></a>
+        </div> <!--closing nav icon -->
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <div class="header">
+        <h1 class="header-title">FAQ</h1>
+        <p class="header-desc">Frequently Ask Questions</p>
+
+        <!-- Search bar -->
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <button>Search</button>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <h1>Hot Quesions</h1>
+        <br>
+        <div class="accordion-content">
+            <header>
+                <span class="title">How do I become a tutor on this platform?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: To become a tutor, you need to register on our website and subscribe to the tutor subscription
+                plan. Once subscribed, you can create and list your courses.
+            </p>
+        </div>
+
+        <div class="accordion-content">
+            <header>
+                <span class="title">What information do I need to provide when registering a course</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: When registering as a tutee, you'll need to provide basic information such as your name, email
+                address, and possibly your educational background or preferences.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">How do I cancel my subscription as a tutee?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: You can cancel your subscription as a tutee at any time by accessing your account settings and
+                selecting the option to cancel your subscription.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">Can tutors cancel their courses after they've been listed?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: Yes, tutors have the flexibility to cancel their courses at any time. However, we encourage
+                tutors to provide advance notice to minimize inconvenience for enrolled tutees.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">How are payments processed for course bookings?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: Payments for course bookings are processed securely through our website using integrated payment
+                gateways. You can choose your preferred payment method during the booking process.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">How are payments processed for course bookings?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: Payments for course bookings are processed securely through our website using integrated payment
+                gateways. You can choose your preferred payment method during the booking process.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">Is there a refund policy for course bookings?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: Our refund policy may vary depending on the circumstances. Generally, refunds are provided if
+                the tutor cancels the course or in certain exceptional cases. Please refer to our terms and conditions
+                for details.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">How can I communicate with my tutor before booking a course?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: You can send messages to tutors through our platform to inquire about course details,
+                availability, or any other questions you may have.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">Are there any requirements for tutors to list their courses?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: Tutors are required to provide accurate and detailed information about their courses, including
+                course content, schedule, pricing, and any prerequisites or requirements for students.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">How can I provide feedback on a course I've completed?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: After completing a course, you'll have the opportunity to provide feedback and ratings for the
+                tutor and the course through our platform. Your feedback helps us maintain the quality of our services
+                and improve the learning experience for future students.
+            </p>
+        </div>
+        <div class="accordion-content">
+            <header>
+                <span class="title">What happens after I book a course?</span>
+                <i class="fa-solid fa-plus"></i>
+            </header>
+
+            <p class="desc">
+                Answer: After booking a course, you'll receive confirmation details and instructions from the tutor. You
+                can then prepare for the course according to the provided information.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="left">
+            <h3 class="heading">Report Us</h3>
+            <p class="text">We are here for you! How can we help?</p>
+            <form action="#">
+                <div class="inputBox">
+                    <input type="text" name="name" class="name" placeholder="Name">
+                </div>
+                <div class="inputBox">
+                    <input type="email" name="email" class="email" placeholder="Email">
+                </div>
+                <div class="inputBox">
+                    <textarea name="message" class="message" placeholder="Message"></textarea>
+                </div>
+                <button class="btn">Submit</button>
+            </form>
+        </div>
+        <div class="right">
+            <div class="illustration">
+                <img src="images/undraw_instant_support_re_s7un.svg" alt="">
+            </div>
+        </div>
+
+        <script>
+            // JavaScript for Toggle Menu
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu() {
+                navLinks.style.right = "0";
+            }
+
+            function hideMenu() {
+                navLinks.style.right = "-200px";
+            }
+        </script>
+
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+        <script src="script.js"></script>
+
+</body>
+
+</html>
