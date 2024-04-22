@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+    <title>Payment</title>
+    <link rel="stylesheet" href="./css/cart.css">
+    <!-- nav icons in smaller screen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+     <!-- Embedding JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the current page URL
+            var currentPageURL = window.location.href;
+            
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('.nav-links ul li a');
+    
+            // Loop through each link
+            navLinks.forEach(function(link) {
+                // Check if the link's href matches the current page URL
+                if (link.href === currentPageURL) {
+                    // Add the 'active' class to the matching link
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
+        <div class="nav-links" id="navLinks">
+            <!-- close icon -->
+            <i class="fas fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="subscription.html">Subscription</a></li>
+                <li><a href="discover_tutor.html">Discover Tutor</a></li>
+                <li><a href="tuitionFee.html">Payment</a></li>
+                <li><a href="helpdesk.html">Helpdesk</a></li>         
+            </ul>  <!--closing unorder list -->
+        </div> <!--closing nav-links -->
+        <!-- nav icon -->
+        <div class="navIcon">
+            <a href="cart.html" class="navLink"><img src="./images/addToCart_logo.png" alt="add to cart"></a>
+            <a href=" " class="navLink"><img src="./images/ic_profile.png" alt="user profile"></a>
+        </div>  <!--closing nav icon -->
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <div class="cart">
+        <h3 class="title">Cart</h3>
+
+        <input type="checkbox" id="select-all-checkbox"> 
+        <label for="select-all-checkbox" style="font-weight: 500; color: rgb(180, 104, 251);">*Select All</label>
+    
+        <ul>
+            <!-- Lei Lou Dao-->
+            <li>
+                <input type="checkbox" class="course-checkbox" price="50">
+                <img src="./images/tutor-6-image.png" alt="profile" class="profile-picture">
+                <div class="course-details">
+                    <span class="course">English</span>
+                    <span class="tutor">Lei Lou Dao</span>
+                </div>
+                <span class="price">RM50</span>
+            </li>
+            <!-- Muthu-->
+            <li>
+                <input type="checkbox" class="course-checkbox" price="65">
+                <img src="./images/tutor-2-image.png" alt="profile" class="profile-picture">
+                <div class="course-details">
+                    <span class="course">Science</span>
+                    <span class="tutor">Muthu</span>
+                </div>
+                <span class="price">RM65</span>
+            </li>
+        </ul>          
+        
+        <div class="total">Total: RM0 </div>
+
+        <div class="btn">
+            <button class="pay" onclick="checkout()">Checkout</button>
+            <button class="remove" onclick="removeFromCart()">Remove</button>
+        </div>
+        
+    </div> <!--closing .cart --> 
+
+    <script>
+        // Function to handle checkout
+        function checkout() {
+            // Get all course checkboxes
+            const courseCheckboxes = document.querySelectorAll(".course-checkbox");
+            // Check if at least one checkbox is checked
+            const atLeastOneChecked = Array.from(courseCheckboxes).some(checkbox => checkbox.checked);
+            // Redirect to purchase_lesson.html only if at least one checkbox is checked
+            if (atLeastOneChecked) {
+                window.location.href = "purchase_lesson.html";
+            } else {
+                alert("Please select at least one course before proceeding to checkout.");
+            }
+        }
+
+        // Function to handle remove from cart
+        function removeFromCart() {
+            // Get all course checkboxes
+            const courseCheckboxes = document.querySelectorAll(".course-checkbox");
+            // Check if at least one checkbox is checked
+            const atLeastOneChecked = Array.from(courseCheckboxes).some(checkbox => checkbox.checked);
+            // Only proceed if at least one checkbox is checked
+            if (atLeastOneChecked) {
+                // Loop through each checkbox
+                courseCheckboxes.forEach(function(checkbox) {
+                    if (checkbox.checked) {
+                        // Remove the parent li element from the DOM
+                        checkbox.parentElement.remove();
+                    }
+                });
+                // Update the total price
+                updateTotal();
+            } else {
+                alert("Please select at least one course to remove from the cart.");
+            }
+        }
+
+        // Update total function (Calculate total price)
+        function updateTotal() {
+            let total = 0;
+            // Get all course checkboxes
+            const courseCheckboxes = document.querySelectorAll(".course-checkbox");
+            let allUnchecked = true;
+            courseCheckboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    total += parseInt(checkbox.getAttribute("price"));
+                    allUnchecked = false;
+                }
+            });
+            // Update total element text content
+            document.querySelector(".total").textContent = "Total: RM" + total;
+            // If all checkboxes are unchecked and Select All is still checked, uncheck Select All
+            if (allUnchecked && document.getElementById("select-all-checkbox").checked) {
+                    document.getElementById("select-all-checkbox").checked = false;
+                }
+        }
+        
+        // JavaScript for Toggle Menu
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select all checkbox
+            const selectAllCheckbox = document.getElementById("select-all-checkbox");
+            // Individual course checkboxes
+            const courseCheckboxes = document.querySelectorAll(".course-checkbox");
+            // Total element
+            const totalElement = document.querySelector(".total");
+
+            // Event listener for select all checkbox
+            selectAllCheckbox.addEventListener("change", function() {
+                courseCheckboxes.forEach(function(checkbox) {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
+                updateTotal();
+            });
+
+            // Event listener for individual course checkboxes
+            courseCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener("change", function() {
+                    updateTotal();
+                });
+            });
+        });
+        
+    </script>
+
+
+</body>
+</html>

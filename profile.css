@@ -1,0 +1,109 @@
+body {
+    background-color: #8E8FFA;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  /*.edit-profile-pic{
+    float: right;
+  }*/
+
+  .parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-info {
+    background-color: #FFFFFF;
+    height: fit-content;
+    width: fit-content;
+    border: 1px solid #190482;
+    border-width: 2px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    box-shadow: 5px 10px 8px #4c4c4c;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 25px;
+  }
+
+  #profile-pic{
+    position: relative;
+  }
+
+  #edit-pic:hover{
+    
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 15px;
+  }
+  
+  input,
+  select {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #C9C8C8;
+    border-radius: 10px;
+    font-size: 14px;
+    
+  }
+
+  select{
+    width: 100%;
+  }
+
+  ::placeholder{
+    color: #929292;
+  }
+  
+  .alignment{
+    display: inline-block;
+    height: fit-content;
+    width: auto;
+    margin: 50px;
+
+  }
+
+  .change-pswd {
+    margin-top: 15px;
+    color: #000;
+  }
+
+  .button{
+    width: fit-content;
+    height: fit-content;
+    padding-left: 20px ;
+    padding-right: 20px;
+    background-color: #190482;
+    color: #FFFFFF;
+    margin-top: 10px;
+  }
+
+  .button:hover{
+    background-color: #8E8FFA;
+    color: #000;
+  }
+
+
+
