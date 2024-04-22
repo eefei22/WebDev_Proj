@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Completed</title>
+    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+    <link rel="stylesheet" href="./css/payment_success.css">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
+    </nav>
+
+    <div class="box">
+        <img src="./images/ic_payment_done.png" alt="payment_done">
+        <h3>Your Payment was Successful!</h2>
+        <p>Thank you for your payment</p>
+        <button id="doneBtn">Done</button>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the "Done" button
+            var doneButton = document.getElementById("doneBtn");
+            
+            // Add click event listener to the "Done" button
+            doneButton.addEventListener("click", function() {
+                // Redirect back to the home page
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
+</html>

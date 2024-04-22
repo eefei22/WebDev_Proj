@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+    <title>Purchase Lesson</title>
+    <link rel="stylesheet" href="./css/payment_style.css">
+    <!-- nav icons in smaller screen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--font family  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+
+     <!-- Embedding JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the current page URL
+            var currentPageURL = window.location.href;
+            
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('.nav-links ul li a');
+    
+            // Loop through each link
+            navLinks.forEach(function(link) {
+                // Check if the link's href matches the current page URL
+                if (link.href === currentPageURL) {
+                    // Add the 'active' class to the matching link
+                    link.classList.add('active');
+                }
+            });
+            
+            // Calculate total price
+            var totalPrice = 0;
+            var priceElements = document.querySelectorAll('.price');
+            priceElements.forEach(function(priceElement) {
+                totalPrice += parseInt(priceElement.textContent.replace('RM', ''));
+            });
+
+            // Display total price
+            document.querySelector('.total').textContent = 'Total: RM' + totalPrice;
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
+        <div class="nav-links" id="navLinks">
+            <!-- close icon -->
+            <i class="fas fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="subscription.html">Subscription</a></li>
+                <li><a href="discover_tutor.html">Discover Tutor</a></li>
+                <li><a href="tuitionFee.html">Payment</a></li>
+                <li><a href="helpdesk.html">Helpdesk</a></li>
+            </ul>  <!--closing unorder list -->
+        </div> <!--closing nav-links -->
+        <!-- nav icon -->
+        <div class="navIcon">
+            <a href="cart.html" class="navLink"><img src="./images/addToCart_logo.png" alt="add to cart"></a>
+            <a href=" " class="navLink"><img src="./images/ic_profile.png" alt="user profile"></a>
+        </div>  <!--closing nav icon -->
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <div class="container">
+
+        <form id="purchaseForm" action="">
+
+            <div class="row">
+                <!-- Purchase Details -->
+                <div class="col purchase-details">
+                    <h3 class="title">Purchase details</h3>
+                    <ul>
+                        <!-- Lei Lou Dao-->
+                        <li>
+                            <img src="./images/tutor-6-image.png" alt="profile" class="profile-picture">
+                            <div class="course-details">
+                                <span class="course">English</span>
+                                <span class="tutor">Lei Lou Dao</span>
+                            </div>
+                            <span class="price">RM50</span>
+                        </li>
+                    </ul>                    
+                    
+                    <div class="total">Total: RM0 </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="col info">
+
+                    <h3 class="title">Personal Information</h3>
+                
+                    <div class="inputBox">
+                        <span>full name : </span>
+                        <input type="text" name="full_name" placeholder="Tan Jing Yao" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>phone no : </span>
+                        <input type="text" name="phone_no" placeholder="011-12345678" required>
+                    </div>
+                    
+                    <div class="inputBox">
+                        <span>email :</span>
+                        <input type="email" name="email" placeholder="example@gmail.com" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>address : </span>
+                        <input type="text" name="address" required placeholder="8, Jln Bukit Pantai, Taman Bukit Pantai, 47500 Petaling Jaya, Selangor">
+                    </div>
+                <!-- Card Information -->
+                    <h3 class="title">Card information</h3>
+
+                    <div class="inputBox">
+                        <span>card accepted : </span>
+                        <img src="images/card_img.png" alt="">
+                    </div>
+                    
+                    <div class="inputBox">
+                        <span>name on card :</span>
+                        <input type="text" name="card_name" placeholder="Mr. Tan Jing Yao" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>credit card number : </span>
+                        <input type="number" name="card_number" placeholder="1111222233334444" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>exp month : </span>
+                        <input type="text" name="exp_month" placeholder="January" required>
+                    </div>
+
+                    <!-- Exp year and cvv will be flex -->
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>exp year : </span>
+                            <input type="number" name="exp_year" placeholder="2024" required>
+                        </div>
+
+                        <div class="inputBox">
+                            <span>CVV : </span>
+                            <input type="text" name="cvv" placeholder="1234" required>
+                        </div>
+                    </div>  <!--flex closing-->
+                </div> <!--row closing-->
+            </div> <!--col closing-->
+
+             
+
+            <input type="submit" value="checkout" class="submit-btn">
+        
+        </form>
+
+    </div>
+    
+    <!-- JavaScript for Toggle Menu -->
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right="0";
+    }
+    function hideMenu(){
+        navLinks.style.right="-200px";
+    }
+
+
+   //change to payment_ success page after clicked checkout btn 
+   document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+    
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Redirect to the payment successful page after a delay
+        setTimeout(function() {
+            window.location.href = "payment_success.html";
+        }); 
+    });
+});
+
+
+</script>
+</body>
+</html>
