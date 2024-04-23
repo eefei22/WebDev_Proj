@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+    <link rel="stylesheet" href="css/feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Rating</title>
+</head>
+
+<body>
+    <div class="split">
+        <div class="left">
+            <div class="img">
+                <h1>Any thoughts?</h1>
+                <img src="images/undraw_feedback_re_urmj.svg" alt="">
+            </div>
+        </div>
+
+        <div class="right">
+            <h1>Share Your Feedback</h1>
+            <h3>Rate your experience</h3>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <form id="feedbackForm" action="#">
+                <div class="textarea">
+                    <h3>Comment (Optional)</h3>
+                    <textarea id="feedbackTextarea" cols="50" rows="8" placeholder="Feedback"></textarea>
+                </div>
+
+                <div class="anonymous">
+                    <h3>Set it as anonymous?</h3>
+                    <input type="checkbox" id="check">
+                    <label for="check" class="toggle"></label>
+                </div>
+
+                <div class="btn">
+                    <button type="submit" class="btn" onclick="openPopup()">Submit</button>
+                    <div class="pop-up" id="popup">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h2>Thank you!</h2>
+                        <p>Your feedback is incredibly valuable to us, as it helps us continuously improve and
+                            refine our services
+                            to better meet your needs and preferences.</p>
+                        <button type="button" onclick="closePopup()">OK</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const section = document.querySelector(".feedback-box");
+            const showBtn = document.querySelector("h1");
+            const stars = document.querySelectorAll(".stars i");
+            const submitBtn = document.querySelector(".btn button");
+            const popup = document.getElementById("popup");
+
+            showBtn.addEventListener("click", function () {
+                section.classList.toggle("active");
+            });
+
+            stars.forEach(function (star, index1) {
+                star.addEventListener("click", function () {
+                    stars.forEach(function (star, index2) {
+                        index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
+                    });
+                    enableSubmit(); // Enable submit button when star rating is clicked
+                });
+            });
+
+            submitBtn.addEventListener("click", function (event) {
+                if (!isRatingSelected()) {
+                    event.preventDefault(); // Prevent form submission
+                    alert("Please rate your experience before submitting.");
+                } else {
+                    openPopup(); // Open popup only if a star rating is selected
+                }
+            });
+
+            function isRatingSelected() {
+                const activeStars = document.querySelectorAll(".stars i.active");
+                return activeStars.length > 0;
+            }
+
+            function enableSubmit() {
+                submitBtn.disabled = false;
+            }
+
+            function openPopup() {
+                if (isRatingSelected()) {
+                    popup.classList.add("open-popup");
+                }
+            }
+
+            function closePopup() {
+                popup.classList.remove("open-popup");
+                clearFormInputs(); // Clear form inputs after closing popup
+            }
+
+            function clearFormInputs() {
+                document.getElementById("feedbackForm").reset(); // Reset the form
+
+                // Clear star ratings
+                stars.forEach(function (star) {
+                    star.classList.remove("active");
+                });
+            }
+
+            // Add event listener to "OK" button in popup
+            document.querySelector("#popup button").addEventListener("click", function () {
+                closePopup(); // Close popup and clear form inputs when "OK" is clicked
+            });
+        });
+
+    </script>
+</body>
+
+</html>

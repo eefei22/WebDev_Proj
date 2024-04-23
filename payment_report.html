@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/payment_report.css">
 </head>
 
 <body>
@@ -25,12 +24,12 @@
 
             <div class="reset_data">
                 <!-- Add a reset button -->
-                <label for="reset" class="reset-btn"></label>
+                <label for="reset" class="reset-btn" style="background-image: url('images/reset-regular-24.png');"></label>
                 <input type="checkbox" id="reset">
             </div>
 
             <div class="export_file">
-                <label for="export-file" class="export_file-btn"></label>
+                <label for="export-file" class="export_file-btn" style="background-image: url('images/dots-vertical-rounded-regular-24.png');"></label>
                 <input type="checkbox" name="" id="export-file">
 
                 <div class="export_file-options">
@@ -236,25 +235,12 @@
                         <td><strong>RM200.00</strong></td>
                     </tr>
 
-                    <button onclick="showPopup()">
-                        Show Popup
-                    </button>
-
                     </tbody>
             </table>
 
             <div class="no-match-message">No Matching Data Found</div>
             
-            <script src="script.js"></script>
-            <script>
-                function showPopup() {
-                    Swal.fire({
-                        title: "Welcome to GeeksForGeeks!",
-                        text: "GeeksForGeeks is the best platform for Learning.",
-                        showCloseButton: true,
-                    });
-                }
-            </script>
+            <script src="scripts/payment_report.js"></script>
         </section>
     </main>
 </body>
