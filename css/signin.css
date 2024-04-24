@@ -259,4 +259,9 @@ body {
     transform: scale(1.15);
   }
 
+  .big_image {
+    width: 90%;
+    height: 90%;
+  }
+
 
