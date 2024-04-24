@@ -1,0 +1,240 @@
+*{
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    transition: all .2s linear;
+    font-size: 15px;
+}
+/* nav part */
+nav{
+    display: flex;
+    padding: 5px 5px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #190482;
+}
+
+nav img{
+    width: 110px;
+    height: 90px;
+}
+
+.nav-links{
+    flex: 1;
+    text-align: center;
+}
+
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position:relative;
+}
+
+.nav-links ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.nav-links ul li::after{
+    content: "";
+    width: 0%;      /*make the line become invisible and after 0.5s hover, will show the line below the nav*/
+    height: 2px;
+    background: #8E8FFA;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+
+.navIcon{
+    padding: 5px 20px;
+}
+
+.navIcon img{
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.navIcon img:hover {
+    transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+}
+
+.navIcon .navLink.active {
+    /* Add styles for the active link */
+    background-color: #8E8FFA; /* Change background color to indicate active link */
+    border-radius: 50%; /* Example border-radius */
+    padding: 5px; 
+}
+
+.nav-links ul li a.active {
+    /* Add styles for the active link */
+    color: #8E8FFA; /* Change color to indicate active link */
+    font-weight: bold; 
+}
+/* hide the icon for larger screen */
+nav .fas{
+    display: none;
+}
+
+/* smaller screen */
+@media(max-width:700px){
+    /* all change in nav part */
+    .nav-links ul li{
+        display: block;
+    }
+    .nav-links{
+        position: absolute;
+        background: #190482;
+        height: 100vh;
+        width: 200px;
+        top:0;
+        /* right changed from 0 to -200px to hide the menu */
+        right: -200px;
+        text-align: left;
+        z-index: 1;    /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
+        transition:1s;
+    }
+    /* show the menu icon in smaller screen */
+    nav .fas{
+        display: block;
+        color: #fff;
+        margin-right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    nav .fas:hover {
+        transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+    }
+    
+    .nav-links ul{
+        padding: 30px;
+    }
+
+    /* nav part done*/
+    .btn {
+        /* Other styles */
+        flex-direction: column; /* Align buttons vertically */
+        align-items: center;
+        margin-top: 50px;
+        justify-content: center;
+    }
+
+    .pay{
+        margin: 10px;
+}
+}
+
+.lowest{
+    background-color: #8E8FFA;
+}
+
+.container {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+@media(max-width:700px) {
+    .container {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+.content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left:5%;
+    margin-right: 5%;
+}
+    
+
+h2{
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.subject-option{
+    display: inline-block;
+    margin-right:30px;
+
+}
+
+.language-option {
+    display: inline-block;
+    margin-right: 30px;
+
+}
+
+.mode-option {
+    display: inline-block;
+    margin-right: 30px;
+   
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #7752FE;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px ;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+ 
+.buttoncontainer{
+    text-align: center;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:hover {
+    background-color: #190482;
+}
+
+input[type="number"],
+        select,
+        textarea {
+            width: 80%; /* Set a fixed width */
+            min-height: 20px; /* Minimum height for the textarea */
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #C2D9FF;
+            
+        }
+
+input[type="file"] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+        
+input[type="checkbox"],
+    input[type="radio"] {
+        margin-right: 5px;
+        margin-bottom: 20px;
+}
+
+.buttonplace{
+    display: flex;
+    align-items: center;
+}
