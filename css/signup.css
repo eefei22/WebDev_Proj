@@ -1,0 +1,173 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+*{
+  transition: all .2s linear;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  width: 100vw;
+  height: auto;
+  background-color: #FFFFFF;
+  padding: 0px;
+  margin: 0px; 
+
+  }
+
+  .container{
+    flex: 0 0 50%;
+    max-width: 100vw;
+    
+  }
+
+  .container:nth-of-type(1){
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    max-width: 300px; 
+    align-items: center; 
+    margin: 0 auto; 
+  
+  }
+
+  .container:nth-of-type(2){
+    background-color: #8E8FFA;
+    width: 100vw;
+    height: 100vh;
+    border-top-left-radius: 25px;   
+    border-bottom-left-radius: 25px; 
+    background-image: url(Images/signup-ill.png);
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    
+  } 
+  
+  #close-button{
+      position: absolute; 
+      right: 15px;
+      top: 15px;
+  }
+
+  #close-button:hover{
+    transition: transform 0.3s ease;
+    transform: scale(1.1);
+  }
+
+  h1{
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    
+  }
+
+  label {
+    display: block;
+  }
+
+  #name-label, #email-label, #password-label, #accountType-label{
+    font-size: 15px;
+    font-weight: 600;
+
+  }
+
+  #accountType-label{
+    margin-bottom: 5px;
+  }
+
+  input{
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #C9C8C8;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  ::placeholder{
+    color: #929292;
+  }
+
+  .form-group{
+    margin-bottom: 20px;
+  }
+
+  .option{
+    display: flex;
+    margin-bottom: 0;
+    
+  }
+
+  .option input{
+    flex: 0 0 10%;
+    margin-left: 0;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    cursor: pointer;
+  }
+
+  .option label{
+    flex: 0 0 90%;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 10px;
+  }
+
+  .option label:hover{
+    transition: transform 0.3s ease;
+    font-weight: 600;
+  }
+
+  input[type="radio"]:checked + label {
+    font-weight: 600;
+  }
+
+  /* Eye icon */
+  #togglePassword {
+    position: absolute;
+    margin-left: -35px; 
+    cursor: pointer;
+    top: 307px;
+  }
+
+  #signup-btn{
+    width: 320px;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #190482;
+    border: none;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  #signup-btn:hover{
+    color: #000000;
+    background-color: #8E8FFA;
+  }
+  
+  .sign-up p{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    margin-right: 5px;
+    margin-top: 15px;
+  }
+
+  #signin{
+    text-decoration: underline;
+    color: #190482;
+  }
+
+  #signin:hover{
+    color: #7752FE;
+  }
+
+
