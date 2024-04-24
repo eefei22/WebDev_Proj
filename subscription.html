@@ -79,7 +79,7 @@
                         <img src="/images/ic_video.png" width="25px" height ="25px">
                         <span id="mode">Online</span>&nbsp;&nbsp;  &nbsp;  &nbsp;                      
                         <img src="/images/ic_time.png" width="25px" height ="25px">
-                        <span id="time">2hours/session</span>&nbsp;&nbsp;  &nbsp;  &nbsp;      
+                        <span ><span id="time">2</span>hours/session</span>&nbsp;&nbsp;  &nbsp;  &nbsp;      
                         <img src="/images/ic_communicate.png" width="25px" height ="25px">    
                         <span id="languages">English</span>
                     </p>
@@ -121,6 +121,7 @@
                     var aboutlesson = document.getElementById("aboutlesson").innerHTML;
                     var subject = document.getElementById("subject").innerText;
                     var rate = document.getElementById("rate").innerText;
+                    var time = document.getElementById("time").innerText;
                     var languages = document.getElementById("languages").innerText;
                     var location = document.getElementById("location").innerText;
                     var mode = document.getElementById("mode").innerText;
@@ -131,6 +132,7 @@
                     params.append('aboutme', aboutme);
                     params.append('aboutlesson', aboutlesson);
                     params.append('rate', rate);
+                    params.append('time', time);
                     params.append('subject', subject);
                     params.append('languages', languages);
                     params.append('location', location);

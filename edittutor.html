@@ -83,6 +83,8 @@
                 <textarea id="aboutme" name="aboutme" placeholder="(20 minimum words)"></textarea><br>
                 <label for="rate" class="form-title">Hourly rate &lpar;RM/h&rpar;</label><br>
                 <input type="number" id="rate" name="rate"><br>
+                <label for="time" class="form-title">Hours per session</label><br>
+                <input type="number" id="time" name="time"><br>
                 <div class="form-title">
                     <label for="language" class="language-option" >Language spoken</label><br>
                 </div>
@@ -133,6 +135,14 @@
                         var rate = parseFloat(rateValue);
                         if (!isNaN(rate)) {
                             document.getElementById("rate").value = rate;
+                        }
+                    }
+
+                    var timeValue = params.get('time');
+                    if (timeValue) {
+                        var time = parseFloat(timeValue);
+                        if (!isNaN(time)) {
+                            document.getElementById("time").value = time;
                         }
                     }
 

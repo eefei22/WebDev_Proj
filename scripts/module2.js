@@ -52,6 +52,16 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
         }
 
+        var time = document.getElementById("time").value;
+
+        // Check if the "Hours per session" field is empty
+        if (!time) {
+            // If empty, display an alert message
+            alert("Please choose how long for one session");
+            // Prevent form submission
+            event.preventDefault();
+        }
+
         // Check language selection
         var languages = form.querySelectorAll('input[name="language"]:checked');
         if (languages.length === 0) {
