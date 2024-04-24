@@ -211,6 +211,16 @@ body {
   margin-right: 20px;
 }
 
+#review_button{
+  background-color: #7752FE;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
 .user-profile {
   margin-right: 20px;
 }

@@ -43,7 +43,6 @@ body {
 
 .img img {
     max-width: 95%;
-    /* Ensure the image doesn't exceed its container */
 }
 
 /* Styles for the right part */

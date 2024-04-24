@@ -80,8 +80,8 @@
             });
 
             submitBtn.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent form submission
                 if (!isRatingSelected()) {
-                    event.preventDefault(); // Prevent form submission
                     alert("Please rate your experience before submitting.");
                 } else {
                     openPopup(); // Open popup only if a star rating is selected
@@ -121,6 +121,7 @@
             document.querySelector("#popup button").addEventListener("click", function () {
                 closePopup(); // Close popup and clear form inputs when "OK" is clicked
             });
+
         });
 
     </script>
