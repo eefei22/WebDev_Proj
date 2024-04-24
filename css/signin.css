@@ -39,7 +39,7 @@ body {
     height: 100vh;
     border-top-left-radius: 25px;   
     border-bottom-left-radius: 25px; 
-    background-image: url(Images/login-ill.png);
+    background-image: url(images/login-ill.png);
     background-position: center;
     background-size: 80%;
     background-repeat: no-repeat;
