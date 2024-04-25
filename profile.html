@@ -133,18 +133,24 @@
             <form id="change-password-form" method="post">
               <div class="form-group">
                   <label for="old_pswd">Current password</label>
-                  <input type="password" id="old_pswd" name="old_pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}" title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long." placeholder="Password" autocomplete="current-password" required>
-                  <i class="far fa-eye-slash" id="toggleOldPassword"></i>
+                  <div class="pswd-group">
+                    <input type="password" id="old_pswd" name="old_pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}" title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long." placeholder="Password" autocomplete="current-password" required>
+                    <i class="far fa-eye-slash" id="toggleOldPassword"></i>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="new_pswd">New password</label>
-                  <input type="password" id="new_pswd" name="new_pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}" title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long." placeholder="Password" required>
-                  <i class="far fa-eye-slash" id="toggleNewPassword"></i>
+                  <div class="pswd-group">
+                    <input type="password" id="new_pswd" name="new_pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}" title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long." placeholder="Password" required>
+                    <i class="far fa-eye-slash" id="toggleNewPassword"></i>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="confirm-pswd">Confirm password</label>
-                  <input type="password" id="confirm-pswd" name="confirm-pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}" title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long." placeholder="Confirm new password" required>
-                  <i class="far fa-eye-slash" id="toggleConfirmPassword"></i>
+                  <div class="pswd-group">
+                    <input type="password" id="confirm-pswd" name="confirm-pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}" title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long." placeholder="Confirm new password" required>
+                    <i class="far fa-eye-slash" id="toggleConfirmPassword"></i>
+                  </div>
                 </div>
                 <input class="button" type="submit" value="Change Password">
             </form>
