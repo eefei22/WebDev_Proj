@@ -1,13 +1,16 @@
 /* nav part */
 nav{
+  width: 100%;
   display: flex;
   padding: 5px 5px;
   justify-content: space-between;
   align-items: center;
   background-color: #190482;
+  top: 0;
+  z-index: 999;
+  position: fixed;
   font-family: "Poppins", sans-serif;
 }
-
 nav img{
   width: 110px;
   height: 90px;
@@ -247,7 +250,7 @@ body {
   margin-bottom: 50px;
   cursor: pointer; 
   border-radius: 20px;
-  position:absolute;
+  position:relative;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -325,3 +328,5 @@ body {
   }
 
 }
+
+
