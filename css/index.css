@@ -397,31 +397,15 @@ nav img{
   color: #000000;
 }
 
-#arrow-right{
-  position: absolute;
-  width: 10vw;
-  left: 10vw;
-  bottom: -55vw;
-}
-
-#pencil{
-  position: absolute;
-  width: 3vw;
-  left: 45vw;
-  top: 98vw;
-}
-
-#planet{
-  position: absolute;
-  width: 8vw;
-  right: 8vw;
-  bottom: -52vw;
-}
-
 /*Tutor section*/
 .tutor{
   background-color: #A9BCFF;
   background-repeat: no-repeat;
+}
+
+.graphic img{
+  max-width: 80%;
+  margin-left: 10%;
 }
 
 .container3{
@@ -533,25 +517,14 @@ nav img{
   border-color: #190482;
 }
 
-#earth{
-  position: absolute;
-  width: 5vw;
-  left: 8vw;
-  bottom: -95vw;
+.graphic2 img{
+  width: 80%;
+  margin-left: 10%;
+  
 }
 
-#books{
-  position: absolute;
-  width: 5vw;
-  left: 30vw;
-  bottom: -88vw;
-}
-
-#arrow-left{
-  position: absolute;
-  width: 10vw;
-  right: 10vw;
-  bottom: -98vw;
+.container4 h2{
+  margin-top: -15%;
 }
 
 #circle-left{
@@ -561,35 +534,23 @@ nav img{
   bottom: -142vw;
 }
 
-#arrow{
-  position: absolute;
-  width: 8vw;
-  left: 15vw;
-  bottom: -140vw;
-}
-
-#bulb{
-  position: absolute;
-  width: 8vw;
-  right: 15vw;
-  bottom: -140vw;
-}
-
-#circle-right{
-  position: absolute;
-  width: 12vw;
-  right: 0;
-  bottom: -142vw;
-}
-
 /*Testimonial section*/
 .testimonial{
   padding-top: 50px;
   padding-bottom: 50px;
-  padding-left: 80px;
-  padding-right: 80px;
   background-color: #190482;
   background-repeat: no-repeat;
+}
+
+.graphic3 img{
+  width: 100%;
+  margin-top: -7%;
+  position: absolute;
+}
+
+.container5{
+  padding-right: 80px;
+  padding-left: 80px;
 }
 
 .testimonial h2{
@@ -814,10 +775,25 @@ nav .fas{
 
   /* nav part done*/
 
+  .dropdown-content {
+    position: absolute;
+    background-color: #FFFFFF;
+    left: 0;
+    width: 160px;
+    height: fit-content;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    display: none;
+  }
+
   body{
     margin: 0cm;
     padding: 0cm;
     overflow-x: hidden;
+    display: block;
+    
   }
 
   .main section{
@@ -831,29 +807,267 @@ nav .fas{
 
 
   .hero .content{
-    display: block;
+    display: flex;
     width: 100vw;
     height: 100vw;
-    margin-left: 10%;
+    margin-left: 15%;
     margin-right: 10%;
     margin-top: 10%;
     
   }
 
   .item{
-    margin-right: 0cm;
+    margin-right: 0;
   }
 
   .item h2{
-    width: 100%;
+    width: 200%;
   }
 
   .item p{
-    width: 100%;
+    width: 90%;
   }
   
   .welcome-ill{
-    
-    visibility: hidden;
+    align-self: flex-end;
+    padding-bottom: 20%;
   }
+
+   /*Student section*/
+.student{
+  position: relative;
+  background: linear-gradient(to bottom, #C2D9FF 0%, #C2D9FF 90%, #A9BCFF 100%);
+  width: auto;
+  height: fit-content;
+  
+}
+
+.container2{
+  display: flex;
+  width: 500px;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.student-frame1{
+  flex: 0 0 100%;
+  width: 70%;
+  margin-right: 50%;
+}
+
+.student-frame2{
+  flex: 0 0 100%;
+  width: 70%;
+  margin-right: 50%;
+}
+
+.student-frame1 img{
+  width: 80%;
+  height: fit-content;
+}
+
+.student .benefit{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.student .benefit img{
+  flex: 0 0 10%;
+  max-width: 50px;
+  height: auto;
+  
+}
+
+.student .benefit div{
+  flex: 0 0 90%;
+  padding-left: 20px;
+}
+
+.student .benefit p{
+  color: #696969;
+  margin-top: 0px;
+  width: 85%;
+}
+
+.student-frame1 button{
+  width: 220px;
+  height: 45px;
+  font-size: 15px;
+  font-weight: 600;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 0;
+  color: #FFFFFF;
+  background-color: #190482;
+  margin-left: 30%;
+  margin-right: auto;
+  cursor: pointer;
+
+}
+
+.student-frame2 h2{
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 50px;
+  margin-bottom: 5px;
+  margin-top: 35px;
+  width: 100%;
+}
+
+.container3{
+  margin-top: -15%;
+}
+
+.tutor h3, .tutor p{
+  font-size: 15px;
+}
+
+.tutor h3{
+  font-weight: bold;
+}
+
+.tutor p{
+  font-weight: 600;
+}
+
+.tutor .benefit p{
+  color: #6E6E6E;
+  margin-bottom: 0;
+}
+
+.container4{
+  padding-top:50px;
+  padding-bottom: 50px;
+  padding-left: 70px;
+  padding-right: 70px;
+  margin-top: -18%;
+}
+
+.tutor .content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tutor .benefit{
+  width: 270px;
+  height: 180px;
+  background-color: #FFFFFF;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 10px;
+  border: solid;
+  border-radius: 20px;
+  border-width: 5px;
+  border-color: #190482;
+  margin-top: 10%;
+}
+
+.container4 h2{
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/*Testimonial section*/
+.testimonial{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #190482;
+  background-repeat: no-repeat;
+}
+
+.graphic3 img{
+  width: 100%;
+  margin-top: -13%;
+  position: absolute;
+}
+
+.container5{
+  padding-left: 8%;
+}
+
+.container5 h2{
+  margin-left: 10%;
+}
+
+.testimonial .frame{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.testimonial .test{
+  width: 400px;
+  height: fit-content;
+  background-color: #FFFFFF;
+  border: solid;
+  border-color: #929292;
+  border-width: 2px;
+}
+
+.testimonial .test:nth-of-type(1){
+  margin-top: 0;
+}
+
+.testimonial .test:nth-of-type(2){
+  position: relative;
+  margin-top: 20%;
+}
+
+.testimonial .test:nth-of-type(3){
+  margin-top: 20%;
+}
+
+.testimonial .test:nth-of-type(1) p{
+  padding-right: 0;
+}
+
+.testimonial .test:nth-of-type(3) p{
+  padding-left: 0;
+}
+
+/*Footer section*/
+footer{
+  width: 100%;
+  height: fit-content;
+  background-color: #000000;
+  color: #fff;
+  font-size: 15px;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  
+}
+
+#logo{
+  margin-right: 10vw;
+}
+
+footer .frame{
+  display: flex;
+  padding: 0px;
+  margin-right: 20vw;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer .frame div:nth-of-type(1){
+  width: 150px;
+  margin-right: 10vw;
+}
+
+footer p{
+  margin-bottom: 0px;
+  margin-top: 10px;
+  text-align: center;
+  margin-right: 15vw;
+}
+
+
 }

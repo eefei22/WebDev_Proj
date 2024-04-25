@@ -132,12 +132,39 @@ body {
     font-weight: 600;
   }
 
+  .pswd-group {
+    position: relative;
+  }
+
+  .pswd-group input[type="password"] {
+    width: 270px;
+    padding: 10px;
+    border: 1px solid #C9C8C8;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 0;
+    padding-right: 40px; /* Make space for the toggle button */
+  }
+
   /* Eye icon */
   #togglePassword {
     position: absolute;
-    left: 33%; 
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    top: 53%;
+  }
+
+  .pswd-group input[type="password"] {
+    width: 270px;
+    padding: 10px;
+    border: 1px solid #C9C8C8;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 0;
+    padding-right: 40px; /* Make space for the toggle button */
   }
 
   #signup-btn{
@@ -209,14 +236,6 @@ body {
     
       .container:nth-of-type(2) img{
         display: none;
-      }
-    
-      /* Eye icon */
-      #togglePassword {
-        position: absolute;
-        left: 70%; 
-        cursor: pointer;
-        top: 42%;
       }
 
       .sign-up p{

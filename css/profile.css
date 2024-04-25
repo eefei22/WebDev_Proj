@@ -216,13 +216,16 @@ nav img{
   }
 
   .edit-profile-pic{
+    position: relative;
     padding-bottom: 15px;
   }
 
   .edit-profile-pic label img{
     position: absolute;
-    right: 36%;
-    bottom: 31%;
+    top: 120px;
+    left: 120px;
+    cursor: pointer;
+
   }
 
   .edit-profile-pic label img:hover{
@@ -326,29 +329,46 @@ nav img{
     color: #000;
   }
 
+  .pswd-group {
+    position: relative;
+  }
+
+  .pswd-group input[type="password"] {
+    width: 370px;
+    padding: 10px;
+    border: 1px solid #C9C8C8;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 0;
+    padding-right: 40px; /* Make space for the toggle button */
+  }
+  
   /* Eye icon */
   #toggleOldPassword {
     position: absolute;
-    margin-left: -2%; 
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    top: 86%;
   }
 
   /* Eye icon */
   #toggleNewPassword {
     position: absolute;
-    margin-left: -2%; 
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    top: 97%;
-    
   }
 
   /* Eye icon */
   #toggleConfirmPassword {
     position: absolute;
-    margin-left: -2%; 
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    top: 108.5%;
   }
 
   /*Footer section*/
@@ -509,12 +529,6 @@ nav img{
         display: none;
     }
 
-    .edit-profile-pic label img{
-      position: absolute;
-      right: 55%;
-      top: 143%
-    }
-
     input,
     select {
       width: 100%;
@@ -538,31 +552,48 @@ nav img{
   
     }
 
+    .pswd-group {
+      position: relative;
+    }
+  
+    .pswd-group input[type="password"] {
+      width: 270px;
+      padding: 10px;
+      border: 1px solid #C9C8C8;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 0;
+      padding-right: 40px; /* Make space for the toggle button */
+    }
+    
     /* Eye icon */
     #toggleOldPassword {
       position: absolute;
-      right: 28%; 
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
-      top: 165%;
     }
   
     /* Eye icon */
     #toggleNewPassword {
       position: absolute;
-      right: 28%; 
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
-      top: 176%;
-      
     }
   
     /* Eye icon */
     #toggleConfirmPassword {
       position: absolute;
-      right: 28%; 
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
-      top: 187.5%;
     }
-
+  
     /*Footer section*/
     footer{
       width: 100%;

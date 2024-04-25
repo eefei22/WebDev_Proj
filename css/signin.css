@@ -100,12 +100,28 @@ body {
     margin-bottom: 0;
   }
 
+  .pswd-group {
+    position: relative;
+  }
+  
+  .pswd-group input[type="password"] {
+    width: 270px;
+    padding: 10px;
+    border: 1px solid #C9C8C8;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 0;
+    padding-right: 40px; /* Make space for the toggle button */
+  }
+  
   /* Eye icon */
   #togglePassword {
     position: absolute;
-    left: 33%;
+    right: 10px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    top: 52%;
   }
 
   #forgot-pswd{
@@ -235,13 +251,30 @@ body {
     border: 1px solid #190482;
   }
 
-  #toggleResetPassword {
-    position: absolute;
-    right: 15%;
-    top: 58%;
-    cursor: pointer;
-    
-  }
+  /* Styles for password input in reset password form */
+.pswd-container {
+  position: relative;
+}
+
+.pswd-container input[type="password"] {
+  width: 270px;
+  padding: 10px;
+  border: 1px solid #C9C8C8;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 0;
+  padding-right: 40px; /* Make space for the toggle button */
+}
+
+/* Eye icon */
+#toggleResetPassword {
+  position: absolute;
+  top: 48%;
+  right: 10px;
+  transform: translateY(-100%);
+  cursor: pointer;
+}
 
   /* Close button */
   .close {
@@ -300,14 +333,6 @@ body {
       #close-button:hover{
         transition: transform 0.3s ease;
         transform: scale(1.2);
-      }
-
-      /* Eye icon */
-      #togglePassword {
-        position: absolute;
-        left: 71%;
-        cursor: pointer;
-        top: 41.5%;
       }
     
       #forgot-pswd{
