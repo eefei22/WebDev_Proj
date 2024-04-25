@@ -496,6 +496,19 @@ nav img{
 
     /* nav part done*/
 
+    .dropdown-content {
+        position: absolute;
+        background-color: #FFFFFF;
+        left: 0;
+        width: 160px;
+        height: fit-content;
+        border: 2px solid #000000;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        z-index: 1;
+        display: none;
+    }
+
     .edit-profile-pic label img{
       position: absolute;
       right: 50%;
@@ -549,7 +562,7 @@ nav img{
       cursor: pointer;
       top: 238%;
     }
-    
+
     /*Footer section*/
     footer{
       width: 100%;

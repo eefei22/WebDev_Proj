@@ -40,12 +40,16 @@ body {
     height: 100vh;
     border-top-left-radius: 25px;   
     border-bottom-left-radius: 25px; 
-    background-image: url(Images/signup-ill.png);
     background-position: center;
     background-size: 80%;
     background-repeat: no-repeat;
     
   } 
+
+  .container:nth-of-type(2) img{
+    width: 80%;
+    margin-left: 10%;
+  }
   
   #close-button{
       position: absolute; 
@@ -131,9 +135,9 @@ body {
   /* Eye icon */
   #togglePassword {
     position: absolute;
-    margin-left: -35px; 
+    left: 35%; 
     cursor: pointer;
-    top: 325px;
+    top: 54%;
   }
 
   #signup-btn{
@@ -170,10 +174,57 @@ body {
     color: #7752FE;
   }
 
-  .big_image {
-    width: 90%;
-    height: 90%;
+  @media (max-width: 700px) {
+    body {
+      font-family: "Poppins", sans-serif;
+      width: 100vw;
+      height: auto;
+      background-color: #8E8FFA;
+      padding: 0px;
+      margin: 0px; 
+    
+      }
+
+      h1{
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 25px;
+        margin-top: 0;
+      }
+
+      .container:nth-of-type(1){
+        width: fit-content;
+        height: fit-content;
+        padding: 20px 40px;
+        margin: 0; 
+        background-color: #FFFFFF;
+        margin-top: 15px;
+        border-radius: 20px;
+      }
+    
+      .container:nth-of-type(2){
+        display: none;
+        
+      } 
+    
+      .container:nth-of-type(2) img{
+        display: none;
+      }
+    
+      /* Eye icon */
+      #togglePassword {
+        position: absolute;
+        left: 75%; 
+        cursor: pointer;
+        top: 53.5%;
+      }
+
+      .sign-up p{
+        text-align: center;
+        font-size: 15px;
+        font-weight: 600;
+        margin-right: 5px;
+        margin-top: 15px;
+        margin-top: 0;
+      }
   }
-
-
-
