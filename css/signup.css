@@ -135,9 +135,9 @@ body {
   /* Eye icon */
   #togglePassword {
     position: absolute;
-    left: 35%; 
+    left: 33%; 
     cursor: pointer;
-    top: 54%;
+    top: 53%;
   }
 
   #signup-btn{
@@ -214,9 +214,9 @@ body {
       /* Eye icon */
       #togglePassword {
         position: absolute;
-        left: 75%; 
+        left: 70%; 
         cursor: pointer;
-        top: 53.5%;
+        top: 42%;
       }
 
       .sign-up p{

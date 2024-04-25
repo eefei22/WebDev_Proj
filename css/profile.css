@@ -221,8 +221,8 @@ nav img{
 
   .edit-profile-pic label img{
     position: absolute;
-    right: 33%;
-    bottom: 13%;
+    right: 36%;
+    bottom: 31%;
   }
 
   .edit-profile-pic label img:hover{
@@ -329,26 +329,26 @@ nav img{
   /* Eye icon */
   #toggleOldPassword {
     position: absolute;
-    margin-left: -3%; 
+    margin-left: -2%; 
     cursor: pointer;
-    top: 109%;
+    top: 86%;
   }
 
   /* Eye icon */
   #toggleNewPassword {
     position: absolute;
-    margin-left: -3%; 
+    margin-left: -2%; 
     cursor: pointer;
-    top: 123%;
+    top: 97%;
     
   }
 
   /* Eye icon */
   #toggleConfirmPassword {
     position: absolute;
-    margin-left: -3%; 
+    margin-left: -2%; 
     cursor: pointer;
-    top: 137.5%;
+    top: 108.5%;
   }
 
   /*Footer section*/
@@ -511,8 +511,8 @@ nav img{
 
     .edit-profile-pic label img{
       position: absolute;
-      right: 50%;
-      top: 182%
+      right: 55%;
+      top: 143%
     }
 
     input,
@@ -541,26 +541,26 @@ nav img{
     /* Eye icon */
     #toggleOldPassword {
       position: absolute;
-      right: 20%; 
+      right: 28%; 
       cursor: pointer;
-      top: 210%;
+      top: 165%;
     }
   
     /* Eye icon */
     #toggleNewPassword {
       position: absolute;
-      right: 20%; 
+      right: 28%; 
       cursor: pointer;
-      top: 224%;
+      top: 176%;
       
     }
   
     /* Eye icon */
     #toggleConfirmPassword {
       position: absolute;
-      right: 20%; 
+      right: 28%; 
       cursor: pointer;
-      top: 238%;
+      top: 187.5%;
     }
 
     /*Footer section*/

@@ -103,7 +103,7 @@ body {
   /* Eye icon */
   #togglePassword {
     position: absolute;
-    left: 35%;
+    left: 33%;
     cursor: pointer;
     top: 52%;
   }
@@ -305,9 +305,9 @@ body {
       /* Eye icon */
       #togglePassword {
         position: absolute;
-        left: 75%;
+        left: 71%;
         cursor: pointer;
-        top: 52.5%;
+        top: 41.5%;
       }
     
       #forgot-pswd{
