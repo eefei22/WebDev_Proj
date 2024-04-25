@@ -39,12 +39,16 @@ body {
     height: 100vh;
     border-top-left-radius: 25px;   
     border-bottom-left-radius: 25px; 
-    background-image: url(images/login-ill.png);
     background-position: center;
     background-size: 80%;
     background-repeat: no-repeat;
     
   } 
+
+  .container:nth-of-type(2) img{
+    width: 80%;
+    margin-left: 10%;
+  }
   
   #close-button{
       position: absolute; 
@@ -99,9 +103,9 @@ body {
   /* Eye icon */
   #togglePassword {
     position: absolute;
-    margin-left: -35px; 
+    left: 35%;
     cursor: pointer;
-    top: 314px;
+    top: 52%;
   }
 
   #forgot-pswd{
@@ -109,8 +113,7 @@ body {
     color: #190482;
     font-size: 15px;
     font-weight: 600;
-    margin-top: 0;
-    left: 335px;
+    left: 27%;
   }
 
   #forgot-pswd:hover{
@@ -234,8 +237,8 @@ body {
 
   #toggleResetPassword {
     position: absolute;
-    right: 65px;
-    top: 238px;
+    right: 15%;
+    top: 58%;
     cursor: pointer;
     
   }
@@ -259,9 +262,62 @@ body {
     transform: scale(1.15);
   }
 
-  .big_image {
-    width: 90%;
-    height: 90%;
-  }
+  @media (max-width: 700px) {
+    body {
+      font-family: "Poppins", sans-serif;
+      width: 100vw;
+      height: auto;
+      background-color: #8E8FFA;
+      padding: 0px;
+      margin: 0px; 
+  
+      }
+    
+      .container:nth-of-type(1){
+        height: fit-content;
+        width: fit-content; 
+        margin: 50px 50px; 
+        margin-top: 60px;
+        padding: 30px;
+        background-color: #FFFFFF;
+        border-radius: 20px;
+      }
+    
+      .container:nth-of-type(2){
+        display: none;
+      } 
+    
+      .container:nth-of-type(2) img{
+        display: none;
+      }
+      
+      #close-button{
+          position: absolute; 
+          right: 30px;
+          top: 30px;
+      }
+    
+      #close-button:hover{
+        transition: transform 0.3s ease;
+        transform: scale(1.2);
+      }
 
+      /* Eye icon */
+      #togglePassword {
+        position: absolute;
+        left: 75%;
+        cursor: pointer;
+        top: 52.5%;
+      }
+    
+      #forgot-pswd{
+        position: absolute;
+        color: #190482;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 0;
+        left: 55%;
+      }
+
+  }
 
