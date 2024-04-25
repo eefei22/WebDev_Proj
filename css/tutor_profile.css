@@ -1,10 +1,14 @@
 /* nav part */
 nav{
+  width: 100%;
   display: flex;
   padding: 5px 5px;
   justify-content: space-between;
   align-items: center;
   background-color: #190482;
+  top: 0;
+  z-index: 999;
+  position: fixed;
   font-family: "Poppins", sans-serif;
 }
 
@@ -99,15 +103,20 @@ body {
   left: 38px;
 }
 
-.content {
+.content_container{
+  width: 100%;
+  display: flex;
+}
+
+.profile_content {
   width: 55%; 
-  float: left;
-  margin: 4%;
+  margin: 50px 4% 50px 4%;
+  height: fit-content;
   padding: 3%;
   background: white;
   border: 3px #C2D9FF solid;
   border-radius: 30px;
-  margin-top: 50px;
+
 }
 
 .title {
@@ -117,7 +126,7 @@ body {
   margin-bottom: 16px;
 }
 
-.profile_container {
+.detail_container {
   display: inline-block;
 }
 
@@ -167,8 +176,7 @@ body {
 
 .CTA {
   width: 20%; 
-  float: right;
-  margin: 50px 4% 0 0;
+  margin: 50px 4% 75% 0;
   padding: 20px;
   background: white;
   border: 3px #C2D9FF solid;
@@ -249,16 +257,20 @@ body {
 
 
 @media screen and (max-width: 768px) {
-  .content {
-    float: none;
+  .content_container{
+    display:block;
+    width: 100%;
+    margin: 0;
+  }
+
+  .profile_content {
     width: 80%;
     margin: 50px auto;
   }
 
   .CTA {
-    float: none;
     width: 60%; 
-    margin: 50px auto; 
+    margin: 20px auto;
     padding: 20px;
     background: white;
     border: 3px #C2D9FF solid;
