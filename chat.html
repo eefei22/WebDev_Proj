@@ -90,16 +90,37 @@
     <script src="scripts/script.js"></script>
 
     <script>
+      var windowWidth = window.innerWidth;
+      var inboxElement = document.getElementById("inbox");
+      var chatElement = document.getElementById("chat");
+      var hideButton = document.getElementById("hideButton");
+      var showButton = document.getElementById("showButton");
+
       function hideMenu() {
-          document.getElementById("inbox").style.display = "none";
-          document.getElementById("chat").style.display = "block";
+          inboxElement.style.display = "none";
+          chatElement.style.display = "block";
       }
   
       function showMenu() {
-          document.getElementById("inbox").style.display = "block";
-          document.getElementById("chat").style.display = "none";
+          inboxElement.style.display = "block";
+          chatElement.style.display = "none";
 
       }
+        
+      function toggleElements() {
+          if (windowWidth > 768) {
+          inboxElement.style.display = "block";
+          chatElement.style.display = "block";
+        }
+        
+        else {
+          showButton.addEventListener("click", showMenu)
+          showButton.addEventListener("click", hideMenu)
+        }
+      }
+
+      toggleElements();
+      window.addEventListener("resize", toggleElements);
   </script>
   
   
