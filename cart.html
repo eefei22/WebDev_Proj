@@ -42,14 +42,25 @@
                 <li><a href="subscription.html">Subscription</a></li>
                 <li><a href="discover_tutor.html">Discover Tutor</a></li>
                 <li><a href="tuitionFee.html">Payment</a></li>
-                <li><a href="helpdesk.html">Helpdesk</a></li>         
-            </ul>  <!--closing unorder list -->
+                <li><a href="helpdesk.html">Helpdesk</a></li>
+            </ul> <!--closing unorder list -->
         </div> <!--closing nav-links -->
         <!-- nav icon -->
         <div class="navIcon">
             <a href="cart.html" class="navLink"><img src="./images/addToCart_logo.png" alt="add to cart"></a>
-            <a href=" " class="navLink"><img src="./images/ic_profile.png" alt="user profile"></a>
-        </div>  <!--closing nav icon -->
+            <div class="dropdown">
+                <a href=" " class="navLink" id="profileIcon"><img id="profileIconImg" src="./images/ic_profile.png"
+                        alt="user profile"></a>
+                <div class="dropdown-content" id="profileDropdownContent">
+                    <!-- Dropdown content here -->
+                    <a id="profile" href="profile.html">My Profile</a>
+                    <div class="logout">
+                        <a href="index-bfr-login.html" onclick="logout()"><img id="logout-ic"
+                                src="Images\logout.png">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div> <!--closing nav icon -->
         <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
 
