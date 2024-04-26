@@ -38,7 +38,6 @@
 </head>
 
 <body>
-
   <nav>
     <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
     <div class="nav-links" id="navLinks">
@@ -54,14 +53,25 @@
     <!-- nav icon -->
     <div class="navIcon">
       <a href="cart.html" class="navLink"><img src="./images/addToCart_logo.png" alt="add to cart"></a>
-      <a href=" " class="navLink"><img src="./images/ic_profile.png" alt="user profile"></a>
+      <div class="dropdown">
+        <a href=" " class="navLink" id="profileIcon"><img id="profileIconImg" src="./images/ic_profile.png"
+            alt="user profile"></a>
+        <div class="dropdown-content" id="profileDropdownContent">
+          <!-- Dropdown content here -->
+          <a id="profile" href="profile.html">My Profile</a>
+          <div class="logout">
+            <a href="index-bfr-login.html" onclick="logout()"><img id="logout-ic" src="Images\logout.png">Log Out</a>
+          </div>
+        </div>
+      </div>
     </div> <!--closing nav icon -->
     <i class="fas fa-bars" onclick="showMenu()"></i>
   </nav>
 
+
   <!--<div class="header"><img class="logo" src="images/logo.png" /></div> -->
 
-  <div class = "content_container">
+  <div class="content_container">
     <div class="profile_content">
       <div class="desc_frame">
         <div class="title">Hey learners! Come and receive the gift of underestanding the beautiful Mandarin language
@@ -89,17 +99,22 @@
 
         <div class="labels">About Me</div>
 
-        <div class="par">My name is Lei Lou Dao. I have a Master of Business administration (MBA) qualification. I also
-          have a TEFL certification in my resume. I love to communicate. I like to spread knowledge to those that I come
-          across, provided if you love to learn. I have been involved in the education industry, from pre school to higher
+        <div class="par">My name is Lei Lou Dao. I have a Master of Business administration (MBA) qualification. I
+          also
+          have a TEFL certification in my resume. I love to communicate. I like to spread knowledge to those that I
+          come
+          across, provided if you love to learn. I have been involved in the education industry, from pre school to
+          higher
           education for almost 25 years.To teach is a passion and a calling. It is not a job.
-          <br>Besides the Mandarin language, I can speak in Englih, Bahasa Malaysia and Hokkien fluently. I can also write
+          <br>Besides the Mandarin language, I can speak in Englih, Bahasa Malaysia and Hokkien fluently. I can also
+          write
           in Chinese and Bahasa Malaysia fairly well.
           <br>I hope more of you will get to know me better to know who I really am.
         </div>
 
         <div class="labels">About The Lesson</div>
-        <div class="par">We will have loads of fun in learning and speaking the Chinese language. We will learn through
+        <div class="par">We will have loads of fun in learning and speaking the Chinese language. We will learn
+          through
           games. Through movie. Through sketches. Through expedition. Everything will be hands on.
           <br>2 hour a week gets you nearer to your destination of perfecting your Mandarin proficiency.
         </div>
@@ -125,12 +140,13 @@
         <a href="feedback.html" class="rev_link"><button id="review_button">Leave a Review</button></a>
       </div>
     </div>
-    
+
 
     <div class="CTA">
       <div class="title" style="font-size: 45px;">RM50</div>
       <div class="par">per session</div>
-      <div><button class="labeled_button" onclick="window.location.href='purchase_lesson.html'";>Book Now</button></div>
+      <div><button class="labeled_button" onclick="window.location.href='purchase_lesson.html'" ;>Book Now</button>
+      </div>
       <div><button class="labeled_button" onclick="window.location.href='cart.html'">Add to Cart</button></div> <br>
       <a class="par" href="chat.html" target="_blank">Chat with tutor</a>
 
@@ -148,7 +164,7 @@
               <li><a href="subscription.html">Subscription</a></li>
               <li><a href="discover_tutor.html">Courses</a></li>
               <li><a href="helpdesk.html">FAQ</a></li>
-            </ul>  
+            </ul>
           </div>
           <img id="logo" src="Images\logo.png" alt="EduPro" width="200">
           <div class="link">
@@ -164,12 +180,14 @@
               </li>
               <li>
                 <img src="Images\location.png" alt="Location">
-                <a href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4, Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
+                <a
+                  href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
+                  Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
               </li>
-            </ul> 
+            </ul>
           </div>
         </div>
-        <hr> 
+        <hr>
         <p>&copy; 2024 EduPro. All rights reserved.</p>
       </div>
     </section>
