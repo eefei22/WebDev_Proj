@@ -158,7 +158,7 @@ input {
     width: 60%;
     margin-top: 15px;
     margin-right: 35px;
-    background-color: #007bff;
+    background-color: #190482;
     /* Button background color */
     color: #fff;
     /* Button text color */
@@ -168,7 +168,7 @@ input {
 }
 
 .btn button:hover {
-    background-color: #0056b3;
+    background-color: #7752FE;
     /* Button background color on hover */
 }
 
@@ -220,7 +220,7 @@ input {
     width: 100%;
     margin-top: 25px;
     padding: 8px 0;
-    background: #6fd649;
+    background: #190482;
     color: #fff;
     border: 0;
     outline: none;

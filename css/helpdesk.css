@@ -174,79 +174,8 @@ nav img {
     font-weight: bold;
 }
 
-nav.fas {
+nav .fas{
     display: none;
-}
-
-/* smaller screen */
-
-@media(max-width:700px) {
-
-    /* all change in nav part */
-    .nav-links ul li {
-        display: block;
-    }
-
-    .nav-links {
-        position: absolute;
-        background: #190482;
-        height: 100vh;
-        width: 200px;
-        top: 0;
-        /* right changed from 0 to -200px to hide the menu */
-        right: -200px;
-        text-align: left;
-        z-index: 1;
-        /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
-        transition: 1s;
-    }
-
-    /* show the menu icon in smaller screen */
-    nav .fas {
-        display: block;
-        color: #fff;
-        margin-right: 10px;
-        font-size: 20px;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    nav .fas:hover {
-        transform: scale(1.2);
-        /* Enlarge the image by 20% when hovering over it */
-    }
-
-    .nav-links ul {
-        padding: 30px;
-    }
-
-    /* nav part done*/
-
-    .btn {
-        /* Other styles */
-        flex-direction: column;
-        /* Align buttons vertically */
-        align-items: center;
-        margin-top: 50px;
-        justify-content: center;
-    }
-
-    .pay {
-        margin: 10px;
-    }
-
-    .dropdown-content {
-        position: absolute;
-        background-color: #FFFFFF;
-        left: 0;
-        width: 160px;
-        height: fit-content;
-        border: 2px solid #000000;
-        border-radius: 10px;
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        display: none;
-    }
 }
 
 
@@ -271,6 +200,7 @@ body .header {
 .header-title {
     font-size: 60px;
     letter-spacing: 1.5;
+    margin-top: 85px;
 }
 
 .header-desc {
@@ -510,7 +440,7 @@ nav .fas {
     display: none;
 }
 
-/*Footer section*/
+/* Footer section
 footer {
     width: 100%;
     height: fit-content;
@@ -603,7 +533,7 @@ footer p {
 
 footer .frame div:nth-of-type(1) li {
     margin-bottom: 10px;
-}
+} */
 
 /* smaller screen */
 

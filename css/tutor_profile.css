@@ -205,6 +205,10 @@ body {
   border-radius: 20px;
 }
 
+.labeled_button:hover{
+  background-color: #190482;
+}
+
 .button:hover {
   filter: brightness(0.8);
 }
@@ -234,6 +238,10 @@ body {
   color: white;
   padding: 8px 12px;
   cursor: pointer;
+}
+
+#review_button:hover{
+  background-color: #190482;
 }
 
 .user-profile {

@@ -43,9 +43,10 @@ nav {
 }
 
 .box img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
 }
+
 
 h3 {
     font-size: 20px;
@@ -67,8 +68,18 @@ p {
     margin-bottom: 15px;
 }
 
-button:hover {
+#doneBtn{
     background-color: #190482;
+    border-radius: 20px;
+    padding: 8px;
+    width: 60%;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#doneBtn:hover{
+    background-color: #7752FE;
 }
 
 
