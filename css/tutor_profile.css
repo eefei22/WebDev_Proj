@@ -315,14 +315,13 @@ body {
   .nav-links{
       position: absolute;
       background: #190482;
-      height: 100vh;
       width: 200px;
       top:0;
       /* right changed from 0 to -200px to hide the menu */
-      right: -200px;
       text-align: left;
       z-index: 1;    /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
       transition:1s;
+      height: 100%;
   }
   /* show the menu icon in smaller screen */
   nav .fas{

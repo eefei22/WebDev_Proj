@@ -12,30 +12,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-     <!-- Embedding JavaScript -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Get the current page URL
-            var currentPageURL = window.location.href;
-            
-            // Get all navigation links
-            var navLinks = document.querySelectorAll('.nav-links ul li a');
-    
-            // Loop through each link
-            navLinks.forEach(function(link) {
-                // Check if the link's href matches the current page URL
-                if (link.href === currentPageURL) {
-                    // Add the 'active' class to the matching link
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+
+
   </head>
   <body>
 
-    <div class="inbox_container">
+    <div class="inbox_container" id="inbox">
+      <div class = "header_container">
+        <button class="tog_chat" onclick="hideMenu()">
+          <img src="images/close-button.png" width="25" height="25">
+        </button>
         <h2 class = "inbox_header">Chats</h2>
+      </div>
         <div class = "user_container"><button class = "user_button">
             <img class="profile_pic" src="images\tutor-4-image.png"/>
             <div class=profile_container>
@@ -70,9 +58,14 @@
     </div>
 
 
-    <div class="chat_container">
-
-      <h2 class="chat-header">tutor chatting...</h2>
+    <div class="chat_container" id="chat">
+      <div class = "header_container">
+        <button class="tog_chat" onclick="showMenu()">
+          <img src="images/hbg_icon.png" width="25" height="25">
+        </button>
+        
+        <h2 class="chat-header">tutor chatting...</h2>
+      </div>
 
       <div class="chat-messages">
         <div class="message lavender-bg">
@@ -95,5 +88,22 @@
     </div>
 
     <script src="scripts/script.js"></script>
+
+    <script>
+      function hideMenu() {
+          document.getElementById("inbox").style.display = "none";
+          document.getElementById("chat").style.display = "block";
+      }
+  
+      function showMenu() {
+          document.getElementById("inbox").style.display = "block";
+          document.getElementById("chat").style.display = "none";
+
+      }
+  </script>
+  
+  
+
+
   </body>
 </html>
