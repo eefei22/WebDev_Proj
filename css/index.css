@@ -1,4 +1,4 @@
-*{
+* {
   font-family: "Poppins", sans-serif;
   transition: all .2s linear;
 }
@@ -10,7 +10,7 @@ body {
 }
 
 /* nav part */
-nav{
+nav {
   width: 100%;
   display: flex;
   padding: 5px 5px;
@@ -22,59 +22,62 @@ nav{
   position: fixed;
 }
 
-nav img{
+nav img {
   width: 110px;
   height: auto;
 }
 
-.nav-links{
+.nav-links {
   flex: 1;
   text-align: center;
 }
 
-.nav-links ul li{
+.nav-links ul li {
   list-style: none;
   display: inline-block;
   padding: 8px 12px;
-  position:relative;
+  position: relative;
 }
 
-.nav-links ul li a{
+.nav-links ul li a {
   color: #fff;
   text-decoration: none;
   font-size: 13px;
 }
 
-.nav-links ul li::after{
+.nav-links ul li::after {
   content: "";
-  width: 0%;      /*make the line become invisible and after 0.5s hover, will show the line below the nav*/
+  width: 0%;
+  /*make the line become invisible and after 0.5s hover, will show the line below the nav*/
   height: 2px;
   background: #8E8FFA;
   display: block;
   margin: auto;
   transition: 0.5s;
 }
-.nav-links ul li:hover::after{
+
+.nav-links ul li:hover::after {
   width: 100%;
 }
 
-.navIcon{
+.navIcon {
   padding: 5px 20px;
 }
 
-.navIcon img{
+.navIcon img {
   width: 40px;
   height: 40px;
   margin-right: 15px;
   transition: transform 0.3s ease;
 }
 
-.navIcon img:hover{
-  transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+.navIcon img:hover {
+  transform: scale(1.2);
+  /* Enlarge the image by 20% when hovering over it */
 }
 
 /*To adjust the size of the image after upload*/
-#profileIconImg{
+#profileIconImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -95,7 +98,7 @@ nav img{
   height: fit-content;
   border: 2px solid #000000;
   border-radius: 10px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
   display: none;
 }
@@ -115,14 +118,14 @@ nav img{
   border-top-right-radius: 8px;
 }
 
-.logout{
+.logout {
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
 
-.logout a{
+.logout a {
   width: 100%;
   height: 100%;
   padding-top: 15px;
@@ -137,7 +140,7 @@ nav img{
   border-bottom-right-radius: 8px;
 }
 
-#logout-ic{
+#logout-ic {
   width: 20px;
   height: auto;
 }
@@ -156,19 +159,22 @@ nav img{
 
 .navIcon .navLink.active {
   /* Add styles for the active link */
-  background-color: #8E8FFA; /* Change background color to indicate active link */
-  border-radius: 50%; /* Example border-radius */
-  padding: 5px; 
+  background-color: #8E8FFA;
+  /* Change background color to indicate active link */
+  border-radius: 50%;
+  /* Example border-radius */
+  padding: 5px;
 }
 
 .nav-links ul li a.active {
   /* Add styles for the active link */
-  color: #8E8FFA; /* Change color to indicate active link */
-  font-weight: bold; 
+  color: #8E8FFA;
+  /* Change color to indicate active link */
+  font-weight: bold;
 }
 
 /*Log in and Sign up button*/
-.button ul{
+.button ul {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
@@ -176,12 +182,12 @@ nav img{
   font-weight: 600;
 }
 
-.button a{
+.button a {
   text-decoration: none;
   color: #000;
 }
 
-#login{
+#login {
   width: 100px;
   background-color: #FFFFFF;
   margin-right: 20px;
@@ -190,40 +196,40 @@ nav img{
   border: 3px solid #C2D8FF;
 }
 
-#signup{
+#signup {
   margin-right: 40px;
   background-color: #C2D8FF;
   padding: 10px 20px;
   border-radius: 10px;
 }
 
-#login:hover{
+#login:hover {
   background-color: #CCCCCC;
   border: 3px solid #7752FE;
 }
 
-#signup:hover{
+#signup:hover {
   background-color: #7752FE;
   color: #FFFFFF;
 }
 
 /*Hero section*/
 .hero {
-    background: linear-gradient(to bottom, #190482, #C2D9FF);
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom, #190482, #C2D9FF);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
 }
 
-.container1{
+.container1 {
   display: flex;
   align-items: center;
   margin-top: 100px;
 
 }
 
-#doodle-bg{
+#doodle-bg {
   position: absolute;
   top: 60%;
   left: 50%;
@@ -233,19 +239,19 @@ nav img{
   height: auto;
 }
 
-.hero .content{
+.hero .content {
   height: 80vh;
   width: auto;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   align-content: center;
   margin-left: 50vh;
   margin-right: 50vh;
- 
+
 }
 
-.welcome-ill{
+.welcome-ill {
   flex: 0 0 50%;
   height: auto;
   width: 0%;
@@ -254,27 +260,28 @@ nav img{
 
 }
 
-.item{
+.item {
   flex: 0 0 50%;
   z-index: 1;
   align-content: center;
   width: auto;
   height: fit-content;
   margin-right: 30px;
-  
+
 }
 
-.item h2{
+.item h2 {
   width: 40vw;
   height: auto;
   font-size: 2em;
   font-weight: bold;
   -webkit-text-stroke: 1px #FFFFFF;
-  text-shadow: 0px 0px 15px #C2D9FF; /* Horizontal offset, vertical offset, blur radius, color */
-  
+  text-shadow: 0px 0px 15px #C2D9FF;
+  /* Horizontal offset, vertical offset, blur radius, color */
+
 }
 
-.item p{
+.item p {
   width: 40vw;
   height: fit-content;
   color: black;
@@ -283,15 +290,15 @@ nav img{
 }
 
 /*Student section*/
-.student{
+.student {
   position: relative;
   background: linear-gradient(to bottom, #C2D9FF 0%, #C2D9FF 90%, #A9BCFF 100%);
   width: auto;
   height: fit-content;
-  
+
 }
 
-.container2{
+.container2 {
   display: flex;
   width: auto;
   height: auto;
@@ -306,17 +313,17 @@ nav img{
 
 }
 
-.student-frame1{
+.student-frame1 {
   flex: 0 0 40%;
-  
+
 }
 
-.student-frame2{
+.student-frame2 {
   flex: 0 0 60%;
   padding-left: 100px;
 }
 
-.student-frame1 img{
+.student-frame1 img {
   width: 80%;
   height: fit-content;
   margin-left: 20%;
@@ -325,26 +332,26 @@ nav img{
   margin-top: 10%;
 }
 
-.student .benefit{
+.student .benefit {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.student .benefit img{
+.student .benefit img {
   flex: 0 0 10%;
   max-width: 50px;
   height: auto;
-  
+
 }
 
-.student .benefit div{
+.student .benefit div {
   flex: 0 0 90%;
   padding-left: 20px;
 
 }
 
-.student-frame2 h2{
+.student-frame2 h2 {
   font-size: 2em;
   font-weight: bold;
   margin-right: 50px;
@@ -352,29 +359,29 @@ nav img{
   margin-top: 35px;
 }
 
-.student-frame2 p{
+.student-frame2 p {
   font-size: 15px;
   font-weight: 600;
 
 }
 
 
-.student .benefit h3{
+.student .benefit h3 {
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.student .benefit p{
+.student .benefit p {
   color: #696969;
   margin-top: 0px;
 }
 
-.highlight{
+.highlight {
   color: #4D1DFF;
 }
 
-.student-frame1 button{
+.student-frame1 button {
   width: 220px;
   height: 45px;
   font-size: 15px;
@@ -390,7 +397,7 @@ nav img{
 
 }
 
-.student-frame1 button:hover{
+.student-frame1 button:hover {
   background-color: #8E8FFA;
   border-width: 1px;
   border-color: #7752FE;
@@ -398,17 +405,17 @@ nav img{
 }
 
 /*Tutor section*/
-.tutor{
+.tutor {
   background-color: #A9BCFF;
   background-repeat: no-repeat;
 }
 
-.graphic img{
+.graphic img {
   max-width: 80%;
   margin-left: 10%;
 }
 
-.container3{
+.container3 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -418,39 +425,40 @@ nav img{
   padding-right: 200px;
 }
 
-.container3 div{
+.container3 div {
   flex: 0 0 50%;
 }
 
-.container3 img{
+.container3 img {
   flex: 0 0 50%;
   min-width: 40vw;
   height: auto;
 }
 
-.tutor h2{
+.tutor h2 {
   font-size: 2em;
   font-weight: bold;
 }
 
-.tutor h3, .tutor p{
+.tutor h3,
+.tutor p {
   font-size: 15px;
 }
 
-.tutor h3{
+.tutor h3 {
   font-weight: bold;
 }
 
-.tutor p{
+.tutor p {
   font-weight: 600;
 }
 
-.tutor .benefit p{
+.tutor .benefit p {
   color: #6E6E6E;
   margin-bottom: 0;
 }
 
-.tutor button{
+.tutor button {
   width: 200px;
   height: 45px;
   font-size: 15px;
@@ -464,18 +472,18 @@ nav img{
 
 }
 
-.tutor button:hover{
+.tutor button:hover {
   background-color: #8E8FFA;
   border-width: 1px;
   border-color: #7752FE;
   color: #000000;
 }
 
-.container3 p{
+.container3 p {
   margin-bottom: 30px;
 }
 
-.tutor hr{
+.tutor hr {
   width: 90%;
   border-color: #190482;
   border-width: 1px;
@@ -483,27 +491,27 @@ nav img{
 
 }
 
-.container4{
-  padding-top:50px;
+.container4 {
+  padding-top: 50px;
   padding-bottom: 70px;
   padding-left: 70px;
   padding-right: 70px;
 }
 
-.container4 h2{
+.container4 h2 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 80px;
 }
 
-.tutor .content{
+.tutor .content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
 }
 
-.tutor .benefit{
+.tutor .benefit {
   width: 270px;
   height: 180px;
   background-color: #FFFFFF;
@@ -517,17 +525,17 @@ nav img{
   border-color: #190482;
 }
 
-.graphic2 img{
+.graphic2 img {
   width: 80%;
   margin-left: 10%;
-  
+
 }
 
-.container4 h2{
+.container4 h2 {
   margin-top: -15%;
 }
 
-#circle-left{
+#circle-left {
   position: absolute;
   width: 12vw;
   left: 0;
@@ -535,25 +543,25 @@ nav img{
 }
 
 /*Testimonial section*/
-.testimonial{
+.testimonial {
   padding-top: 50px;
   padding-bottom: 50px;
   background-color: #190482;
   background-repeat: no-repeat;
 }
 
-.graphic3 img{
+.graphic3 img {
   width: 100%;
   margin-top: -7%;
   position: absolute;
 }
 
-.container5{
+.container5 {
   padding-right: 80px;
   padding-left: 80px;
 }
 
-.testimonial h2{
+.testimonial h2 {
   font-size: 2em;
   font-weight: bold;
   color: #FFFFFF;
@@ -562,80 +570,81 @@ nav img{
   margin-bottom: 50px;
 }
 
-.testimonial p{
+.testimonial p {
   font-size: 15px;
   font-weight: 600;
   text-align: center;
   margin: 30px;
 }
 
-.testimonial .frame{
+.testimonial .frame {
   display: flex;
   justify-content: center;
-  
+
 }
 
-.testimonial .test{
+.testimonial .test {
   width: 400px;
   height: fit-content;
   background-color: #FFFFFF;
   border: solid;
   border-color: #929292;
   border-width: 2px;
-  
+
 }
 
-.testimonial .test:nth-of-type(1){
+.testimonial .test:nth-of-type(1) {
   margin-top: 50px;
   margin-right: 300px;
 
 }
 
-.testimonial .test:nth-of-type(2){
+.testimonial .test:nth-of-type(2) {
   position: absolute;
 }
 
-.testimonial .test:nth-of-type(3){
+.testimonial .test:nth-of-type(3) {
   margin-top: 50px;
 }
 
-.testimonial .test:nth-of-type(1) p{
+.testimonial .test:nth-of-type(1) p {
   padding-right: 30px;
 }
 
-.testimonial .test:nth-of-type(3) p{
+.testimonial .test:nth-of-type(3) p {
   padding-left: 30px;
 }
 
-.person{
+.person {
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
 }
 
-.test:nth-of-type(1) .person, .test:nth-of-type(3) .person{
+.test:nth-of-type(1) .person,
+.test:nth-of-type(3) .person {
   background-color: #B5B6FF;
   margin-bottom: 0cm;
 }
 
-.test:nth-of-type(2) .person{
+.test:nth-of-type(2) .person {
   background-color: #C2D9FF;
 }
 
-.person img{
+.person img {
   margin-right: 20px;
   width: 50px;
   height: auto;
 }
 
-h4{
+h4 {
   font-size: 15px;
   font-weight: bold;
 }
 
 /*Footer section*/
-footer{
+footer {
   width: 100%;
   height: fit-content;
   background-color: #000000;
@@ -643,21 +652,21 @@ footer{
   font-size: 15px;
   padding-top: 50px;
   padding-bottom: 10px;
-  
+
 }
 
-#logo{
+#logo {
   align-self: center;
 }
 
-footer h4{
+footer h4 {
   font-size: 20px;
   font-weight: 600;
   margin-top: 0px;
   margin-bottom: 20px;
 }
 
-footer hr{
+footer hr {
   width: 95%;
   border-color: #ffffff78;
   border-width: 1px;
@@ -665,7 +674,7 @@ footer hr{
   margin-top: 35px;
 }
 
-footer .frame{
+footer .frame {
   display: flex;
   justify-content: center;
   gap: 150px;
@@ -673,40 +682,40 @@ footer .frame{
   margin-left: 150px;
 }
 
-.link{
+.link {
   width: fit-content;
   font-size: 15px;
-  
+
 }
 
-footer ul{
+footer ul {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
-  
+
 }
 
-.link a{
+.link a {
   color: #fff;
   text-decoration: none;
 }
 
-.link a:hover{
+.link a:hover {
   color: #8E8FFA;
 }
 
-footer .frame .link:nth-of-type(2){
+footer .frame .link:nth-of-type(2) {
   width: fit-content;
   margin: 0px;
   padding: 0px;
 }
 
-footer .frame div:nth-of-type(1){
+footer .frame div:nth-of-type(1) {
   width: fit-content;
   margin-left: 50px;
 }
 
-footer .frame div:nth-of-type(2) li{
+footer .frame div:nth-of-type(2) li {
   display: flex;
   width: 300px;
   margin-bottom: 15px;
@@ -714,63 +723,67 @@ footer .frame div:nth-of-type(2) li{
   align-items: flex-start;
 }
 
-footer .frame div:nth-of-type(2) img{
+footer .frame div:nth-of-type(2) img {
   width: 30px;
   margin-right: 10px;
 }
 
-footer p{
+footer p {
   margin-bottom: 0px;
   margin-top: 10px;
   margin-left: 80px;
 }
 
-footer .frame div:nth-of-type(1) li{
+footer .frame div:nth-of-type(1) li {
   margin-bottom: 10px;
 }
 
-  /* smaller screen */
+/* smaller screen */
 
-nav .fas{
+nav .fas {
   display: none;
 }
 
-@media(max-width:700px){
+@media(max-width:700px) {
 
   /* all change in nav part */
-  
-  .nav-links ul li{
+
+  .nav-links ul li {
     display: block;
   }
-  .nav-links{
+
+  .nav-links {
     position: absolute;
     background: #190482;
     height: 100vh;
     width: 200px;
-    top:0;
+    top: 0;
     /* right changed from 0 to -200px to hide the menu */
     right: -200px;
     text-align: left;
-    z-index: 1;    /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
-    transition:1s;
+    z-index: 1;
+    /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
+    transition: 1s;
   }
+
   /* show the menu icon in smaller screen */
-  nav .fas{
+  nav .fas {
     display: block;
     color: #fff;
     margin-right: 10px;
     font-size: 20px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    
+
   }
 
   nav .fas:hover {
-      transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+    transform: scale(1.2);
+    /* Enlarge the image by 20% when hovering over it */
   }
 
-  .nav-links ul{
-      padding: 30px;
+  .nav-links ul {
+    padding: 30px;
   }
 
   /* nav part done*/
@@ -783,291 +796,292 @@ nav .fas{
     height: fit-content;
     border: 2px solid #000000;
     border-radius: 10px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
     display: none;
   }
 
-  body{
+  body {
     margin: 0cm;
     padding: 0cm;
     overflow-x: hidden;
     display: block;
-    
+
   }
 
-  .main section{
+  .main section {
     width: 100vw;
-    
+
   }
 
-  #doodle-bg{
+  #doodle-bg {
     visibility: hidden;
   }
 
 
-  .hero .content{
+  .hero .content {
     display: flex;
     width: 100vw;
     height: 100vw;
     margin-left: 15%;
     margin-right: 10%;
     margin-top: 10%;
-    
+
   }
 
-  .item{
+  .item {
     margin-right: 0;
   }
 
-  .item h2{
+  .item h2 {
     width: 200%;
   }
 
-  .item p{
+  .item p {
     width: 90%;
   }
-  
-  .welcome-ill{
+
+  .welcome-ill {
     align-self: flex-end;
     padding-bottom: 20%;
   }
 
-   /*Student section*/
-.student{
-  position: relative;
-  background: linear-gradient(to bottom, #C2D9FF 0%, #C2D9FF 90%, #A9BCFF 100%);
-  width: auto;
-  height: fit-content;
-  
-}
+  /*Student section*/
+  .student {
+    position: relative;
+    background: linear-gradient(to bottom, #C2D9FF 0%, #C2D9FF 90%, #A9BCFF 100%);
+    width: auto;
+    height: fit-content;
 
-.container2{
-  display: flex;
-  width: 500px;
-  height: auto;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-direction: column;
-}
+  }
 
-.student-frame1{
-  flex: 0 0 100%;
-  width: 70%;
-  margin-right: 50%;
-}
+  .container2 {
+    display: flex;
+    width: 500px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+  }
 
-.student-frame2{
-  flex: 0 0 100%;
-  width: 70%;
-  margin-right: 50%;
-}
+  .student-frame1 {
+    flex: 0 0 100%;
+    width: 70%;
+    margin-right: 50%;
+  }
 
-.student-frame1 img{
-  width: 80%;
-  height: fit-content;
-}
+  .student-frame2 {
+    flex: 0 0 100%;
+    width: 70%;
+    margin-right: 50%;
+  }
 
-.student .benefit{
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
+  .student-frame1 img {
+    width: 80%;
+    height: fit-content;
+  }
 
-.student .benefit img{
-  flex: 0 0 10%;
-  max-width: 50px;
-  height: auto;
-  
-}
+  .student .benefit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 
-.student .benefit div{
-  flex: 0 0 90%;
-  padding-left: 20px;
-}
+  .student .benefit img {
+    flex: 0 0 10%;
+    max-width: 50px;
+    height: auto;
 
-.student .benefit p{
-  color: #696969;
-  margin-top: 0px;
-  width: 85%;
-}
+  }
 
-.student-frame1 button{
-  width: 220px;
-  height: 45px;
-  font-size: 15px;
-  font-weight: 600;
-  border-style: solid;
-  border-radius: 10px;
-  border-width: 0;
-  color: #FFFFFF;
-  background-color: #190482;
-  margin-left: 30%;
-  margin-right: auto;
-  cursor: pointer;
+  .student .benefit div {
+    flex: 0 0 90%;
+    padding-left: 20px;
+  }
 
-}
+  .student .benefit p {
+    color: #696969;
+    margin-top: 0px;
+    width: 85%;
+  }
 
-.student-frame2 h2{
-  font-size: 2em;
-  font-weight: bold;
-  margin-right: 50px;
-  margin-bottom: 5px;
-  margin-top: 35px;
-  width: 100%;
-}
+  .student-frame1 button {
+    width: 220px;
+    height: 45px;
+    font-size: 15px;
+    font-weight: 600;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 0;
+    color: #FFFFFF;
+    background-color: #190482;
+    margin-left: 30%;
+    margin-right: auto;
+    cursor: pointer;
 
-.container3{
-  margin-top: -15%;
-}
+  }
 
-.tutor h3, .tutor p{
-  font-size: 15px;
-}
+  .student-frame2 h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-right: 50px;
+    margin-bottom: 5px;
+    margin-top: 35px;
+    width: 100%;
+  }
 
-.tutor h3{
-  font-weight: bold;
-}
+  .container3 {
+    margin-top: -15%;
+  }
 
-.tutor p{
-  font-weight: 600;
-}
+  .tutor h3,
+  .tutor p {
+    font-size: 15px;
+  }
 
-.tutor .benefit p{
-  color: #6E6E6E;
-  margin-bottom: 0;
-}
+  .tutor h3 {
+    font-weight: bold;
+  }
 
-.container4{
-  padding-top:50px;
-  padding-bottom: 50px;
-  padding-left: 70px;
-  padding-right: 70px;
-  margin-top: -18%;
-}
+  .tutor p {
+    font-weight: 600;
+  }
 
-.tutor .content{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
+  .tutor .benefit p {
+    color: #6E6E6E;
+    margin-bottom: 0;
+  }
 
-.tutor .benefit{
-  width: 270px;
-  height: 180px;
-  background-color: #FFFFFF;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-  padding-right: 10px;
-  border: solid;
-  border-radius: 20px;
-  border-width: 5px;
-  border-color: #190482;
-  margin-top: 10%;
-}
+  .container4 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin-top: -18%;
+  }
 
-.container4 h2{
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 0;
-}
+  .tutor .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
 
-/*Testimonial section*/
-.testimonial{
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: #190482;
-  background-repeat: no-repeat;
-}
+  .tutor .benefit {
+    width: 270px;
+    height: 180px;
+    background-color: #FFFFFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 10px;
+    border: solid;
+    border-radius: 20px;
+    border-width: 5px;
+    border-color: #190482;
+    margin-top: 10%;
+  }
 
-.graphic3 img{
-  width: 100%;
-  margin-top: -13%;
-  position: absolute;
-}
+  .container4 h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
-.container5{
-  padding-left: 8%;
-}
+  /*Testimonial section*/
+  .testimonial {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #190482;
+    background-repeat: no-repeat;
+  }
 
-.container5 h2{
-  margin-left: 10%;
-}
+  .graphic3 img {
+    width: 100%;
+    margin-top: -13%;
+    position: absolute;
+  }
 
-.testimonial .frame{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+  .container5 {
+    padding-left: 8%;
+  }
 
-.testimonial .test{
-  width: 400px;
-  height: fit-content;
-  background-color: #FFFFFF;
-  border: solid;
-  border-color: #929292;
-  border-width: 2px;
-}
+  .container5 h2 {
+    margin-left: 10%;
+  }
 
-.testimonial .test:nth-of-type(1){
-  margin-top: 0;
-}
+  .testimonial .frame {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-.testimonial .test:nth-of-type(2){
-  position: relative;
-  margin-top: 20%;
-}
+  .testimonial .test {
+    width: 400px;
+    height: fit-content;
+    background-color: #FFFFFF;
+    border: solid;
+    border-color: #929292;
+    border-width: 2px;
+  }
 
-.testimonial .test:nth-of-type(3){
-  margin-top: 20%;
-}
+  .testimonial .test:nth-of-type(1) {
+    margin-top: 0;
+  }
 
-.testimonial .test:nth-of-type(1) p{
-  padding-right: 0;
-}
+  .testimonial .test:nth-of-type(2) {
+    position: relative;
+    margin-top: 20%;
+  }
 
-.testimonial .test:nth-of-type(3) p{
-  padding-left: 0;
-}
+  .testimonial .test:nth-of-type(3) {
+    margin-top: 20%;
+  }
 
-/*Footer section*/
-footer{
-  width: 100%;
-  height: fit-content;
-  background-color: #000000;
-  color: #fff;
-  font-size: 15px;
-  padding-top: 50px;
-  padding-bottom: 10px;
-  
-}
+  .testimonial .test:nth-of-type(1) p {
+    padding-right: 0;
+  }
 
-#logo{
-  margin-right: 10vw;
-}
+  .testimonial .test:nth-of-type(3) p {
+    padding-left: 0;
+  }
 
-footer .frame{
-  display: flex;
-  padding: 0px;
-  margin-right: 20vw;
-  flex-direction: column;
-  align-items: center;
-}
+  /*Footer section*/
+  footer {
+    width: 100%;
+    height: fit-content;
+    background-color: #000000;
+    color: #fff;
+    font-size: 15px;
+    padding-top: 50px;
+    padding-bottom: 10px;
 
-footer .frame div:nth-of-type(1){
-  width: 150px;
-  margin-right: 10vw;
-}
+  }
 
-footer p{
-  margin-bottom: 0px;
-  margin-top: 10px;
-  text-align: center;
-  margin-right: 15vw;
-}
+  #logo {
+    margin-right: 10vw;
+  }
+
+  footer .frame {
+    display: flex;
+    padding: 0px;
+    margin-right: 20vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .frame div:nth-of-type(1) {
+    width: 150px;
+    margin-right: 10vw;
+  }
+
+  footer p {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    text-align: center;
+    margin-right: 15vw;
+  }
 
 
 }

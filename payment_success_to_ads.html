@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,22 +17,23 @@
     <div class="box">
         <img src="./images/ic_payment_done.png" alt="payment_done">
         <h3>Your Payment was Successful!</h2>
-        <p>Thank you for your payment</p>
-        <button id="doneBtn">Done</button>
+            <p>Thank you for your payment</p>
+            <button id="doneBtn">Done</button>
     </div>
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // Get the "Done" button
             var doneButton = document.getElementById("doneBtn");
-            
+
             // Add click event listener to the "Done" button
-            doneButton.addEventListener("click", function() {
+            doneButton.addEventListener("click", function () {
                 // Redirect to create advertisement page
                 window.location.href = "CreateAdvertisementPost.html";
             });
         });
     </script>
 </body>
+
 </html>

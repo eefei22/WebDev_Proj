@@ -1,4 +1,104 @@
-footer{
+footer {
+  width: 100%;
+  height: fit-content;
+  background-color: #000000;
+  color: #fff;
+  font-size: 15px;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+#logo {
+  align-self: center;
+}
+
+footer h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+footer hr {
+  width: 95%;
+  border-color: #ffffff78;
+  border-width: 1px;
+  margin-bottom: 0px;
+  margin-top: 35px;
+  margin-left: 35px;
+}
+
+footer .frame {
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  padding: 0px;
+  margin-left: 150px;
+}
+
+.link {
+  width: fit-content;
+  font-size: 15px;
+
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+
+}
+
+.link a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.link a:hover {
+  color: #8E8FFA;
+}
+
+footer .frame .link:nth-of-type(2) {
+  width: fit-content;
+  margin: 0px;
+  padding: 0px;
+}
+
+footer .frame div:nth-of-type(1) {
+  width: fit-content;
+  margin-left: 50px;
+}
+
+footer .frame div:nth-of-type(2) li {
+  display: flex;
+  width: 300px;
+  margin-bottom: 15px;
+  margin-right: 0;
+  align-items: flex-start;
+}
+
+footer .frame div:nth-of-type(2) img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+footer p {
+  margin-bottom: 0px;
+  margin-top: 10px;
+  margin-left: 80px;
+}
+
+footer .frame div:nth-of-type(1) li {
+  margin-bottom: 10px;
+}
+
+.filled {
+  background-color: #FFFFFF;
+}
+
+@media(max-width:700px) {
+  footer {
     width: 100%;
     height: fit-content;
     background-color: #000000;
@@ -6,131 +106,31 @@ footer{
     font-size: 15px;
     padding-top: 50px;
     padding-bottom: 10px;
-    font-family: "Poppins", sans-serif;
+
   }
 
-  #logo{
-    align-self: center;
+  #logo {
+    margin-right: 10vw;
   }
 
-  footer h4{
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 0px;
-    margin-bottom: 20px;
-  }
-
-  footer hr{
-    width: 95%;
-    border-color: #ffffff78;
-    border-width: 1px;
-    margin-bottom: 0px;
-    margin-top: 35px;
-    margin-left: 35px;
-  }
-
-  footer .frame{
+  footer .frame {
     display: flex;
-    justify-content: center;
-    gap: 150px;
     padding: 0px;
-    margin-left: 150px;
+    margin-right: 20vw;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .link{
-    width: fit-content;
-    font-size: 15px;
-    
+  footer .frame div:nth-of-type(1) {
+    width: 150px;
+    margin-right: 10vw;
   }
 
-  footer ul{
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-    
-  }
-
-  .link a{
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .link a:hover{
-    color: #8E8FFA;
-  }
-
-  footer .frame .link:nth-of-type(2){
-    width: fit-content;
-    margin: 0px;
-    padding: 0px;
-  }
-
-  footer .frame div:nth-of-type(1){
-    width: fit-content;
-    margin-left: 50px;
-  }
-
-  footer .frame div:nth-of-type(2) li{
-    display: flex;
-    width: 300px;
-    margin-bottom: 15px;
-    margin-right: 0;
-    align-items: flex-start;
-  }
-
-  footer .frame div:nth-of-type(2) img{
-    width: 30px;
-    margin-right: 10px;
-  }
-
-  footer p{
+  footer p {
     margin-bottom: 0px;
     margin-top: 10px;
-    margin-left: 80px;
+    text-align: center;
+    margin-right: 15vw;
   }
 
-  footer .frame div:nth-of-type(1) li{
-    margin-bottom: 10px;
-  }
-
-  .filled{
-    background-color: #FFFFFF;
-  }
-
-  @media(max-width:700px){
-    footer{
-        width: 100%;
-        height: fit-content;
-        background-color: #000000;
-        color: #fff;
-        font-size: 15px;
-        padding-top: 50px;
-        padding-bottom: 10px;
-        
-      }
-    
-      #logo{
-        margin-right: 10vw;
-      }
-    
-      footer .frame{
-        display: flex;
-        padding: 0px;
-        margin-right: 20vw;
-        flex-direction: column;
-        align-items: center;
-      }
-  
-      footer .frame div:nth-of-type(1){
-        width: 150px;
-        margin-right: 10vw;
-      }
-    
-      footer p{
-        margin-bottom: 0px;
-        margin-top: 10px;
-        text-align: center;
-        margin-right: 15vw;
-      }
-  
-  }
+}

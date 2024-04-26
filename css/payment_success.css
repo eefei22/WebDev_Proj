@@ -25,10 +25,14 @@ nav {
     display: flex;
     padding: 5px 5px;
     background-color: #190482;
-    position: fixed; /* Fixed position */
-    top: 0; /* Top of the page */
-    width: 100%; /* Full width */
-    z-index: 1000; /* Ensure nav is above other content */
+    position: fixed;
+    /* Fixed position */
+    top: 0;
+    /* Top of the page */
+    width: 100%;
+    /* Full width */
+    z-index: 1000;
+    /* Ensure nav is above other content */
 }
 
 .box {
@@ -36,10 +40,12 @@ nav {
     border-radius: 20px;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
-    border: 2px solid #ddd; /* Add border */
+    border: 2px solid #ddd;
+    /* Add border */
     text-align: center;
     margin-top: 50px;
-    max-width: 600px; /* Limit the maximum width of the white box */
+    max-width: 600px;
+    /* Limit the maximum width of the white box */
 }
 
 .box img {
@@ -57,7 +63,7 @@ p {
     font-size: 15px;
 }
 
-#becomeTutorBtn{
+#becomeTutorBtn {
     padding: 10px 20px;
     margin-top: 40px;
     background-color: #7752FE;
@@ -68,7 +74,7 @@ p {
     margin-bottom: 15px;
 }
 
-#doneBtn{
+#doneBtn {
     background-color: #190482;
     border-radius: 20px;
     padding: 8px;
@@ -78,48 +84,49 @@ p {
     color: #fff;
 }
 
-#doneBtn:hover{
+#doneBtn:hover {
     background-color: #7752FE;
 }
 
 
 /* subscription payment*/
-h1{
+h1 {
     font-size: 20px;
 }
 
-h2{
+h2 {
     font-size: 17px;
 }
 
-.benefits{
+.benefits {
     margin-top: 20px;
     font-size: 15px;
 }
 
-.benefits li{
+.benefits li {
     list-style: none;
     text-align: start;
     margin-top: 5px;
     position: relative;
 }
 
-.benefits li::before{
-    content: "✔"; 
+.benefits li::before {
+    content: "✔";
     margin-right: 10px;
 }
 
-.additional{
+.additional {
     display: flex;
     font-size: 15px;
     margin-bottom: 1px;
 }
 
-.additional li{
+.additional li {
     margin-left: 40px;
     text-align: start;
 }
-.close{
+
+.close {
     width: 30%;
     padding: 10px 20px;
     margin-top: 8px;

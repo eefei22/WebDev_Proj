@@ -1,9 +1,11 @@
-html, body{
-background: rgba(194, 217, 255, 0.5);
-height: 100%;
-margin: 0;
-padding: 0; 
+html,
+body {
+    background: rgba(194, 217, 255, 0.5);
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 .user_button {
     border: none;
     padding: 0.625em;
@@ -51,38 +53,38 @@ padding: 0;
     box-shadow: 0 0 0.5em 0.1em #c3c3c333;
 }
 
-.inbox_container{
+.inbox_container {
     background-color: rgb(230, 230, 230);
     float: left;
     width: 30%;
     height: 100%;
-    font-family: 'Inter', Helvetica ;
+    font-family: 'Inter', Helvetica;
 }
 
-.user_container{
+.user_container {
     margin: 1em;
 }
 
-.profile_pic{
+.profile_pic {
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 200px;
     margin-right: 1em;
-  }
+}
 
-.profile_container{
-    display: inline-block; 
-    }
+.profile_container {
+    display: inline-block;
+}
 
-.chat_username{
+.chat_username {
     display: block;
     font-size: 18px;
     font-family: "Inter", Helvetica;
     text-align: left;
 }
 
-.chat_preview{
+.chat_preview {
     display: block;
     font-size: 13px;
     opacity: 0.6;
@@ -94,13 +96,13 @@ padding: 0;
     float: right;
     width: 70%;
     background: rgba(194, 217, 255, 0.5);
-    font-family: 'Inter', Helvetica ;
+    font-family: 'Inter', Helvetica;
     height: 100%;
-    
+
 }
 
 .inbox_header {
-    margin:0;
+    margin: 0;
     color: white;
     background-color: #7752FE;
     padding: 0.6em 0em 0.6em 2em;
@@ -108,7 +110,7 @@ padding: 0;
     border-bottom-left-radius: 25px;
 }
 
-.header_container{
+.header_container {
     display: flex;
     background-color: #7752FE;
     border-bottom-right-radius: 25px;
@@ -116,7 +118,7 @@ padding: 0;
 }
 
 .chat-header {
-    margin:0;
+    margin: 0;
     color: white;
     background-color: #7752FE;
     padding: 0.6em 0em 0.6em 2em;
@@ -150,10 +152,10 @@ padding: 0;
 
 .lavender-bg {
     background-color: #8E8FFA;
-    margin-left:0; 
-    min-width: 100px; 
-    max-width: 450px; 
-    width: auto; 
+    margin-left: 0;
+    min-width: 100px;
+    max-width: 450px;
+    width: auto;
 }
 
 
@@ -161,8 +163,8 @@ padding: 0;
     background-color: #7752FE;
     margin-left: auto;
     margin-right: 0;
-    min-width: 100px; 
-    max-width: 450px; 
+    min-width: 100px;
+    max-width: 450px;
     width: auto;
 }
 
@@ -211,7 +213,7 @@ padding: 0;
     margin: .5em auto;
 }
 
-.tog_chat{
+.tog_chat {
     display: none;
     color: transparent;
 }
@@ -219,28 +221,28 @@ padding: 0;
 
 @media screen and (max-width: 768px) {
     .inbox_container {
-      float: none;
-      width:100%;
+        float: none;
+        width: 100%;
     }
 
     .chat_container {
         float: none;
         width: 100%;
         background: rgba(194, 217, 255, 0.5);
-        font-family: 'Poppins', Helvetica ;
+        font-family: 'Poppins', Helvetica;
         height: 100%;
-        
+
     }
 
-    .header_container{
+    .header_container {
         height: 8%;
     }
-    
-    .chat-header{
+
+    .chat-header {
         flex: 1;
     }
 
-    .tog_chat{
+    .tog_chat {
         flex: 0 0 auto;
         display: block;
         background-color: transparent;
@@ -249,6 +251,6 @@ padding: 0;
         size: 20px;
         cursor: pointer;
     }
-    
 
-  }
+
+}

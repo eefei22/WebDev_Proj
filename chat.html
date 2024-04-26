@@ -1,130 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
-    <title>Chat with tutor</title>
-    <link rel="stylesheet" href="css/chat.css" />
-    <!-- nav icons in smaller screen -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- font family -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+  <title>Chat with tutor</title>
+  <link rel="stylesheet" href="css/chat.css" />
+  <!-- nav icons in smaller screen -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- font family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+    rel="stylesheet">
 
 
-  </head>
-  <body>
+</head>
 
-    <div class="inbox_container" id="inbox">
-      <div class = "header_container">
-        <button class="tog_chat" onclick="hideMenu()">
-          <img src="images/close-button.png" width="25" height="25">
-        </button>
-        <h2 class = "inbox_header">Chats</h2>
-      </div>
-        <div class = "user_container"><button class = "user_button">
-            <img class="profile_pic" src="images\tutor-4-image.png"/>
-            <div class=profile_container>
-            <div class="chat_username">Jennifer Lawrence </div>
-            <div class="chat_preview">chat history preview </div>
-        </div></button>
+<body>
+
+  <div class="inbox_container" id="inbox">
+    <div class="header_container">
+      <button class="tog_chat" onclick="hideMenu()">
+        <img src="images/close-button.png" width="25" height="25">
+      </button>
+      <h2 class="inbox_header">Chats</h2>
+    </div>
+    <div class="user_container"><button class="user_button">
+        <img class="profile_pic" src="images\tutor-4-image.png" />
+        <div class=profile_container>
+          <div class="chat_username">Jennifer Lawrence </div>
+          <div class="chat_preview">chat history preview </div>
         </div>
-      
-        <div class = "user_container"><button class = "user_button">
-          <img class="profile_pic" src="images\tutor-2-image.png"/>
-          <div class=profile_container>
+      </button>
+    </div>
+
+    <div class="user_container"><button class="user_button">
+        <img class="profile_pic" src="images\tutor-2-image.png" />
+        <div class=profile_container>
           <div class="chat_username">Muthu </div>
           <div class="chat_preview">chat history preview </div>
-      </div></button>
-      </div>
+        </div>
+      </button>
+    </div>
 
-      <div class = "user_container"><button class = "user_button">
-        <img class="profile_pic" src="images\tutor-6-image.png"/>
+    <div class="user_container"><button class="user_button">
+        <img class="profile_pic" src="images\tutor-6-image.png" />
         <div class=profile_container>
-        <div class="chat_username">Lei Lou Dao </div>
-        <div class="chat_preview">chat history preview </div>
-    </div></button>
-    </div>
-
-        <!-- Person selector: buttons to select whether to chat as Tutor or Tutee -->
-        <div class="person-selector">
-          <button class="button person-selector-button active-person" id="tutor-selector">Tutor</button>
-          <button class="button person-selector-button" id="tutee-selector">Tutee</button>
-      </div>
-
-
-    </div>
-
-
-    <div class="chat_container" id="chat">
-      <div class = "header_container">
-        <button class="tog_chat" onclick="showMenu()">
-          <img src="images/hbg_icon.png" width="25" height="25">
-        </button>
-        
-        <h2 class="chat-header">tutor chatting...</h2>
-      </div>
-
-      <div class="chat-messages">
-        <div class="message lavender-bg">
-          <div class="message-sender">tutor</div>
-          <div class="message-text">Hey tutee, what's up?</div>
-          <div class="message-timestamp">10:30 AM</div>
+          <div class="chat_username">Lei Lou Dao </div>
+          <div class="chat_preview">chat history preview </div>
         </div>
-        <div class="message purple-bg">
-          <div class="message-sender">tutee</div>
-          <div class="message-text">Hey there, let's get this started?</div>
-          <div class="message-timestamp">10:35 AM</div>
-        </div>
-      </div>
-
-      <form class="chat-input-form">
-        <input type="text" class="chat-input" required placeholder="Type message here..." />
-        <button type="submit" class="button send-button">Send</button>
-      </form>
-      <button class="button clear-chat-button">Clear Chat</button>
+      </button>
     </div>
 
-    <script src="scripts/script.js"></script>
+    <!-- Person selector: buttons to select whether to chat as Tutor or Tutee -->
+    <div class="person-selector">
+      <button class="button person-selector-button active-person" id="tutor-selector">Tutor</button>
+      <button class="button person-selector-button" id="tutee-selector">Tutee</button>
+    </div>
 
-    <script>
-      var windowWidth = window.innerWidth;
-      var inboxElement = document.getElementById("inbox");
-      var chatElement = document.getElementById("chat");
-      var hideButton = document.getElementById("hideButton");
-      var showButton = document.getElementById("showButton");
 
-      function hideMenu() {
-          inboxElement.style.display = "none";
-          chatElement.style.display = "block";
+  </div>
+
+
+  <div class="chat_container" id="chat">
+    <div class="header_container">
+      <button class="tog_chat" onclick="showMenu()">
+        <img src="images/hbg_icon.png" width="25" height="25">
+      </button>
+
+      <h2 class="chat-header">tutor chatting...</h2>
+    </div>
+
+    <div class="chat-messages">
+      <div class="message lavender-bg">
+        <div class="message-sender">tutor</div>
+        <div class="message-text">Hey tutee, what's up?</div>
+        <div class="message-timestamp">10:30 AM</div>
+      </div>
+      <div class="message purple-bg">
+        <div class="message-sender">tutee</div>
+        <div class="message-text">Hey there, let's get this started?</div>
+        <div class="message-timestamp">10:35 AM</div>
+      </div>
+    </div>
+
+    <form class="chat-input-form">
+      <input type="text" class="chat-input" required placeholder="Type message here..." />
+      <button type="submit" class="button send-button">Send</button>
+    </form>
+    <button class="button clear-chat-button">Clear Chat</button>
+  </div>
+
+  <script src="scripts/script.js"></script>
+
+  <script>
+    var windowWidth = window.innerWidth;
+    var inboxElement = document.getElementById("inbox");
+    var chatElement = document.getElementById("chat");
+    var hideButton = document.getElementById("hideButton");
+    var showButton = document.getElementById("showButton");
+
+    function hideMenu() {
+      inboxElement.style.display = "none";
+      chatElement.style.display = "block";
+    }
+
+    function showMenu() {
+      inboxElement.style.display = "block";
+      chatElement.style.display = "none";
+
+    }
+
+    function toggleElements() {
+      if (windowWidth > 768) {
+        inboxElement.style.display = "block";
+        chatElement.style.display = "block";
       }
-  
-      function showMenu() {
-          inboxElement.style.display = "block";
-          chatElement.style.display = "none";
 
+      else {
+        showButton.addEventListener("click", showMenu)
+        showButton.addEventListener("click", hideMenu)
       }
-        
-      function toggleElements() {
-          if (windowWidth > 768) {
-          inboxElement.style.display = "block";
-          chatElement.style.display = "block";
-        }
-        
-        else {
-          showButton.addEventListener("click", showMenu)
-          showButton.addEventListener("click", hideMenu)
-        }
-      }
+    }
 
-      toggleElements();
-      window.addEventListener("resize", toggleElements);
+    toggleElements();
+    window.addEventListener("resize", toggleElements);
   </script>
-  
-  
 
 
-  </body>
+
+
+</body>
+
 </html>

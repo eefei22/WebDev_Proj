@@ -1,6 +1,6 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
-*{
+* {
   transition: all .2s linear;
 }
 
@@ -13,245 +13,249 @@ body {
   height: auto;
   background-color: #FFFFFF;
   padding: 0px;
-  margin: 0px; 
+  margin: 0px;
 
-  }
+}
 
-  .container{
-    flex: 0 0 50%;
-    max-width: 100vw;
-    
-  }
+.container {
+  flex: 0 0 50%;
+  max-width: 100vw;
 
-  .container:nth-of-type(1){
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    width: fit-content; 
-    margin: 0 auto; 
-    align-items: center;
-  
-  }
+}
 
-  .container:nth-of-type(2){
-    background-color: #8E8FFA;
-    width: 100vw;
-    height: 100vh;
-    border-top-left-radius: 25px;   
-    border-bottom-left-radius: 25px; 
-    background-position: center;
-    background-size: 80%;
-    background-repeat: no-repeat;
-    
-  } 
+.container:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  align-items: center;
 
-  .container:nth-of-type(2) img{
-    width: 80%;
-    margin-left: 10%;
-  }
-  
-  #close-button{
-      position: absolute; 
-      right: 30px;
-      top: 30px;
-  }
+}
 
-  #close-button:hover{
-    transition: transform 0.3s ease;
-    transform: scale(1.2);
-  }
+.container:nth-of-type(2) {
+  background-color: #8E8FFA;
+  width: 100vw;
+  height: 100vh;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
 
-  h1{
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 25px;
-    margin-right: 62px;
-  }
+}
 
-  label {
-    display: block;
-  }
+.container:nth-of-type(2) img {
+  width: 80%;
+  margin-left: 10%;
+}
 
-  #email-label, #password-label{
-    font-size: 15px;
-    font-weight: 600;
+#close-button {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
 
-  }
+#close-button:hover {
+  transition: transform 0.3s ease;
+  transform: scale(1.2);
+}
 
-  input{
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #C9C8C8;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    margin-top: 0;
-  }
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 25px;
+  margin-right: 62px;
+}
 
-  ::placeholder{
-    color: #929292;
-  }
+label {
+  display: block;
+}
 
-  .form-group{
-    margin-bottom: 20px;
-  }
+#email-label,
+#password-label {
+  font-size: 15px;
+  font-weight: 600;
 
-  .form-group:nth-of-type(2){
-    margin-bottom: 0;
-  }
+}
 
-  .pswd-group {
-    position: relative;
-  }
-  
-  .pswd-group input[type="password"] {
-    width: 270px;
-    padding: 10px;
-    border: 1px solid #C9C8C8;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    margin-top: 0;
-    padding-right: 40px; /* Make space for the toggle button */
-  }
-  
-  /* Eye icon */
-  #togglePassword {
-    position: absolute;
-    right: 10px; /* Adjust as needed */
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
+input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #C9C8C8;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 0;
+}
 
-  #forgot-pswd{
-    position: absolute;
-    color: #190482;
-    font-size: 15px;
-    font-weight: 600;
-    left: 27%;
-  }
+::placeholder {
+  color: #929292;
+}
 
-  #forgot-pswd:hover{
-    color: #7752FE;
-  }
+.form-group {
+  margin-bottom: 20px;
+}
 
-  #login-btn{
-    width: 320px;
-    color: #FFFFFF;
-    font-size: 15px;
-    font-weight: 600;
-    background-color: #190482;
-    border: none;
-    margin-bottom: 5px;
-    margin-top: 40px;
-    cursor: pointer;
-  }
+.form-group:nth-of-type(2) {
+  margin-bottom: 0;
+}
 
-  #login-btn:hover{
-    color: #000000;
-    background-color: #8E8FFA;
-  }
+.pswd-group {
+  position: relative;
+}
 
-  .sign-in p{
-    text-align: center;
-    font-size: 15px;
-    font-weight: 600;
-    margin-right: 10px;
-    margin-top: 15px;
-  }
+.pswd-group input[type="password"] {
+  width: 270px;
+  padding: 10px;
+  border: 1px solid #C9C8C8;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 0;
+  padding-right: 40px;
+  /* Make space for the toggle button */
+}
 
-  #login{
-    text-decoration: underline;
-    color: #190482;
-  }
+/* Eye icon */
+#togglePassword {
+  position: absolute;
+  right: 10px;
+  /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 
-  #login:hover{
-    color: #7752FE;
-  }
+#forgot-pswd {
+  position: absolute;
+  color: #190482;
+  font-size: 15px;
+  font-weight: 600;
+  left: 27%;
+}
 
-  /*Reset password*/
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.3s ease;
-  }
+#forgot-pswd:hover {
+  color: #7752FE;
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+#login-btn {
+  width: 320px;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #190482;
+  border: none;
+  margin-bottom: 5px;
+  margin-top: 40px;
+  cursor: pointer;
+}
 
-  .modal h2{
-    font-size: 2em;
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 25px;
-  }
-  
-  /* Modal content */
-  .modal-content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #8E8FFA;
-    margin: auto;
-    padding: 50px;
-    border-radius: 20px;
-    width: fit-content;
+#login-btn:hover {
+  color: #000000;
+  background-color: #8E8FFA;
+}
+
+.sign-in p {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+#login {
+  text-decoration: underline;
+  color: #190482;
+}
+
+#login:hover {
+  color: #7752FE;
+}
+
+/*Reset password*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
-  .modal-content label{
-    font-size: 15px;
-    font-weight: 600;
+  to {
+    opacity: 1;
   }
+}
 
-  .modal-content input{
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #C9C8C8;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    margin-top: 0;
-    margin-bottom: 20px;
-  }
+.modal h2 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
 
-  .modal-content button{
-    width: 100%;
-    color: #FFFFFF;
-    font-size: 15px;
-    font-weight: 600;
-    background-color: #190482;
-    border: none;
-    margin-bottom: 5px;
-    margin-top: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 10px;
-    border: 1px solid #190482;
-    cursor: pointer;
-  }
+/* Modal content */
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #8E8FFA;
+  margin: auto;
+  padding: 50px;
+  border-radius: 20px;
+  width: fit-content;
+}
 
-  .modal-content button:hover{
-    color: #000000;
-    background-color: #7752FE;
-    border: 1px solid #190482;
-  }
+.modal-content label {
+  font-size: 15px;
+  font-weight: 600;
+}
 
-  /* Styles for password input in reset password form */
+.modal-content input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #C9C8C8;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  width: 100%;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #190482;
+  border: none;
+  margin-bottom: 5px;
+  margin-top: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #190482;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  color: #000000;
+  background-color: #7752FE;
+  border: 1px solid #190482;
+}
+
+/* Styles for password input in reset password form */
 .pswd-container {
   position: relative;
 }
@@ -264,7 +268,8 @@ body {
   font-size: 15px;
   font-weight: 500;
   margin-top: 0;
-  padding-right: 40px; /* Make space for the toggle button */
+  padding-right: 40px;
+  /* Make space for the toggle button */
 }
 
 /* Eye icon */
@@ -276,73 +281,72 @@ body {
   cursor: pointer;
 }
 
-  /* Close button */
-  .close {
+/* Close button */
+.close {
+  position: absolute;
+  color: #000;
+  right: 20px;
+  bottom: 330px;
+  font-size: 50px;
+  font-weight: 200;
+
+}
+
+.close:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform: scale(1.15);
+}
+
+@media (max-width: 700px) {
+  body {
+    font-family: "Poppins", sans-serif;
+    width: 100vw;
+    height: auto;
+    background-color: #8E8FFA;
+    padding: 0px;
+    margin: 0px;
+
+  }
+
+  .container:nth-of-type(1) {
+    height: fit-content;
+    width: fit-content;
+    margin: 50px 50px;
+    margin-top: 60px;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+  }
+
+  .container:nth-of-type(2) {
+    display: none;
+  }
+
+  .container:nth-of-type(2) img {
+    display: none;
+  }
+
+  #close-button {
     position: absolute;
-    color: #000;
-    right: 20px;
-    bottom: 330px;
-    font-size: 50px;
-    font-weight: 200;
-    
+    right: 30px;
+    top: 30px;
   }
-  
-  .close:hover {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+
+  #close-button:hover {
     transition: transform 0.3s ease;
-    transform: scale(1.15);
+    transform: scale(1.2);
   }
 
-  @media (max-width: 700px) {
-    body {
-      font-family: "Poppins", sans-serif;
-      width: 100vw;
-      height: auto;
-      background-color: #8E8FFA;
-      padding: 0px;
-      margin: 0px; 
-  
-      }
-    
-      .container:nth-of-type(1){
-        height: fit-content;
-        width: fit-content; 
-        margin: 50px 50px; 
-        margin-top: 60px;
-        padding: 30px;
-        background-color: #FFFFFF;
-        border-radius: 20px;
-      }
-    
-      .container:nth-of-type(2){
-        display: none;
-      } 
-    
-      .container:nth-of-type(2) img{
-        display: none;
-      }
-      
-      #close-button{
-          position: absolute; 
-          right: 30px;
-          top: 30px;
-      }
-    
-      #close-button:hover{
-        transition: transform 0.3s ease;
-        transform: scale(1.2);
-      }
-    
-      #forgot-pswd{
-        position: absolute;
-        color: #190482;
-        font-size: 15px;
-        font-weight: 600;
-        margin-top: 0;
-        left: 55%;
-      }
-
+  #forgot-pswd {
+    position: absolute;
+    color: #190482;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 0;
+    left: 55%;
   }
 
+}
