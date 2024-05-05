@@ -1,0 +1,413 @@
+/* nav part */
+nav{
+  width: 100%;
+  display: flex;
+  padding: 5px 5px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #190482;
+  top: 0;
+  z-index: 999;
+  position: fixed;
+  font-family: "Poppins", sans-serif;
+}
+nav img{
+  width: 110px;
+  height: 90px;
+}
+
+.nav-links{
+  flex: 1;
+  text-align: center;
+}
+
+.nav-links ul li{
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position:relative;
+}
+
+.nav-links ul li a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.nav-links ul li::after{
+  content: "";
+  width: 0%;      /*make the line become invisible and after 0.5s hover, will show the line below the nav*/
+  height: 2px;
+  background: #8E8FFA;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+  width: 100%;
+}
+
+.navIcon{
+  padding: 5px 20px;
+}
+
+.navIcon img{
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.navIcon img:hover {
+  transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+}
+
+/*To adjust the size of the image after upload*/
+#profileIconImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/*dropdown*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #FFFFFF;
+  right: 15px;
+  width: 160px;
+  height: fit-content;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: none;
+}
+
+#profile {
+  width: auto;
+  height: auto;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 2px solid #000000;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.logout a {
+  width: 100%;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#logout-ic {
+  width: 20px;
+  height: auto;
+}
+
+#logout-ic:hover {
+  transform: scale(1);
+}
+
+.dropdown-content a:hover {
+  background-color: #8E8FFA;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navIcon .navLink.active {
+  /* Add styles for the active link */
+  background-color: #8E8FFA; /* Change background color to indicate active link */
+  border-radius: 50%; /* Example border-radius */
+  padding: 5px; 
+}
+
+.nav-links ul li a.active {
+  /* Add styles for the active link */
+  color: #8E8FFA; /* Change color to indicate active link */
+  font-weight: bold; 
+}
+
+/* hide the icon for larger screen */
+nav .fas{
+  display: none;
+}
+
+body {
+  margin: 0; 
+  padding: 0; 
+}
+
+.header{
+  position: relative;
+  width: 100%;
+  min-height: 10em;
+  height: auto; 
+  background-color: #190482;
+  border-radius: 0 0 40px 40px;
+}
+
+.logo {
+  position: absolute;
+  width: 10%; 
+  height: auto;
+  top: 33px;
+  left: 38px;
+}
+
+.content {
+  padding-top: 10px; 
+}
+
+.Search {
+  width: 60%; 
+  height: 52px;
+  margin: 130px auto 0; 
+  position: relative;
+}
+
+.SearchBar {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border: 4px #C2D9FF solid;
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+
+.SearchBar input[type="text"] {
+  position: absolute;
+  left: 60px;
+  width: 70%;
+  height: 85%;
+  font-size: 20px;
+  border: none;
+  outline: none;
+}
+
+.SearchIcon {
+  position: absolute;
+  left: 26px;
+  top: 13px;
+  width: 26px;
+  height: 26px;
+}
+
+.filters {
+  float: right;
+  width: 30%;
+  margin-right: 100px;
+  margin-top: 50px;
+}
+
+.labeled_button {
+  background-color: #C2D9FF; 
+  border: none; 
+  color: black; 
+  padding: 10px 20px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 18px; 
+  font-family: "Poppins", Helvetica;
+  margin: 4px 2px; 
+  cursor: pointer; 
+  border-radius: 20px;
+}
+
+.TutorsContainer {
+  display: flex;
+  width: 50%; 
+  margin: 10%;
+  margin-top: 40px;
+}
+
+.TutorsCol1,
+.TutorsCol2 {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.Tutors{
+  flex: 1;
+  width: 100%; 
+  height: auto; 
+  position: relative;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.TeacherSampleImage {
+  width: 90%;
+  height: auto;
+  position: relative;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.DetailsFrame {
+  width: 90%;
+  height: auto;
+  position: relative;
+  background: rgba(255, 255, 255, 0);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border: 3px #C2D9FF solid;
+  background-color: white;
+  padding: 5%;
+}
+
+.TutorName {
+  width: 80%; 
+  height: 25px;
+  position: relative;
+  margin-bottom: 10px; 
+  color: black;
+  font-size: 24px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
+}
+
+.labels {
+  width: 80%; 
+  left: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px; 
+  color: black;
+  font-size: 20px;
+  font-family: "Poppins", Helvetica;
+}
+
+.Details {
+  width: 100%; 
+  margin-top: 10px; 
+  color: black;
+  font-size: 14px;
+  font-family: "Poppins", Helvetica;
+  position: relative;
+}
+
+.loadMore_button {
+  background-color: #C2D9FF; 
+  border: none; 
+  color: black; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 20px; 
+  font-family: "Poppins", Helvetica;
+  margin-top: 10px; 
+  margin-bottom: 50px;
+  cursor: pointer; 
+  border-radius: 20px;
+  position:relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button:hover {
+  filter: brightness(0.8);
+}
+
+@media screen and (max-width: 768px) {
+  .TutorsContainer {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .TutorsCol1,
+  .TutorsCol2 {
+    margin-left: 0;
+
+  }
+
+  .TutorsContainer {
+    display: flex;
+    width: 80%; 
+    margin: 10%;
+    margin-top: 40px;
+  }
+
+  .filters {
+    float: none;
+    width: 80%;
+    margin: 10%;
+    margin-top: 50px;
+  }
+  .header{
+    position: relative;
+    width: 100%;
+    min-height: 6em;
+    height: auto;
+    max-height: 10em;
+    background-color: #190482;
+    border-radius: 0 0 40px 40px;
+  }
+  .nav-links ul li{
+    display: block;
+  }
+  .nav-links{
+      position: absolute;
+      background: #190482;
+      height: 100vh;
+      width: 200px;
+      top:0;
+      /* right changed from 0 to -200px to hide the menu */
+      right: -200px;
+      text-align: left;
+      z-index: 1;    /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
+      transition:1s;
+  }
+  /* show the menu icon in smaller screen */
+  nav .fas{
+      display: block;
+      color: #fff;
+      margin-right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+  }
+
+  nav .fas:hover {
+      transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+  }
+
+  .nav-links ul{
+      padding: 30px;
+  }
+
+}
+
+

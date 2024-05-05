@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #C2D9FF;
+}
+
+
+/* Splitting the feedback box into two parts */
+.split {
+    display: flex;
+}
+
+/* Styles for the left part */
+.left {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    background-color: #007bff;
+}
+
+.img {
+    text-align: left;
+}
+
+.img h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.img img {
+    max-width: 95%;
+}
+
+/* Styles for the right part */
+.right {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.right h1 {
+    margin-top: 0;
+}
+
+.right h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Styles for the stars rating */
+.stars {
+    display: flex;
+    justify-content: flex-start;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.stars i {
+    color: #333;
+    font-size: 35px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.stars i.active {
+    color: #ff9c1a;
+}
+
+
+/* Styles for the comment textarea */
+.textarea {
+    margin-top: 20px;
+}
+
+.textarea textarea {
+    width: 100%;
+    outline: none;
+    border: 2px solid;
+    border-radius: 15px;
+    color: #000;
+    padding: 10px;
+    font-size: 17px;
+    resize: none;
+    margin: 5px 0 17px 0;
+}
+
+.anonymous {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.anonymous h3 {
+    font-size: 20x;
+    margin-right: 10px;
+    /* Add spacing between h3 and toggle button */
+}
+
+.toggle {
+    background-color: #d2d2d2;
+    border: 1px solid #190482;
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+}
+
+.toggle::before {
+    position: absolute;
+    content: '';
+    background-color: #7752FE;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+input:checked+.toggle {
+    background-color: #20096d;
+}
+
+input:checked+.toggle::before {
+    transform: translateX(30px);
+}
+
+input {
+    display: none;
+}
+
+/* Styles for the submit button */
+.btn {
+    margin-top: 30px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.btn button {
+    padding: 10px 20px;
+    width: 60%;
+    margin-top: 15px;
+    margin-right: 35px;
+    background-color: #190482;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #7752FE;
+    /* Button background color on hover */
+}
+
+.pop-up {
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #000;
+    visibility: hidden;
+    transition: transform 0, 4s, top 0.4s;
+    border: 5px solid #0056b3;
+}
+
+.pop-up i {
+    font-size: 65px;
+    /* Adjust the font size as needed */
+    display: block;
+    /* Ensure the icon is centered horizontally */
+    margin: 0 auto 10px;
+    /* Add margin for spacing between the icon and text */
+    color: #00ff00;
+    /* Set the color of the icon */
+    margin-top: 30px;
+}
+
+.pop-up p{
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.pop-up h2 {
+    font-size: 38px;
+    font-weight: 500;
+}
+
+.pop-up button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 8px 0;
+    background: #190482;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2 5px 5px rgba(0, 0, 0, 0.02);
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 700px) {
+    .split {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    .left {
+        border-radius: 25px 25px 0 0;
+    }
+
+    .right {
+        border-radius: 0 0 25px 25px;
+    }
+
+    .btn button {
+        width: 100%;
+        margin-right: 0;
+    }
+}

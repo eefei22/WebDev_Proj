@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+    <title>Payment</title>
+    <link rel="stylesheet" href="./css/payment_style.css">
+    <!-- nav icons in smaller screen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+     <!-- Embedding JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the current page URL
+            var currentPageURL = window.location.href;
+            
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('.nav-links ul li a');
+    
+            // Loop through each link
+            navLinks.forEach(function(link) {
+                // Check if the link's href matches the current page URL
+                if (link.href === currentPageURL) {
+                    // Add the 'active' class to the matching link
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
+        <div class="nav-links" id="navLinks">
+            <!-- close icon -->
+            <i class="fas fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="subscription.html">Subscription</a></li>
+                <li><a href="discover_tutor.html">Discover Tutor</a></li>
+                <li><a href="tuitionFee.html">Payment</a></li>
+                <li><a href="helpdesk.html">Helpdesk</a></li>
+            </ul> <!--closing unorder list -->
+        </div> <!--closing nav-links -->
+        <!-- nav icon -->
+        <div class="navIcon">
+            <a href="cart.html" class="navLink"><img src="./images/addToCart_logo.png" alt="add to cart"></a>
+            <div class="dropdown">
+                <a href=" " class="navLink" id="profileIcon"><img id="profileIconImg" src="./images/ic_profile.png"
+                        alt="user profile"></a>
+                <div class="dropdown-content" id="profileDropdownContent">
+                    <!-- Dropdown content here -->
+                    <a id="profile" href="profile.html">My Profile</a>
+                    <div class="logout">
+                        <a href="index-bfr-login.html" onclick="logout()"><img id="logout-ic"
+                                src="Images\logout.png">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div> <!--closing nav icon -->
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <div class="container">
+
+        <form action="">
+
+            <div class="row">
+                <!-- Purchase Details -->
+                <div class="col purchase-details">
+                    <h3 class="title">tuition fee</h3>
+
+                    <input type="checkbox" id="select-all-checkbox"> 
+                    <label for="select-all-checkbox" style="font-weight: 500; color: rgb(180, 104, 251)">*Select All</label>
+                   
+                    <ul>
+                        <!-- Lei Lou Dao-->
+                        <li>
+                            <input type="checkbox" class="course-checkbox" price="50">
+
+                            <div class="course-details">
+                                <span class="course">English</span>
+                                <span class="tutor">Lei Lou Dao</span>
+                                <input type="text" class="description-input" placeholder="Payment Details (optional)">
+                            </div>
+                            <span class="price">RM50</span>
+                        </li>
+                    </ul>          
+        
+                    <div class="total">Total: RM0 </div>
+                </div>
+
+                <!-- Card Information -->
+                <div class="col info">
+                    <h3 class="title">Card information</h3>
+
+                    <div class="inputBox">
+                        <span>card accepted : </span>
+                        <img src="images/card_img.png" alt="">
+                    </div>
+                    
+                    <div class="inputBox">
+                        <span>name on card :</span>
+                        <input type="text" name="card_name" placeholder="Mr. Tan Jing Yao" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>credit card number : </span>
+                        <input type="number" name="card_number" placeholder="1111222233334444" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <span>exp month : </span>
+                        <input type="text" name="exp_month" placeholder="January" required>
+                    </div>
+
+                    <!-- Exp year and cvv will be flex -->
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>exp year : </span>
+                            <input type="number" name="exp_year" placeholder="2024" required>
+                        </div>
+
+                        <div class="inputBox">
+                            <span>CVV : </span>
+                            <input type="text" name="cvv" placeholder="1234" required>
+                        </div>
+                    </div>  <!--flex closing-->
+                </div> <!--row closing-->
+            </div> <!--col closing-->
+
+             
+
+            <input type="submit" value="checkout" id="checkout-btn" class="submit-btn">
+        
+        </form>
+
+    </div>
+    
+    <!-- JavaScript for Toggle Menu -->
+
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Select all checkbox
+        const selectAllCheckbox = document.getElementById("select-all-checkbox");
+        // Individual course checkboxes
+        const courseCheckboxes = document.querySelectorAll(".course-checkbox");
+        // Total element
+        const totalElement = document.querySelector(".total");
+        // Checkout button
+        const checkoutBtn = document.getElementById("checkout-btn");
+
+        // Update total function (Calculate total price)
+        function updateTotal() {
+            let total = 0;
+            courseCheckboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    total += parseInt(checkbox.getAttribute("price"));
+                }
+            });
+            totalElement.textContent = "Total: RM" + total;
+
+            // Enable or disable checkout button based on whether at least one checkbox is checked
+            checkoutBtn.disabled = !Array.from(courseCheckboxes).some(checkbox => checkbox.checked);
+        }
+
+        // Event listener for select all checkbox
+        selectAllCheckbox.addEventListener("change", function() {
+            courseCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+            updateTotal();
+        });
+
+        // Event listener for individual course checkboxes
+        courseCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", function() {
+                updateTotal();
+            });
+        });
+
+        // Event listener for form submission
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Check if at least one checkbox is checked
+            const atLeastOneChecked = Array.from(courseCheckboxes).some(checkbox => checkbox.checked);
+
+            if (atLeastOneChecked) {
+                // Redirect to the payment successful page after a delay
+                setTimeout(function() {
+                    window.location.href = "payment_success.html";
+                });
+            } else {
+                alert("Please select at least one course before proceeding to checkout.");
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>
