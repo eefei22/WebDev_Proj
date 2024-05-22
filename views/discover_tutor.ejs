@@ -5,8 +5,7 @@
     <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
     <title>Discover Tutors</title>
     
-    <!-- <link rel="stylesheet" href="css/tutor_discover.css" /> -->
-    
+    <link rel="stylesheet" href="css/discover_tutor.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/nav.css" />
     <!-- nav icons in smaller screen -->
@@ -15,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/tutor_ad.css">
+
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Tutors</title>
@@ -61,21 +60,65 @@
         <img class="SearchIcon" src="images/search-icon.png" />
       </div>
 
-    <div class="ad-container">
+      <div class="ad-container">
         <% ads.forEach(ad => { %>
-            <div class="ad">
-                <h2><%= ad.title %></h2>
-                <p><strong>Subject:</strong> <%= ad.subject %></p>
-                <p><strong>About the Lesson:</strong> <%= ad.about_lesson %></p>
-                <p><strong>About the Tutor:</strong> <%= ad.about_tutor %></p>
-                <p><strong>Hourly Rate:</strong> RM<%= ad.rate %>/h</p>
-                <p><strong>Hours per Session:</strong> <%= ad.hours %> hours</p>
-                <p><strong>Languages Spoken:</strong> <%= ad.languages.join(', ') %></p>
-                <p><strong>Location:</strong> <%= ad.location %></p>
-                <p><strong>Teaching Sample:</strong> <a href="<%= ad.teaching_sample %>" target="_blank">View Sample</a></p>
+            <div class="ad-wrapper">
+                <div class="tutor_image">
+                    <!-- *****************GET TUTOR IMAGE FROM tutor_profile COLLECTION ****************** -->
+                    <img class = "tutor_image" src="images/tutor-1-image.png" />
+                </div>
+                <div class="ad">
+                     <!-- *****************GET TUTOR NAME FROM tutor_profile COLLECTION **************** -->
+                    <h2><%= ad.title %></h2>    
+                    <!-- *****************GET REMAINING DETAILS FROM ads COLLECTION **************** -->   
+                    <p><strong>Location:</strong> <%= ad.location %></p>
+                    <p><strong>Subject:</strong> <%= ad.subject %></p>
+                    <p><%= ad.about_lesson %></p>                
+                    <p><strong>Hourly Rate:</strong> RM<%= ad.rate %>/h</p>
+                </div>
             </div>
         <% }) %>
-    </div>
+    </div> <br><br>
+    
+    <footer>
+        <section class="footer">
+          <div class="container6">
+            <div class="frame">
+              <div class="link">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="subscription.html">Subscription</a></li>
+                  <li><a href="discover_tutor.html">Courses</a></li>
+                  <li><a href="helpdesk.html">FAQ</a></li>
+                </ul>
+              </div>
+              <img id="logo" src="Images\logo.png" alt="EduPro" width="200">
+              <div class="link">
+                <h4>Contact Us</h4>
+                <ul>
+                  <li>
+                    <img src="Images\email.png" alt="Email">
+                    <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
+                  </li>
+                  <li>
+                    <img src="Images\phone.png" alt="Phone no">
+                    <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+                  </li>
+                  <li>
+                    <img src="Images\location.png" alt="Location">
+                    <a
+                      href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
+                      Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr>
+            <p>&copy; 2024 EduPro. All rights reserved.</p>
+          </div>
+        </section>
+      </footer>
 
 
 
