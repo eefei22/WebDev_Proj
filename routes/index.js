@@ -36,17 +36,17 @@ router.post('/submit', upload.single('file'), async (req, res) => {
         });
 
         await newAd.save();
-        res.redirect('/tutor_ad');
+        res.redirect('/discover_tutor');
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
     }
 });
 
-router.get('/tutor_ad', async (req, res) => {
+router.get('/discover_tutor', async (req, res) => {
     try {
         const ads = await Ad.find({});
-        res.render('tutor_ad', { ads });
+        res.render('discover_tutor', { ads });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
+    <title>Discover Tutors</title>
+    
+    <link rel="stylesheet" href="css/discover_tutor.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <!-- nav icons in smaller screen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Tutors</title>
+    
+</head>
+<body>
+    <nav>
+        <a href="index.html"><img src="./images/eduPro_logo.jpg" alt="logo"></a>
+        <div class="nav-links" id="navLinks">
+          <!-- close icon -->
+          <i class="fas fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="subscription.html">Subscription</a></li>
+            <li><a href="discover_tutor.html">Discover Tutor</a></li>
+            <li><a href="tuitionFee.html">Payment</a></li>
+            <li><a href="helpdesk.html">Helpdesk</a></li>
+          </ul> <!--closing unorder list -->
+        </div> <!--closing nav-links -->
+        <!-- nav icon -->
+        <div class="navIcon">
+          <a href="cart.html" class="navLink"><img src="./images/addToCart_logo.png" alt="add to cart"></a>
+          <div class="dropdown">
+            <a href=" " class="navLink" id="profileIcon"><img id="profileIconImg" src="./images/ic_profile.png"
+                alt="user profile"></a>
+            <div class="dropdown-content" id="profileDropdownContent">
+              <!-- Dropdown content here -->
+              <a id="profile" href="profile.html">My Profile</a>
+              <div class="logout">
+                <a href="index-bfr-login.html" onclick="logout()"><img id="logout-ic" src="Images\logout.png">Log Out</a>
+              </div>
+            </div>
+          </div>
+        </div> <!--closing nav icon -->
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+      </nav>
+
+
+    <h1>Discover Our Tutors</h1>
+    <div class="Search">
+        <div class="SearchBar">
+          <input type="text" placeholder="Search..." />
+        </div>
+        <img class="SearchIcon" src="images/search-icon.png" />
+      </div>
+
+      <div class="ad-container">
+        <% ads.forEach(ad => { %>
+            <div class="ad-wrapper">
+                <div class="tutor_image">
+                    <!-- *****************GET TUTOR IMAGE FROM tutor_profile COLLECTION ****************** -->
+                    <img class = "tutor_image" src="images/tutor-1-image.png" />
+                </div>
+                <div class="ad">
+                     <!-- *****************GET TUTOR NAME FROM tutor_profile COLLECTION **************** -->
+                    <h2><%= ad.title %></h2>    
+                    <!-- *****************GET REMAINING DETAILS FROM ads COLLECTION **************** -->   
+                    <p><strong>Location:</strong> <%= ad.location %></p>
+                    <p><strong>Subject:</strong> <%= ad.subject %></p>
+                    <p><%= ad.about_lesson %></p>                
+                    <p><strong>Hourly Rate:</strong> RM<%= ad.rate %>/h</p>
+                </div>
+            </div>
+        <% }) %>
+    </div> <br><br>
+    
+    <footer>
+        <section class="footer">
+          <div class="container6">
+            <div class="frame">
+              <div class="link">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="subscription.html">Subscription</a></li>
+                  <li><a href="discover_tutor.html">Courses</a></li>
+                  <li><a href="helpdesk.html">FAQ</a></li>
+                </ul>
+              </div>
+              <img id="logo" src="Images\logo.png" alt="EduPro" width="200">
+              <div class="link">
+                <h4>Contact Us</h4>
+                <ul>
+                  <li>
+                    <img src="Images\email.png" alt="Email">
+                    <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
+                  </li>
+                  <li>
+                    <img src="Images\phone.png" alt="Phone no">
+                    <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+                  </li>
+                  <li>
+                    <img src="Images\location.png" alt="Location">
+                    <a
+                      href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
+                      Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr>
+            <p>&copy; 2024 EduPro. All rights reserved.</p>
+          </div>
+        </section>
+      </footer>
+
+
+
+
+    <script src="/js/nav.js"></script>
+</body>
+</html>
