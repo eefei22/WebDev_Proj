@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
-    <title>Discover Tutors</title>
     
     <link rel="stylesheet" href="css/discover_tutor.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/nav.css" />
+
     <!-- nav icons in smaller screen -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
     <!-- font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +70,8 @@
                 </div>
                 <div class="ad">
                      <!-- *****************GET TUTOR NAME FROM tutor_profile COLLECTION **************** -->
-                    <h2><%= ad.title %></h2>    
+                    <!-- <h2><%= ad.title %></h2> -->
+                    <h2><a href="/tutor_ad/<%= ad._id %>"><%= ad.title %></a></h2>  
                     <!-- *****************GET REMAINING DETAILS FROM ads COLLECTION **************** -->   
                     <p><strong>Location:</strong> <%= ad.location %></p>
                     <p><strong>Subject:</strong> <%= ad.subject %></p>
