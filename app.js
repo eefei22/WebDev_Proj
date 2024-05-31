@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
 const multer = require('multer');
-const routes = require('./routes/index');
+const routes = require('./routes/index'); //Import index routes
+const signup_routes = require('./routes/signup'); // Import signup routes
+const login_routes = require('./routes/login'); // Import login routes
+const profile_routes = require('./routes/profile'); // Include profile routes
+
 
 dotenv.config();
 console.log('MONGO_URI:', process.env.MONGO_URI); 
@@ -22,7 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/', routes);
+app.use('/', routes); // Use index routes
+app.use('/', signup_routes); // Use signup routes
+app.use('/', login_routes); // Use login routes
+app.use('/', profile_routes); // Use profile routes
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
