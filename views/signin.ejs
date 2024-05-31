@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="css/signin.css">
+  <!-- font family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <a href="index-bfr-login.html">
+      <img id="close-button" src="Images\close-button.png" alt="Back" title="Back" width="25px">
+    </a>
+    <h1>Welcome back!</h1>
+    <form id="login-form" action="/login" method="post">
+      <form id="login-form" method="post">
+        <div class="form-group">
+          <label id="email-label" for="email">Email address</label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label id="password-label" for="password">Password</label>
+          <div class="pswd-group">
+            <input type="password" id="password" name="password"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}"
+              title="Password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and be at least 8 characters long."
+              placeholder="Enter your password" required>
+            <i class="far fa-eye-slash" id="togglePassword"></i>
+          </div>
+        </div>
+        <a id="forgot-pswd" href='#' onclick="openResetPasswordModal()">Forgot Password</a><br>
+        <input id="login-btn" type="submit" value="Log in">
+      </form>
+      <!-- Modal popup -->
+      <div id="reset-password-modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close" onclick="closeResetPasswordModal()">&times;</span>
+          <!-- Reset password form -->
+          <h2>Reset Password</h2>
+          <form id="reset-password-form" action="/reset-password" method="post">
+            <label for="email">Email</label>
+            <input type="email" id="reset-email" name="email" placeholder="Enter your email" required>
+            <label for="new-password">New password</label>
+            <div class="pswd-container">
+              <input type="password" id="reset-password" name="new_password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}"
+                title="Password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and be at least 8 characters long."
+                placeholder="Enter new password" required><br>
+              <i class="far fa-eye-slash" id="toggleResetPassword"></i>
+            </div>
+            <label for="new-password">Confirm password</label>
+            <div class="pswd-container">
+              <input type="password" id="confirm-password" name="confirm_password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}"
+                title="Password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and be at least 8 characters long."
+                placeholder="Confirm new password" required><br>
+              <i class="far fa-eye-slash" id="toggleConfirmPassword"></i>
+            </div>
+            <button type="submit">Reset Password</button>
+          </form>
+        </div>
+      </div>
+    </form>
+    <div class="sign-in">
+      <p>Don't have an account? <a id="login" href="/signup">Sign Up</a></p>
+    </div>
+  </div>
+  <div class="container"><img src="Images\login-ill.png"></div>
+
+  <script>
+    // Toggle password visibility
+    document.addEventListener('DOMContentLoaded', function () {
+      const togglePassword = (inputId, toggleButtonId) => {
+        const passwordInput = document.getElementById(inputId);
+        const toggleButton = document.getElementById(toggleButtonId);
+
+        toggleButton.addEventListener('click', function () {
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          toggleButton.classList.toggle('fa-eye-slash');
+          toggleButton.classList.toggle('fa-eye');
+        });
+      };
+
+      togglePassword('password', 'togglePassword');
+      togglePassword('reset-password', 'toggleResetPassword');
+      togglePassword('confirm-password', 'toggleConfirmPassword');
+    });
+
+    // Open and close reset password modal
+    function openResetPasswordModal() {
+      document.getElementById('reset-password-modal').style.display = 'block';
+    }
+
+    function closeResetPasswordModal() {
+      document.getElementById('reset-password-modal').style.display = 'none';
+    }
+
+    // //Reset password
+    // // Function to reset the form fields
+    // function resetFormFields() {
+    //   document.getElementById('email').value = '';
+    //   document.getElementById('password').value = '';
+    //   document.getElementById('reset-email').value = '';
+    //   document.getElementById('reset-password').value = '';
+    //   document.getElementById('confirm-password').value = '';
+    // }
+
+    // // Function to open the reset password modal
+    // function openResetPasswordModal() {
+    //   resetFormFields(); // Reset form fields
+    //   const modal = document.getElementById('reset-password-modal');
+    //   modal.style.display = 'block';
+    // }
+
+    // // Function to close the reset password modal
+    // function closeResetPasswordModal() {
+    //   const modal = document.getElementById('reset-password-modal');
+    //   modal.style.display = 'none';
+    // }
+
+    // // Event listener for the "Forgot Password" link
+    // document.getElementById('forgot-pswd').addEventListener('click', function (event) {
+    //   event.preventDefault(); // Prevent default link behavior
+
+    //   // Open the reset password modal
+    //   openResetPasswordModal();
+    // });
+
+    // // Handle reset password form submission
+    // document.getElementById('reset-password-form').addEventListener('submit', function (event) {
+    //   event.preventDefault();
+
+    //   const email = document.getElementById('reset-email').value;
+    //   const newPassword = document.getElementById('reset-password').value;
+
+    //   // Display a success message
+    //   alert('Password reset successfully.');
+
+    //   // Optionally, close the reset password modal or perform any other necessary actions
+    //   closeResetPasswordModal();
+    // });
+  </script>
+</body>
+</html>
