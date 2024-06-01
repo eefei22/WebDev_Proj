@@ -26,8 +26,8 @@ router.post('/login', async (req, res) => {
     }
     
     // Login successful
-    
-    res.send('<script>alert("Welcome back! Your login was successful."); window.location.href="/profile/:userId";</script>');
+    res.redirect('/discover_tutor');
+    //res.send('<script>alert("Welcome back! Your login was successful."); window.location.href="/profile/:userId";</script>');
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server error');
