@@ -5,6 +5,16 @@ const path = require('path');
 const dotenv = require('dotenv');
 const multer = require('multer');
 
+const routes = require('./routes/index');
+const http = require('http');
+const socketio = require('socket.io');
+const Chat = require('./models/chats');
+
+const signup_routes = require('./routes/signup'); // Import signup routes
+const login_routes = require('./routes/login'); // Import login routes
+//const profile_routes = require('./routes/profile'); // Include profile routes
+
+
 dotenv.config();
 console.log('MONGO_URI:', process.env.MONGO_URI); 
 
@@ -27,7 +37,7 @@ app.use(bodyParser.json());
 app.use('/', routes); // Use index routes
 app.use('/', signup_routes); // Use signup routes
 app.use('/', login_routes); // Use login routes
-app.use('/', profile_routes); // Use profile routes
+//app.use('/', profile_routes); // Use profile routes
 
 // Real-time chat functionality
 io.on('connection', (socket) => {
