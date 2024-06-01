@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutor Chat</title>
     <link rel="stylesheet" href="/css/tutor_chat.css">
-</head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const socket = io({ query: { name: "<%= name %>" } });
+            const chatForm = document.getElementById('chat-form');
+            const messageInput = document.getElementById('message-input');
+            const messageContainer = document.getElementById('message-container');
 
+            socket.on('chat message', ({ username, message, timestamp }) => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message');
+                messageElement.innerHTML = `<p><strong>${username}:</strong> ${message} <span class="timestamp">${new Date(timestamp).toLocaleTimeString()}</span></p>`;
+                messageContainer.appendChild(messageElement);
+            });
+
+            chatForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const message = messageInput.value;
+                const username = "<%= username %>"; // Make sure to set username on server-side and pass it to the EJS template
+                socket.emit('chat message', { username, message });
+                messageInput.value = '';
+            });
+        });
+    </script>
+</head>
 <body>
-    <div class="container">
+    <div class="chat-container">
         <div class="inbox">
-            <h2>Inbox</h2>
-            <!-- Add inbox list here -->
+            <!-- Inbox list goes here -->
         </div>
-        <div class="conversation">
-            <div class="message-container">
-                <!-- Add message bubbles here -->
+        <div class="chat-box">
+            <div id="message-container">
+                <% chatHist.forEach(chat => { %>
+                    <div class="chat-message">
+                        <p><strong><%= chat.username %>:</strong> <%= chat.message %> <span class="timestamp"><%= new Date(chat.timestamp).toLocaleTimeString() %></span></p>
+                    </div>
+                <% }) %>
             </div>
-            <div class="input-container">
-                <input type="text" placeholder="Type your message...">
-                <button>Send</button>
-            </div>
+            <form id="chat-form">
+                <input type="text" id="message-input" placeholder="Type a message" required autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
         </div>
     </div>
 </body>
-
 </html>
