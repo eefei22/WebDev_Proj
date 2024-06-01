@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const Ad = require('../models/Ad');
+const ChatHist = require('../models/chats');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -67,8 +68,20 @@ router.get('/tutor_ad/:id', async (req, res) => {
 router.get('/tutor_chat/:id', async (req, res) => {
     try {
         // Get chat history from database
-        const chatHist = await ChatHist.find({ tutorId: req.params.id }); // Assuming tutorId is stored in chat history
+        const chatHist = await ChatHist.find({ name: req.params.id });
         res.render('tutor_chat', { chatHist });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
+/// Route for Tutor Chat Page
+router.get('/tutor_chat/:id', async (req, res) => {
+    try {
+        // Get chat history from database
+        const chatHist = await Chat.find({ name: req.params.id }).populate('username').sort({ timestamp: 1 });
+        res.render('tutor_chat', { chatHist, username: 'SomeUsername' }); // Replace 'SomeUsername' with actual username logic
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
@@ -77,14 +90,14 @@ router.get('/tutor_chat/:id', async (req, res) => {
 
 // Route to handle posting chat conversations
 router.post('/tutor_chat/:id', async (req, res) => {
-    const { message, userId } = req.body;
-    const tutorId = req.params.id; // Assuming tutorId is stored in chat history
+    const { message, username } = req.body;
+    const name = req.params.id;
 
     try {
         // Save chat conversation to database
-        const newChat = new ChatHist({
-            tutorId,
-            userId,
+        const newChat = new Chat({
+            name: name,
+            username,
             message,
             timestamp: new Date()
         });
