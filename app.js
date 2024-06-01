@@ -12,6 +12,7 @@ const Chat = require('./models/chats');
 
 const signup_routes = require('./routes/signup'); // Import signup routes
 const login_routes = require('./routes/login'); // Import login routes
+const nav_routes = require('./routes/nav');
 //const profile_routes = require('./routes/profile'); // Include profile routes
 
 
@@ -35,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/', routes); // Use index routes
+app.use('/', nav_routes);
 app.use('/', signup_routes); // Use signup routes
 app.use('/', login_routes); // Use login routes
 //app.use('/', profile_routes); // Use profile routes
