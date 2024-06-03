@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
   <title>Sign Up</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="css/signup.css">
@@ -17,7 +18,7 @@
 
 <body>
   <div class="container">
-    <a href="index-bfr-login.html" id="close-button">
+    <a href="/" id="close-button">
       <img id="close-button" src="Images\close-button.png" alt="Back" title="Back" width="25px">
     </a>
     <div class="user-info">
@@ -66,69 +67,14 @@
         </div>
         <input id="signup-btn" type="submit" value="Sign up">
       </form>
-      <!--<div class="line-with-or">or</div>-->
       <div class="sign-up">
-        <!--<div class="signup-google">
-            <a id="signup-google" href="#"><img src="Images\google.png">Sign up with Google</a>
-          </div>-->
         <p>Have an account? <a id="signin" href="/login">Sign In</a></p>
       </div>
     </div>
   </div>
   <div class="container"><img src="Images\signup-ill.png"></div>
-  <script>
-    //Toggle password visibility
-    document.addEventListener('DOMContentLoaded', function () {
-        const passwordInput = document.getElementById('password');
-        const confirmPassInput = document.getElementById('confirm_password');
-        const togglePasswordButton = document.getElementById('togglePassword');
-        const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
-
-        togglePasswordButton.addEventListener('click', function () {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            // Toggle eye icon based on password visibility
-            togglePasswordButton.classList.toggle('fa-eye-slash');
-            togglePasswordButton.classList.toggle('fa-eye');
-        });
-
-        toggleConfirmPasswordButton.addEventListener('click', function () {
-            const type = confirmPassInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            confirmPassInput.setAttribute('type', type);
-            // Toggle eye icon based on password visibility
-            toggleConfirmPasswordButton.classList.toggle('fa-eye-slash');
-            toggleConfirmPasswordButton.classList.toggle('fa-eye');
-        });
-    });
-
-    // //Using sign up button
-
-    // document.addEventListener('DOMContentLoaded', function () {
-    //   document.getElementById('signup-form').addEventListener('submit', function (event) {
-    //     event.preventDefault(); // Prevent form submission
-
-    //     // Perform form validation
-    //     var name = document.getElementById('name').value;
-    //     var email = document.getElementById('email').value;
-    //     var password = document.getElementById('password').value;
-
-    //     if (name === '' || email === '' || password === '') {
-    //       alert('Please fill in all fields');
-    //       return;
-    //     }
-
-    //     alert('Signup successfully');
-
-    //     // Store the name and email in local storage
-    //     localStorage.setItem("user_name", name);
-    //     localStorage.setItem("user_email", email);
-
-    //     // Redirect to another page (dummy action for demonstration)
-    //     window.location.href = 'index.html';
-    //   });
-    // });
-
-  </script>
+  
+  <script src="/js/signup.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- nav icons in smaller screen -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- font family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+    rel="stylesheet">
+  
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/homepage/<%= user._id %>"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
+      <div class="nav-links" id="navLinks">
+        <!-- close icon -->
+        <i class="fas fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="/form">Subscription</a></li>
+          <li><a href="/discover_tutor">Discover Tutor</a></li>
+          <li><a href="/tuitionFee">Payment</a></li>
+          <li><a href="/helpdesk">Helpdesk</a></li>
+        </ul> <!--closing unorder list -->
+      </div> <!--closing nav-links -->
+      <!-- nav icon -->
+      <div class="navIcon">
+        <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
+        <div class="dropdown">
+          <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
+          <div class="dropdown-content" id="profileDropdownContent">
+            <!-- Dropdown content here -->
+            <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
+            <div class="logout">
+              <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
+            </div>
+          </div>
+        </div>
+      </div> <!--closing nav icon -->
+      <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>My Profile</h1>
+    <div class="parent">
+      <div class="profile-info">
+        <div class="alignment">
+          <h2>General Details</h2>
+          <form method="post" action="/profile/save">
+            <input type="hidden" name="id" value="<%= user._id %>"> <!-- Ensure this is correctly set -->
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Name" value="<%= user.name %>" autocomplete="on" required>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" placeholder="Username" value="<%= user.username %>" autocomplete="on" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Email address" value="<%= user.email %>" readonly required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone No</label>
+              <input type="tel" id="phone" name="phone" pattern="01[0-9]{1}-[0-9]{7,9}" title="01x-xxxxxxx" placeholder="Phone no" value="<%= user.phone %>">
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select class="dropdown" name="gender" id="gender">
+                <option value="" disabled <%= !user.gender ? 'selected' : '' %>>Choose your gender</option>
+                <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+                <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" value="<%= user.dob %>">
+            </div>
+            <input class="button" type="submit" value="Save Changes">
+          </form>
+        </div>
+        <div class="alignment">
+          <div class="edit-profile-pic">
+            <form method="post" action="/profile/upload" enctype="multipart/form-data">
+              <img id="profile-pic" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/profile-pic.png' %>" alt="Profile Picture" width="150">
+              <input type="hidden" name="id" value="<%= user._id %>">
+              <input name="profilePic" type="file" id="profilePictureInput" accept="image/*" onchange="previewProfilePicture(event)" style="display: none;">
+              <label for="profilePictureInput">
+                <img id="edit-pic" src="/images/edit-pic.png" alt="Upload" width="35">
+              </label>
+              <button type="submit">Upload</button>
+            </form>
+          </div>
+          <div class="change-pswd">
+            <h2>Change password</h2>
+            <form id="change-password-form" method="post" action="/profile/change-password">
+              <input type="hidden" name="id" value="<%= user._id %>">
+              <div class="form-group">
+                <label for="old_pswd">Current password</label>
+                <div class="pswd-group">
+                  <input type="password" id="old_pswd" name="old_pswd"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}"
+                    title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long."
+                    placeholder="Password" autocomplete="current-password" required>
+                  <i class="far fa-eye-slash" id="toggleOldPassword"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="new_pswd">New password</label>
+                <div class="pswd-group">
+                  <input type="password" id="new_pswd" name="new_pswd"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}"
+                    title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long."
+                    placeholder="Password" required>
+                  <i class="far fa-eye-slash" id="toggleNewPassword"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="confirm-pswd">Confirm password</label>
+                <div class="pswd-group">
+                  <input type="password" id="confirm_pswd" name="confirm_pswd"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.*\S).{8,}"
+                    title="Password must contain at least one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long."
+                    placeholder="Confirm new password" required>
+                  <i class="far fa-eye-slash" id="toggleConfirmPassword"></i>
+                </div>
+              </div>
+              <input class="button" type="submit" value="Change Password">
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <footer>
+    <section class="footer">
+      <div class="container6">
+        <div class="frame">
+          <div class="link">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/homepage/<%= user._id %>">Home</a></li>
+              <li><a href="/subscription">Subscription</a></li>
+              <li><a href="/discover_tutor">Courses</a></li>
+              <li><a href="/helpdesk">FAQ</a></li>
+            </ul>
+          </div>
+          <img id="logo" src="/images/logo.png" alt="EduPro" width="200">
+          <div class="link">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>
+                <img src="/images/email.png" alt="Email">
+                <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
+              </li>
+              <li>
+                <img src="/images/phone.png" alt="Phone no">
+                <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+              </li>
+              <li>
+                <img src="/images/location.png" alt="Location">
+                <a
+                  href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
+                  Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+        <p>&copy; 2024 EduPro. All rights reserved.</p>
+      </div>
+    </section>
+  </footer>
+  <script src="/js/profile.js"></script>
+  <script src="/js/nav.js"></script>
+</body>
+
+</html>
