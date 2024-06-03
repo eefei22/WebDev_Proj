@@ -11,7 +11,7 @@ router.get('/login', (req, res) => {
 // POST /login - Handle user login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-
+  
   try {
     // Find the user by email
     let user = await User.findOne({ email });
@@ -25,9 +25,9 @@ router.post('/login', async (req, res) => {
       return res.send('<script>alert("Login failed. The password you entered is incorrect. Please try again."); window.location.href="/login";</script>');
     }
     
-    // Login successful
-    res.redirect('/discover_tutor');
-    //res.send('<script>alert("Welcome back! Your login was successful."); window.location.href="/profile/:userId";</script>');
+    // After successful login, get the user's ID
+    
+    res.send(`<script>alert("Welcome back! Your login was successful."); window.location.href="/homepage/${user._id}";</script>`);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server error');
