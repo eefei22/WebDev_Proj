@@ -5,6 +5,11 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     userType: { type: String, required: true, enum: ['student', 'teacher']},
+    username: { type: String },
+    phone: { type: String },
+    gender: { type: String, enum: ['male', 'female'] },
+    dob: { type: String },
+    profilePic: { type: String }
 });
 
 module.exports = mongoose.model('User_signup', userSchema);
