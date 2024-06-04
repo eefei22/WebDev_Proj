@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const feedbackSchema = new mongoose.Schema({
-    star_rating: { type: Number, min:1, max:5, required: true},
-    comment: { type: String},
-    anonymous: {
-        type: String,
-        enum: ['yes', 'no'],
-        required: true
-    }
+const fdbSchema = new mongoose.Schema({
+    rating: { type: Number, required: true, min: 1, max: 5 }, // Rating between 1 and 5 stars
+    message: { type: String }, // Optional message from the user
+    anonymous: { type: Boolean, required: true }, // Whether the feedback is anonymous
+    user: { type: Schema.Types.ObjectId, ref: 'User' }, // Reference to the User model, optional
+    createdAt: { type: Date, default: Date.now } // Timestamp for when the feedback was created
 });
 
-module.exports = mongoose.model('FeedbackModel', feedbackSchema);
+module.exports = mongoose.model('FeedbackModel', fdbSchema);
