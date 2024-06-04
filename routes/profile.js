@@ -4,6 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User_signup');
+const requireLogin = require('../middleware/requireLogin');
 
 // Multer configuration for file uploads
 const storage = multer.diskStorage({
@@ -36,7 +37,7 @@ function checkFileType(file, cb) {
 }
 
 // GET /profile/:id - Render the profile page
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile/:id', requireLogin, async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) {
@@ -50,7 +51,7 @@ router.get('/profile/:id', async (req, res) => {
 });
 
 // POST /profile/save - Save profile changes
-router.post('/profile/save', async (req, res) => {
+router.post('/profile/save', requireLogin, async (req, res) => {
     try {
         const { id, name, username, phone, gender, dob } = req.body;
         const user = await User.findById(id);
@@ -73,7 +74,7 @@ router.post('/profile/save', async (req, res) => {
 });
 
 // Route to handle profile picture upload
-router.post('/profile/upload', (req, res) => {
+router.post('/profile/upload', requireLogin, (req, res) => {
     upload(req, res, async (err) => {
         if (err) {
             console.error(err);
@@ -110,7 +111,7 @@ router.post('/profile/upload', (req, res) => {
 });
 
 // POST /profile/change-password - Change password
-router.post('/profile/change-password', async (req, res) => {
+router.post('/profile/change-password', requireLogin, async (req, res) => {
     const { id, old_pswd, new_pswd, confirm_pswd } = req.body;
     
     try {

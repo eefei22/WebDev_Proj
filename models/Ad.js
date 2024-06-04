@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const adSchema = new mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User_signup', required: false},
     subject: { type: String, required: true },
     title: { type: String, required: true },
     about_lesson: { type: String, required: true },
