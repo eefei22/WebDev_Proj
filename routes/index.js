@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer'); //for upload file
+const multer = require('multer');
 const path = require('path');
-const Ad = require('../models/Ad'); //the database
+const Ad = require('../models/Ad'); 
 const User = require('../models/User_signup');
+const requireLogin = require('../middleware/requireLogin');
 const FeedbackModel = require('../models/FeedbackModel');
 const HelpdeskModel = require('../models/HelpdeskModel');
 const FaqModel = require('../models/FaqModel');
@@ -24,10 +25,10 @@ router.get('/', (req, res) => {
     res.render('index_bfr_login');
 });
 
-//Route for homepage
-router.get('/homepage/:id', async(req, res) => {
+// Route for homepage
+router.get('/homepage', requireLogin, async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.session.userId);
         if (!user) {
             return res.status(404).send('User not found');
         }
@@ -38,15 +39,27 @@ router.get('/homepage/:id', async(req, res) => {
     }
 });
 
-router.get('/form', (req, res) => {
-    res.render('form');
+// Route to render form
+router.get('/form', requireLogin, async (req, res) => {
+    try {
+        const user = await User.findById(req.session.userId);
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+    res.render('form', {user});
+    }catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
 });
 
-router.post('/submit', upload.single('file'), async (req, res) => {
-    const { subject, title, about_lesson, about_tutor, rate, hours, languages, location, mode, teaching_sample } = req.body;
+// Route to handle form submission
+router.post('/submit', requireLogin, upload.single('file'), async (req, res) => {
+    const { subject, title, about_lesson, about_tutor, rate, hours, languages, location, teaching_sample } = req.body;
 
     try {
         const newAd = new Ad({
+            user: req.session.userId, // Associate the ad with the logged-in user
             subject,
             title,
             about_lesson,
@@ -55,64 +68,73 @@ router.post('/submit', upload.single('file'), async (req, res) => {
             hours,
             languages: Array.isArray(languages) ? languages : [languages],
             location,
-            mode,
             teaching_sample
         });
 
         await newAd.save();
-        res.redirect(`/subscription/${newAd._id}`);
+        res.redirect(`/discover_tutor`);
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
     }
 });
 
-router.get('/subscription/:id', async (req, res) => {
+router.get('/subscription/:id', requireLogin, async (req, res) => {
     try {
-        const adId = req.params.id;
-        const ad = await Ad.findById(adId);
+        const ad = await Ad.findById(req.params.id).populate('user');
+        const user = await User.findById(req.session.userId);
 
         if (!ad) {
             return res.status(404).send('Ad not found');
         }
 
-        res.render('subscription', { ad });
+        res.render('subscription', {user});
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
     }
 });
 
-router.get('/discover_tutor', async (req, res) => {
+router.get('/discover_tutor', requireLogin, async (req, res) => {
     try {
-        const ads = await Ad.find({});
-        res.render('discover_tutor', { ads });
+        const user = await User.findById(req.session.userId);
+        const ads = await Ad.find({}).populate('user');
+        res.render('discover_tutor', {ads, user});
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
     }
 });
 
-// Route to handle fetching the ad for editing
-router.get('/edit/:id', async (req, res) => {
+router.get("/tutor_ad/:id", requireLogin, async (req, res) => {
     try {
-        const adId = req.params.id;
-        const ad = await Ad.findById(adId);
+      const ad = await Ad.findById(req.params.id);
+      const user = await User.findById(req.session.userId);
+      res.render("tutor_ad", {ad, user});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+    }
+  });
+  
+
+router.get('/edit/:id', requireLogin, async (req, res) => {
+    try {
+        const ad = await Ad.findById(req.params.id);
 
         if (!ad) {
             return res.status(404).send('Ad not found');
         }
 
-        res.render('editform', { ad });
+        res.render('editform', {user});
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
     }
 });
 
-// Route to handle updating the ad
-router.post('/edit/:id', upload.single('file'), async (req, res) => {
-    const { subject, title, about_lesson, about_tutor, rate, hours, languages, location, mode, teaching_sample } = req.body;
+router.post('/edit/:id', requireLogin, upload.single('file'), async (req, res) => {
+    const { subject, title, about_lesson, about_tutor, rate, hours, languages, location, teaching_sample } = req.body;
     const adId = req.params.id;
 
     try {
@@ -130,7 +152,6 @@ router.post('/edit/:id', upload.single('file'), async (req, res) => {
         ad.hours = hours;
         ad.languages = Array.isArray(languages) ? languages : [languages];
         ad.location = location;
-        ad.mode = mode;
         ad.teaching_sample = teaching_sample;
 
         if (req.file) {

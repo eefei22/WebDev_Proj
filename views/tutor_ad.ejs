@@ -40,7 +40,7 @@
           <div class="dropdown">
               <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="/images/ic_profile.png" alt="user profile"></a>
               <div class="dropdown-content" id="profileDropdownContent">
-                  <a id="profile" href="/profile">My Profile</a>
+                <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
                   <div class="logout">
                       <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
                   </div>
