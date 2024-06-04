@@ -1,117 +1,136 @@
-const form = document.querySelector("form");
+document.addEventListener("DOMContentLoaded", () => {
+    const contactForm = document.querySelector(".container form");
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    // Do nothing if form not validated
-    if (!validateForm(form)) return;
-
-    //if form valid submit
-
-    alert("Message successfully sent");
-
-    resetFormFields(form);
-})
-
-
-// Function to reset the form fields
-const resetFormFields = (form) => {
-    form.reset();
-};
-
-const validateForm = (form) => {
-    let valid = true;
-    //Check for empty fields
-    let name = form.querySelector(".name");
-    let message = form.querySelector(".message");
-    let email = form.querySelector(".email");
-
-    if (name.value == "") {
-        giveError(name, "Please enter your name");
-        valid=false;
-    }
-    if (message.value == "") {
-        giveError(message, "Please enter message");
-        valid=false;
-    }
-
-    //emaill validation
-    let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    let emailValue = email.value;
-    if (!emailRegex.test(emailValue)){
-        giveError(email, "Please enter a valid email");
-        valid=false;
-    }
-
-    //return true if valid
-    if (valid){
-        return true;
-    }
-};
-
-const giveError = (field, message) => {
-    let parentElement = field.parentElement;
-    parentElement.classList.add("error");
-    //if error message already exist remove it
-    let existingError = parentElement.querySelector(".err-msg")
-    if (existingError){
-        existingError.remove();
-    }
-    let error = document.createElement("span")
-    error.textContent = message;
-    error.classList.add("err-msg");
-    parentElement.appendChild(error);
-};
-
-// lets remover error on input
-
-const inputs = document.querySelectorAll("input");
-const textareas = document.querySelectorAll("textarea");
-
-let allFields = [...inputs, ...textareas];
-
-allFields.forEach((field) => {
-    field.addEventListener("input", () => {
-        removeError(field);
+    contactForm.addEventListener("submit", (e) => {
+        if (!validateForm(contactForm)) {
+            e.preventDefault();  // Prevent form submission if validation fails
+        } else {
+            // Add the query parameter to the form action
+            contactForm.action += '?submitted=true';
+        }
     });
-});
 
-const removeError = (field) => {
-    let parentElement = field.parentElement;
-    parentElement.classList.remove("error");
-    let error = parentElement.querySelector(".err-msg");
-    if (error){
-        error.remove();
+    const allFields = document.querySelectorAll("input, textarea");
+    allFields.forEach((field) => {
+        field.addEventListener("input", () => {
+            removeError(field);
+        });
+    });
+
+    const accordionContent = document.querySelectorAll(".accordion-content");
+    accordionContent.forEach((item, index) => {
+        const header = item.querySelector("header");
+        header.addEventListener("click", () => {
+            item.classList.toggle("open");
+            const desc = item.querySelector(".desc");
+            if (item.classList.contains("open")) {
+                desc.style.height = `${desc.scrollHeight}px`;
+                item.querySelector("i").classList.replace("fa-plus", "fa-minus");
+            } else {
+                desc.style.height = "0px";
+                item.querySelector("i").classList.replace("fa-minus", "fa-plus");
+            }
+            closeOtherAccordions(index);
+        });
+    });
+
+    function closeOtherAccordions(currentIndex) {
+        accordionContent.forEach((item, index) => {
+            if (currentIndex !== index) {
+                item.classList.remove("open");
+                item.querySelector(".desc").style.height = "0px";
+                item.querySelector("i").classList.replace("fa-minus", "fa-plus");
+            }
+        });
     }
-};
 
+    function validateForm(form) {
+        let valid = true;
 
-// FAQ
-const accordionContent = document.querySelectorAll(".accordion-content");
-accordionContent.forEach((item, index) => {
-    let header = item.querySelector("header");
-    header.addEventListener("click", () => {
-        item.classList.toggle("open");
+        const name = form.querySelector(".name");
+        const message = form.querySelector(".message");
+        const email = form.querySelector(".email");
 
-        let desc = item.querySelector(".desc");
-        if(item.classList.contains("open")){
-            desc.style.height = `${desc.scrollHeight}px`;
-            item.querySelector("i").classList.replace("fa-plus", "fa-minus");
-        } else{
-            desc.style.height = "0px"
-            item.querySelector("i").classList.replace("fa-minus", "fa-plus");
+        if (!name.value.trim()) {
+            giveError(name, "Please enter your name");
+            valid = false;
         }
-        removeOpen(index);
-    })
-})
-
-function removeOpen(index1){
-    accordionContent.forEach((item2, index2) => {
-        if(index1 != index2){
-            item2.classList.remove("open");
-
-            let des = item2.querySelector(".desc");
-            des.style.height = "0px";
-            item2.querySelector("i").classList.replace("fa-minus", "fa-plus");
+        if (!message.value.trim()) {
+            giveError(message, "Please enter a message");
+            valid = false;
         }
-    })
-}
+        const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!emailRegex.test(email.value.trim())) {
+            giveError(email, "Please enter a valid email");
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    function giveError(field, message) {
+        const parentElement = field.parentElement;
+        parentElement.classList.add("error");
+        let existingError = parentElement.querySelector(".err-msg");
+        if (existingError) {
+            existingError.textContent = message;
+        } else {
+            const error = document.createElement("span");
+            error.textContent = message;
+            error.classList.add("err-msg");
+            parentElement.appendChild(error);
+        }
+    }
+
+    function removeError(field) {
+        const parentElement = field.parentElement;
+        parentElement.classList.remove("error");
+        let error = parentElement.querySelector(".err-msg");
+        if (error) {
+            error.remove();
+        }
+    }
+
+    // Search form handling
+    const searchForm = document.getElementById("searchForm");
+
+    searchForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const query = document.getElementById("searchInput").value.trim();
+        if (query) {
+            window.location.href = `/helpdesk/search?query=${encodeURIComponent(query)}`;
+        }
+    });
+
+    // Check for query parameter and show alert
+
+    contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        
+        if (!validateForm(contactForm)) {
+            return; // Exit function early if form validation fails
+        }
+        
+        // Submit the form data via AJAX instead of a regular form submission
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch('/helpdesk', {
+                method: 'POST',
+                body: formData
+            });
+            
+            if (response.ok) {
+                // Display the alert message
+                alert("Your message has been submitted successfully!");
+                // Reset the form
+                contactForm.reset();
+            } else {
+                throw new Error('Failed to submit form');
+            }
+        } catch (error) {
+            console.error(error);
+            alert("An error occurred while submitting the form. Please try again later.");
+        }
+    });
+
+});

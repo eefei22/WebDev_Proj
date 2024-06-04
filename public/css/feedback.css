@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins" sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -15,18 +15,38 @@ body {
     background: #C2D9FF;
 }
 
+.open-feedback-btn {
+    padding: 10px 20px;
+    background-color: #190482;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-/* Splitting the feedback box into two parts */
-.split {
+.feedback-dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 80%;
+    max-width: 1200px;
+    overflow: hidden;
+}
+
+.feedback-dialog .split {
     display: flex;
 }
 
-/* Styles for the left part */
 .left {
     width: 50%;
     padding: 20px;
     box-sizing: border-box;
-    border-radius: 20px;
     border-top-right-radius: 80px;
     border-bottom-right-radius: 80px;
     background-color: #007bff;
@@ -45,7 +65,6 @@ body {
     max-width: 95%;
 }
 
-/* Styles for the right part */
 .right {
     width: 50%;
     padding: 20px;
@@ -61,7 +80,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* Styles for the stars rating */
 .stars {
     display: flex;
     justify-content: flex-start;
@@ -80,8 +98,6 @@ body {
     color: #ff9c1a;
 }
 
-
-/* Styles for the comment textarea */
 .textarea {
     margin-top: 20px;
 }
@@ -106,9 +122,8 @@ body {
 }
 
 .anonymous h3 {
-    font-size: 20x;
+    font-size: 20px;
     margin-right: 10px;
-    /* Add spacing between h3 and toggle button */
 }
 
 .toggle {
@@ -133,11 +148,11 @@ body {
     transition: 0.2s;
 }
 
-input:checked+.toggle {
+input:checked + .toggle {
     background-color: #20096d;
 }
 
-input:checked+.toggle::before {
+input:checked + .toggle::before {
     transform: translateX(30px);
 }
 
@@ -145,7 +160,6 @@ input {
     display: none;
 }
 
-/* Styles for the submit button */
 .btn {
     margin-top: 30px;
     display: flex;
@@ -159,9 +173,7 @@ input {
     margin-top: 15px;
     margin-right: 35px;
     background-color: #190482;
-    /* Button background color */
     color: #fff;
-    /* Button text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -169,69 +181,24 @@ input {
 
 .btn button:hover {
     background-color: #7752FE;
-    /* Button background color on hover */
 }
 
-.pop-up {
-    width: 400px;
-    background: #fff;
-    border-radius: 6px;
+.close-feedback-btn {
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.1);
-    text-align: center;
-    padding: 0 30px 30px;
-    color: #000;
-    visibility: hidden;
-    transition: transform 0, 4s, top 0.4s;
-    border: 5px solid #0056b3;
-}
-
-.pop-up i {
-    font-size: 65px;
-    /* Adjust the font size as needed */
-    display: block;
-    /* Ensure the icon is centered horizontally */
-    margin: 0 auto 10px;
-    /* Add margin for spacing between the icon and text */
-    color: #00ff00;
-    /* Set the color of the icon */
-    margin-top: 30px;
-}
-
-.pop-up p {
-    margin-top: 5px;
-    font-size: 16px;
-}
-
-.open-popup {
-    visibility: visible;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.pop-up h2 {
-    font-size: 38px;
-    font-weight: 500;
-}
-
-.pop-up button {
-    width: 100%;
-    margin-top: 25px;
-    padding: 8px 0;
-    background: #190482;
-    color: #fff;
-    border: 0;
-    outline: none;
-    font-size: 18px;
-    border-radius: 4px;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
     cursor: pointer;
-    box-shadow: 0 2 5px 5px rgba(0, 0, 0, 0.02);
+    color: #000;
 }
 
-/* Media queries for responsiveness */
 @media screen and (max-width: 700px) {
+    .feedback-dialog {
+        width: 90%;
+    }
+    
     .split {
         flex-direction: column;
     }

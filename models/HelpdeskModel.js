@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const helpdeskSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  message: { type: String, required: true },
-});
+const hdSchema = new mongoose.Schema({
+    name: { type: String, required: true }, // Name of the user
+    email: { type: String, required: true }, // Email of the user
+    message: { type: String, required: true } // Message from the user
+})
 
-module.exports = mongoose.model('HelpdeskModel', helpdeskSchema);
+module.exports = mongoose.model('HelpdeskModel', hdSchema);
