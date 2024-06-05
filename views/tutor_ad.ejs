@@ -23,44 +23,45 @@
 </head>
 <body>
     <nav>
-      <a href="/"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
+      <a href="/homepage/<%= user._id %>"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
       <div class="nav-links" id="navLinks">
-          <!-- close icon -->
-          <i class="fas fa-times" onclick="hideMenu()"></i>
-          <ul>
-              <li><a href="/form">Subscription</a></li>
-              <li><a href="/discover_tutor">Discover Tutor</a></li>
-              <li><a href="/tuitionFee">Payment</a></li>
-              <li><a href="/helpdesk">Helpdesk</a></li>
-          </ul>
-      </div>
+        <!-- close icon -->
+        <i class="fas fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="/form">Subscription</a></li>
+          <li><a href="/discover_tutor">Discover Tutor</a></li>
+          <li><a href="/tuitionFee">Payment</a></li>
+          <li><a href="/helpdesk">Helpdesk</a></li>
+        </ul> <!--closing unorder list -->
+      </div> <!--closing nav-links -->
       <!-- nav icon -->
       <div class="navIcon">
-          <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
-          <div class="dropdown">
-              <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="/images/ic_profile.png" alt="user profile"></a>
-              <div class="dropdown-content" id="profileDropdownContent">
-                <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
-                  <div class="logout">
-                      <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
-                  </div>
-              </div>
+        <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
+        <div class="dropdown">
+          <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
+          <div class="dropdown-content" id="profileDropdownContent">
+            <!-- Dropdown content here -->
+            <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
+            <div class="logout">
+              <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
+            </div>
           </div>
-      </div>
+        </div>
+      </div> <!--closing nav icon -->
       <i class="fas fa-bars" onclick="showMenu()"></i>
-  </nav>
+    </nav>
 
       <div class="content_container">
         <div class="profile_content">
           <div class="desc_frame">
             <div class="title"><h1><%= ad.title %></h1></div>
             <div class=detail_container>
-            <!-- *****************GET TUTOR IMAGE FROM tutor_profile COLLECTION ****************** -->
-              <img class="profile_pic" src="/images/tutor-6-image.png" />
+              <img class="profile_pic" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="Tutor Profile Image">
 
               <div class=label_container>
-                <!-- *****************GET TUTOR NAME FROM tutor_profile COLLECTION **************** -->
-                <div class="labels">Lei Lou Dao </div>
+                <div>
+                <p class= "labels"> <%= ad.user ? user.name : 'N/A' %></p>
+              </div>
 
                 <div><p><strong>Subject:</strong> <%= ad.subject %></p></div>
                 <a class="labels" href="<%= ad.teaching_sample %>" target="_blank">Watch a teaching sample</a>
@@ -110,8 +111,6 @@
             <div><button class="labeled_button" onclick="window.location.href='purchase_lesson.html'" ;>Book Now</button>
             </div>
             <div><button class="labeled_button" onclick="window.location.href='cart.html'">Add to Cart</button></div> <br>
-
-            <!-- *****************GET TUTOR ID FROM tutor_profile COLLECTION **************** -->
             <a class="par" target="_blank" href="/tutor_chat/<%= ad._id %>">Chat with tutor</a>
       
           </div>
