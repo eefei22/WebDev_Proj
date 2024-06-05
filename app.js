@@ -4,13 +4,16 @@ const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
 const multer = require('multer');
-const routes = require('./routes/index'); // Import index routes
-const signup_routes = require('./routes/signup'); // Import signup routes
-const login_routes = require('./routes/login'); // Import login routes
-const profile_routes = require('./routes/profile'); // Include profile routes
-const nav_routes = require('./routes/nav');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+
+const routes = require('./routes/index'); 
+const signup_routes = require('./routes/signup'); 
+const login_routes = require('./routes/login'); 
+const profile_routes = require('./routes/profile');
+const nav_routes = require('./routes/nav');
+const chat_routes = require('./routes/chat');
+
 const defaultProfilePic = 'public\images\tutor-1-image.png';
 
 dotenv.config();
@@ -50,6 +53,35 @@ app.use('/', signup_routes); // Use signup routes
 app.use('/', login_routes); // Use login routes
 app.use('/', profile_routes); // Use profile routes
 app.use('/', nav_routes);
+app.use('/', chat_routes);
+
+const http = require('http');
+const { Server } = require('socket.io');
+
+const server = http.createServer(app);
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+
+    socket.on('joinRoom', ({ chatId }) => {
+        socket.join(chatId);
+        console.log(`User joined chat room: ${chatId}`);
+    });
+
+    socket.on('chatMessage', async ({ chatId, senderId, message }) => {
+        const chat = await Chat.findById(chatId);
+        if (chat) {
+            chat.messages.push({ senderId, text: message });
+            await chat.save();
+            io.to(chatId).emit('message', { senderId, message, timestamp: new Date() });
+        }
+    });
+
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
+});
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

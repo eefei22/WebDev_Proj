@@ -1,52 +1,28 @@
+<!-- views/tutor_chat.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tutor Chat</title>
+    <title>Chat with <%= tutor.name %></title>
     <link rel="stylesheet" href="/css/tutor_chat.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const socket = io({ query: { name: "<%= name %>" } });
-            const chatForm = document.getElementById('chat-form');
-            const messageInput = document.getElementById('message-input');
-            const messageContainer = document.getElementById('message-container');
-
-            socket.on('chat message', ({ username, message, timestamp }) => {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('chat-message');
-                messageElement.innerHTML = `<p><strong>${username}:</strong> ${message} <span class="timestamp">${new Date(timestamp).toLocaleTimeString()}</span></p>`;
-                messageContainer.appendChild(messageElement);
-            });
-
-            chatForm.addEventListener('submit', e => {
-                e.preventDefault();
-                const message = messageInput.value;
-                const username = "<%= username %>"; // Make sure to set username on server-side and pass it to the EJS template
-                socket.emit('chat message', { username, message });
-                messageInput.value = '';
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="chat-container">
-        <div class="inbox">
-            <!-- Inbox list goes here -->
+        <h2>Chat with <%= tutor.name %></h2>
+        <div id="chat-box">
+            <% chat.messages.forEach(message => { %>
+                <div class="message <%= message.senderId.equals(session.userId) ? 'self' : 'other' %>">
+                    <p><%= message.text %></p>
+                    <span><%= new Date(message.timestamp).toLocaleTimeString() %></span>
+                </div>
+            <% }) %>
         </div>
-        <div class="chat-box">
-            <div id="message-container">
-                <% chatHist.forEach(chat => { %>
-                    <div class="chat-message">
-                        <p><strong><%= chat.username %>:</strong> <%= chat.message %> <span class="timestamp"><%= new Date(chat.timestamp).toLocaleTimeString() %></span></p>
-                    </div>
-                <% }) %>
-            </div>
-            <form id="chat-form">
-                <input type="text" id="message-input" placeholder="Type a message" required autocomplete="off">
-                <button type="submit">Send</button>
-            </form>
-        </div>
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="Type your message" required>
+            <button type="submit">Send</button>
+        </form>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
 </body>
 </html>
