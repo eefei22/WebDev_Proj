@@ -51,56 +51,53 @@
       <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
 
-      <div class="content_container">
+    <div class="content_container">
         <div class="profile_content">
-          <div class="desc_frame">
-            <div class="title"><h1><%= ad.title %></h1></div>
-            <div class=detail_container>
-              <img class="profile_pic" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="Tutor Profile Image">
-
-              <div class=label_container>
-                <div>
-                <p class= "labels"> <%= ad.user ? user.name : 'N/A' %></p>
-              </div>
-
-                <div><p><strong>Subject:</strong> <%= ad.subject %></p></div>
-                <a class="labels" href="<%= ad.teaching_sample %>" target="_blank">Watch a teaching sample</a>
-              </div>
-            </div>  
-        
-            <div class="nugget_facts">
-                <img class="mini_icon" src="/images/location_icon.png" />
-                <div class="details"><%= ad.location %></div>
-                <img class="mini_icon" src="/images/duration_icon.png" />
-                <div class="details"><%= ad.hours %> hours/session</div>
-                <img class="mini_icon" src="/images/language_icon.png" />
-                <div class="details"><%= ad.languages.join(', ') %></div>
-              </div>
-
-            <div class="labels">About Me</div>
-            <div class="par"><%= ad.about_tutor %></div>
-            <div class="labels">About The Lesson</div>
-            <div class="par"><%= ad.about_lesson %></div>
-
-            <div class="labels">Ratings and Reviews</div>
-            <div class="review">
-              <div class="user-profile">
-                <img class="review_pic" src="/images/student-1-image.png" alt="User Profile Picture">
-              </div>
-              <div class="review-details">
-                <h3 class="labels">Xiu Mui Mui</h3>
-                <div class="rating">
-                  <span class="star">&#9733;</span>
-                  <span class="star">&#9733;</span>
-                  <span class="star">&#9733;</span>
-                  <span class="star">&#9733;</span>
-                  <span class="star">&#9733;</span>
+            <div class="desc_frame">
+                <div class="title"><h1><%= ad.title %></h1></div>
+                <div class="detail_container">
+                    <img class="profile_pic" src="<%= ad.user && ad.user.profilePic ? '/uploads/' + ad.user.profilePic : '/images/ic_profile.png' %>" alt="Tutor Profile Image">
+                    <div class="label_container">
+                        <div>
+                            <p class="labels"><%= ad.user ? ad.user.name : 'N/A' %></p>
+                        </div>
+                        <div><p><strong>Subject:</strong> <%= ad.subject %></p></div>
+                        <a class="labels" href="<%= ad.teaching_sample %>" target="_blank">Watch a teaching sample</a>
+                    </div>
                 </div>
-                <p class="par">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non est auctor, rhoncus
-                  dolor ac, luctus nisi. Integer semper nec nulla nec malesuada.</p>
-              </div>
-            </div>
-            <a href="feedback.html" class="rev_link"><button id="review_button">Leave a Review</button></a>
+
+                <div class="nugget_facts">
+                    <img class="mini_icon" src="/images/location_icon.png" />
+                    <div class="details"><%= ad.location %></div>
+                    <img class="mini_icon" src="/images/duration_icon.png" />
+                    <div class="details"><%= ad.hours %> hours/session</div>
+                    <img class="mini_icon" src="/images/language_icon.png" />
+                    <div class="details"><%= ad.languages.join(', ') %></div>
+                </div>
+
+                <div class="labels">About Me</div>
+                <div class="par"><%= ad.about_tutor %></div>
+                <div class="labels">About The Lesson</div>
+                <div class="par"><%= ad.about_lesson %></div>
+
+                <div class="labels">Ratings and Reviews</div>
+                <div class="review">
+                    <div class="user-profile">
+                        <img class="review_pic" src="/images/student-1-image.png" alt="User Profile Picture">
+                    </div>
+                    <div class="review-details">
+                        <h3 class="labels">Xiu Mui Mui</h3>
+                        <div class="rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                        </div>
+                        <p class="par">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non est auctor, rhoncus dolor ac, luctus nisi. Integer semper nec nulla nec malesuada.</p>
+                    </div>
+                </div>
+                <a href="feedback.html" class="rev_link"><button id="review_button">Leave a Review</button></a>
 
             </div>
         </div>
@@ -108,53 +105,49 @@
         <div class="CTA">
             <div class="title" style="font-size: 45px;">RM<%= ad.rate %></div>
             <div class="par">per session</div>
-            <div><button class="labeled_button" onclick="window.location.href='purchase_lesson.html'" ;>Book Now</button>
-            </div>
+            <div><button class="labeled_button" onclick="window.location.href='purchase_lesson.html'" ;>Book Now</button></div>
             <div><button class="labeled_button" onclick="window.location.href='cart.html'">Add to Cart</button></div> <br>
             <a class="par" target="_blank" href="/chat/<%= ad.user._id %>">Chat with tutor</a>
-      
-          </div>
         </div>
+    </div>
       
-        <footer>
-          <section class="footer">
+    <footer>
+        <section class="footer">
             <div class="container6">
-              <div class="frame">
-                <div class="link">
-                  <h4>Quick Links</h4>
-                  <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="subscription.html">Subscription</a></li>
-                    <li><a href="discover_tutor.html">Courses</a></li>
-                    <li><a href="helpdesk.html">FAQ</a></li>
-                  </ul>
+                <div class="frame">
+                    <div class="link">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="subscription.html">Subscription</a></li>
+                            <li><a href="discover_tutor.html">Courses</a></li>
+                            <li><a href="helpdesk.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <img id="logo" src="/images/logo.png" alt="EduPro" width="200">
+                    <div class="link">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li>
+                                <img src="/images/email.png" alt="Email">
+                                <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
+                            </li>
+                            <li>
+                                <img src="/images/phone.png" alt="Phone no">
+                                <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+                            </li>
+                            <li>
+                                <img src="/images/location.png" alt="Location">
+                                <a href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4, Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <img id="logo" src="/images/logo.png" alt="EduPro" width="200">
-                <div class="link">
-                  <h4>Contact Us</h4>
-                  <ul>
-                    <li>
-                      <img src="/images/email.png" alt="Email">
-                      <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
-                    </li>
-                    <li>
-                      <img src="/images/phone.png" alt="Phone no">
-                      <a href="https://wa.me/60173968518">+60 17 396 8518</a>
-                    </li>
-                    <li>
-                      <img src="/images/location.png" alt="Location">
-                      <a
-                        href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
-                        Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <hr>
-              <p>&copy; 2024 EduPro. All rights reserved.</p>
+                <hr>
+                <p>&copy; 2024 EduPro. All rights reserved.</p>
             </div>
-          </section>
-        </footer>
+        </section>
+    </footer>
 
     <script src="/js/nav.js"></script>
 

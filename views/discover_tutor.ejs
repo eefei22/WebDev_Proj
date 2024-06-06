@@ -22,109 +22,102 @@
     
 </head>
 <body>
-      <nav>
+    <nav>
         <a href="/homepage/<%= user._id %>"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
         <div class="nav-links" id="navLinks">
-          <!-- close icon -->
-          <i class="fas fa-times" onclick="hideMenu()"></i>
-          <ul>
-            <li><a href="/form">Subscription</a></li>
-            <li><a href="/discover_tutor">Discover Tutor</a></li>
-            <li><a href="/tuitionFee">Payment</a></li>
-            <li><a href="/helpdesk">Helpdesk</a></li>
-          </ul> <!--closing unorder list -->
+            <!-- close icon -->
+            <i class="fas fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="/form">Subscription</a></li>
+                <li><a href="/discover_tutor">Discover Tutor</a></li>
+                <li><a href="/tuitionFee">Payment</a></li>
+                <li><a href="/helpdesk">Helpdesk</a></li>
+            </ul> <!--closing unorder list -->
         </div> <!--closing nav-links -->
         <!-- nav icon -->
         <div class="navIcon">
-          <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
-          <div class="dropdown">
-            <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
-            <div class="dropdown-content" id="profileDropdownContent">
-              <!-- Dropdown content here -->
-              <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
-              <div class="logout">
-                <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
-              </div>
+            <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
+            <div class="dropdown">
+                <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
+                <div class="dropdown-content" id="profileDropdownContent">
+                    <!-- Dropdown content here -->
+                    <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
+                    <div class="logout">
+                        <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div> <!--closing nav icon -->
         <i class="fas fa-bars" onclick="showMenu()"></i>
-      </nav>
+    </nav>
 
     <h1>Discover Our Tutors</h1>
     <div class="Search">
         <div class="SearchBar">
-          <input type="text" placeholder="Search..." />
+            <input type="text" placeholder="Search..." />
         </div>
         <img class="SearchIcon" src="images/search-icon.png" />
-      </div>
+    </div>
 
-      <div class="ad-container">
+    <div class="ad-container">
         <% ads.forEach(ad => { %>
-          <div class="ad-wrapper">
-            <div class="tutor_image">
-              <img class="tutor_image" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="Tutor Profile Image">
-            </div>
-            <div class="ad">
-              <name>
-                <h2><a href="/tutor_ad/<%= ad._id %>"> <strong>Tutor:</strong> <%= ad.user ? ad.user.name : 'N/A' %></a></h2>
-              </name>
-              <p><strong>Location:</strong> <%= ad.location %></p>
+            <div class="ad-wrapper">
+                <div class="tutor_image">
+                    <img class="tutor_image" src="<%= ad.user && ad.user.profilePic ? '/uploads/' + ad.user.profilePic : '/images/ic_profile.png' %>" alt="Tutor Profile Image">
+                </div>
+                <div class="ad">
+                    <name>
+                        <h2><a href="/tutor_ad/<%= ad._id %>"><strong>Tutor:</strong> <%= ad.user ? ad.user.name : 'N/A' %></a></h2>
+                    </name>
+                    <p><strong>Location:</strong> <%= ad.location %></p>
                     <p><strong>Subject:</strong> <%= ad.subject %></p>
-                    <p><%= ad.about_lesson %></p>                
+                    <p><%= ad.about_lesson %></p>
                     <p><strong>Hourly Rate:</strong> RM<%= ad.rate %>/h</p>
+                </div>
             </div>
-          </div>
         <% }) %>
-      </div>
-      
-      
-       <br><br>
+    </div>
+
+    <br><br>
     
     <footer>
         <section class="footer">
-          <div class="container6">
-            <div class="frame">
-              <div class="link">
-                <h4>Quick Links</h4>
-                <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="subscription.html">Subscription</a></li>
-                  <li><a href="discover_tutor.html">Courses</a></li>
-                  <li><a href="helpdesk.html">FAQ</a></li>
-                </ul>
-              </div>
-              <img id="logo" src="Images\logo.png" alt="EduPro" width="200">
-              <div class="link">
-                <h4>Contact Us</h4>
-                <ul>
-                  <li>
-                    <img src="Images\email.png" alt="Email">
-                    <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
-                  </li>
-                  <li>
-                    <img src="Images\phone.png" alt="Phone no">
-                    <a href="https://wa.me/60173968518">+60 17 396 8518</a>
-                  </li>
-                  <li>
-                    <img src="Images\location.png" alt="Location">
-                    <a
-                      href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
-                      Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
-                  </li>
-                </ul>
-              </div>
+            <div class="container6">
+                <div class="frame">
+                    <div class="link">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="subscription.html">Subscription</a></li>
+                            <li><a href="discover_tutor.html">Courses</a></li>
+                            <li><a href="helpdesk.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <img id="logo" src="Images\logo.png" alt="EduPro" width="200">
+                    <div class="link">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li>
+                                <img src="Images\email.png" alt="Email">
+                                <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
+                            </li>
+                            <li>
+                                <img src="Images\phone.png" alt="Phone no">
+                                <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+                            </li>
+                            <li>
+                                <img src="Images\location.png" alt="Location">
+                                <a href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4, Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <p>&copy; 2024 EduPro. All rights reserved.</p>
             </div>
-            <hr>
-            <p>&copy; 2024 EduPro. All rights reserved.</p>
-          </div>
         </section>
-      </footer>
-
-
-
+    </footer>
 
     <script src="/js/nav.js"></script>
 </body>
 </html>
-
