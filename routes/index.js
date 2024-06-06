@@ -107,16 +107,6 @@ router.get('/discover_tutor', requireLogin, async (req, res) => {
 });
 
 
-// router.get("/tutor_ad/:id", requireLogin, async (req, res) => {
-//     try {
-//       const ad = await Ad.findById(req.params.id);
-//       const user = await User.findById(req.session.userId);
-//       res.render("tutor_ad", {ad, user});
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).send("Server Error");
-//     }
-//   });
   
   router.get("/tutor_ad/:id", requireLogin, async (req, res) => {
     try {
