@@ -14,10 +14,11 @@ const multer = require('multer');
 const routes = require('./routes/index'); 
 const signup_routes = require('./routes/signup'); 
 const login_routes = require('./routes/login'); 
-const profile_routes = require('./routes/profile'); // Re-include profile routes
+const profile_routes = require('./routes/profile'); 
 const nav_routes = require('./routes/nav');
 const chatRouter = require('./routes/chat');
 const paymentRoute = require('./routes/paymentRoute');
+const inboxRouter = require('./routes/inbox'); 
 //const cartRoute = require('./routes/cartRoute');
 const ChatMessage = require('./models/ChatMessage');
 
@@ -77,10 +78,11 @@ app.use(express.json({
 app.use('/', routes);
 app.use('/', signup_routes);
 app.use('/', login_routes);
-app.use('/', profile_routes); // Re-include profile routes
+app.use('/', profile_routes); 
 app.use('/', nav_routes);
 app.use('/', chatRouter);
 app.use('/', paymentRoute);
+app.use('/', inboxRouter); 
 //app.use('/', cartRoute);
 
 const server = http.createServer(app);

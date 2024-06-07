@@ -1,0 +1,22 @@
+<!-- /views/inbox.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <link rel="stylesheet" href="/css/inbox.css">
+</head>
+<body>
+    <h1>Inbox</h1>
+    <ul>
+        <% conversations.forEach(conversation => { %>
+            <li>
+                <a href="/chat/<%= conversation.participants.find(participant => participant._id.toString() !== user._id.toString())._id %>">
+                    Conversation with <%= conversation.participants.find(participant => participant._id.toString() !== user._id.toString()).name %>
+                </a>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
