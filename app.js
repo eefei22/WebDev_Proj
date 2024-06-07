@@ -3,34 +3,25 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
-
-dotenv.config(); //must be placed before payment declaration
-const multer = require('multer');
-const cors = require("cors");
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const http = require('http');
 const socketIO = require('socket.io');
 const sharedsession = require('socket.io-express-session');
+const cors = require('cors');
+const multer = require('multer');
 
 const routes = require('./routes/index'); 
 const signup_routes = require('./routes/signup'); 
 const login_routes = require('./routes/login'); 
-const profile_routes = require('./routes/profile');
+const profile_routes = require('./routes/profile'); // Re-include profile routes
 const nav_routes = require('./routes/nav');
 const chatRouter = require('./routes/chat');
+const paymentRoute = require('./routes/paymentRoute');
+//const cartRoute = require('./routes/cartRoute');
 const ChatMessage = require('./models/ChatMessage');
 
 dotenv.config();
-const chat_routes = require('./routes/chat');
-//payment
-const paymentRoute = require("./routes/paymentRoute.js");
-const cartRoute = require("./routes/cartRoute.js");
-const tuitionRoute = require("./routes/tuitionRoute.js");
-const defaultProfilePic = 'public\images\tutor-1-image.png';
-
-console.log('MONGO_URI:', process.env.MONGO_URI);
-
 const app = express();
 const port = process.env.PORT || 3003;
 
@@ -38,44 +29,12 @@ mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlPar
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log('MongoDB connection error:', err));
 
-
 const sessionMiddleware = session({
-    secret: 'secret_key',
-//payment
-app.use(
-  express.json({
-    verify: (req, res, buf) => {
-      if (req.originalUrl.startsWith("/webhook")) {
-        req.rawBody = buf.toString();
-      }
-    },
-  })
-);
-
-const allowedOrigins = [process.env.CLIENT_URL, "http://localhost:3003"];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        const msg =
-          "The CORS policy for this site does not allow access from the specified Origin.";
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    },
-  })
-);
-
-// Use session middleware
-app.use(session({
-    secret: 'secret_key',  
+    secret: process.env.SESSION_SECRET || 'secret_key', // session storage secret key
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-    cookie: { secure: false }
+    cookie: { secure: false } // Use true if you're serving over HTTPS
 });
 
 app.use(sessionMiddleware);
@@ -86,25 +45,43 @@ app.use((req, res, next) => {
     next();
 });
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Middleware to parse URL-encoded and JSON bodies
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:3003'];
 
-// Use routes
-app.use('/', routes); // Use index routes
-app.use('/', signup_routes); // Use signup routes
-app.use('/', login_routes); // Use login routes
-app.use('/', profile_routes); // Use profile routes
+app.use(cors({
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
+
+//payment
+app.use(express.json({
+    verify: (req, res, buf) => {
+        if (req.originalUrl.startsWith('/webhook')) {
+            req.rawBody = buf.toString();
+        }
+    }
+})); 
+
+app.use('/', routes);
+app.use('/', signup_routes);
+app.use('/', login_routes);
+app.use('/', profile_routes); // Re-include profile routes
 app.use('/', nav_routes);
 app.use('/', chatRouter);
-app.use("/", cartRoute);
-app.use("/", tuitionRoute);
-app.use("/", paymentRoute);
+app.use('/', paymentRoute);
+//app.use('/', cartRoute);
 
 const server = http.createServer(app);
 const io = socketIO(server);
@@ -136,6 +113,23 @@ io.on('connection', (socket) => {
             });
         } catch (err) {
             console.error('Error saving message:', err);
+        }
+    });
+
+    socket.on('chat message', async ({ username, message }) => {
+        try {
+            const name = socket.handshake.query.name; // Assume name is passed as a query param
+            const newChat = new Chat({
+                name: name, // Assuming 'name' is the name
+                username,
+                message,
+                timestamp: new Date()
+            });
+
+            await newChat.save();
+            io.emit('chat message', { username, message, timestamp: new Date() }); // Emit to all connected clients
+        } catch (error) {
+            console.error(error);
         }
     });
 });
