@@ -3,17 +3,25 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
+
 dotenv.config(); //must be placed before payment declaration
 const multer = require('multer');
 const cors = require("cors");
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const http = require('http');
+const socketIO = require('socket.io');
+const sharedsession = require('socket.io-express-session');
 
 const routes = require('./routes/index'); 
 const signup_routes = require('./routes/signup'); 
 const login_routes = require('./routes/login'); 
 const profile_routes = require('./routes/profile');
 const nav_routes = require('./routes/nav');
+const chatRouter = require('./routes/chat');
+const ChatMessage = require('./models/ChatMessage');
+
+dotenv.config();
 const chat_routes = require('./routes/chat');
 //payment
 const paymentRoute = require("./routes/paymentRoute.js");
@@ -26,11 +34,13 @@ console.log('MONGO_URI:', process.env.MONGO_URI);
 const app = express();
 const port = process.env.PORT || 3003;
 
-// Set up mongoose connection
 mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log('MongoDB connection error:', err));
 
+
+const sessionMiddleware = session({
+    secret: 'secret_key',
 //payment
 app.use(
   express.json({
@@ -64,10 +74,12 @@ app.use(session({
     secret: 'secret_key',  
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } 
-}));
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+    cookie: { secure: false }
+});
 
-// Middleware to log session info for debugging
+app.use(sessionMiddleware);
+
 app.use((req, res, next) => {
     console.log('Session ID:', req.session.id);
     console.log('Session UserID:', req.session.userId);
@@ -89,39 +101,45 @@ app.use('/', signup_routes); // Use signup routes
 app.use('/', login_routes); // Use login routes
 app.use('/', profile_routes); // Use profile routes
 app.use('/', nav_routes);
-app.use('/', chat_routes);
+app.use('/', chatRouter);
 app.use("/", cartRoute);
 app.use("/", tuitionRoute);
 app.use("/", paymentRoute);
 
-const http = require('http');
-const { Server } = require('socket.io');
-
 const server = http.createServer(app);
-const io = new Server(server);
+const io = socketIO(server);
+
+io.use(sharedsession(sessionMiddleware, {
+    autoSave: true
+}));
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log('Socket connected', socket.id);
 
-    socket.on('joinRoom', ({ chatId }) => {
-        socket.join(chatId);
-        console.log(`User joined chat room: ${chatId}`);
-    });
+    socket.on('message', async (data) => {
+        console.log('Message received:', data);
+        const { tutorId, message } = data;
+        const userId = socket.handshake.session.userId; // Ensure userId is set in socket session
 
-    socket.on('chatMessage', async ({ chatId, senderId, message }) => {
-        const chat = await Chat.findById(chatId);
-        if (chat) {
-            chat.messages.push({ senderId, text: message });
-            await chat.save();
-            io.to(chatId).emit('message', { senderId, message, timestamp: new Date() });
+        const newMessage = new ChatMessage({
+            participants: [userId, tutorId],
+            sender: userId,
+            message: message,
+        });
+
+        try {
+            await newMessage.save();
+            io.emit('chat-message', {
+                message: newMessage.message,
+                sender: userId,
+                dateTime: newMessage.dateTime
+            });
+        } catch (err) {
+            console.error('Error saving message:', err);
         }
-    });
-
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
     });
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });

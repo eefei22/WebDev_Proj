@@ -59,7 +59,7 @@ router.post('/submit', requireLogin, upload.single('file'), async (req, res) => 
 
     try {
         const newAd = new Ad({
-            user: req.session.userId, // Associate the ad with the logged-in user
+            user: req.session.userId,
             subject,
             title,
             about_lesson,
@@ -107,16 +107,6 @@ router.get('/discover_tutor', requireLogin, async (req, res) => {
 });
 
 
-// router.get("/tutor_ad/:id", requireLogin, async (req, res) => {
-//     try {
-//       const ad = await Ad.findById(req.params.id);
-//       const user = await User.findById(req.session.userId);
-//       res.render("tutor_ad", {ad, user});
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).send("Server Error");
-//     }
-//   });
   
   router.get("/tutor_ad/:id", requireLogin, async (req, res) => {
     try {
