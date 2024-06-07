@@ -59,7 +59,7 @@ router.post('/submit', requireLogin, upload.single('file'), async (req, res) => 
 
     try {
         const newAd = new Ad({
-            user: req.session.userId, // Associate the ad with the logged-in user
+            user: req.session.userId,
             subject,
             title,
             about_lesson,
