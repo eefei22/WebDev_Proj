@@ -24,13 +24,22 @@ router.post('/login', async (req, res) => {
     if (!isMatch) {
       return res.send('<script>alert("Login failed. The password you entered is incorrect. Please try again."); window.location.href="/login";</script>');
     }
-    
-    // After successful login, get the user's ID
-    
-    res.send(`<script>alert("Welcome back! Your login was successful."); window.location.href="/homepage/${user._id}";</script>`);
+        
+    // Store user ID in session
+    req.session.userId = user._id;
+    console.log('User ID stored in session:', req.session.userId);
+        
+  // Send user details to client for session storage
+    res.send(`
+      <script>
+        sessionStorage.setItem("userId", "${user._id}");
+        sessionStorage.setItem("email", "${user.email}");
+        window.location.href = "/homepage";
+      </script>
+    `);
   } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server error');
+    res.status(500).send("Server error");
   }
 });
 

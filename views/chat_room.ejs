@@ -1,0 +1,30 @@
+<!-- views/chat_room.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/chat_room.css">
+  <title>Chat Room</title>
+</head>
+<body>
+  <h1>Chat with <%= tutor.name %></h1>
+  <div id="chat-container">
+    <div id="messages">
+      <% messages.forEach(function(message) { %>
+        <div class="<%= message.sender.equals(user._id) ? 'message-right' : 'message-left' %>">
+          <p><strong><%= message.sender.equals(user._id) ? 'You' : tutor.name %>:</strong> <%= message.message %></p>
+          <small><%= new Date(message.dateTime).toLocaleString() %></small>
+        </div>
+      <% }); %>
+    </div>
+    <form id="message-form">
+      <input type="hidden" name="tutorId" value="<%= tutor._id %>">
+      <input type="text" name="message" placeholder="Type your message here...">
+      <button type="submit">Send</button>
+  </form>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/chat_room.js"></script>
+</body>
+</html>
