@@ -29,11 +29,17 @@ router.post('/login', async (req, res) => {
     req.session.userId = user._id;
     console.log('User ID stored in session:', req.session.userId);
         
-    // Redirect to the homepage
-    res.redirect('/homepage');
+  // Send user details to client for session storage
+    res.send(`
+      <script>
+        sessionStorage.setItem("userId", "${user._id}");
+        sessionStorage.setItem("email", "${user.email}");
+        window.location.href = "/homepage";
+      </script>
+    `);
   } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server error');
+    res.status(500).send("Server error");
   }
 });
 
