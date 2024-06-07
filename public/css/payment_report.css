@@ -1,0 +1,395 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body styles */
+body {
+    background-color: #C2D9FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Main container styles */
+main {
+    width: 82vw;
+    height: 90vh;
+    background: rgba(20, 27, 56, 0.8);
+    box-shadow: 0 .6rem .6rem #0005;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Table header styles */
+.table_header {
+    width: 100%;
+    height: 10%;
+    background-color: #535C91;
+    padding: .8rem 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Heading styles */
+.table_header h1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Search input group styles */
+.table_header .input_group {
+    width: 20%;
+    height: 100%;
+    background-color: #fff;
+    margin: auto;
+    color: #000;
+    padding: 0.8rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+}
+
+/* Search input styles */
+.table_header .input_group input {
+    width: 100%;
+    padding: 0 .5rem 0 .3rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #000;
+    font-size: 16px;
+}
+
+/* Search input group hover styles */
+.table_header .input_group:hover {
+    width: 30%;
+    box-shadow: 0 .1rem .4rem #0002;
+}
+
+/* Search icon styles */
+.table_header .input_group i {
+    font-size: 16px;
+}
+
+/* Reset button container styles */
+.reset_data {
+    position: relative;
+    margin-right: 8px;
+}
+
+/* Reset button styles */
+.reset_data .reset-btn {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    transition: .1s ease-in-out;
+    background: #fff url(images/reset-regular-24.png) center / 80% no-repeat;
+    border-radius: 50%;
+}
+
+/* Reset button hover styles */
+.reset_data .reset-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* Reset checkbox styles */
+.reset_data input {
+    display: none;
+}
+
+/* Export file container styles */
+.export_file {
+    position: relative;
+}
+
+/* Export file button styles */
+.export_file .export_file-btn {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: #fff url(images/dots-vertical-rounded-regular-24.png) center / 80% no-repeat;
+    border-radius: 50%;
+    transition: .1s ease-in-out;
+}
+
+/* Export file button hover styles */
+.export_file .export_file-btn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Export file options container styles */
+.export_file .export_file-options {
+    position: absolute;
+    right: 0;
+    width: 8rem;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 .2rem .5rem #0004;
+    transition: .2s;
+    opacity: 0;
+    transform: scale(.8);
+    transform-origin: top right;
+}
+
+/* Export file option label styles */
+.export_file .export_file-options label {
+    display: block;
+    width: 100%;
+    padding: 0 .6rem 0;
+    background-color: #f2f2f2;
+    color: #000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transform: .2s ease-in-out;
+}
+
+/* Export file option image styles */
+.export_file .export_file-options img {
+    width: 2rem;
+    height: auto;
+}
+
+/* Show export file options when checkbox is checked */
+.export_file input:checked+.export_file-options {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 100;
+}
+
+/* Hide export file checkbox */
+.export_file input {
+    display: none;
+}
+
+/* Styles for the first export file option label */
+.export_file-options label:first-of-type {
+    padding: 5px;
+    justify-content: center;
+    background-color: #8E8FFA;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Export file option label hover styles */
+.export_file .export_file-options label:not(:first-child):hover {
+    transform: scale(1.05);
+    background-color: #9290C3;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Table body styles */
+.table_body {
+    width: 98%;
+    max-height: calc(89% - 1.6rem);
+    background-color: #8E8FFA;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 1.1rem auto;
+    overflow: auto;
+    border-radius: 0.9rem;
+}
+
+/* Hide scrollbar */
+.table_body::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+}
+
+/* Table header cell styles */
+table thead th {
+    position: sticky;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Table cell styles */
+table,
+th,
+td {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Table header icon styles */
+thead th span.icon-arrow {
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    transition: .2s ease-in-out;
+}
+
+/* Table header icon inner styles */
+thead th span.icon-arrow i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    border: 1.4px solid transparent;
+}
+
+/* Table header icon hover styles */
+thead th:hover span.icon-arrow i {
+    border-color: #7752FE;
+}
+
+/* Table header hover styles */
+thead th:hover {
+    color: #7752FE;
+}
+
+/* Active table header icon styles */
+thead th.active span.icon-arrow i {
+    background-color: #7752FE;
+    color: #fff;
+}
+
+/* Ascending table header icon styles */
+thead th.asc span.icon-arrow {
+    transform: rotate(180deg);
+}
+
+/* Active table header and cell styles */
+thead th.active,
+tbody td.active {
+    color: #7752FE;
+}
+
+/* Table cell styles */
+table tr td {
+    white-space: nowrap;
+    color: #000;
+}
+
+/* Table cell image styles */
+td img {
+    width: 45px;
+    height: 45px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+/* Table row styles */
+tbody tr {
+    --delay: 0.1s;
+    transition: .5s ease-in-out var(--delay), background-color 0s;
+    font-weight: 550;
+}
+
+/* Even table row background color */
+tbody tr:nth-child(even) {
+    background-color: #C2D9FF;
+}
+
+/* Table row hover styles */
+tbody tr:hover {
+    background-color: #FFB5DA;
+}
+
+/* Status label styles */
+.status {
+    padding: .4rem 0;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+/* Paid status styles */
+.status.paid {
+    background-color: #74E291;
+    color: #006b21;
+}
+
+/* Unpaid status styles */
+.status.unpaid {
+    background-color: #E59BE9;
+    color: #D80032;
+}
+
+/* Hide table row */
+tbody tr.hide {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+/* Hide table row cell content */
+tbody tr.hide td,
+tbody tr.hide td p {
+    padding: 0;
+    font: 0 / 0 sans-serif;
+    transition: .3s ease-in-out .4s;
+}
+
+/* No match message styles */
+.no-match-message {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: #FF9BD2;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 17px;
+    display: none;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1250px) {
+    main.tutee_table {
+        width: 98vw;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    td:first-child {
+        min-width: 5rem;
+    }
+
+    td:not(:first-of-type) {
+        min-width: 12.1rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .table_body {
+        max-height: calc(89% - 0.9rem);
+        margin-top: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .table_header h1 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .input_group {
+        display: none !important;
+    }
+}
