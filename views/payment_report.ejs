@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./images/eduPro_logo.jpg">
-    <title>Payment report</title>
-    <!--Font awesome CDN-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Payment Report</title>
+    <!-- Font awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/payment_report.css">
 </head>
 <body>
@@ -20,18 +18,15 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <div class="reset_data">
-                <!-- Add a reset button -->
-                <label for="reset" class="reset-btn"
-                    style="background-image: url('images/reset-regular-24.png');"></label>
+                <label for="reset" class="reset-btn" style="background-image: url('/images/reset-regular-24.png');"></label>
                 <input type="checkbox" id="reset">
             </div>
             <div class="export_file">
-                <label for="export-file" class="export_file-btn"
-                    style="background-image: url('images/dots-vertical-rounded-regular-24.png');"></label>
+                <label for="export-file" class="export_file-btn" style="background-image: url('/images/dots-vertical-rounded-regular-24.png');"></label>
                 <input type="checkbox" name="" id="export-file">
                 <div class="export_file-options">
                     <label>Export</label>
-                    <label for="export-file" id="toPDF">PDF <img src="images/PDF Icon.png" alt="pdf"></label>
+                    <label for="export-file" id="toPDF">PDF <img src="/images/PDF Icon.png" alt="pdf"></label>
                 </div>
             </div>
         </section>
@@ -48,16 +43,16 @@
                         <th>Amount<span class="icon-arrow"><i class="fa-solid fa-arrow-up"></i></span></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <% report.forEach(tutee => { %>
+                <tbody id="paymentTableBody">
+                    <% paymentReport.forEach(payment => { %>
                     <tr>
-                        <td><%= tutee.name %></td>
-                        <td><%= tutee.phone %></td>
-                        <td><%= tutee.email %></td>
-                        <td><%= tutee.paymentDate %></td>
-                        <td><%= tutee.dueDate %></td>
-                        <td><p class="status <%= tutee.status.toLowerCase() %>"><%= tutee.status %></p></td>
-                        <td><strong>RM<%= tutee.amount.toFixed(2) %></strong></td>
+                        <td><%= payment.cardholderName %></td>
+                        <td><%= payment.phone %></td>
+                        <td><%= payment.email %></td>
+                        <td><%= new Date(payment.transactionDate).toISOString().split('T')[0] %></td>
+                        <td><%= payment.dueDate %></td>
+                        <td><p class="status <%= payment.payment_status.toLowerCase() %>"><%= payment.payment_status %></p></td>
+                        <td><strong><%= payment.transactionAmount %></strong></td>
                     </tr>
                     <% }) %>
                 </tbody>
@@ -65,5 +60,6 @@
             <div class="no-match-message">No Matching Data Found</div>
         </section>
     </main>
+    <script src="/js/payment_report.js"></script>
 </body>
 </html>

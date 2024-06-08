@@ -8,6 +8,7 @@ const requireLogin = require('../middleware/requireLogin');
 const FeedbackModel = require('../models/FeedbackModel');
 const HelpdeskModel = require('../models/HelpdeskModel');
 const FaqModel = require('../models/FaqModel');
+const Payment = require('../models/payment_model');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -254,5 +255,63 @@ router.get('/helpdesk/search', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
+router.get('/payment_report', requireLogin, async (req, res) => {
+    try {
+        const tutorId = req.session.userId;
+        console.log(`Fetching payments for tutorId: ${tutorId}`);
+
+        const payments = await Payment.find({ tutorId: tutorId }).lean();
+        console.log(`Payments found: ${JSON.stringify(payments)}`);
+
+        const paymentReport = payments.map(payment => {
+            const transactionDate = moment(payment.transactionDate);
+            const dueDate = transactionDate.clone().add(1, 'month');  // Clone to avoid mutating the original date
+
+            return {
+                cardholderName: payment.cardholderName,
+                phone: payment.phone,
+                email: payment.email,
+                transactionDate: transactionDate.format('D-MM-YYYY'),
+                dueDate: dueDate.format('D-MM-YYYY'),
+                status: payment.payment_status,
+                transactionAmount: `RM${payment.transactionAmount.toFixed(2)}`
+            };
+        });
+
+        console.log(`Payment Report: ${JSON.stringify(paymentReport)}`);
+        res.render('payment_report', { paymentReport });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
+// router.get('/payment_report', requireLogin, async (req, res) => {
+//     try {
+//         const payments = await Payment.find({ tutorId: req.session.userId }).lean();
+
+//         const paymentReport = payments.map(payment => {
+//             const transactionDate = moment(payment.transactionDate);
+//             const dueDate = transactionDate.add(1, 'month');
+//             const status = payment.payment_status;
+
+//             return {
+//                 name: payment.cardholderName,
+//                 phone: payment.phone,
+//                 email: payment.email,
+//                 paymentDate: transactionDate.format('D-MM-YYYY'),
+//                 dueDate: dueDate.format('D-MM-YYYY'),
+//                 status,
+//                 amount: `RM${payment.transactionAmount.toFixed(2)}`,
+//             };
+//         });
+
+//         res.render('payment_report', { paymentReport });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send('Server Error');
+//     }
+// });
 
 module.exports = router;

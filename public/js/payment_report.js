@@ -75,24 +75,29 @@ function sortTable(column, ascending) {
 // Function to parse date string to sortable format
 function parseDate(dateString) {
     if (!dateString) return null;
-    const [day, month, year] = dateString.split('-');
-    return new Date(`${year}-${month}-${day}`);
+    const parts = dateString.split('-');
+    if (parts.length !== 3) return null;
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // JavaScript months are 0-based
+    const year = parseInt(parts[2], 10);
+    return new Date(year, month, day);
 }
 
-// Event listener for the reset checkbox
-document.getElementById('reset').addEventListener('change', function () {
-    if (this.checked) {
-        resetTable(); // Call resetTable function when the checkbox is checked
-        this.checked = false; // Uncheck the checkbox after resetting
-    }
-});
-
-// Function to reset the table to its original order
+// Function to reset table to its original order
 function resetTable() {
     const tbody = document.querySelector('tbody');
-    tbody.innerHTML = ''; // Clear existing table rows
-
-    const fragment = document.createDocumentFragment();
-    originalOrder.forEach(row => fragment.appendChild(row));
-    tbody.appendChild(fragment);
+    tbody.innerHTML = '';
+    originalOrder.forEach(row => tbody.appendChild(row));
+    noMatchMessage.style.display = 'none'; // Hide no match message when table is reset
 }
+
+// Export table data to PDF
+const toPDFBtn = document.getElementById('toPDF');
+toPDFBtn.addEventListener('click', () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const tableElement = document.getElementById('mainTable');
+
+    doc.autoTable({ html: tableElement });
+    doc.save('payment_report.pdf');
+});
