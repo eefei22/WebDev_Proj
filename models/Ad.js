@@ -10,6 +10,7 @@ const adSchema = new mongoose.Schema({
     hours: { type: Number, required: true },
     languages: { type: [String], required: true },
     location: { type: String, required: true },
+    mode: { type: String, required: true },
     teaching_sample: { type: String, required: true }
 });
 

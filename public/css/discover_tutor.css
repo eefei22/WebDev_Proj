@@ -63,9 +63,12 @@ h1 {
 
 .tutor_image {
     width: 100%;
+    height: 220px; 
+    object-fit: cover; 
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 }
+
 
 
 .ad {

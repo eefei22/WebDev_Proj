@@ -5,179 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create an Ad</title>
     <link rel="icon" type="image/x-icon" href="/images/logoEduPro.png">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/advertisementpost.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <!-- nav icons in smaller screen -->
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/advertisementpost.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- font family -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Embedding JavaScript -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        // Get the current page URL
-        var currentPageURL = window.location.href;
-        
-        // Get all navigation links
-        var navLinks = document.querySelectorAll('.nav-links ul li a');
-
-        // Loop through each link
-        navLinks.forEach(function(link) {
-            // Check if the link's href matches the current page URL
-            if (link.href === currentPageURL) {
-                // Add the 'active' class to the matching link
-                link.classList.add('active');
-            }
-        });
-    });
-</script>
 </head>
-<body>
-    <header>
-        <nav>
-            <a href="/homepage/<%= user._id %>"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
-            <div class="nav-links" id="navLinks">
-              <!-- close icon -->
-              <i class="fas fa-times" onclick="hideMenu()"></i>
-              <ul>
-                <li><a href="/form">Subscription</a></li>
-                <li><a href="/discover_tutor">Discover Tutor</a></li>
-                <li><a href="/tuitionFee">Payment</a></li>
-                <li><a href="/helpdesk">Helpdesk</a></li>
-              </ul> <!--closing unorder list -->
-            </div> <!--closing nav-links -->
-            <!-- nav icon -->
-            <div class="navIcon">
-              <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
-              <div class="dropdown">
-                <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
-                <div class="dropdown-content" id="profileDropdownContent">
-                  <!-- Dropdown content here -->
-                  <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
-                  <div class="logout">
-                    <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
-                  </div>
-                </div>
-              </div>
-            </div> <!--closing nav icon -->
-            <i class="fas fa-bars" onclick="showMenu()"></i>
-          </nav>
-    </header>
-    <div class="container">
-        <form action="/submit" method="POST" enctype="multipart/form-data">
-            <div>
-                <label for="subject">Teaching Subject</label><br>
-                <input type="radio" name="subject" value="Math" required> Mathematics
-                <input type="radio" name="subject" value="Science" required> Science
-                <input type="radio" name="subject" value="English" required> English
-                <input type="radio" name="subject" value="Math" required> Bahasa Melayu
-                <input type="radio" name="subject" value="Science" required> Mandarin
+<body class="lowest">
+  <header>
+    <nav>
+      <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
+      <div class="nav-links" id="navLinks">
+        <!-- close icon -->
+        <i class="fas fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="/form">Subscription</a></li>
+          <li><a href="/discover_tutor">Discover Tutor</a></li>
+          <li><a href="/tuitionFee">Payment</a></li>
+          <li><a href="/helpdesk">Helpdesk</a></li>
+          <li><a href="/inbox">Inbox</a></li> <!-- New Inbox link -->
+        </ul> <!--closing unorder list -->
+      </div> 
+      <div class="navIcon">
+        <a href="cart.html" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
+        <div class="dropdown">
+          <a href=" " class="navLink" id="profileIcon"><img id="profileIconImg" src="/images/ic_profile.png" alt="user profile"></a>
+          <div class="dropdown-content" id="profileDropdownContent">
+            <a id="profile" href="profile.html">My Profile</a>
+            <div class="logout">
+              <a href="index-bfr-login.html" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
             </div>
-            <div> <br>
-                <label for="title">Title of Ad</label>
-                <input type="text" id="title" name="title" required>
-            </div>
-            <div>
-                <label for="about">About the lesson</label>
-                <input type="text" id="about" name="about_lesson" required>
-            </div>
-            <div>
-                <label for="about">About yourself</label>
-                <input type="text" id="about" name="about_tutor" required>
-            </div>
-            <div>
-                <label for="rate">Hourly Rate</label>
-                <input type="number" id="rate" name="rate" required>
-            </div>
-            <div>
-                <label for="rate">Hours per session</label>
-                <input type="number" id="rate" name="hours" required>
-            </div>
-            <div>
-                <label for="languages">Languages Spoken</label><br>
-                <input type="checkbox" name="languages" value="English"> English
-                <input type="checkbox" name="languages" value="Bahasa Melayu"> Bahasa Melayu
-                <input type="checkbox" name="languages" value="Mandarin"> Mandarin
-            </div>
-            <div> <br>
-                <label for="location">Location</label>
-                <select id="location" name="location" required>
-                    <option value="Kuala Lumpur">Kuala Lumpur</option>
-                    <option value="Johor">Johor</option>
-                    <option value="Negeri Sembilan">Negeri Sembilan</option>
-                    <option value="Melaka">Melaka</option>
-                    <option value="Terengganu">Terengganu</option>
-                    <option value="Kelantan">Kelantan</option>
-                    <option value="Perlis">Perlis</option>
-                    <option value="Penang">Penang</option>
-                    <option value="Pahang">Pahang</option>
-                    <option value="Sabah">Sabah</option>
-                    <option value="Sarawak">Sarawak</option>
-                    <option value="Kedah">Kedah</option>
-                    <option value="Selangor">Selangor</option>
-                    <option value="Kedah">Kedah</option>
-                </select>
-            </div>
-            <div>
-                <label for="title">Teaching Sample</label>
-                <input type="text" id="about" name="teaching_sample" required>
-            </div>
-            <button type="submit">Save</button>
-        </form>
-    </div>
-
-    <footer>
-        <section class="footer">
-          <div class="container6">
-            <div class="frame">
-              <div class="link">
-                <h4>Quick Links</h4>
-                <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="subscription.html">Subscription</a></li>
-                  <li><a href="discover_tutor.html">Courses</a></li>
-                  <li><a href="helpdesk.html">FAQ</a></li>
-                </ul>  
-              </div>
-              <img id="logo" src="Images\logo.png" alt="EduPro" width="200">
-              <div class="link">
-                <h4>Contact Us</h4>
-                <ul>
-                  <li>
-                    <img src="Images\email.png" alt="Email">
-                    <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
-                  </li>
-                  <li>
-                    <img src="Images\phone.png" alt="Phone no">
-                    <a href="https://wa.me/60173968518">+60 17 396 8518</a>
-                  </li>
-                  <li>
-                    <img src="Images\location.png" alt="Location">
-                    <a href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4, Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
-                  </li>
-                </ul> 
-              </div>
-            </div>
-            <hr style="border: 1px solid #ffffff78"> 
-            <p>&copy; 2024 EduPro. All rights reserved.</p>
           </div>
-        </section>
-      </footer>
-
-    <script type = "text/javascript" src="scripts/module2.js"></script>
-    <script>
-        // JavaScript for Toggle Menu
+        </div>
+      </div>
+      <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="content">
+        <h2>Teaching Profile</h2>
+        <form id="teachingProfileForm" method="post" action="/submit" enctype="multipart/form-data">
+          <div>
+            <label for="subject">Teaching Subject</label><br>
+            <input type="radio" name="subject" value="Math" required> Mathematics
+            <input type="radio" name="subject" value="Science" required> Science
+            <input type="radio" name="subject" value="English" required> English
+            <input type="radio" name="subject" value="Bahasa Melayu" required> Bahasa Melayu
+            <input type="radio" name="subject" value="Mandarin" required> Mandarin
+          </div>
+          <div> <br>
+            <label for="title">Title of Ad</label>
+            <input type="text" id="title" name="title" placeholder="(5 minimum words)" required>
+          </div>
+          <div>
+            <label for="about_lesson">About the lesson</label>
+            <input type="text" id="about_lesson" name="about_lesson" placeholder="(10 minimum words)" required>
+          </div>
+          <div>
+            <label for="about_tutor">About yourself</label>
+            <input type="text" id="about_tutor" name="about_tutor" placeholder="(10 minimum words)" required>
+          </div>
+          <div> 
+            <label for="rate">Hourly Rate &lpar;RM/h&rpar;</label><br>
+            <input type="number" id="rate" name="rate" required>
+          </div>
+          <div>
+            <label for="hours">Hours per session</label>
+            <input type="number" id="hours" name="hours" required>
+          </div> 
+          <div>
+            <label for="languages">Languages Spoken</label><br>
+            <input type="checkbox" name="languages" value="English"> English
+            <input type="checkbox" name="languages" value="Bahasa Melayu"> Bahasa Melayu
+            <input type="checkbox" name="languages" value="Mandarin"> Mandarin
+          </div>
+          <div> <br>
+            <label for="location">Location</label>
+            <select id="location" name="location" required>
+              <option value="Kuala Lumpur">Kuala Lumpur</option>
+              <option value="Johor">Johor</option>
+              <option value="Negeri Sembilan">Negeri Sembilan</option>
+              <option value="Melaka">Melaka</option>
+              <option value="Terengganu">Terengganu</option>
+              <option value="Kelantan">Kelantan</option>
+              <option value="Perlis">Perlis</option>
+              <option value="Penang">Penang</option>
+              <option value="Pahang">Pahang</option>
+              <option value="Sabah">Sabah</option>
+              <option value="Sarawak">Sarawak</option>
+              <option value="Kedah">Kedah</option>
+              <option value="Selangor">Selangor</option>
+            </select>
+          </div>
+          <div>
+            <label for="mode">Lesson mode</label><br>
+            <input type="radio" name="mode" value="Home" required> Home
+            <input type="radio" name="mode" value="Travel" required> Travel
+            <input type="radio" name="mode" value="Online" required> Online
+          </div>
+          <div><br>
+            <label for="teaching_sample">Teaching Sample</label>
+            <input type="text" id="teaching_sample" name="teaching_sample" required>
+          </div>
+          <div class="buttonplace">
+            <button id="saveButton" class="buttoncontainer" type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <section class="footer">
+      <div class="container6">
+        <div class="frame">
+          <div class="link">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/homepage">Home</a></li>
+              <li><a href="/subscription">Subscription</a></li>
+              <li><a href="/discover_tutor">Courses</a></li>
+              <li><a href="/helpdesk">FAQ</a></li>
+            </ul>
+          </div>
+          <img id="logo" src="/Images/logo.png" alt="EduPro" width="200">
+          <div class="link">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>
+                <img src="/Images/email.png" alt="Email">
+                <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
+              </li>
+              <li>
+                <img src="/Images/phone.png" alt="Phone no">
+                <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+              </li>
+              <li>
+                <img src="/Images/location.png" alt="Location">
+                <a href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
+                  Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr style="border: 1px solid #ffffff78">
+        <p>&copy; 2024 EduPro. All rights reserved.</p>
+      </div>
+    </section>
+  </footer>
+  <script type="module" src="/public/js/createtutor.js"></script>
+  <script type="module" src="/public/js/nav.js"></script>
+  <script>
     var navLinks = document.getElementById("navLinks");
-
+  
     function showMenu() {
-        navLinks.style.right = "0";
+      navLinks.style.right = "0";
     }
-
+  
     function hideMenu() {
-        navLinks.style.right = "-200px";
+      navLinks.style.right = "-200px";
     }
-    </script>
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      const profileIconImg = document.getElementById('profileIconImg');
+      const uploadedPicture = localStorage.getItem('uploadedProfilePicture');
+      if (uploadedPicture) {
+        profileIconImg.src = uploadedPicture;
+      }
+    });
+  
+    function logout() {
+      localStorage.removeItem('uploadedProfilePicture');
+    }
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      const profileIconImg = document.getElementById('profileIconImg');
+      const uploadedPicture = localStorage.getItem('uploadedProfilePicture');
+      if (uploadedPicture) {
+        profileIconImg.src = uploadedPicture;
+      } else {
+        profileIconImg.src = '/images/ic_profile.png';
+      }
+    });
+  </script>
 </body>
 </html>
