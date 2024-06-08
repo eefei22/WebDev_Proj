@@ -1,0 +1,189 @@
+.lowest {
+    background: linear-gradient(#8E8FFA, #C2D9FF);
+  }
+  
+  .container {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 15%;
+    background-color: #fff;
+    border-radius: 15px;
+  }
+  
+  @media(max-width:700px) {
+    .container {
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-top: 30%;
+    }
+  }
+  
+  .content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  
+  h2 {
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  label{
+    margin-top: 5px;
+    font-size: Medium;
+    font-weight: 600;
+  }
+  
+  
+  button {
+    padding: 10px 20px;
+    background-color: #7752FE;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .buttoncontainer {
+    text-align: center;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  button:hover {
+    background-color: #190482;
+  }
+  
+  .form-title {
+    font-weight: 600;
+  }
+  
+  form input[type="text"],
+  form input[type="number"],
+  form select,
+  form input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #C2D9FF;
+      margin-bottom: 20px;
+  }
+  
+  form input[type="radio"],
+  form input[type="checkbox"] {
+      margin-right: 10px;
+  }
+  
+  .buttonplace {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* smaller screen */
+  
+  @media(max-width:700px){
+/* all change in nav part */
+.nav-links ul li{
+    display: block;
+}
+.nav-links{
+    position: absolute;
+    background: #190482;
+    height: 100vh;
+    width: 200px;
+    top:0;
+    /* right changed from 0 to -200px to hide the menu */
+    right: -200px;
+    text-align: left;
+    z-index: 1;    /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
+    transition:1s;
+}
+/* show the menu icon in smaller screen */
+nav .fas{
+    display: block;
+    color: #fff;
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+nav .fas:hover {
+    transform: scale(1.2); /* Enlarge the image by 20% when hovering over it */
+}
+
+.nav-links ul{
+    padding: 30px;
+}
+/* nav part done*/
+
+.btn {
+    /* Other styles */
+    flex-direction: column; /* Align buttons vertically */
+    align-items: center;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.pay{
+    margin: 10px;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #FFFFFF;
+  left: 0;
+  width: 160px;
+  height: fit-content;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  display: none;
+}
+
+/*Footer section*/
+footer{
+    width: 100%;
+    height: fit-content;
+    background-color: #000000;
+    color: #fff;
+    font-size: 15px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    
+  }
+
+  #logo{
+    margin-right: 10vw;
+  }
+
+  footer .frame{
+    display: flex;
+    padding: 0px;
+    margin-right: 20vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .frame div:nth-of-type(1){
+    width: 150px;
+    margin-right: 10vw;
+  }
+
+  footer p{
+    margin-bottom: 0px;
+    margin-top: 10px;
+    text-align: center;
+    margin-right: 15vw;
+  }
+  }

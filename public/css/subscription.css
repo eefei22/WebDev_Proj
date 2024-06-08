@@ -1,0 +1,284 @@
+/* For smaller screens */
+@media (max-width: 1000px) {
+    .frame2 {
+      flex-direction: column;
+      /* Change flex direction to column */
+      align-items: center;
+      /* Center items horizontally */
+      margin-top: 55%;
+  
+    }
+  
+    .maindetail,
+    .studentdetail {
+      width: calc(100% - 40px);
+      /* Set width to 100% minus 40px total padding (20px top + 20px bottom) */
+      margin: 20px;
+    }
+  }
+  
+  
+  
+  /* smaller screen */
+  
+  @media(max-width:700px) {
+  
+    /* all change in nav part */
+    .nav-links ul li {
+      display: block;
+    }
+  
+    .nav-links {
+      position: absolute;
+      background: #190482;
+      height: 100vh;
+      width: 200px;
+      top: 0;
+      /* right changed from 0 to -200px to hide the menu */
+      right: -200px;
+      text-align: left;
+      z-index: 1;
+      /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
+      transition: 1s;
+    }
+  
+    /* show the menu icon in smaller screen */
+    nav .fas {
+      display: block;
+      color: #fff;
+      margin-right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+  
+    nav .fas:hover {
+      transform: scale(1.2);
+      /* Enlarge the image by 20% when hovering over it */
+    }
+  
+    .nav-links ul {
+      padding: 30px;
+    }
+  
+    /* nav part done*/
+  
+    .btn {
+      /* Other styles */
+      flex-direction: column;
+      /* Align buttons vertically */
+      align-items: center;
+      margin-top: 50px;
+      justify-content: center;
+    }
+  
+    .pay {
+      margin: 10px;
+    }
+  
+    .dropdown-content {
+      position: absolute;
+      background-color: #FFFFFF;
+      left: 0;
+      width: 160px;
+      height: fit-content;
+      border: 2px solid #000000;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      display: none;
+    }
+  
+    /*Footer section*/
+    footer {
+      width: 100%;
+      height: fit-content;
+      background-color: #000000;
+      color: #fff;
+      font-size: 15px;
+      padding-top: 50px;
+      padding-bottom: 10px;
+  
+    }
+  
+    #logo {
+      margin-right: 10vw;
+    }
+  
+    footer .frame {
+      display: flex;
+      padding: 0px;
+      margin-right: 20vw;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    footer .frame div:nth-of-type(1) {
+      width: 150px;
+      margin-right: 10vw;
+    }
+  
+    footer p {
+      margin-bottom: 0px;
+      margin-top: 10px;
+      text-align: center;
+      margin-right: 15vw;
+    }
+  
+  
+  }
+  
+  
+  button {
+    padding: 10px 20px;
+    background-color: #7752FE;
+    width: 30%;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .buttoncontainer {
+    text-align: center;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .buttonplace {
+    display: flex;
+    align-items: center;
+  }
+  
+  button:hover {
+    background-color: #190482;
+  }
+  
+  
+  /*For dashboard */
+  .frame2 {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+    margin-top: 150px;
+  
+  }
+  
+  @media(max-width: 700px) {
+    .frame2 {
+      margin-top: 30%;
+      /* Adjust the margin-top for smaller screens */
+    }
+  }
+  
+  h3 {
+    font-size: 20px;
+  }
+  
+  .teacher-text {
+    font-weight: 600;
+  }
+  
+  .maindetail {
+    flex: 0 0 75%;
+    border: 1px solid #767676;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Add shadow */
+  }
+  
+  .studentdetail {
+    flex: 0 0 20%;
+    border: 1px solid #767676;
+    height: fit-content;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Add shadow */
+  
+  }
+  
+  .dashboardtitle {
+    font-size: 20px;
+  }
+  
+  .smalltitle {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  .profile {
+    margin-top: 20px;
+  }
+  
+  #profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* Makes the image circular */
+    float: left;
+    /* Floats the image to the left */
+    margin-right: 20px;
+    /* Adds some space between the image and text */
+  }
+  
+  .teacher-text {
+    padding-top: 20px;
+  }
+  
+  .points {
+    margin-top: 40px;
+    font-weight: 600;
+    clear: both;
+  }
+  
+  #numofstudent {
+    padding-left: 40%;
+    display: inline-block;
+    /* Ensure the number and text are on the same line */
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-right: 5px;
+    /* Add some space between the number and the text */
+  }
+  
+  .student-text {
+    display: inline-block;
+    /* Ensure the number and text are on the same line */
+    vertical-align: middle;
+    /* Align text vertically with the number */
+  }
+  
+  #tutorvideo {
+    text-decoration: none;
+    color: #7752FE;
+  }
+  
+  .btnreport {
+    text-align: center;
+    width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: normal;
+  }
+  
+  .incenter {
+    text-align: center;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+  
+  #rate {
+    text-align: center;
+    margin-top: 5px;
+  }
