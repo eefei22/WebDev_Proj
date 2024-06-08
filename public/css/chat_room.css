@@ -1,60 +1,110 @@
-/* public/css/chat_room.css */
+/* chat_room.css */
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #C2D9FF;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1 {
+  background-color: #190482;
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  font-size: 2em;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 #chat-container {
-  width: 500px;
-  margin: 50px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.message-right {
-  text-align: right;
-  background-color: #d1e7dd;
-  margin: 5px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
-  border-radius: 10px;
-}
-
-.message-left {
-  text-align: left;
-  background-color: #f8d7da;
-  margin: 5px;
-  padding: 10px;
-  border-radius: 10px;
+  max-width: 800px;
+  width: 100%;
+  margin: 25px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #messages {
-  max-height: 400px;
+  flex: 1;
   overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 10px;
+  padding: 20px;
+  border-bottom: 4px solid #ddd;
+  margin-bottom: 20px;
 }
 
+.message-left, .message-right {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 70%;
+}
 
-form {
+.message-left {
+  background-color: #C2D9FF;
+  align-self: flex-start;
+}
+
+.message-right {
+  background-color: #7b58fa;
+  color: #ffffff;
+  align-self: flex-end;
+  margin-left: auto; 
+}
+
+.message-right p, .message-left p {
+  margin: 0;
+}
+
+.message-left small {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.8em;
+  color: #2b2b2b;
+}
+
+.message-right small{
+  display: block;
+  margin-top: 15px;
+  font-size: 0.8em;
+  color: #bcbcbc;
+}
+
+#message-form {
   display: flex;
-  flex-direction: column;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
 }
 
-textarea {
-  resize: none;
-  height: 100px;
-  margin-bottom: 10px;
-}
-
-button {
+#message-form input[type="text"] {
+  flex: 1;
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+#message-form button {
+  background-color: #7752FE;
+  color: #ffffff;
   border: none;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 1em;
+}
+
+#message-form button:hover {
+  background-color: #593ac0;
 }
