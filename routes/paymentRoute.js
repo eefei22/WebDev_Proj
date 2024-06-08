@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
-const PaymentDetails = require("../models/payment_model.js");
+const PaymentDetails = require("../models/Payment.js");
 const bodyParser = require("body-parser");
 
 router.get("/success", (req, res) => {

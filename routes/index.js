@@ -8,7 +8,7 @@ const requireLogin = require('../middleware/requireLogin');
 const FeedbackModel = require('../models/FeedbackModel');
 const HelpdeskModel = require('../models/HelpdeskModel');
 const FaqModel = require('../models/FaqModel');
-const Payment = require('../models/payment_model');
+const Payment = require('../models/Payment');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -283,34 +283,29 @@ router.get('/helpdesk/search', async (req, res) => {
     }
 });
 
-router.get('/payment_report', requireLogin, async (req, res) => {
+// Route to fetch payment report
+router.get("/payment_report", requireLogin, async (req, res) => {
     try {
-        const tutorId = req.session.userId;
-        console.log(`Fetching payments for tutorId: ${tutorId}`);
+        // Fetch only the required fields from the payment_model
+        const payments = await Payment.find({}, 'cardholderName phone email transactionDate payment_status transactionAmount');
 
-        const payments = await Payment.find({ tutorId: tutorId }).lean();
-        console.log(`Payments found: ${JSON.stringify(payments)}`);
-
+        // Map payments to include dueDate
         const paymentReport = payments.map(payment => {
-            const transactionDate = moment(payment.transactionDate);
-            const dueDate = transactionDate.clone().add(1, 'month');  // Clone to avoid mutating the original date
+            const transactionDate = new Date(payment.transactionDate);
+            const dueDate = new Date(transactionDate);
+            dueDate.setMonth(transactionDate.getMonth() + 1);
 
             return {
-                cardholderName: payment.cardholderName,
-                phone: payment.phone,
-                email: payment.email,
-                transactionDate: transactionDate.format('D-MM-YYYY'),
-                dueDate: dueDate.format('D-MM-YYYY'),
-                status: payment.payment_status,
-                transactionAmount: `RM${payment.transactionAmount.toFixed(2)}`
+                ...payment._doc,
+                dueDate: dueDate.toISOString().split('T')[0] // Convert to YYYY-MM-DD format
             };
         });
 
-        console.log(`Payment Report: ${JSON.stringify(paymentReport)}`);
-        res.render('payment_report', { paymentReport });
+        // Render the payment_report EJS template and pass the fetched data
+        res.render("payment_report", { paymentReport });
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Server Error');
+        console.error("Error fetching payment data:", error);
+        res.status(500).send("Error fetching payment data");
     }
 });
 
