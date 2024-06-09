@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
-const PaymentDetails = require("../models/Payment.js");
+const PaymentDetails = require("../models/payment_model.js");
 const bodyParser = require("body-parser");
 
 router.get("/success", (req, res) => {
@@ -66,6 +66,7 @@ router.post("/create-checkout-session", async (req, res) => {
         email,
         tutorId,
         items: JSON.stringify(items),
+        route: "book",
       },
       phone_number_collection: {
         enabled: true,
@@ -78,69 +79,5 @@ router.post("/create-checkout-session", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
-// Ensure you use the raw body parser for Stripe webhooks
-router.post(
-  "/webhook",
-  bodyParser.raw({ type: "application/json" }),
-  async (req, res) => {
-    const sig = req.headers["stripe-signature"];
-    const rawBody = req.rawBody;
-
-    let event;
-    try {
-      event = stripe.webhooks.constructEvent(
-        rawBody,
-        sig,
-        process.env.STRIPE_WEBHOOK_SECRET
-      );
-      console.log(`Webhook received: ${event.type}`);
-
-      if (event.type === "checkout.session.completed") {
-        const session = event.data.object;
-        const lineItems = await stripe.checkout.sessions.listLineItems(
-          session.id
-        );
-
-        const metadata = session.metadata;
-
-        const paymentDetailsArray = lineItems.data.map((item) => {
-          const itemDetails = JSON.parse(metadata.items).find(
-            (i) => i.subject === item.description
-          );
-          return new PaymentDetails({
-            userId: metadata.userId,
-            tutorId: metadata.tutorId,
-            cardholderName: session.customer_details.name,
-            phone: session.customer_details.phone,
-            transactionDate: new Date(),
-            transactionAmount: session.amount_total / 100, // converting back to major currency unit
-            booking_status: "Booked",
-            payment_status: "Paid",
-            description: item.description || "",
-            email: metadata.email,
-            quantity: item.quantity,
-            profilePic: itemDetails.profilePic,
-          });
-        });
-
-        try {
-          const savedPaymentDetails = await PaymentDetails.insertMany(
-            paymentDetailsArray
-          );
-          console.log("Payment details saved:", savedPaymentDetails);
-        } catch (error) {
-          console.error("Error saving payment details:", error);
-          throw error; // Rethrow the error to return a 500 response
-        }
-      }
-
-      res.status(200).json({ received: true });
-    } catch (err) {
-      console.log(`Webhook signature verification failed.`, err.message);
-      return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-  }
-);
 
 module.exports = router;
