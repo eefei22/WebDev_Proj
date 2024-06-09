@@ -3,10 +3,14 @@ const searchInput = document.querySelector('.input_group input'); // Input field
 const tableRows = Array.from(document.querySelectorAll('tbody tr')); // Table rows
 const tableHeadings = Array.from(document.querySelectorAll('thead th')); // Table headings
 const noMatchMessage = document.querySelector('.no-match-message'); // No match message element
-const originalOrder = tableRows.slice(); // Array to store the original order of table rows
+const resetBtn = document.getElementById('reset'); // Reset button
+const originalOrder = tableRows.map(row => row.cloneNode(true)); // Store the original order of table rows
 
 // Event listener for search input field
 searchInput.addEventListener('input', searchTable);
+
+// Event listener for reset button
+resetBtn.addEventListener('change', resetTable);
 
 // Function to handle table search
 function searchTable() {
@@ -32,7 +36,7 @@ let sortAsc = true; // Flag to track sorting order, initially set to true (ascen
 // Event listener for table headings to trigger sorting
 tableHeadings.forEach((head, index) => {
     head.addEventListener('click', () => {
-        resetTable(); // Reset table to original order before sorting
+        resetTable(false); // Reset table to original order before sorting
         tableHeadings.forEach(h => h.classList.remove('active', 'asc', 'desc')); // Remove sorting indicator classes from all headings
         head.classList.add('active', sortAsc ? 'asc' : 'desc'); // Add sorting indicator class to clicked heading
 
@@ -84,11 +88,16 @@ function parseDate(dateString) {
 }
 
 // Function to reset table to its original order
-function resetTable() {
+function resetTable(resetSort = true) {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
-    originalOrder.forEach(row => tbody.appendChild(row));
+    originalOrder.forEach(row => tbody.appendChild(row.cloneNode(true)));
     noMatchMessage.style.display = 'none'; // Hide no match message when table is reset
+
+    if (resetSort) {
+        tableHeadings.forEach(h => h.classList.remove('active', 'asc', 'desc')); // Remove sorting indicator classes from all headings
+        sortAsc = true; // Reset sorting flag
+    }
 }
 
 // Export table data to PDF
@@ -98,6 +107,12 @@ toPDFBtn.addEventListener('click', () => {
     const doc = new jsPDF();
     const tableElement = document.getElementById('mainTable');
 
-    doc.autoTable({ html: tableElement });
+    doc.autoTable({
+        html: tableElement,
+        theme: 'striped',
+        headStyles: { fillColor: [22, 160, 133] },
+        margin: { top: 20 },
+        styles: { fontSize: 10 }
+    });
     doc.save('payment_report.pdf');
 });
