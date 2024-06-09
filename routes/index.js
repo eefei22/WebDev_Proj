@@ -8,7 +8,7 @@ const requireLogin = require('../middleware/requireLogin');
 const FeedbackModel = require('../models/FeedbackModel');
 const HelpdeskModel = require('../models/HelpdeskModel');
 const FaqModel = require('../models/FaqModel');
-const Payment = require('../models/Payment');
+const Payment = require("../models/payment_model");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
