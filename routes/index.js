@@ -371,5 +371,31 @@ router.get("/payment_report", requireLogin, async (req, res) => {
 //         res.status(500).send('Server Error');
 //     }
 // });
+//payment
+router.get("/tuitionFee", requireLogin, async (req, res) => {
+  try {
+    const userId = req.session.userId;
+    const payments = await Payment.find({ userId }).populate("tutorId");
+    res.render("tuitionFee", { payments, userId });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
+
+// Route for subscription tutee page
+router.get("/subscription_tutee", requireLogin, async (req, res) => {
+  try {
+    const user = await User.findById(req.session.userId);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    res.render("subscription_tutee", { user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
+
 
 module.exports = router;
