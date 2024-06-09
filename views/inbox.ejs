@@ -1,4 +1,3 @@
-<!-- /views/inbox.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +8,34 @@
 </head>
 <body>
     <h1>Inbox</h1>
-    <ul>
-        <% conversations.forEach(conversation => { %>
-            <li>
-                <a href="/chat/<%= conversation.participants.find(participant => participant._id.toString() !== user._id.toString())._id %>">
-                    Conversation with <%= conversation.participants.find(participant => participant._id.toString() !== user._id.toString()).name %>
+    <ul id="conversationList">
+        <% conversations.forEach(conversation => { 
+            const participant = conversation.participants.find(participant => participant._id.toString() !== user._id.toString());
+        %>
+            <li data-id="<%= participant._id %>">
+                <a href="/chat/<%= participant._id %>">
+                    Conversation with <%= participant.name %>
                 </a>
             </li>
         <% }); %>
     </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const conversationList = document.getElementById('conversationList');
+            const conversationItems = Array.from(conversationList.getElementsByTagName('li'));
+
+            const seenIds = new Set();
+
+            conversationItems.forEach(item => {
+                const participantId = item.getAttribute('data-id');
+                if (seenIds.has(participantId)) {
+                    item.remove();
+                } else {
+                    seenIds.add(participantId);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
