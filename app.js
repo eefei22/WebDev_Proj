@@ -66,12 +66,6 @@ const sessionMiddleware = session({
 
 app.use(sessionMiddleware);
 
-app.use((req, res, next) => {
-    console.log('Session ID:', req.session.id);
-    console.log('Session UserID:', req.session.userId);
-    next();
-});
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
