@@ -66,7 +66,7 @@ h1 {
 }
 
 .states-list button {
-    background-color: #2d13b4; 
+    background-color: #5b2ffa; 
     border: none;
     color: white;
     padding: 10px 20px;
@@ -80,7 +80,9 @@ h1 {
 }
 
 .states-list button:hover {
-    background-color: #190482; 
+    background-color: #2300cf;
+    box-shadow: 0 4px 8px #816edf;
+    transform: scale(1.04);  
 }
 
 .no-results {
