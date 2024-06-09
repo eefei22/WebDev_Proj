@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             <small>${new Date(data.dateTime).toLocaleString()}</small>
         `;
         messageContainer.appendChild(messageElement);
-        messageContainer.scrollTop = messageContainer.scrollHeight; // Auto-scroll
+        messageContainer.scrollTop = messageContainer.scrollHeight; 
     };
 
     socket.on('chat-message', (data) => {
@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const message = event.target.elements.message.value;
         const tutorId = event.target.elements.tutorId.value;
 
-        if (message.trim() === '') return; // Prevent sending empty messages
+        if (message.trim() === '') return; 
 
         const data = { message, tutorId, senderName: 'You', dateTime: new Date() };
-        appendMessage(data, true); // Append message immediately
+        appendMessage(data, true); 
         socket.emit('message', { message, tutorId });
         event.target.elements.message.value = '';
     });
