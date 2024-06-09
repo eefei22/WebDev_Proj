@@ -8,6 +8,11 @@
     <!-- <link rel="stylesheet" href="css/tutor_profile.css" /> -->
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     
     <!-- nav icons in smaller screen -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -22,32 +27,58 @@
     
 </head>
 <body>
-    <nav>
-      <a href="/homepage/<%= user._id %>"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
+      <nav>
+      <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
       <div class="nav-links" id="navLinks">
-        <!-- close icon -->
         <i class="fas fa-times" onclick="hideMenu()"></i>
         <ul>
           <li><a href="/form">Subscription</a></li>
           <li><a href="/discover_tutor">Discover Tutor</a></li>
           <li><a href="/tuitionFee">Payment</a></li>
           <li><a href="/helpdesk">Helpdesk</a></li>
-        </ul> <!--closing unorder list -->
-      </div> <!--closing nav-links -->
-      <!-- nav icon -->
+        </ul>
+      </div>
       <div class="navIcon">
-        <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
+        <!-- Cart Icon -->
+        <i
+          class="bx bx-cart"
+          id="cart-icon"
+          alt="Cart Icon"
+          data-quantity="0"
+        ></i>
+        />
+        <!-- cart -->
+        <div class="cart">
+          <h2 class="cart-title">Your Cart</h2>
+          <!-- Content -->
+          <div class="cart-content"></div>
+          <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+          </div>
+          <!-- Buy Button -->
+          <button type="button" class="btn-buy">Pay Now</button>
+          <!-- Close Cart -->
+          <i class="bx bx-x" id="close-cart"></i>
+        </div>
         <div class="dropdown">
-          <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
+          <a href="#" class="navLink" id="profileIcon"
+            ><img
+              id="profileIconImg"
+              class="profile-icon"
+              src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+              alt="user profile"
+          /></a>
           <div class="dropdown-content" id="profileDropdownContent">
-            <!-- Dropdown content here -->
             <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
             <div class="logout">
-              <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
+              <a href="/" onclick="logout()"
+                ><img id="logout-ic" src="/images/logout.png" />Log Out</a
+              >
             </div>
           </div>
         </div>
-      </div> <!--closing nav icon -->
+      </div>
       <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
 
@@ -107,8 +138,32 @@
         <div class="CTA">
             <div class="title" style="font-size: 45px;">RM<%= ad.rate %></div>
             <div class="par">per session</div>
-            <div><button class="labeled_button" onclick="window.location.href='purchase_lesson.html'" ;>Book Now</button></div>
-            <div><button class="labeled_button" onclick="window.location.href='cart.html'">Add to Cart</button></div> <br>
+             <div>
+          <button
+            class="labeled_button"
+            id="checkout_btn"
+            data-rate="<%= ad.rate %>"
+            data-tutor-id="<%= ad._id %>"
+            data-subject="<%= ad.subject %>"
+            data-tutor-name="<%= ad.user ? user.name : 'N/A' %>"
+            data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+          >
+            Book Now
+          </button>
+        </div>
+        <div>
+          <button
+            class="labeled_button"
+            id="add-cart"
+            data-tutor-id="<%= ad._id %>"
+            data-subject="<%= ad.subject %>"
+            data-tutor-name="<%= ad.user ? user.name : 'N/A' %>"
+            data-rate="<%= ad.rate %>"
+            data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+          >
+            Add to Cart
+          </button>
+        </div> <br>
             <a class="par" target="_blank" href="/chat/<%= ad.user._id %>">Chat with tutor</a>
         </div>
     </div>
@@ -152,6 +207,6 @@
     </footer>
 
     <script src="/js/nav.js"></script>
-
+    <script src="/js/cart.js"></script>
 </body>
 </html>
