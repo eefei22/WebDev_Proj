@@ -31,9 +31,4 @@ router.get('/profile', (req, res) => {
     res.render('profile');
 });
 
-// Route for the cart page
-router.get('/cart', (req, res) => {
-    res.render('cart');
-});
-
 module.exports = router;
