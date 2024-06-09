@@ -4,17 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg" />
-    <title>Subscription</title>
-    <link rel="stylesheet" href="/css/sub_payment.css" />
-    <link rel="stylesheet" href="/css/nav.css" />
-    <link rel="stylesheet" href="css/cart.css" />
-
-    <!-- cart icon -->
+    <title>Payment</title>
+    <link rel="stylesheet" href="/css/cart.css" />
+    <!-- nav icons in smaller screen -->
     <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-
     <!-- font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +19,6 @@
       rel="stylesheet"
     />
   </head>
-
   <body>
     <nav>
       <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
@@ -80,50 +75,45 @@
       <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
 
-    <div class="box">
-      <h1>Tutor Lifetime Subscription</h1>
-      <h2>RM 150/account</h2>
-      <ul class="benefits">
-        <li>Engage with students</li>
-        <li>Advertisement functionality</li>
-        <li>Gain extra functionality as a tutor</li>
-        <li>Receive tuition fee</li>
-        <li>Generate financial report</li>
+    <div class="cart">
+      <h3 class="title">Cart</h3>
+
+      <input type="checkbox" id="select-all-checkbox" />
+      <label for="select-all-checkbox" class="select-all-label"
+        >*Select All</label
+      >
+
+      <ul id="cart-items">
+        <% cartItems.forEach(function(item) { %>
+        <li>
+          <input
+            type="checkbox"
+            class="course-checkbox"
+            price="<%= item.transactionAmount %>"
+            data-item-id="<%= item._id %>"
+          />
+          <img
+            src="/uploads/<%= item.profilePic %>"
+            alt="profile"
+            class="profile-picture"
+          />
+          <div class="course-details">
+            <span class="course"><%= item.tutorId.subject %></span>
+            <span class="tutor"><%= item.cardholderName %></span>
+          </div>
+          <span class="price">RM<%= item.transactionAmount %></span>
+        </li>
+        <% }); %>
       </ul>
 
-      <button id="btn_pay">Subscribe</button>
+      <div class="total">Total: RM0</div>
+
+      <div class="btn">
+        <button class="pay" onclick="checkout()">Checkout</button>
+        <button class="remove" onclick="removeFromCart()">Remove</button>
+      </div>
     </div>
 
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-      const userId = sessionStorage.getItem("userId"); // Corrected to use getItem instead of get
-      const stripe = Stripe(
-        "pk_test_51PJ4UWRvZjEokO6QPPGN6EGz93Lp2FKDNOkzlKcRgiggdZ7T0oVpfTLT91sya2Cdk8UOR7VujHXPYCSNLN2y4N4Z00HeBQQNW3"
-      ); // Initialize Stripe with public key
-
-      const button = document.querySelector("#btn_pay");
-      button.addEventListener("click", () => {
-        fetch("/subscription-session", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userId }), // Include userId in the body
-        })
-          .then((response) => response.json())
-          .then((session) => {
-            return stripe.redirectToCheckout({ sessionId: session.id });
-          })
-          .then((result) => {
-            if (result.error) {
-              alert(result.error.message);
-            }
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      });
-    </script>
-    <script src="/js/cart.js" defer></script>
+    <script src="/js/cart.js"></script>
   </body>
 </html>

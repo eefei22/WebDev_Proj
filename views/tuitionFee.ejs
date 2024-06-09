@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg" />
+    <title>Payment</title>
+    <link rel="stylesheet" href="/css/payment_style.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+
+    <!-- cart icon -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- nav icons in smaller screen -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Embedding JavaScript -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get the current page URL
+        var currentPageURL = window.location.href;
+
+        // Get all navigation links
+        var navLinks = document.querySelectorAll(".nav-links ul li a");
+
+        // Loop through each link
+        navLinks.forEach(function (link) {
+          // Check if the link's href matches the current page URL
+          if (link.href === currentPageURL) {
+            // Add the 'active' class to the matching link
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <nav>
+      <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
+      <div class="nav-links" id="navLinks">
+        <i class="fas fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="/form">Subscription</a></li>
+          <li><a href="/discover_tutor">Discover Tutor</a></li>
+          <li><a href="/tuitionFee">Payment</a></li>
+          <li><a href="/helpdesk">Helpdesk</a></li>
+        </ul>
+      </div>
+      <div class="navIcon">
+        <!-- Cart Icon -->
+        <i
+          class="bx bx-cart"
+          id="cart-icon"
+          alt="Cart Icon"
+          data-quantity="0"
+        ></i>
+        />
+        <!-- cart -->
+        <div class="cart">
+          <h2 class="cart-title">Your Cart</h2>
+          <!-- Content -->
+          <div class="cart-content"></div>
+          <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+          </div>
+          <!-- Buy Button -->
+          <button type="button" class="btn-buy">Pay Now</button>
+          <!-- Close Cart -->
+          <i class="bx bx-x" id="close-cart"></i>
+        </div>
+        <div class="dropdown">
+          <a href="#" class="navLink" id="profileIcon"
+            ><img
+              id="profileIconImg"
+              class="profile-icon"
+              src="<%= userId.profilePic ? '/uploads/' + userId.profilePic : '/images/ic_profile.png' %>"
+              alt="user profile"
+          /></a>
+          <div class="dropdown-content" id="profileDropdownContent">
+            <a id="profile" href="/profile/<%= userId %>">My Profile</a>
+            <div class="logout">
+              <a href="/" onclick="logout()"
+                ><img id="logout-ic" src="/images/logout.png" />Log Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <div class="container">
+      <% if (payments.length === 0) { %>
+      <p>No booked tuitions.</p>
+      <% } else { %>
+      <form action="/checkout" method="POST">
+        <input type="hidden" name="userId" value="<%= userId %>" />
+        <!-- Paid Courses Section -->
+        <div class="purchase-details">
+          <h3 class="title">Paid Courses</h3>
+          <ul>
+            <% payments.forEach(payment => { %> <% if (payment.payment_status
+            === 'Paid') { %>
+            <li>
+              <div class="course-details">
+                <span class="course"><%= payment.tutorId.subject %></span>
+                <span class="tutor"><%= payment.tutorId.about_tutor %></span>
+              </div>
+              <span class="price">RM<%= payment.transactionAmount %></span>
+            </li>
+            <% } %> <% }) %>
+          </ul>
+        </div>
+
+        <!-- Unpaid Courses Section -->
+        <div class="purchase-details">
+          <h3 class="title">Unpaid Courses</h3>
+          <input type="checkbox" id="select-all-checkbox" />
+          <label
+            for="select-all-checkbox"
+            style="font-weight: 500; color: rgb(180, 104, 251)"
+            >*Select All</label
+          >
+          <ul>
+            <% payments.forEach(payment => { %> <% if (payment.payment_status
+            === 'Unpaid') { %>
+            <li>
+              <input
+                type="checkbox"
+                name="payments"
+                value="<%= payment._id %>"
+                class="course-checkbox"
+                price="<%= payment.transactionAmount %>"
+                subject="<%= payment.tutorId.subject %>"
+                tutorName="<%= payment.tutorId.about_tutor %>"
+              />
+              <div class="course-details">
+                <span class="course"><%= payment.tutorId.subject %></span>
+                <span class="tutor"><%= payment.tutorId.about_tutor %></span>
+                <input
+                  type="text"
+                  class="description-input"
+                  placeholder="Payment Details (optional)"
+                />
+              </div>
+              <span class="price">RM<%= payment.transactionAmount %></span>
+            </li>
+            <% } %> <% }) %>
+          </ul>
+          <div class="total">Total: RM0</div>
+        </div>
+
+        <input
+          type="submit"
+          value="checkout"
+          id="checkout-btn"
+          class="submit-btn"
+        />
+      </form>
+      <% } %>
+    </div>
+
+    <!-- JavaScript for Toggle Menu -->
+    <script>
+      var navLinks = document.getElementById("navLinks");
+
+      function showMenu() {
+        navLinks.style.right = "0";
+      }
+
+      function hideMenu() {
+        navLinks.style.right = "-200px";
+      }
+    </script>
+    <script src="/js/payment.js"></script>
+    <script src="/js/cart.js" defer></script>
+  </body>
+</html>
