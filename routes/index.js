@@ -8,7 +8,7 @@ const requireLogin = require('../middleware/requireLogin');
 const FeedbackModel = require('../models/FeedbackModel');
 const HelpdeskModel = require('../models/HelpdeskModel');
 const FaqModel = require('../models/FaqModel');
-const Payment = require('../models/Payment');
+const Payment = require("../models/payment_model");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -344,5 +344,32 @@ router.get("/payment_report", requireLogin, async (req, res) => {
         res.status(500).send("Error fetching payment data");
     }
 });
+
+// router.get('/payment_report', requireLogin, async (req, res) => {
+//     try {
+//         const payments = await Payment.find({ tutorId: req.session.userId }).lean();
+
+//         const paymentReport = payments.map(payment => {
+//             const transactionDate = moment(payment.transactionDate);
+//             const dueDate = transactionDate.add(1, 'month');
+//             const status = payment.payment_status;
+
+//             return {
+//                 name: payment.cardholderName,
+//                 phone: payment.phone,
+//                 email: payment.email,
+//                 paymentDate: transactionDate.format('D-MM-YYYY'),
+//                 dueDate: dueDate.format('D-MM-YYYY'),
+//                 status,
+//                 amount: `RM${payment.transactionAmount.toFixed(2)}`,
+//             };
+//         });
+
+//         res.render('payment_report', { paymentReport });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send('Server Error');
+//     }
+// });
 
 module.exports = router;

@@ -5,9 +5,6 @@ document.getElementById("checkout_btn").addEventListener("click", async () => {
   // Retrieve user details from session storage
   const userId = sessionStorage.getItem("userId");
   const email = sessionStorage.getItem("email");
-  const profilePic = document
-    .getElementById("checkout_btn")
-    .getAttribute("data-profile-pic");
 
   const items = [
     {
@@ -18,7 +15,9 @@ document.getElementById("checkout_btn").addEventListener("click", async () => {
         .getElementById("checkout_btn")
         .getAttribute("data-tutor-name"),
       rate: document.getElementById("checkout_btn").getAttribute("data-rate"),
-      profilePic: profilePic,
+      profilePic: document
+        .getElementById("checkout_btn")
+        .getAttribute("data-profile-pic"),
     },
   ];
 
