@@ -48,8 +48,8 @@ router.get("/form", requireLogin, async (req, res) => {
       return res.status(404).send("User not found");
     }
 
-    // Check if the user is a teacher
-    if (user.userType !== "teacher") {
+    // Check if the user is a tutor
+    if (user.userType !== "tutor") {
       return res.render("subscription_tutee", { user });
     }
 
@@ -135,7 +135,7 @@ router.get("/subscription/:userId", requireLogin, async (req, res) => {
       return res.status(404).send("User not found");
     }
 
-    if (user.userType !== "teacher") {
+    if (user.userType !== "tutor") {
       return res.render("subscription_tutee", { user });
     }
 
