@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
-const dotenv = require('dotenv');
+dotenv.config(); //must be placed before payment declaration
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const http = require('http');
@@ -17,14 +17,39 @@ const login_routes = require('./routes/login');
 const profile_routes = require('./routes/profile'); 
 const nav_routes = require('./routes/nav');
 const chatRouter = require('./routes/chat');
-const paymentRoute = require('./routes/paymentRoute');
 const inboxRouter = require('./routes/inbox'); 
-//const cartRoute = require('./routes/cartRoute');
 const ChatMessage = require('./models/ChatMessage');
+//payment
+const paymentRoute = require("./routes/paymentRoute.js");
+const subscribeRoute = require("./routes/subscribeRoute.js");
+const tuitionRoute = require("./routes/tuitionRoute.js");
+const cartRoute = require("./routes/cartRoute.js");
+const setupCronJobs = require("./jobs/cronJobs.js");
+const cartRouteHandler = require("./jobs/cartRouteHandler");
+const subscribeRouteHandler = require("./jobs/subscribeRouteHandler");
+const bookHandler = require("./jobs/bookHandler");
+const tuitionRouteHandler = require("./jobs/tuitionRouteHandler");
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 
-dotenv.config();
 const app = express();
 const port = process.env.PORT || 3003;
+
+const allowedOrigins = [process.env.CLIENT_URL, "http://localhost:3003"];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 
 mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log('MongoDB connected'))
@@ -67,13 +92,50 @@ app.use(cors({
 }));
 
 //payment
-app.use(express.json({
+//payment
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  bodyParser.json({
     verify: (req, res, buf) => {
-        if (req.originalUrl.startsWith('/webhook')) {
-            req.rawBody = buf.toString();
+      req.rawBody = buf.toString();
+    },
+  })
+);
+
+app.post(
+  "/webhook",
+  bodyParser.raw({ type: "application/json" }),
+  async (req, res) => {
+    const sig = req.headers["stripe-signature"];
+    const rawBody = req.rawBody;
+
+    try {
+      const event = stripe.webhooks.constructEvent(
+        rawBody,
+        sig,
+        process.env.STRIPE_WEBHOOK_SECRET
+      );
+      console.log(`Webhook received: ${event.type}`);
+
+      if (event.type === "checkout.session.completed") {
+        const session = event.data.object;
+        if (session.metadata.route === "cart") {
+          await cartRouteHandler.handleWebhookEvent(event, res);
+        } else if (session.metadata.route === "subscribe") {
+          await subscribeRouteHandler.handleWebhookEvent(event, res);
+        } else if (session.metadata.route === "book") {
+          await bookHandler.handleWebhookEvent(event, res);
+        } else if (session.metadata.route === "tuitionFee") {
+          await tuitionRouteHandler.handleWebhookEvent(event, res);
         }
+      }
+    } catch (err) {
+      console.error(`Webhook signature verification failed.`, err.message);
+      res.status(400).send(`Webhook Error: ${err.message}`);
     }
-})); 
+  }
+);
+setupCronJobs();
 
 app.use('/', routes);
 app.use('/', signup_routes);
@@ -81,9 +143,11 @@ app.use('/', login_routes);
 app.use('/', profile_routes); 
 app.use('/', nav_routes);
 app.use('/', chatRouter);
-app.use('/', paymentRoute);
 app.use('/', inboxRouter); 
-//app.use('/', cartRoute);
+app.use("/", subscribeRoute);
+app.use("/", tuitionRoute);
+app.use("/", cartRoute);
+app.use("/", paymentRoute);
 
 const server = http.createServer(app);
 const io = socketIO(server);
