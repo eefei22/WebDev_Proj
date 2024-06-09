@@ -18,12 +18,17 @@ function searchTable() {
     let noMatch = true;
 
     tableRows.forEach(row => {
-        const tableData = row.textContent.toLowerCase();
-        const found = tableData.includes(searchData);
+        if (searchData === '') {
+            row.classList.remove('hide');
+            noMatch = false;
+        } else {
+            const tableData = row.textContent.toLowerCase();
+            const found = tableData.includes(searchData);
 
-        // Toggle hide class based on search result
-        row.classList.toggle('hide', !found);
-        if (found) noMatch = false;
+            // Toggle hide class based on search result
+            row.classList.toggle('hide', !found);
+            if (found) noMatch = false;
+        }
     });
 
     // Show or hide the no match message based on the flag
@@ -100,6 +105,7 @@ function resetTable(resetSort = true) {
     }
 }
 
+
 // Export table data to PDF
 const toPDFBtn = document.getElementById('toPDF');
 toPDFBtn.addEventListener('click', () => {
@@ -107,12 +113,24 @@ toPDFBtn.addEventListener('click', () => {
     const doc = new jsPDF();
     const tableElement = document.getElementById('mainTable');
 
+    // Clone the table to prevent affecting the original table
+    const clonedTable = tableElement.cloneNode(true);
+    clonedTable.id = 'clonedTable'; // Assign a unique ID to the cloned table
+
+    // Append the cloned table to the document body temporarily
+    document.body.appendChild(clonedTable);
+
     doc.autoTable({
-        html: tableElement,
+        html: '#clonedTable', // Use the cloned table for PDF generation
         theme: 'striped',
         headStyles: { fillColor: [22, 160, 133] },
         margin: { top: 20 },
-        styles: { fontSize: 10 }
+        styles: { fontSize: 6 }
     });
+
+    // Remove the cloned table from the document body after PDF generation
+    document.body.removeChild(clonedTable);
+
     doc.save('payment_report.pdf');
 });
+

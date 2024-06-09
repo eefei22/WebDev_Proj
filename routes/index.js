@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const Ad = require('../models/Ad'); 
+const Ad = require('../models/Ad');
 const User = require('../models/User_signup');
 const requireLogin = require('../middleware/requireLogin');
 const FeedbackModel = require('../models/FeedbackModel');
@@ -47,7 +47,7 @@ router.get('/form', requireLogin, async (req, res) => {
         if (!user) {
             return res.status(404).send('User not found');
         }
-        
+
         // Check if the user is a teacher
         if (user.userType !== 'teacher') {
             return res.render('subscription_tutee', { user });
@@ -79,7 +79,7 @@ router.get('/form', requireLogin, async (req, res) => {
 //       }
 //     });
 //   });
-  
+
 
 // Route to handle form submission
 router.post('/submit', requireLogin, upload.single('file'), async (req, res) => {
@@ -138,12 +138,12 @@ router.get('/subscription/:userId', requireLogin, async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-  
+
 router.get('/discover_tutor', requireLogin, async (req, res) => {
     try {
         const user = await User.findById(req.session.userId);
         const ads = await Ad.find({}).populate('user');
-        res.render('discover_tutor', {ads, user});
+        res.render('discover_tutor', { ads, user });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
@@ -151,8 +151,8 @@ router.get('/discover_tutor', requireLogin, async (req, res) => {
 });
 
 
-  
-  router.get("/tutor_ad/:id", requireLogin, async (req, res) => {
+
+router.get("/tutor_ad/:id", requireLogin, async (req, res) => {
     try {
         const ad = await Ad.findById(req.params.id).populate('user');
         const user = await User.findById(req.session.userId);
@@ -160,11 +160,11 @@ router.get('/discover_tutor', requireLogin, async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send("Server Error");
-    }
+    }
 });
-  
-  
-  // Route to get the edit form
+
+
+// Route to get the edit form
 router.get('/subscription/edit/:id', requireLogin, async (req, res) => {
     try {
         const adId = req.params.id;
@@ -323,7 +323,7 @@ router.get('/helpdesk/search', async (req, res) => {
 router.get("/payment_report", requireLogin, async (req, res) => {
     try {
         // Fetch only the required fields from the payment_model
-        const payments = await Payment.find({}, 'cardholderName phone email transactionDate payment_status transactionAmount');
+        const payments = await Payment.find({}, 'cardholderName phone email transactionDate payment_status transactionAmount description');
 
         // Map payments to include dueDate
         const paymentReport = payments.map(payment => {
@@ -344,32 +344,5 @@ router.get("/payment_report", requireLogin, async (req, res) => {
         res.status(500).send("Error fetching payment data");
     }
 });
-
-// router.get('/payment_report', requireLogin, async (req, res) => {
-//     try {
-//         const payments = await Payment.find({ tutorId: req.session.userId }).lean();
-
-//         const paymentReport = payments.map(payment => {
-//             const transactionDate = moment(payment.transactionDate);
-//             const dueDate = transactionDate.add(1, 'month');
-//             const status = payment.payment_status;
-
-//             return {
-//                 name: payment.cardholderName,
-//                 phone: payment.phone,
-//                 email: payment.email,
-//                 paymentDate: transactionDate.format('D-MM-YYYY'),
-//                 dueDate: dueDate.format('D-MM-YYYY'),
-//                 status,
-//                 amount: `RM${payment.transactionAmount.toFixed(2)}`,
-//             };
-//         });
-
-//         res.render('payment_report', { paymentReport });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Server Error');
-//     }
-// });
 
 module.exports = router;

@@ -50,6 +50,7 @@
                         <th>Due Date<span class="icon-arrow"><i class="fa-solid fa-arrow-up"></i></span></th>
                         <th>Status<span class="icon-arrow"><i class="fa-solid fa-arrow-up"></i></span></th>
                         <th>Amount<span class="icon-arrow"><i class="fa-solid fa-arrow-up"></i></span></th>
+                        <th>Description<span class="icon-arrow"><i class="fa-solid fa-arrow-up"></i></span></th>
                     </tr>
                 </thead>
                 <tbody id="paymentTableBody">
@@ -61,7 +62,8 @@
                             <td><%= new Date(payment.transactionDate).toISOString().split('T')[0] %></td>
                             <td><%= payment.dueDate %></td>
                             <td><p class="status <%= payment.payment_status.toLowerCase() %>"><%= payment.payment_status %></p></td>
-                            <td><strong><%= payment.transactionAmount %></strong></td>
+                            <td><%= payment.transactionAmount %></td>
+                            <td><%= payment.description %></td>
                         </tr>
                     <% }) %>
                 </tbody>
