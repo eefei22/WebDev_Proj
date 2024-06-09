@@ -19,24 +19,27 @@
         <!-- close icon -->
         <i class="fas fa-times" onclick="hideMenu()"></i>
         <ul>
-            <li><a href="/form">Subscription</a></li>
-            <li><a href="/discover_tutor">Discover Tutor</a></li>
-            <li><a href="/tuitionFee">Payment</a></li>
-            <li><a href="/helpdesk">Helpdesk</a></li>
-        </ul> <!-- closing unordered list -->
-      </div> 
+          <li><a href="/form">Subscription</a></li>
+          <li><a href="/discover_tutor">Discover Tutor</a></li>
+          <li><a href="/tuitionFee">Payment</a></li>
+          <li><a href="/helpdesk">Helpdesk</a></li>
+          <li><a href="/inbox">Inbox</a></li> <!-- New Inbox link -->
+        </ul> <!--closing unorder list -->
+      </div> <!--closing nav-links -->
+      <!-- nav icon -->
       <div class="navIcon">
-        <a href="cart.html" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
+        <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
         <div class="dropdown">
-          <a href=" " class="navLink" id="profileIcon"><img id="profileIconImg" src="/images/ic_profile.png" alt="user profile"></a>
+          <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
           <div class="dropdown-content" id="profileDropdownContent">
-            <a id="profile" href="profile.html">My Profile</a>
+            <!-- Dropdown content here -->
+            <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
             <div class="logout">
-              <a href="index-bfr-login.html" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
+              <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
             </div>
           </div>
         </div>
-      </div>
+      </div> <!--closing nav icon -->
       <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
   </header>
@@ -44,7 +47,7 @@
     <div class="container">
       <div class="content">
         <h2>Edit Teaching Profile</h2>
-        <form id="teachingProfileForm" method="post" action="/subscription/edit/<%= ad.user %>" enctype="multipart/form-data">
+        <form id="teachingProfileForm" method="post" action="/subscription/edit/<%= ad._id %>" enctype="multipart/form-data">
           <div>
             <label for="subject">Teaching Subject</label><br>
             <input type="radio" name="subject" value="Math" <%= ad.subject === 'Math' ? 'checked' : '' %>> Mathematics
@@ -55,15 +58,15 @@
           </div>
           <div> <br>
             <label for="title">Title of Ad</label>
-            <input type="text" id="title" name="title" placeholder="(5 minimum words)" value="<%= ad.title %>" required>
+            <input type="text" id="title" name="title" value="<%= ad.title %>" required>
           </div>
           <div>
             <label for="about_lesson">About the lesson</label>
-            <input type="text" id="about_lesson" name="about_lesson" placeholder="(10 minimum words)" value="<%= ad.about_lesson %>" required>
+            <input type="text" id="about_lesson" name="about_lesson" value="<%= ad.about_lesson %>" required>
           </div>
           <div>
             <label for="about_tutor">About yourself</label>
-            <input type="text" id="about_tutor" name="about_tutor" placeholder="(10 minimum words)" value="<%= ad.about_tutor %>" required>
+            <input type="text" id="about_tutor" name="about_tutor" value="<%= ad.about_tutor %>" required>
           </div>
           <div> 
             <label for="rate">Hourly Rate &lpar;RM/h&rpar;</label><br>
@@ -107,71 +110,38 @@
           <div class="link">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="/homepage">Home</a></li>
-                <li><a href="/subscription">Subscription</a></li>
-                <li><a href="/discover_tutor">Courses</a></li>
-                <li><a href="/helpdesk">FAQ</a></li>
+              <li><a href="/homepage">Home</a></li>
+              <li><a href="/form">Subscription</a></li>
+              <li><a href="/discover_tutor">Courses</a></li>
+              <li><a href="/helpdesk">FAQ</a></li>
             </ul>
           </div>
-          <img id="logo" src="/Images/logo.png" alt="EduPro" width="200">
+          <img id="logo" src="/images/logo.png" alt="EduPro" width="200">
           <div class="link">
             <h4>Contact Us</h4>
             <ul>
               <li>
-                <img src="/Images/email.png" alt="Email">
+                <img src="/images/email.png" alt="Email">
                 <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
               </li>
               <li>
-                <img src="/Images/phone.png" alt="Phone no">
+                <img src="/images/phone.png" alt="Phone no">
                 <a href="https://wa.me/60173968518">+60 17 396 8518</a>
               </li>
               <li>
-                <img src="/Images/location.png" alt="Location">
-                <a href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
+                <img src="/images/location.png" alt="Location">
+                <a
+                  href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
                   Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
               </li>
             </ul>
           </div>
         </div>
-        <hr style="border: 1px solid #ffffff78">
+        <hr>
         <p>&copy; 2024 EduPro. All rights reserved.</p>
       </div>
     </section>
   </footer>
-  <script type="module" src="/public/js/createtutor.js"></script>
-  <script type="module" src="/public/js/nav.js"></script>
-  <script>
-    var navLinks = document.getElementById("navLinks");
-  
-    function showMenu() {
-      navLinks.style.right = "0";
-    }
-  
-    function hideMenu() {
-      navLinks.style.right = "-200px";
-    }
-  
-    document.addEventListener("DOMContentLoaded", function () {
-      const profileIconImg = document.getElementById('profileIconImg');
-      const uploadedPicture = localStorage.getItem('uploadedProfilePicture');
-      if (uploadedPicture) {
-        profileIconImg.src = uploadedPicture;
-      }
-    });
-  
-    function logout() {
-      localStorage.removeItem('uploadedProfilePicture');
-    }
-  
-    document.addEventListener("DOMContentLoaded", function () {
-      const profileIconImg = document.getElementById('profileIconImg');
-      const uploadedPicture = localStorage.getItem('uploadedProfilePicture');
-      if (uploadedPicture) {
-        profileIconImg.src = uploadedPicture;
-      } else {
-        profileIconImg.src = '/images/ic_profile.png';
-      }
-    });
-  </script>
+  <script src="/js/nav.js"></script>
 </body>
 </html>
