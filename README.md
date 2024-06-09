@@ -1,4 +1,6 @@
-To those have navbar with cart function, add 3 of these into your ejs file
+1. run command 1st: npm install node-cron
+
+2. To those have navbar with cart function, add 3 of these into your ejs file
 ~~~~~~~~to enable cart function change whole <nav> <nav> to 
  <nav>
       <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
