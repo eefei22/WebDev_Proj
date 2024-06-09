@@ -144,7 +144,13 @@
   .buttoncontainer {
     text-align: center;
     width: 200px;
-    margin-left: auto;
+    margin-left: 10%;
+    margin-right: 5%;
+  }
+
+  .button2 {
+    text-align: center;
+    width: 200px;
     margin-right: auto;
   }
   
