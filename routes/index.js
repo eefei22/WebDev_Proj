@@ -47,8 +47,20 @@ router.get('/form', requireLogin, async (req, res) => {
         if (!user) {
             return res.status(404).send('User not found');
         }
-    res.render('form', {user});
-    }catch (error) {
+        
+        // Check if the user is a teacher
+        if (user.userType !== 'teacher') {
+            return res.render('subscription_tutee', { user });
+        }
+
+        // Check if the ad already exists for this teacher
+        const ad = await Ad.findOne({ user: req.session.userId });
+        if (ad) {
+            return res.redirect(`/subscription/${req.session.userId}`);
+        }
+
+        res.render('form', { user });
+    } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
     }
@@ -99,16 +111,28 @@ router.post('/submit', requireLogin, upload.single('file'), async (req, res) => 
 });
 
 // Route to get the subscription page
-router.get('/subscription/:userId', async (req, res) => {
+router.get('/subscription/:userId', requireLogin, async (req, res) => {
     try {
         const userId = req.params.userId;
-        const ad = await Ad.findOne({ user: userId });
+        const user = await User.findById(userId);
 
-        if (!ad) {
-            return res.status(404).send('Ad not found');
+        if (!user) {
+            return res.status(404).send('User not found');
         }
 
-        res.render('subscription', { ad });
+        if (user.userType !== 'teacher') {
+            return res.render('subscription_tutee', { user });
+        }
+
+        const ad = await Ad.findOne({ user: userId }).populate('user');
+        if (!ad) {
+            return res.redirect('/form');
+        }
+
+        // Fetch the number of students who have been assigned to this tutor
+        const numOfStudents = await Payment.countDocuments({ tutorId: ad._id });
+
+        res.render('subscription', { ad, user, numOfStudents });
     } catch (error) {
         console.error('Error fetching subscription:', error);
         res.status(500).send('Server Error');
@@ -141,30 +165,35 @@ router.get('/discover_tutor', requireLogin, async (req, res) => {
   
   
   // Route to get the edit form
-router.get('/subscription/edit/:userId', requireLogin, async (req, res) => {
+router.get('/subscription/edit/:id', requireLogin, async (req, res) => {
     try {
-        const userId = req.params.userId;
-        const ad = await Ad.findOne({ user: userId });
+        const adId = req.params.id;
+        const ad = await Ad.findById(adId);
 
         if (!ad) {
             return res.status(404).send('Ad not found');
         }
 
-        res.render('edit', { ad });
+        // Fetch user data using the session userId
+        const user = await User.findById(req.session.userId);
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        res.render('edit', { ad, user });
     } catch (error) {
-        console.error('Error fetching ad for editing:', error);
+        console.error(error);
         res.status(500).send('Server Error');
     }
 });
 
 // Route to handle the edit form submission
-router.post('/subscription/edit/:userId', requireLogin, upload.single('file'), async (req, res) => {
+router.post('/subscription/edit/:id', requireLogin, upload.single('file'), async (req, res) => {
     try {
-        const userId = req.params.userId;
+        const adId = req.params.id;
         const { subject, title, about_lesson, about_tutor, rate, hours, languages, location, mode, teaching_sample } = req.body;
-        console.log('User ID:', userId); // Log userId for debugging
 
-        const updatedAdData = {
+        const updatedAd = {
             subject,
             title,
             about_lesson,
@@ -177,21 +206,28 @@ router.post('/subscription/edit/:userId', requireLogin, upload.single('file'), a
             teaching_sample
         };
 
-        const ad = await Ad.findOne({ user: userId });
-        console.log('Ad found:', ad); // Log the ad found for debugging
+        const ad = await Ad.findByIdAndUpdate(adId, updatedAd, { new: true });
 
         if (!ad) {
-            console.error('Ad not found for user ID:', userId);
             return res.status(404).send('Ad not found');
         }
 
-        // Update the ad with new data
-        Object.assign(ad, updatedAdData);
-        await ad.save();
-
-        res.redirect(`/subscription/${userId}`);
+        res.redirect(`/subscription/${req.session.userId}`);
     } catch (error) {
-        console.error('Error updating ad:', error);
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Route to delete advertisement
+router.post('/subscription/delete/:adId', async (req, res) => {
+    try {
+        const adId = req.params.adId;
+        // Delete the advertisement from the database
+        await Ad.findByIdAndDelete(adId);
+        res.redirect('/form'); // Redirect to the form page
+    } catch (error) {
+        console.error('Error deleting advertisement:', error);
         res.status(500).send('Server Error');
     }
 });
