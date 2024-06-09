@@ -16,14 +16,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
 
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Tutors</title>
-    
 </head>
 <body>
     <nav>
-        <a href="/homepage/<%= user._id %>"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
+        <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
         <div class="nav-links" id="navLinks">
             <!-- close icon -->
             <i class="fas fa-times" onclick="hideMenu()"></i>
@@ -33,8 +31,8 @@
                 <li><a href="/tuitionFee">Payment</a></li>
                 <li><a href="/helpdesk">Helpdesk</a></li>
                 <li><a target="_blank" href="/inbox">Inbox</a></li> <!-- New Inbox link -->
-            </ul> <!--closing unorder list -->
-        </div> <!--closing nav-links -->
+            </ul> <!-- closing unordered list -->
+        </div> <!-- closing nav-links -->
         <!-- nav icon -->
         <div class="navIcon">
             <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
@@ -48,17 +46,27 @@
                     </div>
                 </div>
             </div>
-        </div> <!--closing nav icon -->
+        </div> <!-- closing nav icon -->
         <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
-    
 
     <h1>Discover Our Tutors</h1>
     <div class="Search">
         <div class="SearchBar">
-            <input type="text" placeholder="Search..." />
+            <input type="text" id="searchInput" placeholder="Search..." />
         </div>
-        <img class="SearchIcon" src="images/search-icon.png" />
+        <img class="SearchIcon" src="images/search-icon.png" id="searchButton" />
+    </div>
+
+    <div class="states-container">
+        <ul class="states-list">
+            <li><button>Math</button></li>
+            <li><button>Bahasa Melayu</button></li>
+            <li><button>English</button></li>
+            <li><button>Science</button></li>
+            <li><button>Mandarin</button></li>
+            <li><button>Moral</button></li>
+        </ul>
     </div>
 
     <div class="ad-container">
@@ -80,8 +88,12 @@
         <% }) %>
     </div>
 
-    <br><br>
-    
+    <div class="no-results" style="display:none;">
+        <p>No results found...</p>
+    </div>
+
+    <br><br><br><br><br><br>
+
     <footer>
         <section class="footer">
             <div class="container6">
@@ -120,6 +132,49 @@
         </section>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const adWrappers = document.querySelectorAll('.ad-wrapper');
+            const stateButtons = document.querySelectorAll('.states-list button');
+            const noResultsMessage = document.querySelector('.no-results');
+
+            function filterAds(keyword) {
+                let hasResults = false;
+                adWrappers.forEach(wrapper => {
+                    const textContent = wrapper.innerText.toLowerCase();
+                    if (textContent.includes(keyword.toLowerCase())) {
+                        wrapper.style.display = 'block'; 
+                        hasResults = true;
+                    } else {
+                        wrapper.style.display = 'none'; 
+                    }
+                });
+                if (hasResults) {
+                    noResultsMessage.style.display = 'none';
+                } else {
+                    noResultsMessage.style.display = 'block';
+                }
+            }
+
+            searchButton.addEventListener('click', () => {
+                filterAds(searchInput.value);
+            });
+
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    filterAds(searchInput.value);
+                }
+            });
+
+            stateButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterAds(button.innerText);
+                });
+            });
+        });
+    </script>
     <script src="/js/nav.js"></script>
 </body>
 </html>

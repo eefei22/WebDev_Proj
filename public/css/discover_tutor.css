@@ -47,6 +47,53 @@ h1 {
     height: 26px;
   }
 
+  .states-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.states-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.states-list li {
+    margin: 0 10px; 
+}
+
+.states-list button {
+    background-color: #2d13b4; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.states-list button:hover {
+    background-color: #190482; 
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    font-size: 1.5em;
+    color: #333;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
   .ad-container {
     display: flex;
     flex-wrap: wrap;
