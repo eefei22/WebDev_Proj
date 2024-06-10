@@ -351,7 +351,7 @@ router.get("/payment_report", requireLogin, async (req, res) => {
     // Fetch only the required fields from the payment_model
     const payments = await Payment.find(
       {},
-      "cardholderName phone email transactionDate payment_status transactionAmount"
+      "cardholderName phone email transactionDate payment_status transactionAmount description"
     );
 
     // Map payments to include dueDate
@@ -374,33 +374,7 @@ router.get("/payment_report", requireLogin, async (req, res) => {
   }
 });
 
-// router.get('/payment_report', requireLogin, async (req, res) => {
-//     try {
-//         const payments = await Payment.find({ tutorId: req.session.userId }).lean();
 
-//         const paymentReport = payments.map(payment => {
-//             const transactionDate = moment(payment.transactionDate);
-//             const dueDate = transactionDate.add(1, 'month');
-//             const status = payment.payment_status;
-
-//             return {
-//                 name: payment.cardholderName,
-//                 phone: payment.phone,
-//                 email: payment.email,
-//                 paymentDate: transactionDate.format('D-MM-YYYY'),
-//                 dueDate: dueDate.format('D-MM-YYYY'),
-//                 status,
-//                 amount: `RM${payment.transactionAmount.toFixed(2)}`,
-//             };
-//         });
-
-//         res.render('payment_report', { paymentReport });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Server Error');
-//     }
-// });
-//payment
 router.get("/tuitionFee", requireLogin, async (req, res) => {
   try {
     const userId = req.session.userId;
