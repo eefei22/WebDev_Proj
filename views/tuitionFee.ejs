@@ -116,7 +116,7 @@
           <h3 class="title">Paid Courses</h3>
           <ul>
             <% payments.forEach(payment => { %> <% if (payment.payment_status
-            === 'Paid') { %>
+            === 'Paid' && payment.tutorId) { %>
             <li>
               <div class="course-details">
                 <span class="course"><%= payment.tutorId.subject %></span>
@@ -139,7 +139,7 @@
           >
           <ul>
             <% payments.forEach(payment => { %> <% if (payment.payment_status
-            === 'Unpaid') { %>
+            === 'Unpaid' && payment.tutorId) { %>
             <li>
               <input
                 type="checkbox"
@@ -152,7 +152,6 @@
               />
               <div class="course-details">
                 <span class="course"><%= payment.tutorId.subject %></span>
-
                 <span class="tutor"><%= payment.tutorId.tutorName %></span>
                 <input
                   type="text"

@@ -47,7 +47,6 @@ router.post("/cart-checkout-session", async (req, res) => {
     // Prepare metadata
     const metadata = {
       userId,
-      email,
       items: JSON.stringify(items), // Store all items as a JSON string
       route: "cart",
     };
@@ -57,6 +56,7 @@ router.post("/cart-checkout-session", async (req, res) => {
       mode: "payment",
       success_url: `${process.env.CLIENT_URL}/success`,
       cancel_url: `${process.env.CLIENT_URL}/cancel`,
+      customer_email: email,
       line_items: lineItems,
       metadata: metadata,
       phone_number_collection: {

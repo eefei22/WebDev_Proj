@@ -19,7 +19,7 @@ const handleWebhookEvent = async (event, res) => {
       booking_status: "Booked",
       payment_status: "Paid",
       description: item.description || "",
-      email: metadata.email,
+      email: session.customer_email,
       quantity: item.quantity,
       profilePic: itemDetails.profilePic,
     });

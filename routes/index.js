@@ -298,10 +298,11 @@ router.post("/feedback", async (req, res) => {
   }
 });
 
-router.get("/helpdesk", async (req, res) => {
+router.get("/helpdesk", requireLogin, async (req, res) => {
   try {
+    const user = await User.findById(req.session.userId);
     const faqs = await FaqModel.find({});
-    res.render("helpdesk", { faqList: faqs });
+    res.render("helpdesk", { faqList: faqs, user });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
