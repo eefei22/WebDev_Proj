@@ -1,4 +1,32 @@
- //Toggle password visibility
+// Handle form submissions
+document.addEventListener('DOMContentLoaded', function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const successMessage = urlParams.get('success');
+  const errorMessage = urlParams.get('error');
+
+  if (successMessage) {
+      alert(successMessage);
+      clearQueryParameters();
+  }
+
+  if (errorMessage) {
+      alert(errorMessage);
+      clearQueryParameters();
+  }
+});
+
+function clearQueryParameters() {
+  // Get the current URL
+  const url = new URL(window.location);
+
+  // Clear the query parameters
+  url.search = '';
+
+  // Update the browser's history
+  window.history.replaceState({}, document.title, url);
+}
+
+//Toggle password visibility
  document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('old_pswd');
     const togglePasswordButton = document.getElementById('toggleOldPassword');
@@ -51,12 +79,12 @@
     });
   });
 
-  //Javascript for previewing the profile picture
-  function previewProfilePicture(event) {
-    var reader = new FileReader();
-    reader.onload = function() {
-        var output = document.getElementById('profile-pic');
-        output.src = reader.result;
-    }
-    reader.readAsDataURL(event.target.files[0]);
+ //Javascript for previewing the profile picture
+ function previewProfilePicture(event) {
+  var reader = new FileReader();
+  reader.onload = function() {
+      var output = document.getElementById('profile-pic');
+      output.src = reader.result;
+  }
+  reader.readAsDataURL(event.target.files[0]);
 }

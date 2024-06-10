@@ -1,5 +1,74 @@
-// Toggle password visibility
 document.addEventListener('DOMContentLoaded', function () {
+  //Alert message
+  const loginForm = document.getElementById('login-form');
+    const resetPasswordForm = document.getElementById('reset-password-form');
+
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(loginForm);
+        const data = {
+            email: formData.get('email'),
+            password: formData.get('password')
+        };
+
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(responseText => {
+            // Extract the script content from the response
+            const scriptContent = responseText.match(/<script>([\s\S]*?)<\/script>/)[1];
+            // Create a new script element and set its content
+            const scriptElement = document.createElement('script');
+            scriptElement.textContent = scriptContent;
+            // Append the script element to the body
+            document.body.appendChild(scriptElement);
+        })
+        .catch(error => {
+            console.error('Network error:', error);
+            alert('An unexpected error occurred. Please try again later.');
+        });
+    });
+
+    resetPasswordForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(resetPasswordForm);
+        const data = {
+            email: formData.get('email'),
+            new_password: formData.get('new_password'),
+            confirm_password: formData.get('confirm_password')
+        };
+
+        fetch('/reset-password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(responseText => {
+            // Extract the script content from the response
+            const scriptContent = responseText.match(/<script>([\s\S]*?)<\/script>/)[1];
+            // Create a new script element and set its content
+            const scriptElement = document.createElement('script');
+            scriptElement.textContent = scriptContent;
+            // Append the script element to the body
+            document.body.appendChild(scriptElement);
+        })
+        .catch(error => {
+            console.error('Network error:', error);
+            alert('An unexpected error occurred. Please try again later.');
+        });
+    });
+
+    // Toggle password visibility
     const togglePassword = (inputId, toggleButtonId) => {
       const passwordInput = document.getElementById(inputId);
       const toggleButton = document.getElementById(toggleButtonId);
