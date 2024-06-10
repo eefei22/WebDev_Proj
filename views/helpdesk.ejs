@@ -1,141 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg">
-    <link rel="stylesheet" href="/css/helpdesk.css">
-    <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg" />
+    <link rel="stylesheet" href="/css/helpdesk.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <!-- cart -->
+    <link rel="stylesheet" href="/css/cart.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Helpdesk</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <a href="/"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
-        <div class="nav-links" id="navLinks">
-            <i class="fas fa-times" onclick="hideMenu()"></i>
-            <ul>
-                <li><a href="/subscription">Subscription</a></li>
-                <li><a href="/discover_tutor">Discover Tutor</a></li>
-                <li><a href="/tuitionFee">Payment</a></li>
-                <li><a href="/helpdesk">Helpdesk</a></li>
-            </ul>
+      <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
+      <div class="nav-links" id="navLinks">
+        <!-- close icon -->
+        <i class="fas fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="/form">Subscription</a></li>
+          <li><a href="/discover_tutor">Discover Tutor</a></li>
+          <li><a href="/tuitionFee">Payment</a></li>
+          <li><a href="/helpdesk">Helpdesk</a></li>
+          <li><a target="_blank" href="/inbox">Inbox</a></li>
+          <!-- New Inbox link -->
+        </ul>
+        <!-- closing unordered list -->
+      </div>
+      <!-- closing nav-links -->
+      <!-- nav icon -->
+      <div class="navIcon">
+        <!-- Cart Icon -->
+        <i
+          class="bx bx-cart"
+          id="cart-icon"
+          alt="Cart Icon"
+          data-quantity="0"
+        ></i>
+        />
+        <!-- cart -->
+        <div class="cart">
+          <h2 class="cart-title">Your Cart</h2>
+          <!-- Content -->
+          <div class="cart-content"></div>
+          <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+          </div>
+          <!-- Buy Button -->
+          <button type="button" class="btn-buy">Checkout</button>
+          <!-- Close Cart -->
+          <i class="bx bx-x" id="close-cart"></i>
         </div>
-        <div class="navIcon">
-            <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
-            <div class="dropdown">
-                <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="/images/ic_profile.png" alt="user profile"></a>
-                <div class="dropdown-content" id="profileDropdownContent">
-                    <a id="profile" href="/profile">My Profile</a>
-                    <div class="logout">
-                        <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
-                    </div>
-                </div>
+        <div class="dropdown">
+          <a href="#" class="navLink" id="profileIcon"
+            ><img
+              id="profileIconImg"
+              src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+              alt="user profile"
+          /></a>
+          <div class="dropdown-content" id="profileDropdownContent">
+            <!-- Dropdown content here -->
+            <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
+            <div class="logout">
+              <a href="/" onclick="logout()"
+                ><img id="logout-ic" src="/images/logout.png" />Log Out</a
+              >
             </div>
+          </div>
         </div>
-        <i class="fas fa-bars" onclick="showMenu()"></i>
+      </div>
+      <!-- closing nav icon -->
+      <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
 
     <main>
-        <div class="header">
-            <h1 class="header-title">Helpdesk</h1>
-            <p class="header-desc">We're here to help</p>
-            <div class="search">
-               <form id="searchForm" method="get" action="/helpdesk/search">
-                    <input type="text" name="query" id="searchInput" placeholder="Search">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
+      <div class="header">
+        <h1 class="header-title">Helpdesk</h1>
+        <p class="header-desc">We're here to help</p>
+        <div class="search">
+          <form id="searchForm" method="get" action="/helpdesk/search">
+            <input
+              type="text"
+              name="query"
+              id="searchInput"
+              placeholder="Search"
+            />
+            <button type="submit">Search</button>
+          </form>
         </div>
-        <div class="accordion">
-            <h1>FAQ</h1>
-            <br>
-            <% if (faqList && faqList.length > 0) { %>
-                <% faqList.forEach(function(faq) { %>
-                    <div class="accordion-content">
-                        <header>
-                            <span class="title"><%= faq.question %></span>
-                            <i class="fa-solid fa-plus"></i>
-                        </header>
-                        <p class="desc">
-                            Answer: <%= faq.answer %>
-                        </p>
-                    </div>
-                <% }) %>
-            <% } else { %>
-                <p>No FAQs available at the moment.</p>
-            <% } %>
+      </div>
+      <div class="accordion">
+        <h1>FAQ</h1>
+        <br />
+        <% if (faqList && faqList.length > 0) { %> <%
+        faqList.forEach(function(faq) { %>
+        <div class="accordion-content">
+          <header>
+            <span class="title"><%= faq.question %></span>
+            <i class="fa-solid fa-plus"></i>
+          </header>
+          <p class="desc">Answer: <%= faq.answer %></p>
         </div>
-        <div class="container">
-            <div class="left">
-                <h3 class="heading">Contact Us</h3>
-                <p class="text">We are here for you! How can we help?</p>
-                <form action="/helpdesk" method="POST">
-                    <div class="inputBox">
-                        <input type="text" name="name" class="name" placeholder="Name">
-                    </div>
-                    <div class="inputBox">
-                        <input type="email" name="email" class="email" placeholder="Email">
-                    </div>
-                    <div class="inputBox">
-                        <textarea name="message" class="message" placeholder="Message"></textarea> 
-                    </div>
-                    <button class="btn">Submit</button>
-                </form>
+        <% }) %> <% } else { %>
+        <p>No FAQs available at the moment.</p>
+        <% } %>
+      </div>
+      <div class="container">
+        <div class="left">
+          <h3 class="heading">Contact Us</h3>
+          <p class="text">We are here for you! How can we help?</p>
+          <form action="/helpdesk" method="POST">
+            <div class="inputBox">
+              <input type="text" name="name" class="name" placeholder="Name" />
             </div>
-            <div class="right">
-                <div class="illustration">
-                    <img src="/images/undraw_instant_support_re_s7un.svg" alt="">
-                </div>
+            <div class="inputBox">
+              <input
+                type="email"
+                name="email"
+                class="email"
+                placeholder="Email"
+              />
             </div>
+            <div class="inputBox">
+              <textarea
+                name="message"
+                class="message"
+                placeholder="Message"
+              ></textarea>
+            </div>
+            <button class="btn">Submit</button>
+          </form>
         </div>
+        <div class="right">
+          <div class="illustration">
+            <img src="/images/undraw_instant_support_re_s7un.svg" alt="" />
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
-        <section class="footer">
-            <div class="container6">
-                <div class="frame">
-                    <div class="link">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/subscription">Subscription</a></li>
-                            <li><a href="/discover_tutor">Courses</a></li>
-                            <li><a href="/helpdesk">FAQ</a></li>
-                        </ul>
-                    </div>
-                    <img id="logo" src="/images/logo.png" alt="EduPro" width="200">
-                    <div class="link">
-                        <h4>Contact Us</h4>
-                        <ul>
-                            <li>
-                                <img src="/images/email.png" alt="Email">
-                                <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
-                            </li>
-                            <li>
-                                <img src="/images/phone.png" alt="Phone no">
-                                <a href="https://wa.me/60173968518">+60 17 396 8518</a>
-                            </li>
-                            <li>
-                                <img src="/images/location.png" alt="Location">
-                                <a href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4, Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <p>&copy; 2024 EduPro. All rights reserved.</p>
+      <section class="footer">
+        <div class="container6">
+          <div class="frame">
+            <div class="link">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/subscription">Subscription</a></li>
+                <li><a href="/discover_tutor">Courses</a></li>
+                <li><a href="/helpdesk">FAQ</a></li>
+              </ul>
             </div>
-        </section>
+            <img id="logo" src="/images/logo.png" alt="EduPro" width="200" />
+            <div class="link">
+              <h4>Contact Us</h4>
+              <ul>
+                <li>
+                  <img src="/images/email.png" alt="Email" />
+                  <a
+                    href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro"
+                    >info@edupro.com</a
+                  >
+                </li>
+                <li>
+                  <img src="/images/phone.png" alt="Phone no" />
+                  <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+                </li>
+                <li>
+                  <img src="/images/location.png" alt="Location" />
+                  <a
+                    href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur"
+                    >4, Persiaran Stonor, 50450 Kuala Lumpur, Wilayah
+                    Persekutuan Kuala Lumpur, Malaysia</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <hr />
+          <p>&copy; 2024 EduPro. All rights reserved.</p>
+        </div>
+      </section>
     </footer>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="/js/helpdesk.js"></script>
     <script src="/js/nav.js"></script>
-</body>
+    <script src="/js/cart.js"></script>
+  </body>
 </html>

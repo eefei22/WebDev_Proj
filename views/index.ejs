@@ -1,218 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg" />
+    <title>EduPro</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <!-- cart -->
+    <link rel="stylesheet" href="/css/cart.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- nav icons in smaller screen -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg">
-  <title>EduPro</title>
-  <link rel="stylesheet" href="/css/index.css">
-  <!-- nav icons in smaller screen -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <!-- font family -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
-    rel="stylesheet">
-</head>
-
-<body>
-  <header>
-    <nav>
-      <a href="/homepage/<%= user._id %>"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
-      <div class="nav-links" id="navLinks">
-        <!-- close icon -->
-        <i class="fas fa-times" onclick="hideMenu()"></i>
-        <ul>
-          <li><a href="/form">Subscription</a></li>
-          <li><a href="/discover_tutor">Discover Tutor</a></li>
-          <li><a href="/tuitionFee">Payment</a></li>
-          <li><a href="/helpdesk">Helpdesk</a></li>
-        </ul> <!--closing unorder list -->
-      </div> <!--closing nav-links -->
-      <!-- nav icon -->
-      <div class="navIcon">
-        <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
-        <div class="dropdown">
-          <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
-          <div class="dropdown-content" id="profileDropdownContent">
-            <!-- Dropdown content here -->
-            <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
-            <div class="logout">
-              <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
+  <body>
+    <header>
+      <nav>
+        <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
+        <div class="nav-links" id="navLinks">
+          <!-- close icon -->
+          <i class="fas fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="/form">Subscription</a></li>
+            <li><a href="/discover_tutor">Discover Tutor</a></li>
+            <li><a href="/tuitionFee">Payment</a></li>
+            <li><a href="/helpdesk">Helpdesk</a></li>
+            <li><a target="_blank" href="/inbox">Inbox</a></li>
+            <!-- New Inbox link -->
+          </ul>
+          <!-- closing unordered list -->
+        </div>
+        <!-- closing nav-links -->
+        <!-- nav icon -->
+        <div class="navIcon">
+          <!-- Cart Icon -->
+          <i
+            class="bx bx-cart"
+            id="cart-icon"
+            alt="Cart Icon"
+            data-quantity="0"
+          ></i>
+          />
+          <!-- cart -->
+          <div class="cart">
+            <h2 class="cart-title">Your Cart</h2>
+            <!-- Content -->
+            <div class="cart-content"></div>
+            <div class="total">
+              <div class="total-title">Total</div>
+              <div class="total-price">$0</div>
+            </div>
+            <!-- Buy Button -->
+            <button type="button" class="btn-buy">Checkout</button>
+            <!-- Close Cart -->
+            <i class="bx bx-x" id="close-cart"></i>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="navLink" id="profileIcon"
+              ><img
+                id="profileIconImg"
+                src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+                alt="user profile"
+            /></a>
+            <div class="dropdown-content" id="profileDropdownContent">
+              <!-- Dropdown content here -->
+              <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
+              <div class="logout">
+                <a href="/" onclick="logout()"
+                  ><img id="logout-ic" src="/images/logout.png" />Log Out</a
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div> <!--closing nav icon -->
-      <i class="fas fa-bars" onclick="showMenu()"></i>
-    </nav>
-  </header>
-  <main>
-    <section class="hero">
-      <div class="container1">
-        <img id="doodle-bg" src="/images/doodle-bg.png" alt="Background">
-        <div class="content">
-          <div class="item">
-            <h2>Welcome to EduPro: Your Pathway to Academic Success</h2>
-            <p>Your one-stop academic support platform, connecting passionate tutors with eager students for
-              personalized tutoring. EduPro is here to empower your educational journey.</p>
-          </div>
-          <img class="welcome-ill" src="/images/welcome.png" alt="Welcome Illustration">
-        </div>
-      </div>
-    </section>
-    <section class="student">
-      <div class="container2">
-        <div class="student-frame1">
-          <img id="welcome-ill" src="/images/student.png" alt="Student Illustration" width="45%"><br>
-          <a href="/discover_tutor"><button>Start Learning Now</button></a>
-        </div>
-        <div class="student-frame2">
-          <h2>Let's <span class="highlight">Learn</span> Together</h2>
-          <p>Unlock your full potential and achieve academic success. Join our vibrant community of learners and
-            educators to discover a world of knowledge, inspiration, and growth.</p>
-          <h2>Premium <span class="highlight">Learning</span> Experience</h2>
-          <div class="benefit">
-            <img id="benefit-icon-s1" src="/images/benefit-icon-s1.png" alt="Icon 1" width="50">
-            <div>
-              <h3>Personalized Learning Experience</h3>
-              <p>Tailored courses to suit individual learning styles and preferences.</p>
+        <!-- closing nav icon -->
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container1">
+          <img id="doodle-bg" src="/images/doodle-bg.png" alt="Background" />
+          <div class="content">
+            <div class="item">
+              <h2>Welcome to EduPro: Your Pathway to Academic Success</h2>
+              <p>
+                Your one-stop academic support platform, connecting passionate
+                tutors with eager students for personalized tutoring. EduPro is
+                here to empower your educational journey.
+              </p>
             </div>
-          </div>
-          <div class="benefit">
-            <img id="benefit-icon-s2" src="/images/benefit-icon-s2.png" alt="Icon 2" width="50">
-            <div>
-              <h3>Expert Tutor Support</h3>
-              <p>Access to qualified tutors who provide guidance and support.</p>
-            </div>
-          </div>
-          <div class="benefit">
-            <img id="benefit-icon-s3" src="/images/benefit-icon-s3.png" alt="Icon 3" width="50">
-            <div>
-              <h3>Comprehensive Course Offerings</h3>
-              <p>A wide variety of courses across subjects and academic levels.</p>
-            </div>
+            <img
+              class="welcome-ill"
+              src="/images/welcome.png"
+              alt="Welcome Illustration"
+            />
           </div>
         </div>
-      </div>
-    </section>
-    <section class="tutor">
-      <div class="graphic">
-        <img id="doodle" src="/images/doodle1.png">
-      </div>
-      <div class="container3">
-        <div>
-          <h2>Become an <span class="highlight">Educator</span></h2>
-          <p>Join EduPro's vibrant tutor community to nurture learning and development. Whether you're an experienced
-            educator or new to teaching, EduPro offers the platform and resources for your success.</p>
-          <a href="/subscription"><button>Become a Tutor</button></a>
-        </div>
-        <img id="educator-ill" src="/images/educator.png" alt="Educator Illustration" width="45%">
-      </div>
-      <hr>
-      <div class="graphic2">
-        <img id="doodle2" src="/images/doodle2.png">
-      </div>
-      <div class="container4">
-        <h2>Why <span class="highlight">Tutor</span> with EduPro ?</h2>
-        <div class="content">
-          <div class="benefit">
-            <img id="benefit-icon-t1" src="/images/benefit-icon-t1.png" alt="Icon 1" width="50">
-            <h3>Educational Impact</h3>
-            <p>Make a positive impact on students' lives by helping them achieve their academic goals. </p>
+      </section>
+      <section class="student">
+        <div class="container2">
+          <div class="student-frame1">
+            <img
+              id="welcome-ill"
+              src="/images/student.png"
+              alt="Student Illustration"
+              width="45%"
+            /><br />
+            <a href="/discover_tutor"><button>Start Learning Now</button></a>
           </div>
-          <div class="benefit">
-            <img id="benefit-icon-t2" src="/images/benefit-icon-t2.png" alt="Icon 2" width="50">
-            <h3>Additional Income Stream</h3>
-            <p>Earn money by sharing your knowledge and expertise with students.</p>
-          </div>
-          <div class="benefit">
-            <img id="benefit-icon-t3" src="/images/benefit-icon-t3.png" alt="Icon 3" width="50">
-            <h3>Flexible Teaching Opportunities</h3>
-            <p>Set your own schedule and teach on your terms.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="testimonial">
-      <div class="graphic3">
-        <img id="doodle3" src="/images/doodle3.png">
-      </div>
-      <div class="container5">
-        <h2>What People Say About Us</h2>
-        <div class="frame">
-          <div class="test">
-            <p>"EduPro has been a game-changer for me. The tutors are responsive and knowledgeable, and the platform's
-              intuitive interface makes it easy to navigate. I've seen a noticeable improvement in my grades since I
-              started using EduPro."</p>
-            <div class="person">
-              <img id="user1" src="/images/user1.png" alt="User 1" width="60">
-              <h4>Christina Chong</h4>
-            </div>
-          </div>
-          <div class="test">
-            <p>"EduPro has been an invaluable resource for me as a tutor. The platform's user-friendly interface and
-              extensive course offerings have allowed me to connect with students from diverse backgrounds and provide
-              personalized support tailored to their needs."</p>
-            <div class="person">
-              <img id="user2" src="/images/user2.png" alt="User 2" width="60">
-              <h4>Alex Tan</h4>
-            </div>
-          </div>
-          <div class="test">
-            <p>"I love how easy it is to find courses on EduPro that align with my interests and learning goals. The
-              platform's search functionality have made it effortless to discover new subjects and expand my knowledge."
+          <div class="student-frame2">
+            <h2>Let's <span class="highlight">Learn</span> Together</h2>
+            <p>
+              Unlock your full potential and achieve academic success. Join our
+              vibrant community of learners and educators to discover a world of
+              knowledge, inspiration, and growth.
             </p>
-            <div class="person">
-              <img id="user3" src="/images/user3.png" alt="User 3" width="60">
-              <h4>Alia Maisarah</h4>
+            <h2>Premium <span class="highlight">Learning</span> Experience</h2>
+            <div class="benefit">
+              <img
+                id="benefit-icon-s1"
+                src="/images/benefit-icon-s1.png"
+                alt="Icon 1"
+                width="50"
+              />
+              <div>
+                <h3>Personalized Learning Experience</h3>
+                <p>
+                  Tailored courses to suit individual learning styles and
+                  preferences.
+                </p>
+              </div>
+            </div>
+            <div class="benefit">
+              <img
+                id="benefit-icon-s2"
+                src="/images/benefit-icon-s2.png"
+                alt="Icon 2"
+                width="50"
+              />
+              <div>
+                <h3>Expert Tutor Support</h3>
+                <p>
+                  Access to qualified tutors who provide guidance and support.
+                </p>
+              </div>
+            </div>
+            <div class="benefit">
+              <img
+                id="benefit-icon-s3"
+                src="/images/benefit-icon-s3.png"
+                alt="Icon 3"
+                width="50"
+              />
+              <div>
+                <h3>Comprehensive Course Offerings</h3>
+                <p>
+                  A wide variety of courses across subjects and academic levels.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <section class="footer">
-      <div class="container6">
-        <div class="frame">
-          <div class="link">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="/homepage/<%= user._id %>">Home</a></li>
-              <li><a href="/subscription">Subscription</a></li>
-              <li><a href="/discover_tutor">Courses</a></li>
-              <li><a href="/helpdesk">FAQ</a></li>
-            </ul>
+      </section>
+      <section class="tutor">
+        <div class="graphic">
+          <img id="doodle" src="/images/doodle1.png" />
+        </div>
+        <div class="container3">
+          <div>
+            <h2>Become an <span class="highlight">Educator</span></h2>
+            <p>
+              Join EduPro's vibrant tutor community to nurture learning and
+              development. Whether you're an experienced educator or new to
+              teaching, EduPro offers the platform and resources for your
+              success.
+            </p>
+            <a href="/subscription"><button>Become a Tutor</button></a>
           </div>
-          <img id="logo" src="/images/logo.png" alt="EduPro" width="200">
-          <div class="link">
-            <h4>Contact Us</h4>
-            <ul>
-              <li>
-                <img src="/images/email.png" alt="Email">
-                <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
-              </li>
-              <li>
-                <img src="/images/phone.png" alt="Phone no">
-                <a href="https://wa.me/60173968518">+60 17 396 8518</a>
-              </li>
-              <li>
-                <img src="/images/location.png" alt="Location">
-                <a
-                  href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
-                  Persiaran Stonor, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia</a>
-              </li>
-            </ul>
+          <img
+            id="educator-ill"
+            src="/images/educator.png"
+            alt="Educator Illustration"
+            width="45%"
+          />
+        </div>
+        <hr />
+        <div class="graphic2">
+          <img id="doodle2" src="/images/doodle2.png" />
+        </div>
+        <div class="container4">
+          <h2>Why <span class="highlight">Tutor</span> with EduPro ?</h2>
+          <div class="content">
+            <div class="benefit">
+              <img
+                id="benefit-icon-t1"
+                src="/images/benefit-icon-t1.png"
+                alt="Icon 1"
+                width="50"
+              />
+              <h3>Educational Impact</h3>
+              <p>
+                Make a positive impact on students' lives by helping them
+                achieve their academic goals.
+              </p>
+            </div>
+            <div class="benefit">
+              <img
+                id="benefit-icon-t2"
+                src="/images/benefit-icon-t2.png"
+                alt="Icon 2"
+                width="50"
+              />
+              <h3>Additional Income Stream</h3>
+              <p>
+                Earn money by sharing your knowledge and expertise with
+                students.
+              </p>
+            </div>
+            <div class="benefit">
+              <img
+                id="benefit-icon-t3"
+                src="/images/benefit-icon-t3.png"
+                alt="Icon 3"
+                width="50"
+              />
+              <h3>Flexible Teaching Opportunities</h3>
+              <p>Set your own schedule and teach on your terms.</p>
+            </div>
           </div>
         </div>
-        <hr>
-        <p>&copy; 2024 EduPro. All rights reserved.</p>
-      </div>
-    </section>
-  </footer>
-  <script src="/js/nav.js"></script>
-</body>
-
+      </section>
+      <section class="testimonial">
+        <div class="graphic3">
+          <img id="doodle3" src="/images/doodle3.png" />
+        </div>
+        <div class="container5">
+          <h2>What People Say About Us</h2>
+          <div class="frame">
+            <div class="test">
+              <p>
+                "EduPro has been a game-changer for me. The tutors are
+                responsive and knowledgeable, and the platform's intuitive
+                interface makes it easy to navigate. I've seen a noticeable
+                improvement in my grades since I started using EduPro."
+              </p>
+              <div class="person">
+                <img
+                  id="user1"
+                  src="/images/user1.png"
+                  alt="User 1"
+                  width="60"
+                />
+                <h4>Christina Chong</h4>
+              </div>
+            </div>
+            <div class="test">
+              <p>
+                "EduPro has been an invaluable resource for me as a tutor. The
+                platform's user-friendly interface and extensive course
+                offerings have allowed me to connect with students from diverse
+                backgrounds and provide personalized support tailored to their
+                needs."
+              </p>
+              <div class="person">
+                <img
+                  id="user2"
+                  src="/images/user2.png"
+                  alt="User 2"
+                  width="60"
+                />
+                <h4>Alex Tan</h4>
+              </div>
+            </div>
+            <div class="test">
+              <p>
+                "I love how easy it is to find courses on EduPro that align with
+                my interests and learning goals. The platform's search
+                functionality have made it effortless to discover new subjects
+                and expand my knowledge."
+              </p>
+              <div class="person">
+                <img
+                  id="user3"
+                  src="/images/user3.png"
+                  alt="User 3"
+                  width="60"
+                />
+                <h4>Alia Maisarah</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <section class="footer">
+        <div class="container6">
+          <div class="frame">
+            <div class="link">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="/homepage/<%= user._id %>">Home</a></li>
+                <li><a href="/subscription">Subscription</a></li>
+                <li><a href="/discover_tutor">Courses</a></li>
+                <li><a href="/helpdesk">FAQ</a></li>
+              </ul>
+            </div>
+            <img id="logo" src="/images/logo.png" alt="EduPro" width="200" />
+            <div class="link">
+              <h4>Contact Us</h4>
+              <ul>
+                <li>
+                  <img src="/images/email.png" alt="Email" />
+                  <a
+                    href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro"
+                    >info@edupro.com</a
+                  >
+                </li>
+                <li>
+                  <img src="/images/phone.png" alt="Phone no" />
+                  <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+                </li>
+                <li>
+                  <img src="/images/location.png" alt="Location" />
+                  <a
+                    href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur"
+                    >4, Persiaran Stonor, 50450 Kuala Lumpur, Wilayah
+                    Persekutuan Kuala Lumpur, Malaysia</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <hr />
+          <p>&copy; 2024 EduPro. All rights reserved.</p>
+        </div>
+      </section>
+    </footer>
+    <script src="/js/nav.js"></script>
+    <script src="/js/cart.js"></script>
+  </body>
 </html>

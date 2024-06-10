@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="/css/profile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   <!-- cart -->
+   <link rel="stylesheet" href="/css/cart.css" />
+   <link
+     href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+     rel="stylesheet"
+   />
   <!-- nav icons in smaller screen -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <!-- font family -->
@@ -23,7 +29,7 @@
 <body>
   <header>
     <nav>
-      <a href="/homepage/<%= user._id %>"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
+      <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
       <div class="nav-links" id="navLinks">
         <!-- close icon -->
         <i class="fas fa-times" onclick="hideMenu()"></i>
@@ -32,22 +38,55 @@
           <li><a href="/discover_tutor">Discover Tutor</a></li>
           <li><a href="/tuitionFee">Payment</a></li>
           <li><a href="/helpdesk">Helpdesk</a></li>
-        </ul> <!--closing unorder list -->
-      </div> <!--closing nav-links -->
+          <li><a target="_blank" href="/inbox">Inbox</a></li>
+          <!-- New Inbox link -->
+        </ul>
+        <!-- closing unordered list -->
+      </div>
+      <!-- closing nav-links -->
       <!-- nav icon -->
       <div class="navIcon">
-        <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
+        <!-- Cart Icon -->
+        <i
+          class="bx bx-cart"
+          id="cart-icon"
+          alt="Cart Icon"
+          data-quantity="0"
+        ></i>
+        />
+        <!-- cart -->
+        <div class="cart">
+          <h2 class="cart-title">Your Cart</h2>
+          <!-- Content -->
+          <div class="cart-content"></div>
+          <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+          </div>
+          <!-- Buy Button -->
+          <button type="button" class="btn-buy">Checkout</button>
+          <!-- Close Cart -->
+          <i class="bx bx-x" id="close-cart"></i>
+        </div>
         <div class="dropdown">
-          <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
+          <a href="#" class="navLink" id="profileIcon"
+            ><img
+              id="profileIconImg"
+              src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+              alt="user profile"
+          /></a>
           <div class="dropdown-content" id="profileDropdownContent">
             <!-- Dropdown content here -->
             <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
             <div class="logout">
-              <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
+              <a href="/" onclick="logout()"
+                ><img id="logout-ic" src="/images/logout.png" />Log Out</a
+              >
             </div>
           </div>
         </div>
-      </div> <!--closing nav icon -->
+      </div>
+      <!-- closing nav icon -->
       <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
   </header>
@@ -185,6 +224,7 @@
   </footer>
   <script src="/js/profile.js"></script>
   <script src="/js/nav.js"></script>
+  <script src="/js/cart.js"></script>
 </body>
 
 </html>

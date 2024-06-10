@@ -102,8 +102,15 @@ router.post(
     console.log("File Data:", req.file); // Log file data for debugging
 
     try {
+      // Fetch the user's name from the User_signup model
+      const user = await User.findById(req.session.userId);
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+
       const newAd = new Ad({
         user: req.session.userId,
+        tutorName: user.name, // Set the tutorName field
         subject,
         title,
         about_lesson,
@@ -291,10 +298,11 @@ router.post("/feedback", async (req, res) => {
   }
 });
 
-router.get("/helpdesk", async (req, res) => {
+router.get("/helpdesk", requireLogin, async (req, res) => {
   try {
+    const user = await User.findById(req.session.userId);
     const faqs = await FaqModel.find({});
-    res.render("helpdesk", { faqList: faqs });
+    res.render("helpdesk", { faqList: faqs, user });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
