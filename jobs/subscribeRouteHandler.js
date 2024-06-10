@@ -6,9 +6,9 @@ const handleWebhookEvent = async (event, res) => {
 
   try {
     await User_signup.findByIdAndUpdate(metadata.userId, {
-      userType: "teacher",
+      userType: "tutor",
     });
-    console.log(`Updated user ${metadata.userId} to teacher.`);
+    console.log(`Updated user ${metadata.userId} to tutor.`);
     res.status(200).json({ received: true });
   } catch (err) {
     console.error(`Failed to update user ${metadata.userId}: ${err.message}`);

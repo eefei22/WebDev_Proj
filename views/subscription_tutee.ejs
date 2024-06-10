@@ -96,7 +96,8 @@
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-      const userId = sessionStorage.getItem("userId"); // Corrected to use getItem instead of get
+      const userId = sessionStorage.getItem("userId");
+      const email = sessionStorage.getItem("email");
       const stripe = Stripe(
         "pk_test_51PJ4UWRvZjEokO6QPPGN6EGz93Lp2FKDNOkzlKcRgiggdZ7T0oVpfTLT91sya2Cdk8UOR7VujHXPYCSNLN2y4N4Z00HeBQQNW3"
       ); // Initialize Stripe with public key
@@ -108,7 +109,7 @@
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ userId }), // Include userId in the body
+          body: JSON.stringify({ userId, email }), // Include userId in the body
         })
           .then((response) => response.json())
           .then((session) => {

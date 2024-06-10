@@ -60,10 +60,10 @@ router.post("/create-checkout-session", async (req, res) => {
       mode: "payment",
       success_url: `${process.env.CLIENT_URL}/success`,
       cancel_url: `${process.env.CLIENT_URL}/cancel`,
+      customer_email: email,
       line_items: lineItems,
       metadata: {
         userId,
-        email,
         tutorId,
         items: JSON.stringify(items),
         route: "book",

@@ -120,7 +120,7 @@
             <li>
               <div class="course-details">
                 <span class="course"><%= payment.tutorId.subject %></span>
-                <span class="tutor"><%= payment.tutorId.about_tutor %></span>
+                <span class="tutor"><%= payment.tutorId.tutorName %></span>
               </div>
               <span class="price">RM<%= payment.transactionAmount %></span>
             </li>
@@ -148,11 +148,12 @@
                 class="course-checkbox"
                 price="<%= payment.transactionAmount %>"
                 subject="<%= payment.tutorId.subject %>"
-                tutorName="<%= payment.tutorId.about_tutor %>"
+                tutorName="<%= payment.tutorId.tutorName %>"
               />
               <div class="course-details">
                 <span class="course"><%= payment.tutorId.subject %></span>
-                <span class="tutor"><%= payment.tutorId.about_tutor %></span>
+
+                <span class="tutor"><%= payment.tutorId.tutorName %></span>
                 <input
                   type="text"
                   class="description-input"

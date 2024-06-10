@@ -102,8 +102,15 @@ router.post(
     console.log("File Data:", req.file); // Log file data for debugging
 
     try {
+      // Fetch the user's name from the User_signup model
+      const user = await User.findById(req.session.userId);
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+
       const newAd = new Ad({
         user: req.session.userId,
+        tutorName: user.name, // Set the tutorName field
         subject,
         title,
         about_lesson,

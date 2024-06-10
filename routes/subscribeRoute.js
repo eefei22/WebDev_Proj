@@ -15,15 +15,16 @@ router.get("/cancel", (req, res) => {
 // Route for creating a subscription session
 router.post("/subscription-session", requireLogin, async (req, res) => {
   try {
-    const { userId } = req.body; // Ensure userId is passed in the request body
-    if (!userId) {
-      return res.status(400).send("User ID is required");
+    const { userId, email } = req.body; // Ensure userId is passed in the request body
+    if ((!userId, !email)) {
+      return res.status(400).send("UserId and Email are required");
     }
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
       success_url: `${process.env.CLIENT_URL}/form`,
       cancel_url: `${process.env.CLIENT_URL}/cancel`,
+      customer_email: email,
       line_items: [
         {
           price_data: {
