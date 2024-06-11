@@ -9,6 +9,7 @@ const FeedbackModel = require("../models/FeedbackModel");
 const HelpdeskModel = require("../models/HelpdeskModel");
 const FaqModel = require("../models/FaqModel");
 const Payment = require("../models/payment_model");
+const Testimonial = require("../models/testimonial");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -22,8 +23,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //Route for default page
-router.get("/", (req, res) => {
-  res.render("index_bfr_login");
+router.get("/", async (req, res) => {
+  try {
+    const testimonial = await Testimonial.find({});
+    res.render("index_bfr_login", { testimonial });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
 });
 
 // Route for homepage
@@ -33,7 +40,8 @@ router.get("/homepage", requireLogin, async (req, res) => {
     if (!user) {
       return res.status(404).send("User not found");
     }
-    res.render("index", { user });
+    const testimonial = await Testimonial.find({});
+    res.render("index", { user, testimonial }); 
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
@@ -65,20 +73,6 @@ router.get("/form", requireLogin, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
-// // POST /logout - Handle user logout
-// router.post('/logout', (req, res) => {
-//     // Destroy the session
-//     req.session.destroy((err) => {
-//       if (err) {
-//         console.error('Error destroying session:', err);
-//         res.status(500).send('Server error');
-//       } else {
-//         // Redirect the user to the login page or any other appropriate page
-//         res.redirect('/login');
-//       }
-//     });
-//   });
 
 // Route to handle form submission
 router.post(

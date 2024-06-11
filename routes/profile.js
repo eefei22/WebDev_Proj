@@ -66,10 +66,10 @@ router.post('/profile/save', requireLogin, async (req, res) => {
         user.dob = dob;
 
         await user.save();
-        res.send('<script>alert("Profile updated successfully!"); window.location.href="/profile/' + user._id + '";</script>');
+        res.redirect(`/profile/${user._id}?success=Profile updated successfully`);
     } catch (error) {
         console.error(error);
-        res.status(500).send('Server Error');
+        res.redirect(`/profile/${req.body.id}?error=Server Error`);
     }
 });
 
@@ -80,30 +80,30 @@ router.post('/profile/upload', requireLogin, (req, res) => {
             console.error(err);
             if (err.code === 'LIMIT_FILE_SIZE') {
                 // File size exceeds the limit
-                return res.status(400).send('<script>alert("File size exceeds the limit. Please upload a file smaller than 10MB."); window.history.back();</script>');
+                return res.redirect(`/profile/${req.body.id}?error=File size exceeds the limit. Please upload a file smaller than 10MB.`);
             } else {
                 // Other errors
-                return res.status(400).send('<script>alert("File upload failed. Please try again."); window.history.back();</script>');
+                return res.redirect(`/profile/${req.body.id}?error=File upload failed. Please try again.`);
             }
             
         } else {
             if (!req.file) {
-                return res.status(400).send('<script>alert("No file selected. Please choose a file to upload."); window.history.back();</script>')
+                return res.redirect(`/profile/${req.body.id}?error=No file selected. Please choose a file to upload.`);
             } else {
                 try {
                     const userId = req.body.id;
                     const user = await User.findById(userId);
                     if (!user) {
-                        return res.status(404).send('User not found');
+                        return res.redirect(`/profile/${userId}?error=User not found`);
                     }
 
                     user.profilePic = req.file.filename;
                     await user.save();
 
-                    res.send(`<script>alert('Profile picture uploaded successfully!'); window.location.href = '/profile/${user._id}';</script>`);
+                    res.redirect(`/profile/${user._id}?success=Profile picture uploaded successfully`);
                 } catch (error) {
                     console.error(error);
-                    res.status(500).send('Server Error');
+                    res.redirect(`/profile/${req.body.id}?error=Server Error`);
                 }
             }
         }
@@ -117,30 +117,30 @@ router.post('/profile/change-password', requireLogin, async (req, res) => {
     try {
         const user = await User.findById(id);
         if (!user) {
-            return res.status(404).send('User not found');
+            return res.redirect(`/profile/${id}?error=User not found`);
         }
 
         const isMatch = await bcrypt.compare(old_pswd, user.password);
         if (!isMatch) {
-            return res.send('<script>alert("Password change failed. Current password is incorrect. Please try again"); window.location.href="/profile/' + user._id + '";</script>');
+            return res.redirect(`/profile/${user._id}?error=Password change failed. Current password is incorrect. Please try again`);
         }
 
         if (new_pswd === old_pswd) {
-            return res.send('<script>alert("Password change failed. The new password you entered matches your current password. Please select a different password."); window.location.href="/profile/' + user._id + '";</script>');
+            return res.redirect(`/profile/${user._id}?error=Password change failed. The new password you entered matches your current password. Please select a different password.`);
         }
 
         if (new_pswd !== confirm_pswd) {
-            return res.send('<script>alert("Password change failed. The passwords you entered do not match. Please try again."); window.location.href="/profile/' + user._id + '";</script>');
+            return res.redirect(`/profile/${user._id}?error=Password change failed. The passwords you entered do not match. Please try again.`);
         }
 
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(new_pswd, salt);
 
         await user.save();
-        res.send('<script>alert("Password updated successfully!"); window.location.href="/profile/' + user._id + '";</script>');
+        res.redirect(`/profile/${user._id}?success=Password updated successfully`);
     } catch (error) {
         console.error(error);
-        res.status(500).send('Server Error');
+        res.redirect(`/profile/${req.body.id}?error=Server Error`);
     }
 });
 
