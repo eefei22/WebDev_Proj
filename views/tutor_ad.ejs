@@ -1,129 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg" />
 
-    <link rel="stylesheet" href="/css/tutor_ad.css" />
-    <!-- <link rel="stylesheet" href="css/tutor_profile.css" /> -->
-    <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/nav.css" />
-    <link rel="stylesheet" href="/css/cart.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg" />
 
-    <!-- nav icons in smaller screen -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+  <link rel="stylesheet" href="/css/tutor_ad.css" />
+  <!-- <link rel="stylesheet" href="css/tutor_profile.css" /> -->
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/nav.css" />
+  <link rel="stylesheet" href="/css/cart.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-    <!-- font family -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- nav icons in smaller screen -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= ad.title %> - Tutor Advertisement</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
-      <div class="nav-links" id="navLinks">
-        <i class="fas fa-times" onclick="hideMenu()"></i>
-        <ul>
-          <li><a href="/form">Subscription</a></li>
-          <li><a href="/discover_tutor">Discover Tutor</a></li>
-          <li><a href="/tuitionFee">Payment</a></li>
-          <li><a href="/helpdesk">Helpdesk</a></li>
-        </ul>
-      </div>
-      <div class="navIcon">
-        <!-- Cart Icon -->
-        <i
-          class="bx bx-cart"
-          id="cart-icon"
-          alt="Cart Icon"
-          data-quantity="0"
-        ></i>
-        />
-        <!-- cart -->
-        <div class="cart">
-          <h2 class="cart-title">Your Cart</h2>
-          <!-- Content -->
-          <div class="cart-content"></div>
-          <div class="total">
-            <div class="total-title">Total</div>
-            <div class="total-price">$0</div>
-          </div>
-          <!-- Buy Button -->
-          <button type="button" class="btn-buy">Checkout</button>
-          <!-- Close Cart -->
-          <i class="bx bx-x" id="close-cart"></i>
+  <!-- font family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= ad.title %> - Tutor Advertisement
+  </title>
+</head>
+
+<body>
+  <nav>
+    <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
+    <div class="nav-links" id="navLinks">
+      <i class="fas fa-times" onclick="hideMenu()"></i>
+      <ul>
+        <li><a href="/form">Subscription</a></li>
+        <li><a href="/discover_tutor">Discover Tutor</a></li>
+        <li><a href="/tuitionFee">Payment</a></li>
+        <li><a href="/helpdesk">Helpdesk</a></li>
+      </ul>
+    </div>
+    <div class="navIcon">
+      <!-- Cart Icon -->
+      <i class="bx bx-cart" id="cart-icon" alt="Cart Icon" data-quantity="0"></i>
+      />
+      <!-- cart -->
+      <div class="cart">
+        <h2 class="cart-title">Your Cart</h2>
+        <!-- Content -->
+        <div class="cart-content"></div>
+        <div class="total">
+          <div class="total-title">Total</div>
+          <div class="total-price">$0</div>
         </div>
-        <div class="dropdown">
-          <a href="#" class="navLink" id="profileIcon"
-            ><img
-              id="profileIconImg"
-              class="profile-icon"
-              src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
-              alt="user profile"
-          /></a>
-          <div class="dropdown-content" id="profileDropdownContent">
-            <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
-            <div class="logout">
-              <a href="/" onclick="logout()"
-                ><img id="logout-ic" src="/images/logout.png" />Log Out</a
-              >
-            </div>
+        <!-- Buy Button -->
+        <button type="button" class="btn-buy">Checkout</button>
+        <!-- Close Cart -->
+        <i class="bx bx-x" id="close-cart"></i>
+      </div>
+      <div class="dropdown">
+        <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" class="profile-icon"
+            src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+            alt="user profile" /></a>
+        <div class="dropdown-content" id="profileDropdownContent">
+          <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
+          <div class="logout">
+            <a href="/" onclick="logout()"><img id="logout-ic" src="/images/logout.png" />Log Out</a>
           </div>
         </div>
       </div>
-      <i class="fas fa-bars" onclick="showMenu()"></i>
-    </nav>
+    </div>
+    <i class="fas fa-bars" onclick="showMenu()"></i>
+  </nav>
 
-    <div class="content_container">
-      <div class="profile_content">
-        <div class="desc_frame">
-          <div class="title"><h1><%= ad.title %></h1></div>
-          <div
-            class="tutorId"
-            data-tutor-id="<%= ad._id %>"
-            style="display: none"
-          ></div>
-          <div class="detail_container">
-            <img
-              class="profile_pic"
-              src="<%= ad.user && ad.user.profilePic ? '/uploads/' + ad.user.profilePic : '/images/ic_profile.png' %>"
-              alt="Tutor Profile Image"
-            />
-            <div class="label_container">
-              <div>
-                <p class="labels"><%= ad.user ? ad.user.name : 'N/A' %></p>
-              </div>
-              <div>
-                <p><strong>Subject:</strong> <%= ad.subject %></p>
-              </div>
-              <a class="labels" href="<%= ad.teaching_sample %>" target="_blank"
-                >Watch a teaching sample</a
-              >
+  <div class="content_container">
+    <div class="profile_content">
+      <div class="desc_frame">
+        <div class="title">
+          <h1>
+            <%= ad.title %>
+          </h1>
+        </div>
+        <div class="tutorId" data-tutor-id="<%= ad._id %>" style="display: none"></div>
+        <div class="detail_container">
+          <img class="profile_pic"
+            src="<%= ad.user && ad.user.profilePic ? '/uploads/' + ad.user.profilePic : '/images/ic_profile.png' %>"
+            alt="Tutor Profile Image" />
+          <div class="label_container">
+            <div>
+              <p class="labels">
+                <%= ad.user ? ad.user.name : 'N/A' %>
+              </p>
             </div>
+            <div>
+              <p><strong>Subject:</strong>
+                <%= ad.subject %>
+              </p>
+            </div>
+            <a class="labels" href="<%= ad.teaching_sample %>" target="_blank">Watch a teaching sample</a>
           </div>
+        </div>
 
-          <div class="nugget_facts">
-            <img class="mini_icon" src="/images/location_icon.png" />
-            <div class="details"><%= ad.location %></div>
-            <img class="mini_icon" src="/images/ic_video.png" />
-            <div class="details"><%= ad.mode %></div>
-            <img class="mini_icon" src="/images/duration_icon.png" />
-            <div class="details"><%= ad.hours %> hours/session</div>
-            <img class="mini_icon" src="/images/language_icon.png" />
-            <div class="details"><%= ad.languages.join(', ') %></div>
+        <div class="nugget_facts">
+          <img class="mini_icon" src="/images/location_icon.png" />
+          <div class="details">
+            <%= ad.location %>
+          </div>
+          <img class="mini_icon" src="/images/ic_video.png" />
+          <div class="details">
+            <%= ad.mode %>
+          </div>
+          <img class="mini_icon" src="/images/duration_icon.png" />
+          <div class="details">
+            <%= ad.hours %> hours/session
+          </div>
+          <img class="mini_icon" src="/images/language_icon.png" />
+          <div class="details">
+            <%= ad.languages.join(', ') %></div>
           </div>
 
           <div class="labels">About Me</div>
@@ -172,79 +165,68 @@
             data-rate="<%= ad.rate %>"
             data-tutor-id="<%= ad._id %>"
             data-subject="<%= ad.subject %>"
-            data-tutor-name="<%= ad.user ? ad.user.name : 'N/A' %>"
-            data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
-          >
-            Book Now
-          </button>
-        </div>
-        <div>
-          <button
-            class="labeled_button"
-            id="add-cart"
-            data-tutor-id="<%= ad._id %>"
-            data-subject="<%= ad.subject %>"
-            data-tutor-name="<%= ad.user ? ad.user.name : 'N/A' %>"
-            data-rate="<%= ad.rate %>"
-            data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
-          >
-            Add to Cart
-          </button>
-        </div>
-        <br />
-        <a class="par" target="_blank" href="/chat/<%= ad.user._id %>"
-          >Chat with tutor</a
-        >
-      </div>
-    </div>
-
-    <footer>
-      <section class="footer">
-        <div class="container6">
-          <div class="frame">
-            <div class="link">
-              <h4>Quick Links</h4>
-              <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="subscription.html">Subscription</a></li>
-                <li><a href="discover_tutor.html">Courses</a></li>
-                <li><a href="helpdesk.html">FAQ</a></li>
-              </ul>
-            </div>
-            <img id="logo" src="/images/logo.png" alt="EduPro" width="200" />
-            <div class="link">
-              <h4>Contact Us</h4>
-              <ul>
-                <li>
-                  <img src="/images/email.png" alt="Email" />
-                  <a
-                    href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro"
-                    >info@edupro.com</a
-                  >
-                </li>
-                <li>
-                  <img src="/images/phone.png" alt="Phone no" />
-                  <a href="https://wa.me/60173968518">+60 17 396 8518</a>
-                </li>
-                <li>
-                  <img src="/images/location.png" alt="Location" />
-                  <a
-                    href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur"
-                    >4, Persiaran Stonor, 50450 Kuala Lumpur, Wilayah
-                    Persekutuan Kuala Lumpur, Malaysia</a
-                  >
-                </li>
-              </ul>
-            </div>
+            data-tutor-name="<%= ad.user ? ad.user.name : ' N/A' %>"
+              data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+                >
+                Book Now
+                </button>
           </div>
-          <hr />
-          <p>&copy; 2024 EduPro. All rights reserved.</p>
+          <div>
+            <button class="labeled_button" id="add-cart" data-tutor-id="<%= ad._id %>" data-subject="<%= ad.subject %>"
+              data-tutor-name="<%= ad.user ? ad.user.name : 'N/A' %>" data-rate="<%= ad.rate %>"
+              data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>">
+              Add to Cart
+            </button>
+          </div>
+          <br />
+          <a class="par" target="_blank" href="/chat/<%= ad.user._id %>">Chat with tutor</a>
         </div>
-      </section>
-    </footer>
+      </div>
 
-    <script src="/js/nav.js"></script>
-    <script src="/js/purchase_lesson.js"></script>
-    <script src="/js/cart.js"></script>
-  </body>
+      <footer>
+        <section class="footer">
+          <div class="container6">
+            <div class="frame">
+              <div class="link">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="subscription.html">Subscription</a></li>
+                  <li><a href="discover_tutor.html">Courses</a></li>
+                  <li><a href="helpdesk.html">FAQ</a></li>
+                </ul>
+              </div>
+              <img id="logo" src="/images/logo.png" alt="EduPro" width="200" />
+              <div class="link">
+                <h4>Contact Us</h4>
+                <ul>
+                  <li>
+                    <img src="/images/email.png" alt="Email" />
+                    <a href="mailto:info@edupro.com?subject=Inquiry%20about%20EduPro">info@edupro.com</a>
+                  </li>
+                  <li>
+                    <img src="/images/phone.png" alt="Phone no" />
+                    <a href="https://wa.me/60173968518">+60 17 396 8518</a>
+                  </li>
+                  <li>
+                    <img src="/images/location.png" alt="Location" />
+                    <a
+                      href="https://www.google.com/maps?q=4+Persiaran+Stonor,+Kuala+Lumpur,+50450+Kuala+Lumpur,+Wilayah+Persekutuan+Kuala+Lumpur">4,
+                      Persiaran Stonor, 50450 Kuala Lumpur, Wilayah
+                      Persekutuan Kuala Lumpur, Malaysia</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr />
+            <p>&copy; 2024 EduPro. All rights reserved.</p>
+          </div>
+        </section>
+      </footer>
+
+      <script src="/js/nav.js"></script>
+      <script src="/js/purchase_lesson.js"></script>
+      <script src="/js/cart.js"></script>
+</body>
+
 </html>

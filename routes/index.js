@@ -358,9 +358,9 @@ router.get("/payment_report", requireLogin, async (req, res) => {
   try {
     // Fetch only the required fields from the payment_model
     const payments = await Payment.find(
-      {},
+      { tutorId: req.user._id }, // Filter payments by tutorId
       "cardholderName phone email transactionDate payment_status transactionAmount description"
-    );
+    ).populate("tutorId", "tutorName"); // Populate ad details
 
     // Map payments to include dueDate
     const paymentReport = payments.map((payment) => {
@@ -381,6 +381,36 @@ router.get("/payment_report", requireLogin, async (req, res) => {
     res.status(500).send("Error fetching payment data");
   }
 });
+
+
+// // Route to fetch payment report
+// router.get("/payment_report", requireLogin, async (req, res) => {
+//   try {
+//     // Fetch only the required fields from the payment_model
+//     const payments = await Payment.find(
+//       {},
+//       "cardholderName phone email transactionDate payment_status transactionAmount description"
+//     );
+
+//     // Map payments to include dueDate
+//     const paymentReport = payments.map((payment) => {
+//       const transactionDate = new Date(payment.transactionDate);
+//       const dueDate = new Date(transactionDate);
+//       dueDate.setMonth(transactionDate.getMonth() + 1);
+
+//       return {
+//         ...payment._doc,
+//         dueDate: dueDate.toISOString().split("T")[0], // Convert to YYYY-MM-DD format
+//       };
+//     });
+
+//     // Render the payment_report EJS template and pass the fetched data
+//     res.render("payment_report", { paymentReport });
+//   } catch (error) {
+//     console.error("Error fetching payment data:", error);
+//     res.status(500).send("Error fetching payment data");
+//   }
+// });
 
 
 router.get("/tuitionFee", requireLogin, async (req, res) => {
