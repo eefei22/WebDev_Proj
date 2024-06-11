@@ -123,9 +123,10 @@
                 <div class="buttonplace">
                   <button onclick="window.location.href = '/subscription/edit/<%= ad._id %>';" class="buttoncontainer">Edit</button>
 
-                    <form action="/subscription/delete/<%= ad._id %>" method="POST" style="display: inline;">
-                        <button type="submit" class="buttoncontainer">Delete</button>
-                    </form>
+                    <!-- Updated Delete Form -->
+                    <form id="deleteForm" action="/subscription/delete/<%= ad._id %>" method="POST" style="display: inline;">
+                      <button type="button" onclick="confirmDeletion()" class="buttoncontainer">Delete</button>
+                  </form>
                 </div>
 
             </div>
@@ -184,6 +185,13 @@
       </footer>
       <script src="/js/nav.js"></script>
       <script src="/js/cart.js"></script>
+      <script>
+        function confirmDeletion() {
+            if (confirm("Are you sure you want to delete this advertisement?")) {
+                document.getElementById("deleteForm").submit();
+            }
+        }
+    </script>
 
 </body>
 
