@@ -185,7 +185,7 @@
   }
   
   
- /* @media screen and (max-width: 768px) {
+ @media screen and (max-width: 1000px) {
     .content_container {
       display: block;
       width: 100%;
@@ -232,4 +232,4 @@
       background-color: #190482;
       border-radius: 0 0 40px 40px;
     }
-} */
+} 
