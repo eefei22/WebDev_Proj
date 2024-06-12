@@ -41,7 +41,7 @@ router.get("/homepage", requireLogin, async (req, res) => {
       return res.status(404).send("User not found");
     }
     const testimonial = await Testimonial.find({});
-    res.render("index", { user, testimonial }); 
+    res.render("index", { user, testimonial });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
@@ -348,13 +348,24 @@ router.get("/helpdesk/search", async (req, res) => {
 });
 
 // Route to fetch payment report
+
 router.get("/payment_report", requireLogin, async (req, res) => {
   try {
+    // Fetch the ad document corresponding to the current user's _id
+    const ad = await Ad.findOne(req._id );
+
+    if (!ad) {
+      return res.status(404).send("Ad not found for user");
+    }
+
+    // Now you have the _id from the Ad model
+    const adId = ad._id;
+
     // Fetch only the required fields from the payment_model
     const payments = await Payment.find(
-      { tutorId: req.user._id }, // Filter payments by tutorId
+      { tutorId: adId }, // Filter payments by tutorId matching _id from Ad model
       "cardholderName phone email transactionDate payment_status transactionAmount description"
-    ).populate("tutorId", "tutorName"); // Populate ad details
+    );
 
     // Map payments to include dueDate
     const paymentReport = payments.map((payment) => {
@@ -377,7 +388,8 @@ router.get("/payment_report", requireLogin, async (req, res) => {
 });
 
 
-// // Route to fetch payment report
+
+// Route to fetch payment report
 // router.get("/payment_report", requireLogin, async (req, res) => {
 //   try {
 //     // Fetch only the required fields from the payment_model
@@ -407,16 +419,16 @@ router.get("/payment_report", requireLogin, async (req, res) => {
 // });
 
 
-router.get("/tuitionFee", requireLogin, async (req, res) => {
-  try {
-    const userId = req.session.userId;
-    const payments = await Payment.find({ userId }).populate("tutorId");
-    res.render("tuitionFee", { payments, userId });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
-  }
-});
+// router.get("/tuitionFee", requireLogin, async (req, res) => {
+//   try {
+//     const userId = req.session.userId;
+//     const payments = await Payment.find({ userId }).populate("tutorId");
+//     res.render("tuitionFee", { payments, userId });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send("Server Error");
+//   }
+// });
 
 // Route for subscription tutee page
 router.get("/subscription_tutee", requireLogin, async (req, res) => {
