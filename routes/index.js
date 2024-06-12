@@ -353,7 +353,7 @@ router.get("/helpdesk/search", async (req, res) => {
 router.get("/payment_report", requireLogin, async (req, res) => {
   try {
     // Fetch the ad document corresponding to the current user's _id
-    const ad = await Ad.findOne(req._id );
+    const ad = await Ad.findOne(req._id);
 
     if (!ad) {
       return res.status(404).send("Ad not found for user");
