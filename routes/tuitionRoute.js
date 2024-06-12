@@ -89,7 +89,7 @@ router.post("/checkout", async (req, res) => {
         currency: "myr",
         product_data: {
           name: course.tutorId.subject,
-          description: course.tutorId.about_tutor,
+          description: course.tutorId.tutorName,
         },
         unit_amount: course.transactionAmount * 100,
       },
@@ -104,7 +104,6 @@ router.post("/checkout", async (req, res) => {
       cancel_url: `${process.env.CLIENT_URL}/cancel`,
       metadata: {
         userId,
-        email,
         selectedCourses: JSON.stringify(selectedCourses),
         descriptions: JSON.stringify(descriptions),
         route: "tuitionFee",
@@ -112,6 +111,7 @@ router.post("/checkout", async (req, res) => {
       phone_number_collection: {
         enabled: true,
       },
+      customer_email: email,
     });
 
     res.json({ url: session.url });
