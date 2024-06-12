@@ -60,11 +60,11 @@ mongoose
   .catch((err) => console.log("MongoDB connection error:", err));
 
 const sessionMiddleware = session({
-  secret: process.env.SESSION_SECRET || "secret_key", // session storage secret key
+  secret: process.env.SESSION_SECRET || "secret_key", 
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-  cookie: { secure: false }, // Use true if you're serving over HTTPS
+  cookie: { secure: false }, 
 });
 
 app.use(sessionMiddleware);
@@ -139,47 +139,47 @@ io.use(
   })
 );
 
-io.on("connection", (socket) => {
-  console.log("Socket connected", socket.id);
+io.on('connection', (socket) => {
+  console.log('Socket connected', socket.id);
 
-  socket.on("message", async (data) => {
-    console.log("Message received:", data);
-    const { tutorId, message } = data;
-    const userId = socket.handshake.session.userId; // Ensure userId is set in socket session
+  socket.on('message', async (data) => {
+      console.log('Message received:', data);
+      const { tutorId, message } = data;
+      const userId = socket.handshake.session.userId; 
 
-    const newMessage = new ChatMessage({
-      participants: [userId, tutorId],
-      sender: userId,
-      message: message,
-    });
-
-    try {
-      await newMessage.save();
-      io.emit("chat-message", {
-        message: newMessage.message,
-        sender: userId,
-        dateTime: newMessage.dateTime,
+      const newMessage = new ChatMessage({
+          participants: [userId, tutorId],
+          sender: userId,
+          message: message,
       });
-    } catch (err) {
-      console.error("Error saving message:", err);
-    }
+
+      try {
+          await newMessage.save();
+          io.emit('chat-message', {
+              message: newMessage.message,
+              sender: userId,
+              dateTime: newMessage.dateTime
+          });
+      } catch (err) {
+          console.error('Error saving message:', err);
+      }
   });
 
-  socket.on("chat message", async ({ username, message }) => {
-    try {
-      const name = socket.handshake.query.name; // Assume name is passed as a query param
-      const newChat = new Chat({
-        name: name, // Assuming 'name' is the name
-        username,
-        message,
-        timestamp: new Date(),
-      });
+  socket.on('chat message', async ({ username, message }) => {
+      try {
+          const name = socket.handshake.query.name; 
+          const newChat = new Chat({
+              name: name, 
+              username,
+              message,
+              timestamp: new Date()
+          });
 
-      await newChat.save();
-      io.emit("chat message", { username, message, timestamp: new Date() }); // Emit to all connected clients
-    } catch (error) {
-      console.error(error);
-    }
+          await newChat.save();
+          io.emit('chat message', { username, message, timestamp: new Date() }); 
+      } catch (error) {
+          console.error(error);
+      }
   });
 });
 
