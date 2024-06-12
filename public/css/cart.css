@@ -144,3 +144,6 @@
 .btn-buy:hover {
   background-color: black;
 }
+.hidden {
+  display: none !important;
+}

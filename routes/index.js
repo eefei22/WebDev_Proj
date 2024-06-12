@@ -41,7 +41,7 @@ router.get("/homepage", requireLogin, async (req, res) => {
       return res.status(404).send("User not found");
     }
     const testimonial = await Testimonial.find({});
-    res.render("index", { user, testimonial }); 
+    res.render("index", { user, testimonial });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
@@ -327,6 +327,7 @@ router.post("/helpdesk", upload.single("file"), async (req, res) => {
 });
 
 const Fuse = require("fuse.js");
+const { userInfo } = require("os");
 
 router.get("/helpdesk/search", async (req, res) => {
   const query = req.query.query; // Get the search query from the request
@@ -376,7 +377,6 @@ router.get("/payment_report", requireLogin, async (req, res) => {
   }
 });
 
-
 // // Route to fetch payment report
 // router.get("/payment_report", requireLogin, async (req, res) => {
 //   try {
@@ -406,12 +406,12 @@ router.get("/payment_report", requireLogin, async (req, res) => {
 //   }
 // });
 
-
 router.get("/tuitionFee", requireLogin, async (req, res) => {
   try {
     const userId = req.session.userId;
+    const user = await User.findById(userId);
     const payments = await Payment.find({ userId }).populate("tutorId");
-    res.render("tuitionFee", { payments, userId });
+    res.render("tuitionFee", { payments, userId, user });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");

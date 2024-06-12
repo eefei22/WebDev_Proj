@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cartIcon = document.querySelector("#cart-icon");
   let cart = document.querySelector(".cart");
   let closeCart = document.querySelector("#close-cart");
-  let profileIconImg = document.querySelector(".profile-icon");
+  let profileIconImg = document.querySelector("#profileIconImg");
 
   cartIcon.onclick = () => {
     cart.classList.add("active");

@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg">
-  <title>My Profile</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/profile.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <!-- nav icons in smaller screen -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <!-- font family -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
-    rel="stylesheet">
-  
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/eduPro_logo.jpg" />
+    <title>My Profile</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
+
+    <!-- cart icon -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
 <body>
   <header>
     <nav>
-      <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo"></a>
+      <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
       <div class="nav-links" id="navLinks">
         <!-- close icon -->
         <i class="fas fa-times" onclick="hideMenu()"></i>
@@ -32,13 +46,43 @@
           <li><a href="/discover_tutor">Discover Tutor</a></li>
           <li><a href="/tuitionFee">Payment</a></li>
           <li><a href="/helpdesk">Helpdesk</a></li>
-        </ul> <!--closing unorder list -->
-      </div> <!--closing nav-links -->
+          <li><a target="_blank" href="/inbox">Inbox</a></li>
+          <!-- New Inbox link -->
+        </ul>
+        <!-- closing unordered list -->
+      </div>
+      <!-- closing nav-links -->
       <!-- nav icon -->
       <div class="navIcon">
-        <a href="/cart" class="navLink"><img src="/images/addToCart_logo.png" alt="add to cart"></a>
+        <!-- Cart Icon -->
+        <i
+          class="bx bx-cart"
+          id="cart-icon"
+          alt="Cart Icon"
+          data-quantity="0"
+        ></i>
+        />
+        <!-- cart -->
+        <div class="cart">
+          <h2 class="cart-title">Your Cart</h2>
+          <!-- Content -->
+          <div class="cart-content"></div>
+          <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+          </div>
+          <!-- Buy Button -->
+          <button type="button" class="btn-buy">Checkout</button>
+          <!-- Close Cart -->
+          <i class="bx bx-x" id="close-cart"></i>
+        </div>
         <div class="dropdown">
-          <a href="#" class="navLink" id="profileIcon"><img id="profileIconImg" src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>" alt="user profile"></a>
+          <a href="#" class="navLink" id="profileIcon"
+            ><img
+              id="profileIconImg"
+              src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+              alt="user profile"
+          /></a>
           <div class="dropdown-content" id="profileDropdownContent">
             <!-- Dropdown content here -->
             <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
@@ -47,9 +91,11 @@
             </div>
           </div>
         </div>
-      </div> <!--closing nav icon -->
+      </div>
+      <!-- closing nav icon -->
       <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
+
   </header>
   <div class="container">
     <h1>My Profile</h1>
@@ -185,6 +231,7 @@
   </footer>
   <script src="/js/profile.js"></script>
   <script src="/js/nav.js"></script>
+  <script src="/js/cart.js" defer></script>
 </body>
 
 </html>
