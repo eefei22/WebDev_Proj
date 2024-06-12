@@ -1,191 +1,203 @@
 * {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-transform: capitalize;
-    transition: all .2s linear;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
 }
 
 body {
-    height: 100;
-    background: linear-gradient(#8E8FFA,#ffffff);
+  height: 100;
+  background: linear-gradient(#8e8ffa, #ffffff);
 }
 
 /* container part */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    margin-top: 104px;
-    padding-bottom: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  margin-top: 104px;
+  padding-bottom: 100%;
 }
 
 /* white part */
 .container form {
-    padding: 20px;
-    width: 500px;
-    background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .7);
-    position: relative;
-    border-radius: 20px;
+  padding: 20px;
+  width: 500px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  position: relative;
+  border-radius: 20px;
 }
 
 /* purchase details */
 .purchase-details ul {
-    list-style-type: none;
-    padding-left: 0;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .purchase-details ul li {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .purchase-details ul li .course-details {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .purchase-details ul li .course {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .purchase-details ul li .tutor {
-    color: #888;
-    font-size: 13px;
+  color: #888;
+  font-size: 13px;
 }
 
 .purchase-details ul li .price {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .purchase-details {
-    padding-right: 20px;
-    position: relative;
-    /* Needed for absolute positioning */
+  padding-right: 20px;
+  position: relative;
+  /* Needed for absolute positioning */
 }
 
 .purchase-details .total {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-weight: 600;
+  bottom: 20px;
+  right: 20px;
+  font-weight: 600;
+  padding-top: 20px;
 }
 
 /* price spacing */
 .purchase-details ul li .price {
-    float: right;
+  float: right;
 }
 
 /* Checkbox style */
 input[type="checkbox"] {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 /* Course details style */
 .course-details {
-    flex-grow: 1;
-    /*no spacing between checkbox and course*/
+  flex-grow: 1;
+  /*no spacing between checkbox and course*/
 }
 
 .title {
-    font-size: 17px;
-    color: #333;
-    padding-bottom: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: underline;
+  font-size: 17px;
+  color: #333;
+  padding-bottom: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .submit-btn {
-    position: absolute;
-    right: 10px;
-    width: 30%;
-    border-radius: 20px;
-    padding: 12px;
-    font-size: 15px;
-    color: #fff;
-    background: #190482;
-    margin-top: 30px;
-    cursor: pointer;
+  width: 30%;
+  border-radius: 20px;
+  padding: 12px;
+  font-size: 15px;
+  color: #fff;
+  background: #7752fe;
+  margin-top: 30px;
+  cursor: pointer;
 }
 
 .submit-btn:hover {
-    background: #7752FE
+  background: #190482;
+}
+#remove-btn:hover {
+  background: #820404;
 }
 
 /* tuition fee style */
 .description-input {
-    width: 80%;
-    padding: 5px;
-    margin-top: 5px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+  width: 80%;
+  padding: 5px;
+  margin-top: 5px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
 /* subcription payment */
 .description {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 #subscriptionBox {
-    padding: 20px;
-    width: 60%;
-    margin: 0 auto;
-    background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .7);
-    position: relative;
-    border-radius: 20px;
+  padding: 20px;
+  width: 60%;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  position: relative;
+  border-radius: 20px;
 }
 
 .description h1 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .description h2 {
-    font-size: 17px;
+  font-size: 17px;
 }
 
 .description p {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 /* Profile picture style */
 .profile-picture {
-    width: 55px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 55px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 /* smaller screen */
-@media(max-width:700px) {
+@media (max-width: 700px) {
+  .purchase-details .total {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 20px;
+    /* Add some margin-top for spacing */
+    font-weight: 600;
+  }
 
-    .purchase-details .total {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        margin-top: 20px;
-        /* Add some margin-top for spacing */
-        font-weight: 600;
-    }
+  /* subscriptionBox */
+  #subscriptionBox {
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    position: relative;
+    border-radius: 20px;
+  }
 
-    /* subscriptionBox */
-    #subscriptionBox {
-        padding: 20px;
-        width: 100%;
-        margin: 0 auto;
-        background: #fff;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, .7);
-        position: relative;
-        border-radius: 20px;
-    }
+  .button-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
- 

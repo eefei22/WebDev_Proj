@@ -170,15 +170,22 @@
             </li>
             <% } %> <% }) %>
           </ul>
-          <div class="total">Total: RM0</div>
+          <div class="total unpaid-total">Total: RM0</div>
         </div>
 
-        <input
-          type="submit"
-          value="checkout"
-          id="checkout-btn"
-          class="submit-btn"
-        />
+        <div class="button-container">
+          <!-- Remove button -->
+          <button type="button" id="remove-btn" class="submit-btn">
+            Remove
+          </button>
+
+          <input
+            type="submit"
+            value="checkout"
+            id="checkout-btn"
+            class="submit-btn"
+          />
+        </div>
       </form>
       <% } %>
     </div>

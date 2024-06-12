@@ -1,18 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
   const selectAllCheckbox = document.getElementById("select-all-checkbox");
   const courseCheckboxes = document.querySelectorAll(".course-checkbox");
-  const totalElement = document.querySelector(".total");
+  const totalElement = document.querySelector(".unpaid-total");
   const checkoutBtn = document.getElementById("checkout-btn");
+  const removeBtn = document.getElementById("remove-btn");
 
   function updateTotal() {
     let total = 0;
     courseCheckboxes.forEach(function (checkbox) {
       if (checkbox.checked) {
-        total += parseInt(checkbox.getAttribute("price"));
+        const price = parseFloat(checkbox.getAttribute("price"));
+        console.log(`Adding price: ${price}`); // Debugging line
+        total += price;
       }
     });
-    totalElement.textContent = "Total: RM" + total;
+    console.log(`Total price calculated: ${total}`); // Debugging line
+    totalElement.textContent = "Total: RM" + total.toFixed(2);
+    console.log(`Total price calculated: ${totalElement}`); // Debugging line
 
+    // Disable the checkout button if no courses are selected
     checkoutBtn.disabled = !Array.from(courseCheckboxes).some(
       (checkbox) => checkbox.checked
     );
@@ -83,4 +89,40 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error:", error);
     }
   });
+
+  removeBtn.addEventListener("click", async (event) => {
+    // Add this block
+    event.preventDefault();
+
+    const selectedItems = Array.from(courseCheckboxes)
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
+
+    if (selectedItems.length === 0) {
+      alert("Please select at least one course before removing.");
+      return;
+    }
+
+    try {
+      const removeRes = await fetch("/removePayments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ selectedCourses: selectedItems }),
+      });
+
+      if (!removeRes.ok) {
+        throw new Error("Failed to remove selected courses");
+      }
+
+      // Reload the page after successful removal
+      window.location.reload();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  });
+
+  // Initial total update
+  updateTotal();
 });
