@@ -186,7 +186,7 @@
             data-tutor-id="<%= ad._id %>"
             data-subject="<%= ad.subject %>"
             data-tutor-name="<%= ad.user ? ad.user.name : ' N/A' %>"
-            data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+            data-profile-pic="<%= ad.tutorProfilePic ? '/uploads/' + ad.tutorProfilePic  : '/images/ic_profile.png' %>"
           >
             Book Now
           </button>
@@ -199,7 +199,7 @@
             data-subject="<%= ad.subject %>"
             data-tutor-name="<%= ad.user ? ad.user.name : 'N/A' %>"
             data-rate="<%= ad.rate %>"
-            data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+            data-profile-pic="<%= ad.tutorProfilePic ? '/uploads/' + ad.tutorProfilePic  : '/images/ic_profile.png' %>"
           >
             Add to Cart
           </button>
