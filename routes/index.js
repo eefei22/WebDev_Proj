@@ -388,7 +388,6 @@ router.get("/payment_report", requireLogin, async (req, res) => {
   }
 });
 
-
 // Route to fetch payment report
 // router.get("/payment_report", requireLogin, async (req, res) => {
 //   try {
@@ -421,8 +420,9 @@ router.get("/payment_report", requireLogin, async (req, res) => {
 router.get("/tuitionFee", requireLogin, async (req, res) => {
   try {
     const userId = req.session.userId;
+    const user = await User.findById(req.session.userId);
     const payments = await Payment.find({ userId }).populate("tutorId");
-    res.render("tuitionFee", { payments, userId });
+    res.render("tuitionFee", { payments, userId, user });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
