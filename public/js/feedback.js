@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const showBtn = document.getElementById("openFeedbackBtn");
+    // const showBtn = document.getElementById("openFeedbackBtn");
     const feedbackDialog = document.getElementById("feedbackDialog");
     const closeFeedbackBtn = document.getElementById("closeFeedbackBtn");
     const stars = document.querySelectorAll(".stars i");
