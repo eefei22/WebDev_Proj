@@ -53,20 +53,14 @@
     <nav>
       <a href="/homepage"><img src="/images/eduPro_logo.jpg" alt="logo" /></a>
       <div class="nav-links" id="navLinks">
-        <!-- close icon -->
         <i class="fas fa-times" onclick="hideMenu()"></i>
         <ul>
           <li><a href="/form">Subscription</a></li>
           <li><a href="/discover_tutor">Discover Tutor</a></li>
           <li><a href="/tuitionFee">Payment</a></li>
           <li><a href="/helpdesk">Helpdesk</a></li>
-          <li><a target="_blank" href="/inbox">Inbox</a></li>
-          <!-- New Inbox link -->
         </ul>
-        <!-- closing unordered list -->
       </div>
-      <!-- closing nav-links -->
-      <!-- nav icon -->
       <div class="navIcon">
         <!-- Cart Icon -->
         <i
@@ -86,7 +80,7 @@
             <div class="total-price">$0</div>
           </div>
           <!-- Buy Button -->
-          <button type="button" class="btn-buy">Checkout</button>
+          <button type="button" class="btn-buy">Pay Now</button>
           <!-- Close Cart -->
           <i class="bx bx-x" id="close-cart"></i>
         </div>
@@ -94,12 +88,12 @@
           <a href="#" class="navLink" id="profileIcon"
             ><img
               id="profileIconImg"
+              class="profile-icon"
               src="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
               alt="user profile"
           /></a>
           <div class="dropdown-content" id="profileDropdownContent">
-            <!-- Dropdown content here -->
-            <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
+            <a id="profile" href="/profile/<%= userId %>">My Profile</a>
             <div class="logout">
               <a href="/" onclick="logout()"
                 ><img id="logout-ic" src="/images/logout.png" />Log Out</a
@@ -108,7 +102,6 @@
           </div>
         </div>
       </div>
-      <!-- closing nav icon -->
       <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
 
@@ -170,7 +163,7 @@
             </li>
             <% } %> <% }) %>
           </ul>
-          <div class="total">Total: RM0</div>
+          <div class="total unpaid-total">Total: RM0</div>
         </div>
 
         <input

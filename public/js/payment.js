@@ -1,18 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
   const selectAllCheckbox = document.getElementById("select-all-checkbox");
   const courseCheckboxes = document.querySelectorAll(".course-checkbox");
-  const totalElement = document.querySelector(".total");
+  const totalElement = document.querySelector(".unpaid-total");
   const checkoutBtn = document.getElementById("checkout-btn");
 
   function updateTotal() {
     let total = 0;
     courseCheckboxes.forEach(function (checkbox) {
       if (checkbox.checked) {
-        total += parseInt(checkbox.getAttribute("price"));
+        const price = parseFloat(checkbox.getAttribute("price"));
+        console.log(`Adding price: ${price}`); // Debugging line
+        total += price;
       }
     });
-    totalElement.textContent = "Total: RM" + total;
+    console.log(`Total price calculated: ${total}`); // Debugging line
+    totalElement.textContent = "Total: RM" + total.toFixed(2);
+    console.log(`Total price calculated: ${totalElement}`); // Debugging line
 
+    // Disable the checkout button if no courses are selected
     checkoutBtn.disabled = !Array.from(courseCheckboxes).some(
       (checkbox) => checkbox.checked
     );
@@ -83,4 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error:", error);
     }
   });
+
+  // Initial total update
+  updateTotal();
 });

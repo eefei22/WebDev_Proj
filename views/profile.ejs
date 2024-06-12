@@ -87,7 +87,9 @@
             <!-- Dropdown content here -->
             <a id="profile" href="/profile/<%= user._id %>">My Profile</a>
             <div class="logout">
-              <a href="/logout" onclick="logout()"><img id="logout-ic" src="/images/logout.png">Log Out</a>
+              <a href="/" onclick="logout()"
+                ><img id="logout-ic" src="/images/logout.png" />Log Out</a
+              >
             </div>
           </div>
         </div>
@@ -95,7 +97,6 @@
       <!-- closing nav icon -->
       <i class="fas fa-bars" onclick="showMenu()"></i>
     </nav>
-
   </header>
   <div class="container">
     <h1>My Profile</h1>
