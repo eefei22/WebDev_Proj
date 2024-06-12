@@ -353,7 +353,8 @@ router.get("/helpdesk/search", async (req, res) => {
 router.get("/payment_report", requireLogin, async (req, res) => {
   try {
     // Fetch the ad document corresponding to the current user's _id
-    const ad = await Ad.findOne(req._id);
+    // const ad = await Ad.findOne(req._id);
+    const ad = await Ad.findOne({ user: req.session.userId });
 
     if (!ad) {
       return res.status(404).send("Ad not found for user");
@@ -361,6 +362,7 @@ router.get("/payment_report", requireLogin, async (req, res) => {
 
     // Now you have the _id from the Ad model
     const adId = ad._id;
+    console.log("This is adId", adId);
 
     // Fetch only the required fields from the payment_model
     const payments = await Payment.find(
