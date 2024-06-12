@@ -17,6 +17,7 @@ const adSchema = new mongoose.Schema({
   location: { type: String, required: true },
   mode: { type: String, required: true },
   teaching_sample: { type: String, required: true },
+  tutorProfilePic: { type: String },
 });
 
 module.exports = mongoose.model("Ad", adSchema);
