@@ -170,3 +170,46 @@ nav img {
 nav .fas {
   display: none;
 }
+
+/* smaller screen */
+@media (max-width: 700px) {
+  /* all change in nav part */
+  .nav-links ul li {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    background: #190482;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    /* right changed from 0 to -200px to hide the menu */
+    right: -200px;
+    text-align: left;
+    z-index: 1;
+    /*higher than 0 so that it appear above "Tutee Tuto Matching.."*/
+    transition: 1s;
+  }
+
+  /* show the menu icon in smaller screen */
+  nav .fas {
+    display: block;
+    color: #fff;
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  nav .fas:hover {
+    transform: scale(1.2);
+    /* Enlarge the image by 20% when hovering over it */
+  }
+
+  .nav-links ul {
+    padding: 30px;
+  }
+
+  /* nav part done*/
+}

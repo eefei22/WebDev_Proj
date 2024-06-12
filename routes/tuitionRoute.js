@@ -54,6 +54,23 @@ router.post("/update", async (req, res) => {
   }
 });
 
+router.post("/removePayments", async (req, res) => {
+  try {
+    const { selectedCourses } = req.body;
+
+    if (!Array.isArray(selectedCourses) || selectedCourses.length === 0) {
+      return res.status(400).json({ error: "Invalid selected courses" });
+    }
+
+    await Payment.deleteMany({ _id: { $in: selectedCourses } });
+
+    res.status(200).json({ message: "Selected courses removed successfully" });
+  } catch (error) {
+    console.error("Error removing courses:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Handle Stripe payment process
 router.post("/checkout", async (req, res) => {
   try {
