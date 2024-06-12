@@ -327,6 +327,7 @@ router.post("/helpdesk", upload.single("file"), async (req, res) => {
 });
 
 const Fuse = require("fuse.js");
+const { userInfo } = require("os");
 
 router.get("/helpdesk/search", async (req, res) => {
   const query = req.query.query; // Get the search query from the request
@@ -388,7 +389,6 @@ router.get("/payment_report", requireLogin, async (req, res) => {
 });
 
 
-
 // Route to fetch payment report
 // router.get("/payment_report", requireLogin, async (req, res) => {
 //   try {
@@ -418,17 +418,16 @@ router.get("/payment_report", requireLogin, async (req, res) => {
 //   }
 // });
 
-
-// router.get("/tuitionFee", requireLogin, async (req, res) => {
-//   try {
-//     const userId = req.session.userId;
-//     const payments = await Payment.find({ userId }).populate("tutorId");
-//     res.render("tuitionFee", { payments, userId });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Server Error");
-//   }
-// });
+router.get("/tuitionFee", requireLogin, async (req, res) => {
+  try {
+    const userId = req.session.userId;
+    const payments = await Payment.find({ userId }).populate("tutorId");
+    res.render("tuitionFee", { payments, userId });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
 
 // Route for subscription tutee page
 router.get("/subscription_tutee", requireLogin, async (req, res) => {
