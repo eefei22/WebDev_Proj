@@ -30,6 +30,46 @@ router.post("/removePayments", async (req, res) => {
   }
 });
 
+// Update description route
+router.post("/update", async (req, res) => {
+  try {
+    const { selectedCourses, descriptions } = req.body;
+
+    if (
+      !Array.isArray(selectedCourses) ||
+      selectedCourses.length === 0 ||
+      !Array.isArray(descriptions) ||
+      descriptions.length !== selectedCourses.length
+    ) {
+      return res
+        .status(400)
+        .json({ error: "Invalid selected courses or descriptions" });
+    }
+
+    const updates = selectedCourses.map((id, index) => ({
+      updateOne: {
+        filter: { _id: id },
+        update: {
+          $set: {
+            description: descriptions[index],
+            payment_status: "Paid",
+            transactionDate: new Date(),
+          },
+        },
+      },
+    }));
+
+    await Payment.bulkWrite(updates);
+
+    res.status(200).json({
+      message: "Descriptions and payment statuses updated successfully",
+    });
+  } catch (error) {
+    console.error("Error updating descriptions and payment statuses:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // Handle Stripe payment process
 router.post("/checkout", async (req, res) => {
   try {

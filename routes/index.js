@@ -169,21 +169,21 @@ router.get("/discover_tutor", requireLogin, async (req, res) => {
 });
 
 // Define the route for tutor_ad
-router.get('/tutor_ad/:adId', async (req, res) => {
+router.get("/tutor_ad/:adId", async (req, res) => {
   try {
     const adId = req.params.adId;
     const user = await User.findById(req.session.userId);
-    const ad = await Ad.findById(adId).populate('user');
-    const feedbacks = await FeedbackModel.find({ ad: adId }).populate('user');
+    const ad = await Ad.findById(adId).populate("user");
+    const feedbacks = await FeedbackModel.find({ ad: adId }).populate("user");
 
     if (!ad) {
-      return res.status(404).send('Advertisement not found');
+      return res.status(404).send("Advertisement not found");
     }
 
-    res.render('tutor_ad', { ad, feedbacks, user });
+    res.render("tutor_ad", { ad, feedbacks, user });
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 
@@ -271,19 +271,23 @@ router.post("/subscription/delete/:adId", async (req, res) => {
   }
 });
 
-
 router.get("/feedback", async (req, res) => {
   try {
     const user = await User.findById(req.session.userId);
+
+    // Assuming adId is coming from somewhere (query params, session, etc.)
+    // For example, if adId is from query params:
+    const adId = req.query.adId;
+
+    // Fetch feedbacks associated with a specific adId and populate the 'user' field
     const feedbacks = await FeedbackModel.find({ ad: adId }).populate("user");
-    // const feedbacks = await FeedbackModel.find({});
-    res.render("feedback", { feedbacks, user }); //pass data to frontend
+
+    res.render("feedback", { feedbacks, user });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
   }
 });
-
 router.post("/feedback", async (req, res) => {
   try {
     const { rating, message, anonymous, adId, name } = req.body;
@@ -294,9 +298,9 @@ router.post("/feedback", async (req, res) => {
       rating,
       message,
       anonymous: isAnonymous,
-      user: req.session.userId,
-      name,  // Save the user's name
-      ad: adId  // assuming FeedbackModel has a field `ad` to store the ad ID
+      user: req.session.userId, // Assuming userId is stored in session
+      name,
+      ad: adId, // Save the adId with the feedback
     });
 
     await newFeedback.save();
@@ -308,7 +312,6 @@ router.post("/feedback", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
 
 router.get("/helpdesk", requireLogin, async (req, res) => {
   try {
@@ -409,7 +412,6 @@ router.get("/payment_report", requireLogin, async (req, res) => {
     res.status(500).send("Error fetching payment data");
   }
 });
-
 
 router.get("/tuitionFee", requireLogin, async (req, res) => {
   try {
