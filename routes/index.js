@@ -66,6 +66,7 @@ router.get("/form", requireLogin, async (req, res) => {
     if (ad) {
       return res.redirect(`/subscription/${req.session.userId}`);
     }
+    res.render("form", { user, profilePic: user.profilePic });
 
     res.render("form", { user });
   } catch (error) {
@@ -115,6 +116,7 @@ router.post(
         location,
         mode,
         teaching_sample,
+        tutorProfilePic: user.profilePic,
       });
 
       await newAd.save();

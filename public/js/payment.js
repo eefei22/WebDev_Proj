@@ -10,13 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
     courseCheckboxes.forEach(function (checkbox) {
       if (checkbox.checked) {
         const price = parseFloat(checkbox.getAttribute("price"));
-        console.log(`Adding price: ${price}`); // Debugging line
         total += price;
       }
     });
-    console.log(`Total price calculated: ${total}`); // Debugging line
     totalElement.textContent = "Total: RM" + total.toFixed(2);
-    console.log(`Total price calculated: ${totalElement}`); // Debugging line
 
     // Disable the checkout button if no courses are selected
     checkoutBtn.disabled = !Array.from(courseCheckboxes).some(

@@ -166,28 +166,41 @@
       </div>
     </div>
 
-    <div class="CTA">
-      <div class="title" style="font-size: 45px">RM<%= ad.rate %>
+      <div class="CTA">
+        <div class="title" style="font-size: 45px">RM<%= ad.rate %></div>
+        <div class="par">per session</div>
+        <div>
+          <button
+            class="labeled_button"
+            id="checkout_btn"
+            data-rate="<%= ad.rate %>"
+            data-tutor-id="<%= ad._id %>"
+            data-subject="<%= ad.subject %>"
+            data-tutor-name="<%= ad.user ? ad.user.name : ' N/A' %>"
+            data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+          >
+            Book Now
+          </button>
+        </div>
+        <div>
+          <button
+            class="labeled_button"
+            id="add-cart"
+            data-tutor-id="<%= ad._id %>"
+            data-subject="<%= ad.subject %>"
+            data-tutor-name="<%= ad.user ? ad.user.name : 'N/A' %>"
+            data-rate="<%= ad.rate %>"
+            data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <br />
+        <a class="par" target="_blank" href="/chat/<%= ad.user._id %>"
+          >Chat with tutor</a
+        >
       </div>
-      <div class="par">per session</div>
-      <div>
-        <button class="labeled_button" id="checkout_btn" data-rate="<%= ad.rate %>" data-tutor-id="<%= ad._id %>"
-          data-subject="<%= ad.subject %>" data-tutor-name="<%= ad.user ? ad.user.name : ' N/A' %>"
-          data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>">
-          Book Now
-        </button>
-      </div>
-      <div>
-        <button class="labeled_button" id="add-cart" data-tutor-id="<%= ad._id %>" data-subject="<%= ad.subject %>"
-          data-tutor-name="<%= ad.user ? ad.user.name : 'N/A' %>" data-rate="<%= ad.rate %>"
-          data-profile-pic="<%= user.profilePic ? '/uploads/' + user.profilePic : '/images/ic_profile.png' %>">
-          Add to Cart
-        </button>
-      </div>
-      <br />
-      <a class="par" target="_blank" href="/chat/<%= ad.user._id %>">Chat with tutor</a>
     </div>
-  </div>
 
   <footer>
     <section class="footer">

@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tutor_name: tutorName,
         rate: price,
         profilePic: profilePic,
-        tutorId: tutorId, // Include tutorId here
+        tutorId: tutorId,
       });
     }
 
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
           item.tutor_name,
           item.rate,
           item.profilePic,
-          item.tutorId // Pass tutorId to addProductToCart
+          item.tutorId
         );
       }
     }

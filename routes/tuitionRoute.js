@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 const Payment = require("../models/payment_model");
-const bodyParser = require("body-parser");
 
 // Success and Cancel routes
 router.get("/success", (req, res) => {
@@ -12,46 +11,6 @@ router.get("/success", (req, res) => {
 router.get("/cancel", (req, res) => {
   console.log("Accessing cancel route");
   res.render("cancel", { title: "Cancel" });
-});
-
-// Update description route
-router.post("/update", async (req, res) => {
-  try {
-    const { selectedCourses, descriptions } = req.body;
-
-    if (
-      !Array.isArray(selectedCourses) ||
-      selectedCourses.length === 0 ||
-      !Array.isArray(descriptions) ||
-      descriptions.length !== selectedCourses.length
-    ) {
-      return res
-        .status(400)
-        .json({ error: "Invalid selected courses or descriptions" });
-    }
-
-    const updates = selectedCourses.map((id, index) => ({
-      updateOne: {
-        filter: { _id: id },
-        update: {
-          $set: {
-            description: descriptions[index],
-            payment_status: "Paid",
-            transactionDate: new Date(),
-          },
-        },
-      },
-    }));
-
-    await Payment.bulkWrite(updates);
-
-    res.status(200).json({
-      message: "Descriptions and payment statuses updated successfully",
-    });
-  } catch (error) {
-    console.error("Error updating descriptions and payment statuses:", error);
-    res.status(500).send("Internal Server Error");
-  }
 });
 
 router.post("/removePayments", async (req, res) => {
