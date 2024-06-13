@@ -105,7 +105,6 @@ function resetTable(resetSort = true) {
     }
 }
 
-
 // Export table data to PDF
 const toPDFBtn = document.getElementById('toPDF');
 toPDFBtn.addEventListener('click', () => {
@@ -118,14 +117,14 @@ toPDFBtn.addEventListener('click', () => {
     clonedTable.id = 'clonedTable'; // Assign a unique ID to the cloned table
 
     // Append the cloned table to the document body temporarily
-    // document.body.appendChild(clonedTable);
+    document.body.appendChild(clonedTable);
 
     doc.autoTable({
         html: '#clonedTable', // Use the cloned table for PDF generation
         theme: 'striped',
         headStyles: { fillColor: [22, 160, 133] },
-        margin: { top: 20 },
-        styles: { fontSize: 10 }
+        // margin: { top: 20 },
+        styles: { fontSize: 9 }
     });
 
     // Remove the cloned table from the document body after PDF generation
@@ -133,4 +132,34 @@ toPDFBtn.addEventListener('click', () => {
 
     doc.save('payment_report.pdf');
 });
+
+
+
+// Export table data to PDF
+// const toPDFBtn = document.getElementById('toPDF');
+// toPDFBtn.addEventListener('click', () => {
+//     const { jsPDF } = window.jspdf;
+//     const doc = new jsPDF();
+//     const tableElement = document.getElementById('mainTable');
+
+//     // Clone the table to prevent affecting the original table
+//     const clonedTable = tableElement.cloneNode(true);
+//     clonedTable.id = 'clonedTable'; // Assign a unique ID to the cloned table
+
+//     // Append the cloned table to the document body temporarily
+//     // document.body.appendChild(clonedTable);
+
+//     doc.autoTable({
+//         html: '#clonedTable', // Use the cloned table for PDF generation
+//         theme: 'striped',
+//         headStyles: { fillColor: [22, 160, 133] },
+//         margin: { top: 20 },
+//         styles: { fontSize: 10 }
+//     });
+
+//     // Remove the cloned table from the document body after PDF generation
+//     document.body.removeChild(clonedTable);
+
+//     doc.save('payment_report.pdf');
+// });
 

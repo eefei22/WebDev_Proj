@@ -166,14 +166,22 @@ router.get("/discover_tutor", requireLogin, async (req, res) => {
   }
 });
 
-router.get("/tutor_ad/:id", requireLogin, async (req, res) => {
+// Define the route for tutor_ad
+router.get('/tutor_ad/:adId', async (req, res) => {
   try {
-    const ad = await Ad.findById(req.params.id).populate("user");
+    const adId = req.params.adId;
     const user = await User.findById(req.session.userId);
-    res.render("tutor_ad", { ad, user });
+    const ad = await Ad.findById(adId).populate('user');
+    const feedbacks = await FeedbackModel.find({ ad: adId }).populate('user');
+
+    if (!ad) {
+      return res.status(404).send('Advertisement not found');
+    }
+
+    res.render('tutor_ad', { ad, feedbacks, user });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Server Error");
+    res.status(500).send('Server Error');
   }
 });
 
@@ -261,10 +269,13 @@ router.post("/subscription/delete/:adId", async (req, res) => {
   }
 });
 
+
 router.get("/feedback", async (req, res) => {
   try {
-    const feedbacks = await FeedbackModel.find({});
-    res.render("feedback", { feedbacks });
+    const user = await User.findById(req.session.userId);
+    const feedbacks = await FeedbackModel.find({ ad: adId }).populate("user");
+    // const feedbacks = await FeedbackModel.find({});
+    res.render("feedback", { feedbacks, user }); //pass data to frontend
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
@@ -273,7 +284,7 @@ router.get("/feedback", async (req, res) => {
 
 router.post("/feedback", async (req, res) => {
   try {
-    const { rating, message, anonymous } = req.body;
+    const { rating, message, anonymous, adId, name } = req.body;
 
     const isAnonymous = anonymous === "on";
 
@@ -281,16 +292,21 @@ router.post("/feedback", async (req, res) => {
       rating,
       message,
       anonymous: isAnonymous,
+      user: req.session.userId,
+      name,  // Save the user's name
+      ad: adId  // assuming FeedbackModel has a field `ad` to store the ad ID
     });
 
     await newFeedback.save();
 
-    res.redirect("/feedback");
+    // Redirect to the tutor advertisement page with the specific ID
+    res.redirect(`/tutor_ad/${adId}`);
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
   }
 });
+
 
 router.get("/helpdesk", requireLogin, async (req, res) => {
   try {
@@ -329,9 +345,11 @@ router.post("/helpdesk", upload.single("file"), async (req, res) => {
 const Fuse = require("fuse.js");
 const { userInfo } = require("os");
 
+// Route to handle search functionality in helpdesk
 router.get("/helpdesk/search", async (req, res) => {
   const query = req.query.query; // Get the search query from the request
   try {
+    const user = await User.findById(req.session.userId); // Fetch user data
     const faqs = await FaqModel.find({}); // Retrieve all FAQs from the database
     const fuse = new Fuse(faqs, {
       keys: ["question", "answer"],
@@ -341,7 +359,7 @@ router.get("/helpdesk/search", async (req, res) => {
     });
     const result = fuse.search(query);
     const faqList = result.map((entry) => entry.item);
-    res.render("helpdesk", { faqList });
+    res.render("helpdesk", { faqList, user }); // Pass both faqList and user to the view
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
@@ -390,34 +408,6 @@ router.get("/payment_report", requireLogin, async (req, res) => {
   }
 });
 
-// Route to fetch payment report
-// router.get("/payment_report", requireLogin, async (req, res) => {
-//   try {
-//     // Fetch only the required fields from the payment_model
-//     const payments = await Payment.find(
-//       {},
-//       "cardholderName phone email transactionDate payment_status transactionAmount description"
-//     );
-
-//     // Map payments to include dueDate
-//     const paymentReport = payments.map((payment) => {
-//       const transactionDate = new Date(payment.transactionDate);
-//       const dueDate = new Date(transactionDate);
-//       dueDate.setMonth(transactionDate.getMonth() + 1);
-
-//       return {
-//         ...payment._doc,
-//         dueDate: dueDate.toISOString().split("T")[0], // Convert to YYYY-MM-DD format
-//       };
-//     });
-
-//     // Render the payment_report EJS template and pass the fetched data
-//     res.render("payment_report", { paymentReport });
-//   } catch (error) {
-//     console.error("Error fetching payment data:", error);
-//     res.status(500).send("Error fetching payment data");
-//   }
-// });
 
 router.get("/tuitionFee", requireLogin, async (req, res) => {
   try {
@@ -441,6 +431,33 @@ router.get("/subscription_tutee", requireLogin, async (req, res) => {
     res.render("subscription_tutee", { user });
   } catch (error) {
     console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
+
+// Route to delete feedback
+router.post("/feedback/:feedbackId/delete", async (req, res) => {
+  try {
+    const feedbackId = req.params.feedbackId;
+
+    // Find the feedback by ID
+    const feedback = await FeedbackModel.findById(feedbackId);
+    if (!feedback) {
+      return res.status(404).send("Feedback not found");
+    }
+
+    // Check if the current user is authorized to delete this feedback
+    if (!feedback.user.equals(req.session.userId)) {
+      return res.status(403).send("Unauthorized");
+    }
+
+    // Delete the feedback
+    await FeedbackModel.deleteOne({ _id: feedbackId });
+
+    // Redirect back to the tutor advertisement page or any other appropriate page
+    res.redirect(`/tutor_ad/${feedback.ad}`);
+  } catch (error) {
+    console.error("Error deleting feedback:", error);
     res.status(500).send("Server Error");
   }
 });

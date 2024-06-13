@@ -15,17 +15,8 @@ body {
     background: #C2D9FF;
 }
 
-.open-feedback-btn {
-    padding: 10px 20px;
-    background-color: #190482;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .feedback-dialog {
-    display: none;
+    display: block;
     position: fixed;
     top: 50%;
     left: 50%;

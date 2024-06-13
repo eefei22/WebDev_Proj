@@ -1,235 +1,414 @@
 .header {
-    width: 100%;
-    min-height: 10em;
-    height: auto;
-    background-color: #190482;
-    border-radius: 0 0 40px 40px;
-  }
-  
-  .logo {
-    position: absolute;
-    width: 10%;
-    height: auto;
-    top: 33px;
-    left: 38px;
-  }
-  
+  width: 100%;
+  min-height: 10em;
+  height: auto;
+  background-color: #190482;
+  border-radius: 0 0 40px 40px;
+}
+
+.logo {
+  position: absolute;
+  width: 10%;
+  height: auto;
+  top: 33px;
+  left: 38px;
+}
+
+.content_container {
+  width: 100%;
+  display: flex;
+  margin-top: 100px;
+}
+
+.profile_content {
+  width: 55%;
+  margin: 50px 65px;
+  height: fit-content;
+  padding: 3%;
+  background: white;
+  border: 3px #C2D9FF solid;
+  border-radius: 30px;
+
+}
+
+.title {
+  font-size: 24px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.detail_container {
+  display: flex;
+  align-items: center;
+}
+
+.profile_pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.label_container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.labels {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
+}
+
+.nugget_facts {
+  margin: 20px;
+  display: flex;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+}
+
+.mini_icon {
+  margin-left: 20px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.details {
+  margin-top: 1px;
+  margin-left: 10px;
+  font-size: 14px;
+  font-family: "Poppins", Helvetica;
+}
+
+.par {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.CTA {
+  width: 20%;
+  margin: 50px 4% 0;
+  max-height: 300px;
+  padding: 20px;
+  background: white;
+  border: 3px #C2D9FF solid;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.labeled_button {
+  background-color: #7752FE;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: "Poppins", Helvetica;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.labeled_button:hover {
+  background-color: #190482;
+}
+
+.button:hover {
+  filter: brightness(0.8);
+}
+
+.review {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.review_pic {
+  margin-top: 20px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+#review_button {
+  background-color: #7752FE;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#review_button:hover {
+  background-color: #190482;
+}
+
+.user-profile {
+  display: flex; /* Ensures the profile image and name are aligned */
+  align-items: center; /* Align items vertically centered */
+  margin-bottom: 10px; /* Add some space below the profile section */
+  /* margin-right: 20px; */
+}
+
+.username {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.rating {
+  margin-bottom: 10px;
+}
+
+.star {
+  color: gold;
+}
+
+.rev_link {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.comment {
+  overflow-wrap: break-word; /* Allow long words to break and wrap */
+}
+
+.feedback-dialog {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 80%;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.feedback-dialog .split {
+  display: flex;
+}
+
+.left {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  background-color: #007bff;
+}
+
+.img {
+  text-align: left;
+}
+
+.img h1 {
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.img img {
+  max-width: 95%;
+}
+
+.right {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.feedback-header h1,
+.rating-section h3,
+.textarea h3,
+.anonymous h3 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.stars {
+  display: flex;
+  justify-content: flex-start;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.stars i {
+  color: #333;
+  font-size: 35px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.stars i.active {
+  color: #ff9c1a;
+}
+
+.textarea {
+  margin-top: 20px;
+}
+
+.textarea textarea {
+  width: 100%;
+  outline: none;
+  border: 2px solid;
+  border-radius: 15px;
+  color: #000;
+  padding: 10px;
+  font-size: 17px;
+  resize: none;
+  margin: 5px 0 17px 0;
+}
+
+.anonymous {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.anonymous h3 {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.toggle {
+  background-color: #d2d2d2;
+  border: 1px solid #190482;
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s;
+}
+
+.toggle::before {
+  position: absolute;
+  content: '';
+  background-color: #7752FE;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  margin: 5px;
+  transition: 0.2s;
+}
+
+input:checked + .toggle {
+  background-color: #20096d;
+}
+
+input:checked + .toggle::before {
+  transform: translateX(30px);
+}
+
+input {
+  display: none;
+}
+
+.btn {
+  margin-top: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.btn button {
+  padding: 10px 20px;
+  width: 60%;
+  margin-top: 15px;
+  margin-right: 35px;
+  background-color: #190482;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn button:hover {
+  background-color: #7752FE;
+}
+
+.close-feedback-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+}
+
+
+/* @media screen and (max-width: 768px) {
   .content_container {
+    display: block;
     width: 100%;
-    display: flex;
-    margin-top: 100px;
+    margin: 0;
   }
-  
+
   .profile_content {
-    width: 55%;
-    margin: 50px 65px;
-    height: fit-content;
-    padding: 3%;
+    width: 80%;
+    margin: 150px auto;
+  }
+
+  .CTA {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
     background: white;
     border: 3px #C2D9FF solid;
     border-radius: 30px;
-  
+    text-align: center;
   }
-  
-  .title {
-    font-size: 24px;
-    font-family: "Poppins", Helvetica;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-  
-  .detail_container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile_pic {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 20px;
-  }
-  
-  .label_container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  
-  
-  .labels {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-family: "Poppins", Helvetica;
-    font-weight: 600;
-  }
-  
+
   .nugget_facts {
     margin: 20px;
     display: flex;
-    font-family: "Poppins", Helvetica;
-    font-weight: 400;
-  }
-  
-  .mini_icon {
-    margin-left: 20px;
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-  }
-  
-  .details {
-    margin-top: 1px;
-    margin-left: 10px;
-    font-size: 14px;
+    flex-wrap: wrap;
+    justify-content: left;
     font-family: "Poppins", Helvetica;
   }
-  
-  .par {
-    margin-bottom: 20px;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .CTA {
-    width: 20%;
-    margin: 50px 4% 0;
-    max-height: 300px;
-    padding: 20px;
-    background: white;
-    border: 3px #C2D9FF solid;
-    border-radius: 30px;
-    text-align: center;
-  }
-  
-  .labeled_button {
-    background-color: #7752FE;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    font-family: "Poppins", Helvetica;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 20px;
-  }
-  
-  .labeled_button:hover {
-    background-color: #190482;
-  }
-  
-  .button:hover {
-    filter: brightness(0.8);
-  }
-  
-  .review {
-    display: flex;
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .review_pic {
-    margin-top: 20px;
+
+  .profile_pic {
     width: 80px;
     height: 80px;
     object-fit: cover;
     border-radius: 50%;
     margin-right: 20px;
   }
-  
-  #review_button {
-    background-color: #7752FE;
-    border: none;
-    border-radius: 20px;
-    font-size: 15px;
-    color: white;
-    padding: 8px 12px;
-    cursor: pointer;
-  }
-  
-  #review_button:hover {
+
+  .header {
+    position: relative;
+    width: 100%;
+    min-height: 6em;
+    height: auto;
+    max-height: 10em;
     background-color: #190482;
+    border-radius: 0 0 40px 40px;
   }
-  
-  .user-profile {
-    margin-right: 20px;
-  }
-  
-  .username {
-    margin-top: 0;
-  }
-  
-  .rating {
-    margin-bottom: 10px;
-  }
-  
-  .star {
-    color: gold;
-  }
-  
-  .rev_link {
-    background: none;
-    border: none;
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
-    margin-bottom: 20px;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  
- /* @media screen and (max-width: 768px) {
-    .content_container {
-      display: block;
-      width: 100%;
-      margin: 0;
-    }
-  
-    .profile_content {
-      width: 80%;
-      margin: 150px auto;
-    }
-  
-    .CTA {
-      width: 60%;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border: 3px #C2D9FF solid;
-      border-radius: 30px;
-      text-align: center;
-    }
-  
-    .nugget_facts {
-      margin: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: left;
-      font-family: "Poppins", Helvetica;
-    }
-  
-    .profile_pic {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-right: 20px;
-    }
-  
-    .header {
-      position: relative;
-      width: 100%;
-      min-height: 6em;
-      height: auto;
-      max-height: 10em;
-      background-color: #190482;
-      border-radius: 0 0 40px 40px;
-    }
 } */
