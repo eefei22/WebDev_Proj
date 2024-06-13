@@ -29,8 +29,8 @@ function setupCronJobs() {
 
 module.exports = setupCronJobs;
 
-const cron = require("node-cron");
-const Payment = require("../models/payment_model");
+// const cron = require("node-cron");
+// const Payment = require("../models/payment_model");
 
 // // Scheduled task to run every day at midnight
 // function setupCronJobs() {
