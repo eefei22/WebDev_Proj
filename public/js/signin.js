@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   //Alert message
   const loginForm = document.getElementById('login-form');
-    const resetPasswordForm = document.getElementById('reset-password-form');
+  const resetPasswordLink = document.getElementById('request-reset-link-form');
 
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -35,17 +35,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    resetPasswordForm.addEventListener('submit', function (event) {
+    resetPasswordLink.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const formData = new FormData(resetPasswordForm);
+        const formData = new FormData(resetPasswordLink);
         const data = {
             email: formData.get('email'),
-            new_password: formData.get('new_password'),
-            confirm_password: formData.get('confirm_password')
         };
 
-        fetch('/reset-password', {
+        fetch('/reset-password-link', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('An unexpected error occurred. Please try again later.');
         });
     });
-
+    
     // Toggle password visibility
     const togglePassword = (inputId, toggleButtonId) => {
       const passwordInput = document.getElementById(inputId);
@@ -82,8 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     togglePassword('password', 'togglePassword');
-    togglePassword('reset-password', 'toggleResetPassword');
-    togglePassword('confirm-password', 'toggleConfirmPassword');
   });
 
   // Open and close reset password modal
@@ -94,3 +90,32 @@ document.addEventListener('DOMContentLoaded', function () {
   function closeResetPasswordModal() {
     document.getElementById('reset-password-modal').style.display = 'none';
   }
+
+  //Handle alert message
+  document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const successMessage = urlParams.get('success');
+    const errorMessage = urlParams.get('error');
+  
+    if (successMessage) {
+      alert(successMessage);
+      clearQueryParameters();
+    }
+  
+    if (errorMessage) {
+      alert(errorMessage);
+      clearQueryParameters();
+    }
+  });
+  
+  function clearQueryParameters() {
+    // Get the current URL
+    const url = new URL(window.location);
+  
+    // Clear the query parameters
+    url.search = '';
+  
+    // Update the browser's history
+    window.history.replaceState({}, document.title, url);
+  }
+  
