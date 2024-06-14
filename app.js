@@ -19,6 +19,7 @@ const nav_routes = require("./routes/nav");
 const chatRouter = require("./routes/chat");
 const inboxRouter = require("./routes/inbox");
 const ChatMessage = require("./models/ChatMessage");
+const logoutRouter = require('./routes/logout');
 //payment
 const paymentRoute = require("./routes/paymentRoute.js");
 const subscribeRoute = require("./routes/subscribeRoute.js");
@@ -62,6 +63,12 @@ mongoose
   })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("MongoDB connection error:", err));
+
+// Middleware to set cache control headers
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store');
+  next();
+});   
 
 const sessionMiddleware = session({
   secret: process.env.SESSION_SECRET || "secret_key",
@@ -133,6 +140,7 @@ app.use("/", subscribeRoute);
 app.use("/", tuitionRoute);
 app.use("/", cartRoute);
 app.use("/", paymentRoute);
+app.use("/logout", logoutRouter);
 
 const server = http.createServer(app);
 const io = socketIO(server);
