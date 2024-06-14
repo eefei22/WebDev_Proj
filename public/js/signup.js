@@ -21,20 +21,20 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json().then(data => ({ status: response.status, body: data })))
-        .then(responseObject => {
-            const { status, body } = responseObject;
-            if (status === 200) {
-                alert(body.message);
-                window.location.href = "/login";
-            } else {
-                alert(body.message);
-            }
-        })
-        .catch(error => {
-            console.error('Network error:', error);
-            alert('An unexpected error occurred. Please try again later.');
-        });
+            .then(response => response.json().then(data => ({ status: response.status, body: data })))
+            .then(responseObject => {
+                const { status, body } = responseObject;
+                if (status === 200) {
+                    alert(body.message);
+                    window.location.href = "/login";
+                } else {
+                    alert(body.message);
+                }
+            })
+            .catch(error => {
+                console.error('Network error:', error);
+                alert('An unexpected error occurred. Please try again later.');
+            });
     });
 
     //Toggle password visibility

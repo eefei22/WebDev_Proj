@@ -103,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Check for query parameter and show alert
-
     contactForm.addEventListener("submit", async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         

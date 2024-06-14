@@ -274,9 +274,6 @@ router.post("/subscription/delete/:adId", async (req, res) => {
 router.get("/feedback", async (req, res) => {
   try {
     const user = await User.findById(req.session.userId);
-
-    // Assuming adId is coming from somewhere (query params, session, etc.)
-    // For example, if adId is from query params:
     const adId = req.query.adId;
 
     // Fetch feedbacks associated with a specific adId and populate the 'user' field
@@ -288,6 +285,7 @@ router.get("/feedback", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
 router.post("/feedback", async (req, res) => {
   try {
     const { rating, message, anonymous, adId, name } = req.body;
@@ -298,7 +296,7 @@ router.post("/feedback", async (req, res) => {
       rating,
       message,
       anonymous: isAnonymous,
-      user: req.session.userId, // Assuming userId is stored in session
+      user: req.session.userId,
       name,
       ad: adId, // Save the adId with the feedback
     });
@@ -309,6 +307,33 @@ router.post("/feedback", async (req, res) => {
     res.redirect(`/tutor_ad/${adId}`);
   } catch (error) {
     console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
+
+// Route to delete feedback
+router.post("/feedback/:feedbackId/delete", async (req, res) => {
+  try {
+    const feedbackId = req.params.feedbackId;
+
+    // Find the feedback by ID
+    const feedback = await FeedbackModel.findById(feedbackId);
+    if (!feedback) {
+      return res.status(404).send("Feedback not found");
+    }
+
+    // Check if the current user is authorized to delete this feedback
+    if (!feedback.user.equals(req.session.userId)) {
+      return res.status(403).send("Unauthorized");
+    }
+
+    // Delete the feedback
+    await FeedbackModel.deleteOne({ _id: feedbackId });
+
+    // Redirect back to the tutor advertisement page or any other appropriate page
+    res.redirect(`/tutor_ad/${feedback.ad}`);
+  } catch (error) {
+    console.error("Error deleting feedback:", error);
     res.status(500).send("Server Error");
   }
 });
@@ -372,18 +397,16 @@ router.get("/helpdesk/search", async (req, res) => {
 });
 
 // Route to fetch payment report
-
 router.get("/payment_report", requireLogin, async (req, res) => {
   try {
     // Fetch the ad document corresponding to the current user's _id
-    // const ad = await Ad.findOne(req._id);
     const ad = await Ad.findOne({ user: req.session.userId });
 
     if (!ad) {
       return res.status(404).send("Ad not found for user");
     }
 
-    // Now you have the _id from the Ad model
+    // _id from the Ad model
     const adId = ad._id;
     console.log("This is adId", adId);
 
@@ -435,33 +458,6 @@ router.get("/subscription_tutee", requireLogin, async (req, res) => {
     res.render("subscription_tutee", { user });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Server Error");
-  }
-});
-
-// Route to delete feedback
-router.post("/feedback/:feedbackId/delete", async (req, res) => {
-  try {
-    const feedbackId = req.params.feedbackId;
-
-    // Find the feedback by ID
-    const feedback = await FeedbackModel.findById(feedbackId);
-    if (!feedback) {
-      return res.status(404).send("Feedback not found");
-    }
-
-    // Check if the current user is authorized to delete this feedback
-    if (!feedback.user.equals(req.session.userId)) {
-      return res.status(403).send("Unauthorized");
-    }
-
-    // Delete the feedback
-    await FeedbackModel.deleteOne({ _id: feedbackId });
-
-    // Redirect back to the tutor advertisement page or any other appropriate page
-    res.redirect(`/tutor_ad/${feedback.ad}`);
-  } catch (error) {
-    console.error("Error deleting feedback:", error);
     res.status(500).send("Server Error");
   }
 });
